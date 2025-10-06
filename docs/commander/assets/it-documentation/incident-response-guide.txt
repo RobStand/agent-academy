@@ -1,0 +1,203 @@
+CONTOSO IT SERVICES
+IT Incident Response Guide
+
+Document Version: 2.0
+Last Updated: January 2025
+Document Owner: IT Operations Team
+
+PURPOSE
+This guide helps Contoso employees recognize, report, and respond to IT incidents. Quick and proper incident handling minimizes business impact and protects company data.
+
+WHAT IS AN IT INCIDENT?
+An IT incident is any unplanned event that disrupts or could disrupt IT services, including:
+- System outages
+- Security breaches
+- Data loss
+- Application failures
+- Network problems affecting multiple users
+- Hardware failures
+
+INCIDENT SEVERITY LEVELS
+
+CRITICAL (P1):
+- Complete system outage affecting all users
+- Data breach or security incident
+- Ransomware or malware outbreak
+- Critical application down (email, ERP, etc.)
+- Response time: Immediate
+- Resolution target: 4 hours
+
+HIGH (P2):
+- Major system performance degradation
+- Application issues affecting department
+- Important functionality unavailable
+- Network issues affecting multiple users
+- Response time: 30 minutes
+- Resolution target: 8 hours
+
+MEDIUM (P3):
+- Single-user application issues
+- Non-critical functionality unavailable
+- Workaround available
+- Limited business impact
+- Response time: 4 hours
+- Resolution target: 24 hours
+
+LOW (P4):
+- Minor issues or requests
+- Cosmetic problems
+- Questions or training needs
+- Minimal business impact
+- Response time: 8 hours
+- Resolution target: 5 business days
+
+HOW TO REPORT AN INCIDENT
+
+Option 1: IT Service Portal (Preferred)
+1. Visit https://itportal.contoso.com
+2. Click "Report an Incident"
+3. Fill out the form:
+   - Select incident type
+   - Describe the issue
+   - Choose severity
+   - Provide contact information
+4. Submit ticket
+5. You'll receive ticket number via email
+
+Option 2: Phone
+- Call: 1-800-CONTOSO (1-800-266-8676)
+- Available 24/7
+- Best for urgent issues
+- Provide detailed description to agent
+
+Option 3: Email
+- Email: helpdesk@contoso.com
+- Include "INCIDENT:" in subject line
+- Attach screenshots if helpful
+- Response within SLA timeframe
+
+Option 4: Walk-In (Office Workers)
+- Location: Building A, 2nd Floor IT Service Desk
+- Hours: Monday-Friday, 8 AM - 6 PM EST
+- Best for immediate hardware issues
+
+CRITICAL INCIDENTS: WHAT TO INCLUDE
+
+When reporting critical incidents, provide:
+- **What happened**: Detailed description
+- **When**: Exact time incident started
+- **Where**: Location or system affected
+- **Who**: Number of users impacted
+- **Impact**: Business processes affected
+- **Error messages**: Exact text or screenshots
+- **Actions taken**: Troubleshooting already attempted
+
+SECURITY INCIDENTS
+Report immediately if you suspect:
+- Phishing email or suspicious message
+- Malware or virus detection
+- Unauthorized access to accounts
+- Lost or stolen devices
+- Data breach or leak
+- Suspicious login activity
+- Ransomware
+
+SECURITY HOTLINE:
+- Phone: 1-800-555-SECURE (1-800-555-7328)
+- Email: security@contoso.com
+- Available 24/7
+
+DO NOT:
+- Click links in suspicious emails
+- Provide passwords to anyone
+- Ignore security warnings
+- Delay reporting security issues
+- Try to "fix" security problems yourself
+
+COMMON INCIDENTS AND FIRST STEPS
+
+Email Outage:
+1. Check https://status.contoso.com for known issues
+2. Verify internet connection
+3. Try Outlook Web Access
+4. If widespread, report as P1 incident
+
+Application Not Working:
+1. Close and restart application
+2. Restart your computer
+3. Check if others can access
+4. Try from different device
+5. If persistent, report incident
+
+File/Data Loss:
+1. Do not panic or make changes
+2. Report immediately (potential data recovery)
+3. Note when file was last accessible
+4. Identify file location and name
+5. Check Recycle Bin / Trash
+6. Do not create new files in same location
+
+System Performance Issues:
+1. Close unnecessary applications
+2. Check Task Manager for resource usage
+3. Restart device
+4. Run malware scan
+5. If persistent, report incident
+
+Printer Problems:
+1. Check printer status and error messages
+2. Restart printer
+3. Check print queue and clear if needed
+4. Try printing to different printer
+5. Report if affecting multiple users
+
+INCIDENT TRACKING
+After reporting:
+- Save your ticket number
+- Check email for updates
+- Respond promptly to IT requests for info
+- Monitor status in IT Portal
+- Rate resolution quality after closure
+
+Ticket Status Meanings:
+- **New**: Ticket received, awaiting assignment
+- **In Progress**: Technician actively working
+- **Waiting for Customer**: IT needs information from you
+- **Waiting for Vendor**: External vendor involved
+- **Resolved**: Issue fixed, awaiting confirmation
+- **Closed**: Incident fully resolved
+
+ESCALATION PROCESS
+If incident is not being addressed:
+1. Reply to ticket email asking for update
+2. Call helpdesk referencing ticket number
+3. Ask to speak with supervisor if needed
+4. Contact IT Manager for P1/P2 incidents
+
+AFTER AN INCIDENT
+Following major incidents:
+- Participate in post-incident review if requested
+- Provide feedback on resolution
+- Review lessons learned communications
+- Update procedures if needed
+
+PREVENTIVE MEASURES
+Reduce incidents by:
+- Keeping software updated
+- Following security best practices
+- Backing up important files
+- Using approved applications only
+- Reporting issues early
+- Attending IT training sessions
+
+RELATED DOCUMENTATION
+- IT Service Catalog (Doc ID: IT-025)
+- Security Incident Response (Doc ID: SEC-010)
+- Disaster Recovery Plan (Doc ID: IT-030)
+- Business Continuity Plan (Doc ID: IT-031)
+
+CONTACT INFORMATION
+IT Helpdesk: 1-800-CONTOSO
+Security Hotline: 1-800-555-SECURE
+Email: helpdesk@contoso.com
+Portal: https://itportal.contoso.com
