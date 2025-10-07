@@ -235,38 +235,22 @@ Understanding how these capabilities integrate with your agent helps you design 
     - Optimize model selection and data retrieval strategies.
     - Continuously improve based on user feedback.
 
-## 🧪 Lab: Extend agents with Azure AI
+## 🧪 Lab 07: BYOM and BYOD from Azure AI Foundry to your agent
 
 In this lab, you'll put BYOM and BYOD into practice by deploying an AI model, creating a searchable knowledge base, and integrating both with your Copilot Studio agent.
 
-- [Lab 1: Deploy a model in Azure AI Foundry](#lab-1-deploy-a-model-in-azure-ai-foundry)
-- [Lab 2: Use the model in a custom prompt action](#lab-2-use-the-model-in-a-custom-prompt-action)
-- [Lab 3: Create an index in Azure AI Search](#lab-3-create-an-index-in-azure-ai-search)
-- [Lab 4: Use the AI Search knowledge source in Copilot Studio](#lab-4-use-the-ai-search-knowledge-source-in-copilot-studio)
+- [7.1 Deploy a model in Azure AI Foundry](#lab-1-deploy-a-model-in-azure-ai-foundry)
+- [7.2 Use the model in a custom prompt action](#lab-2-use-the-model-in-a-custom-prompt-action)
+- [7.3 Create an index in Azure AI Search](#lab-3-create-an-index-in-azure-ai-search)
+- [7.4: Use the AI Search knowledge source in Copilot Studio](#lab-4-use-the-ai-search-knowledge-source-in-copilot-studio)
 
-### ✨ Use case
+### Prerequisites to complete this mission
 
-**As an** IT support agent user
+1. You need an active Azure subscription with permissions to create resources. If you don't have an Azure subscription, you can create a [free trial account](https://azure.microsoft.com/pricing/purchase-options/azure-account).
 
-**I want to** get specialized responses using a custom AI model and search company documentation
+1. Access to **Microsoft Copilot Studio** (trial or licensed)
 
-**So that I** can provide accurate, enterprise-specific assistance.
-
-Let's begin!
-
-### Prerequisites
-
-1. **Azure subscription**
-
-    You need an active Azure subscription with permissions to create resources.
-
-1. **Copilot Studio access**
-
-    Access to Microsoft Copilot Studio with permissions to create and edit agents.
-
-1. **Sample documents**
-
-    Prepare sample documents for indexing (e.g., IT policies, knowledge base articles).
+2. Sample documents from [IT documentation](./assets/it-documentation/).
 
 ### Lab 1: Deploy a model in Azure AI Foundry
 
