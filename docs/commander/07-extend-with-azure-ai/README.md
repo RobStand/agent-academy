@@ -1,14 +1,14 @@
-# 🚀 Mission: Extend agents with Azure AI
+# 🚨 Mission 07: Extend agents with Azure AI
 
 ## 🕵️‍♂️ CODENAME: `OPERATION AZURE INTELLIGENCE`
 
-> **⏱️ Operation Time Window:** `~45 minutes`  
+> **⏱️ Operation Time Window:** `~60 minutes`  
 
 ## 🎯 Mission Brief
 
-Your Copilot Studio agent is powerful on its own, but connecting it to Azure AI services unlocks enterprise-grade capabilities. This mission will teach you how to bring your own models (BYOM) and your own data (BYOD) to create intelligent, custom experiences that go beyond out-of-the-box functionality.
+Your agent is powerful on its own, but connecting it to Azure AI unlocks enterprise-grade capabilities. This mission will teach you how to use Azure AI Foundry and Azure AI Search to create intelligent, custom experiences that go beyond out-of-the-box functionality.
 
-By mission's end, you'll have deployed a custom AI model in Azure AI Foundry, integrated it into your agent through custom prompt actions, created a searchable knowledge base in Azure AI Search, and connected it all to your Copilot Studio agent for enhanced conversational experiences.
+By mission's end, you'll have deployed a custom AI model in Azure AI Foundry, integrated it into your agent through custom prompt actions, created a searchable knowledge base in Azure AI Search, and connected it all to your agent for expanded knowledge and capabilities.
 
 ## 🔎 Objectives
 
@@ -20,9 +20,9 @@ In this mission, you'll learn:
 1. Deploying AI models in Azure AI Foundry and connecting them via custom prompt actions
 1. Creating searchable indexes in Azure AI Search and using them as knowledge sources
 
-## 🤖 What is Bring Your Own Model (BYOM)?
+## 🤖 What does Bring Your Own Model mean?
 
-Bring Your Own Model (BYOM) allows you to use custom or third-party AI models with your Copilot Studio agents instead of relying solely on Microsoft's built-in models. This gives you flexibility to choose specialized models that best fit your specific use case.
+Bring Your Own Model (BYOM) allows you to use custom or third-party AI models with your Copilot Studio agents instead of relying solely on the models built into Copilot Studio. This gives you flexibility to choose specialized models that best fit your specific use case. With BYOM, you can choose a model for your agent that meets your specific needs.
 
 ### What does BYOM enable?
 
@@ -250,7 +250,7 @@ In this lab, you'll put BYOM and BYOD into practice by deploying an AI model, cr
 
 1. Access to **Microsoft Copilot Studio** (trial or licensed)
 
-2. Sample documents from [IT documentation](./assets/it-documentation/).
+1. Sample documents from [IT documentation](https://download-directory.github.io/?url=https://github.com/RobStand/agent-academy/tree/main/docs/commander/07-extend-with-azure-ai/assets/it-documentation&filename=commander_sampledata).
 
 ### Lab 1: Deploy a model in Azure AI Foundry
 
@@ -258,11 +258,13 @@ In this exercise, you'll deploy an AI model in Azure AI Foundry that you can use
 
 1. Navigate to [Azure AI Foundry](https://ai.azure.com) and sign in with your Azure credentials.
 
-    ![Navigate to AI Foundry](./assets/lab1_01_NavigateToAIFoundry.png)
+    ![Navigate to AI Foundry](./assets/7-navigate-ai-foundry.png)
 
 1. Select **+ New project** to create a new project.
 
     ![Create new project](./assets/lab1_02_CreateNewProject.png)
+
+1. In the ***Search for a model*** text box, type **gpt-5-mini** (or another model of your choice).
 
 1. Enter the following details:
 
