@@ -247,7 +247,7 @@ In this lab, you'll put BYOM into practice by deploying an AI model that you wil
 
 1. Sample documents from [IT documentation](https://download-directory.github.io/?url=https://github.com/RobStand/agent-academy/tree/main/docs/commander/07-extend-with-azure-ai/assets/it-documentation&filename=commander_sampledata).
 
-### 7.1.1: Create AI Foundry resources
+### 7.1.1 Create AI Foundry resources
 
 1. Navigate to [Azure AI Foundry](https://ai.azure.com) and sign in with your Azure credentials.
     ![Navigate to AI Foundry](./assets/7-navigate-ai-foundry.png)
@@ -262,7 +262,7 @@ In this lab, you'll put BYOM into practice by deploying an AI model that you wil
     Select **Create**.
     ![Create AI Foundry project](./assets/7-create-ai-foundry-project.png)
 
-### 7.1.2: Deploy a model
+### 7.1.2 Deploy a model
 
 Now that you have AI Foundry resources set up, you can deploy a model.
 
@@ -299,191 +299,94 @@ We're using `Cohere Command R+` because is the ideal model choice for this scena
 
 **Important:** Keep your API key secure. Don't share it or commit it to source control.
 
-### Lab 7.2: Create Azure AI Search resource in Azure AI Foundry
+## 🧪Lab 7.2: Create Azure AI Search resource in Azure AI Foundry
 
 Now let's set up the AI Search index for the IT policies and documentation. You'll use this index as a knowledge source in Copilot Studio later.
 
-1. In **Azure AI Foundry**, make sure you are signed in and have the project you created in Lab 7.1 open.
+### 7.2.1 Add data
 
-1. In the left navigation, select **Data + indexes**.
+Now you will add the IT sample documents to Azure AI Foundry.
+
+1. In **Azure AI Foundry**, in the left navigation, select **Data + indexes**.
 
     ![Select data and indexes](./assets/7-data-indexes.png)
 
-1. Select **+ New data**.
+1. Select the **Data files** tab.
+
+    Select **+ New data**.
 
 1. Select `Upload files/folders` in the **Data source** dropdown.
 
-    ![New connection](./assets/lab1_04_NewConnection.png)
+1. Select `Upload files or folder`, then `Upload files`.
 
-4. Select **Azure AI Search** from the service types.
+1. Navigate to the folder containing the sample files, select all of them, and select **Open**.
 
-    ![Select AI Search](./assets/lab1_05_SelectAISearch.png)
+    Select **Next**.
 
-5. Choose to create a new AI Search resource:
+1. Enter `IT-Documents` in **Data name**.
 
-    Click **Create new Azure AI Search** and configure:
-    - **Resource name**: `contoso-it-policies-search` (must be globally unique)
-    - **Subscription**: Select your subscription
-    - **Resource group**: Select or create new
-    - **Location**: Select a region close to you
-    - **Pricing tier**: Select **Basic** (sufficient for this lab)
+    Select **Create**.
 
-    Click **Create**.
+1. The documents are now uploaded to AI Foundry and ready to be used.
 
-    ![Configure AI Search](./assets/lab1_06_ConfigureAISearch.png)
+    ![Uploaded documents](./assets/7-uploaded-data.png)
 
-6. Wait for the connection to complete (1-2 minutes). You'll see a confirmation message.
+### 7.2.2: Create the index
 
-    ![Connection complete](./assets/lab1_07_ConnectionComplete.png)
+1. In **Azure AI Foundry**, in the left navigation, select **Data + indexes**.
 
-7. The AI Search resource is now available in your project under Connected resources.
+    ![Select data and indexes](./assets/7-data-indexes.png)
 
-#### Step 7.2.1: Deploy an embedding model
+1. Select the **Indexes** tab.
 
-To create vector embeddings of your documents, you need to deploy an embedding model.
+    Select **+ New index**.
 
-1. Still in **Azure AI Foundry**, go to **Models + endpoints** in the left navigation.
+1. The **Create a vector index** window will load. This is where you will configure the index in AI Foundry. 
 
-    ![Select Models and Endpoints](./assets/lab1_08_SelectModelsEndpoints.png)
+   In the **Data source** dropdown, choose `Data in Azure AI Foundry`.
 
-1. Click **+ Deploy model** → **Deploy base model**.
+1. Select the `IT-documents` folder.
 
-    ![Deploy base model](./assets/lab1_09_DeployBaseModel.png)
+    Select **Next**.
 
-1. Search for and select **text-embedding-3-small**.
+1. Now you need to create an Azure AI Search service to ingest your data. Select **Create a new Azure AI Search resource**.
 
-    This model provides excellent performance for document embeddings at a reasonable cost.
+1. The Azure portal will open in a new window and display **Create a search service**.
 
-    ![Select embedding model](./assets/lab1_10_SelectEmbeddingModel.png)
+    Enter the details.
+    **Subscription** - The subscription you're using for this lab.
+    **Resource group** - The resource group you created for the AI Foundry project
+    **Service name** - Enter a unique name for the service
+    **Location** - Select a region where you created your AI Foundry project or another region near you
+    **Pricing tier** - Select `Free` since you are using a small set of documents
 
-1. Configure the deployment:
-    - **Deployment name**: `text-embedding-3-small`
-    - **Model version**: Select latest
-    - **Deployment type**: Standard
-    - **Tokens per minute rate limit**: `50000` (sufficient for indexing)
+    Select **Review + create**, then **Create**.
+    ![Enter AI Search service details](./assets/7-ai-search-configuration.png)
 
-    Click **Deploy**.
+1. Wait for the connection to complete (1-2 minutes). You'll see a confirmation message.
 
-    ![Configure embedding deployment](./assets/lab1_11_ConfigureEmbeddingDeployment.png)
+    ![Connection complete](./assets/7-search-service-complete.png)
 
-1. Wait for deployment to complete. Once deployed, you'll see it in your deployments list.
+1. The AI Search resource is now available. Go back to AI Foundry to select the AI Search service you created. In the **Select Azure AI Search service** dropdown, select **Connect other Azure AI Search resource**.
 
-    ![Deployment complete](./assets/lab1_12_EmbeddingDeploymentComplete.png)
+1. In the **Connect an existing resource** window, you should see the Azure AI Search resource you created. Select **Add connection** next to the resource.
 
-1. Note the deployment name - you'll use it in the next step.
+        ![Connect existing AI Search resource](./assets/7-connect-existing-resource.png)
 
-#### Step 7.2.2: Upload documents and create search index
+1. In the **Select Azure AI Search service** dropdown, select your AI Search service.
 
-Now you'll upload the IT policy documents and create a searchable index.
+1. For **Vector index**, enter `it-documents-index`.
 
-1. In Azure AI Foundry, go to **Data + indexes** in the left navigation.
+    Select **Next**.
 
-    ![Select Data and Indexes](./assets/lab1_13_SelectDataIndexes.png)
+1. An embedding model is required for the vector index. In the **Embedding model** dropdown, choose `text-embedding-3-small`. This is a good, low cost embedding model for this scenario.
 
-1. Click **+ New index**.
+    Select **Next**.
+    ![Configure search settings](./assets/7-configure-search-settings.png)
 
-    ![New index](./assets/lab1_14_NewIndex.png)
+1. Select **Create vector index**. The indexing process will begin automatically and may take a while.
 
-1. Choose **Upload files** as your data source.
-
-    ![Upload files](./assets/lab1_15_UploadFiles.png)
-
-1. Configure the data source:
-    - **Index name**: `it-policies-index`
-    - **Upload files**: Click to browse and upload your 10 IT policy documents
-        - You can upload all `.txt` files at once
-        - Maximum file size: 16MB per file on Basic tier
-
-    Click **Next**.
-
-    ![Configure data source](./assets/lab1_16_ConfigureDataSource.png)
-
-1. Configure index settings:
-    - **Embedding model**: Select `text-embedding-3-small` (your deployed model)
-    - **Vector dimensions**: `1536` (automatically set for text-embedding-3-small)
-    - **Chunk size**: `1000` characters (optimal for Command R+)
-    - **Chunk overlap**: `200` characters (ensures context continuity)
-    - **Enable semantic ranking**: Toggle **ON** ✓ (critical for best results)
-
-    Click **Next**.
-
-    ![Configure index settings](./assets/lab1_17_ConfigureIndexSettings.png)
-
-1. Configure index schema:
-
-    The system automatically creates fields from your documents. Verify these key fields are configured correctly:
-    - **content**: Searchable ✓, Retrievable ✓
-    - **title** (or metadata_storage_name): Searchable ✓, Retrievable ✓, Filterable ✓
-    - **filepath**: Retrievable ✓
-    - **contentVector**: Auto-created for vector search
-
-    Click **Next**.
-
-    ![Configure schema](./assets/lab1_18_ConfigureSchema.png)
-
-1. Review and create:
-    - Review your configuration
-    - Click **Create**
-
-    The indexing process will begin automatically.
-
-    ![Review and create](./assets/lab1_19_ReviewCreate.png)
-
-1. Monitor indexing progress:
-    - Go to **Data + indexes** tab
-    - Click on your index name `it-policies-index`
-    - Watch the **Status** until it shows "Ready"
-    - Check **Document count** to verify all 10 documents were indexed
-    - This typically takes 2-5 minutes
-
-    ![Monitor indexing](./assets/lab1_20_MonitorIndexing.png)
-
-#### Step 7.2.3: Test the search index
-
-Before moving forward, verify that your index is working correctly.
-
-1. In your index page, click **Search explorer**.
-
-    ![Open search explorer](./assets/lab1_21_OpenSearchExplorer.png)
-
-1. Try these test queries:
-
-    **Query 1:**
-
-    ```text
-    password requirements
-    ```
-
-    **Query 2:**
-
-    ```text
-    how to reset password
-    ```
-
-    **Query 3:**
-
-    ```text
-    VPN connection setup
-    ```
-
-    ![Test queries](./assets/lab1_22_TestQueries.png)
-
-1. Review the results to ensure:
-    - Relevant documents are being retrieved
-    - Content appears correctly in the results
-    - Scores are reasonable (higher scores = better matches)
-    - You see both the content and metadata fields
-
-    ![Review results](./assets/lab1_23_ReviewResults.png)
-
-**Troubleshooting:**
-
-- **No documents indexed**: Check file formats and sizes
-- **Partial indexing**: Review error logs in index details
-- **Poor search results**: Verify semantic ranking is enabled
-- **Missing content**: Check that files uploaded successfully
-
-Excellent work! You've successfully created an Azure AI Search index with vector embeddings. Your IT policy documents are now searchable and ready to be used as a knowledge source for your Copilot.
+Excellent work! You've successfully created an Azure AI Search index with vector embeddings. Your IT policy documents are now searchable and ready to be used as a knowledge source for your Copilot Studio agent.
 
 ### Lab 7.3: Configure Copilot Studio with Azure AI capabilities
 
