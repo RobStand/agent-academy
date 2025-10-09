@@ -301,32 +301,25 @@ We're using `Cohere Command R+` because is the ideal model choice for this scena
 
 ### Lab 7.2: Create Azure AI Search resource in Azure AI Foundry
 
-1. Navigate to **Azure AI Foundry** at <https://ai.azure.com> and sign in with your Azure credentials.
+Now let's set up the AI Search index for the IT policies and documentation. You'll use this index as a knowledge source in Copilot Studio later.
 
-    ![Navigate to AI Foundry](./assets/7-navigate-ai-foundry.png)
+1. In **Azure AI Foundry**, make sure you are signed in and have the project you created in Lab 7.1 open.
 
-1. Select your existing project or create a new one by clicking **+ New project**.
+1. In the left navigation, select **Data + indexes**.
 
-    If creating new:
-    - **Project name**: `CopilotStudioExtensions`
-    - **Hub**: Create a new hub or select existing
-    - Click **Create**
+    ![Select data and indexes](./assets/7-data-indexes.png)
 
-    ![Create new project](./assets/lab1_02_CreateNewProject.png)
+1. Select **+ New data**.
 
-1. In the left navigation, go to **Connected resources**.
-
-    ![Select Connected Resources](./assets/lab1_03_SelectConnectedResources.png)
-
-1. Click **+ New connection**.
+1. Select `Upload files/folders` in the **Data source** dropdown.
 
     ![New connection](./assets/lab1_04_NewConnection.png)
 
-1. Select **Azure AI Search** from the service types.
+4. Select **Azure AI Search** from the service types.
 
     ![Select AI Search](./assets/lab1_05_SelectAISearch.png)
 
-1. Choose to create a new AI Search resource:
+5. Choose to create a new AI Search resource:
 
     Click **Create new Azure AI Search** and configure:
     - **Resource name**: `contoso-it-policies-search` (must be globally unique)
@@ -339,11 +332,11 @@ We're using `Cohere Command R+` because is the ideal model choice for this scena
 
     ![Configure AI Search](./assets/lab1_06_ConfigureAISearch.png)
 
-1. Wait for the connection to complete (1-2 minutes). You'll see a confirmation message.
+6. Wait for the connection to complete (1-2 minutes). You'll see a confirmation message.
 
     ![Connection complete](./assets/lab1_07_ConnectionComplete.png)
 
-1. The AI Search resource is now available in your project under Connected resources.
+7. The AI Search resource is now available in your project under Connected resources.
 
 #### Step 7.2.1: Deploy an embedding model
 

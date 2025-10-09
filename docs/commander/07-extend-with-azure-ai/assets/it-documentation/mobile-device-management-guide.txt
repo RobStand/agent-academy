@@ -1,0 +1,611 @@
+CONTOSO IT SERVICES
+Mobile Device Management (MDM) Guide
+
+Document Version: 2.2
+Last Updated: December 2024
+Document Owner: IT Security & Mobile Team
+
+INTRODUCTION
+This guide explains how Contoso manages mobile devices (smartphones and tablets) to protect company data while respecting personal privacy. All devices accessing company data must be enrolled in Mobile Device Management (MDM).
+
+WHAT IS MDM?
+Mobile Device Management (MDM) is software that:
+- Protects company data on mobile devices
+- Enforces security policies
+- Enables remote wipe if device lost/stolen
+- Ensures device compliance
+- Separates work and personal data
+
+WHY MDM IS REQUIRED
+- Protects sensitive company information
+- Prevents data leaks
+- Enables secure access to email, files, apps
+- Complies with regulations (SOX, GDPR)
+- Allows remote security actions
+
+DEVICE ENROLLMENT OPTIONS
+
+Option 1: Company-Owned Devices (Fully Managed)
+Best for: Employees requiring company phone for work
+
+Features:
+- Device fully managed by Contoso IT
+- Company owns the device and phone plan
+- Full access to company resources
+- Company can manage all device settings
+- Company pays all costs
+- Device must be returned when leaving
+
+Devices Available:
+- iPhone 15 Pro
+- Samsung Galaxy S24
+- Google Pixel 8 Pro
+
+Eligibility:
+- Sales team members
+- Executives
+- On-call IT staff
+- Field service technicians
+- Manager approval required
+
+Option 2: BYOD (Bring Your Own Device)
+Best for: Employees wanting to use personal phone for work
+
+Features:
+- You own the device
+- Company manages only work apps and data
+- Personal apps and data remain private
+- $50/month stipend for phone costs
+- Keep device when leaving (work data wiped)
+- More privacy, less control
+
+Requirements:
+- iOS 15+ or Android 11+
+- Device must meet security requirements
+- Enrollment in Intune required
+- Manager approval required
+
+WHAT MDM CAN AND CANNOT DO
+
+Company-Owned Devices (Full Management):
+
+Company CAN:
+- View device location
+- See all installed apps
+- Monitor data usage
+- Remotely wipe entire device
+- Install/remove any apps
+- Enforce security settings
+- Update device remotely
+- Track device usage
+- View call/text logs (company number only)
+
+Company CANNOT:
+- Read personal texts/emails (use company apps only)
+- View photos or personal files
+- Listen to calls
+- Access camera/microphone without consent
+
+BYOD (Work Profile):
+
+Company CAN:
+- View apps in work profile only
+- Wipe work profile and work data
+- Enforce security on work profile
+- See work email/files accessed
+- Require screen lock
+- Block non-compliant devices
+
+Company CANNOT:
+- Access personal apps or data
+- View personal photos, messages, calls
+- Track device location (except Find My Device in emergency)
+- Wipe personal data
+- See personal browsing history
+- Access personal email/accounts
+
+ENROLLMENT PROCESS
+
+Company-Owned Devices:
+
+Step 1: Request Device
+1. Submit request via IT Portal
+2. Select device model
+3. Provide business justification
+4. Manager approval
+5. VP approval (for cost)
+
+Step 2: Receive Device
+- Shipped to home or office
+- Arrives pre-configured
+- SIM card activated
+- Phone number assigned
+
+Step 3: Initial Setup
+1. Power on device
+2. Follow setup wizard
+3. Sign in with Contoso credentials
+4. Complete MFA setup
+5. Install Company Portal app
+6. Device auto-enrolls in MDM
+
+Step 4: Install Work Apps
+1. Open Company Portal app
+2. Browse available apps
+3. Install required apps
+4. Apps install in work profile
+
+BYOD Enrollment:
+
+Step 1: Prepare Your Device
+- Ensure iOS 15+ or Android 11+
+- Update to latest OS version
+- Back up personal data
+- Have Contoso credentials ready
+
+Step 2: Enroll in MDM (iOS)
+1. Open App Store
+2. Search "Microsoft Intune Company Portal"
+3. Install Company Portal
+4. Open Company Portal
+5. Sign in: firstname.lastname@contoso.com
+6. Tap "Begin"
+7. Follow enrollment prompts
+8. Install management profile when prompted
+9. Enter device passcode
+10. Tap "Trust" for management profile
+11. Enrollment complete
+
+Step 3: Enroll in MDM (Android)
+1. Open Google Play Store
+2. Search "Microsoft Intune Company Portal"
+3. Install Company Portal
+4. Open Company Portal
+5. Sign in: firstname.lastname@contoso.com
+6. Tap "Begin"
+7. Follow enrollment prompts
+8. Allow Company Portal permissions
+9. Set up work profile when prompted
+10. Badge icon appears on work apps
+11. Enrollment complete
+
+Step 4: Verify Enrollment
+1. Open Company Portal
+2. Tap "Devices"
+3. Your device should show "Compliant"
+4. If non-compliant, follow instructions to fix
+
+REQUIRED SECURITY SETTINGS
+
+All Enrolled Devices Must Have:
+- Screen lock enabled (PIN, password, biometric)
+- Auto-lock: 5 minutes maximum
+- Strong password/PIN (6+ characters)
+- Encryption enabled
+- Up-to-date OS
+- No jailbreak/root
+- Find My Device enabled
+- Auto-backup enabled (work data)
+
+Company-Owned Only:
+- Approved apps only
+- No personal email accounts
+- Web filtering enabled
+- VPN required for data access
+
+BYOD Only:
+- Work profile separated from personal
+- Work apps contained in profile
+- Personal apps unaffected
+
+USING WORK APPS
+
+Available Work Apps:
+- Outlook (email)
+- Teams (chat, calls, meetings)
+- OneDrive (files)
+- SharePoint (sites)
+- OneNote (notes)
+- Word, Excel, PowerPoint (mobile)
+- Authenticator (MFA)
+- Company Portal (device management)
+
+Installing Work Apps:
+iOS:
+- Open Company Portal app
+- Tap "Apps"
+- Tap app to install
+- Tap "Install"
+
+Android:
+- Open Company Portal app
+- Tap "Apps"
+- Tap app to install
+- App installs in work profile (badge icon)
+
+Work App Features:
+- Sign in with Contoso credentials
+- Access company data
+- Protected by Intune policies
+- Separate from personal apps (BYOD)
+- Auto-configured with company settings
+
+DATA PROTECTION
+
+Copy/Paste Restrictions:
+- Copy from work app to work app: Allowed
+- Copy from work app to personal app: Blocked (BYOD)
+- Copy from personal to work: Blocked (BYOD)
+- Prevents accidental data leaks
+
+Save Restrictions:
+- Save work files to work apps only
+- Cannot save to personal storage (BYOD)
+- Screenshots of work apps may be blocked
+- Sharing to personal apps restricted
+
+Email Attachments:
+- Can only open in approved work apps
+- Cannot forward to personal email
+- Cannot save to personal storage (BYOD)
+- Opens in work profile automatically
+
+COMPLIANCE MONITORING
+
+Device Compliance Checks:
+IT monitors for:
+- OS version current
+- Security patch level
+- Encryption enabled
+- No jailbreak/root
+- Required apps installed
+- Screen lock configured
+- No high-risk apps
+
+Non-Compliant Devices:
+If non-compliant:
+1. Notification sent to you
+2. Company Portal shows issue
+3. Grace period: 24-48 hours to fix
+4. If not fixed: Access blocked
+5. After 7 days: Work data may be wiped
+
+Common Compliance Issues:
+- Outdated OS version: Update device
+- No screen lock: Enable in settings
+- Jailbroken device: Restore device
+- Weak PIN: Set stronger password
+- Missing required app: Install from Company Portal
+
+Checking Compliance:
+1. Open Company Portal
+2. Tap "Devices"
+3. View compliance status
+4. If non-compliant, tap for details
+5. Follow remediation steps
+
+LOST OR STOLEN DEVICES
+
+Immediate Actions:
+1. Report to IT immediately: 1-800-CONTOSO
+2. Report to Security: security@contoso.com
+3. File police report (for stolen devices)
+4. Change your Contoso password
+
+Company-Owned Devices:
+- IT remotely wipes entire device
+- All data permanently erased
+- Device replaced at no cost to you
+- New device shipped within 2 business days
+- Phone number transferred to new device
+
+BYOD:
+- IT wipes only work profile and work data
+- Personal apps and data remain intact
+- Work apps must be re-enrolled on replacement
+- Use insurance for personal device replacement
+- No stipend while awaiting replacement
+
+Using Find My Device:
+iOS:
+- Visit icloud.com/find
+- Sign in with Apple ID
+- Locate device on map
+- Enable Lost Mode
+- Erase if necessary
+
+Android:
+- Visit android.com/find
+- Sign in with Google account
+- Locate device on map
+- Lock device
+- Erase if necessary
+
+RETIRING OR REPLACING DEVICES
+
+Company-Owned - Leaving Contoso:
+1. Back up personal data (if any)
+2. Return device on last day
+3. IT wipes device
+4. Shipping label provided if remote
+5. Must return within 5 business days
+6. Final paycheck held until returned
+
+Company-Owned - Getting Replacement:
+1. New device shipped
+2. Set up new device
+3. Apps and data sync automatically
+4. Return old device with provided label
+5. Do not wipe old device (IT will do it)
+
+BYOD - Leaving Contoso:
+1. Open Company Portal
+2. Tap "Devices"
+3. Select your device
+4. Tap "Remove"
+5. Confirm removal
+6. Work profile and data wiped automatically
+7. Personal data untouched
+8. Keep device and continue personal use
+
+BYOD - New Personal Device:
+1. Unenroll old device (above steps)
+2. Enroll new device
+3. Reinstall work apps
+4. Data syncs automatically
+5. No IT assistance needed
+
+TROUBLESHOOTING MDM ISSUES
+
+Cannot Enroll Device:
+- Verify device meets minimum OS version
+- Update to latest OS
+- Clear Company Portal app data
+- Uninstall and reinstall Company Portal
+- Restart device
+- Contact helpdesk: 1-800-CONTOSO
+
+Device Shows Non-Compliant:
+- Open Company Portal
+- Check specific compliance issue
+- Follow recommended fix
+- May need OS update
+- Recheck compliance after fix
+- Contact IT if remains non-compliant
+
+Work Apps Not Installing:
+- Check compliance status
+- Verify internet connection
+- Restart device
+- Clear Company Portal cache
+- Try manual install from app store
+- Sign in with Contoso credentials
+
+Cannot Access Email/Files:
+- Verify MDM enrolled
+- Check compliance status
+- Verify internet connection
+- Sign out and sign back in
+- Reinstall Outlook/OneDrive
+- Contact helpdesk
+
+Work Profile Issues (Android):
+- Restart device
+- Check work profile is enabled
+- Update Company Portal app
+- Clear work profile cache
+- As last resort: Unenroll and re-enroll
+
+BYOD STIPEND
+
+Eligibility:
+- BYOD enrolled device
+- Compliant with MDM requirements
+- Regular use of work apps
+- Manager approval
+
+Stipend Amount:
+- $50 per month
+- Covers phone service costs
+- Taxable benefit
+- Direct deposit with paycheck
+
+Claiming Stipend:
+- Automatically enrolled after MDM enrollment
+- No additional paperwork needed
+- First payment: Next pay period after enrollment
+- Continues while device enrolled and compliant
+
+Stipend Termination:
+- Device unenrolled
+- Non-compliant for >7 days
+- Left Contoso
+- Changed to company-owned device
+
+APP MANAGEMENT
+
+Approved Apps:
+- Available in Company Portal
+- Pre-configured for Contoso
+- Automatic updates
+- Security policies enforced
+- No additional sign-in needed
+
+Blocked Apps (Company-Owned):
+- Social media (unless approved for role)
+- Games
+- P2P file sharing
+- Unknown/suspicious apps
+- Apps from unknown sources
+
+Personal Apps (BYOD):
+- Full freedom for personal apps
+- Personal apps outside work profile
+- Company cannot see or control
+- Personal app data remains private
+
+Required Apps:
+- Company Portal
+- Outlook
+- Teams
+- Authenticator
+- Must install within 48 hours of enrollment
+
+INTERNATIONAL TRAVEL
+
+Before Travel:
+- Notify IT: international-travel@contoso.com
+- 5 business days advance notice
+- Some countries restrict device capabilities
+- Roaming charges (company-owned)
+- Data privacy laws vary
+
+During Travel:
+- Company-owned: Roaming included
+- BYOD: Roaming at your expense
+- Use WiFi when possible
+- VPN required for company access
+- Be aware of local laws
+
+Restricted Countries:
+- Some countries require data at borders
+- IT may restrict access from certain locations
+- Additional security measures may apply
+- Check with IT before traveling
+
+DATA USAGE
+
+Company-Owned Devices:
+- Unlimited data plan (US)
+- International roaming included
+- No overage charges
+- Monitor usage to avoid throttling
+- Tethering allowed for work use only
+
+BYOD Stipend:
+- $50/month covers typical usage
+- You pay overages
+- Your carrier, your plan
+- Consider unlimited plan
+
+Reducing Data Usage:
+- Use WiFi when available
+- Limit video calls on cellular
+- Download files on WiFi
+- Adjust app sync settings
+- Monitor usage in settings
+
+PRIVACY AND MONITORING
+
+What IT Can See (All Devices):
+- Device compliance status
+- Work apps installed in work profile
+- Work data accessed
+- Device model and OS version
+- Last check-in time
+
+What IT Cannot See (BYOD):
+- Personal apps
+- Personal data
+- Web browsing (personal browser)
+- Personal emails, texts, calls
+- Photos and videos
+- Location (except emergency)
+
+Audit Logs:
+- Work app usage logged
+- Security events recorded
+- Compliance checks logged
+- Used for security and compliance only
+- Not used for productivity monitoring
+
+Location Services:
+- Company-owned: May track location
+- BYOD: Location not tracked
+- Find My Device: Emergency use only
+- Must be enabled for device enrollment
+
+SUPPORT AND ASSISTANCE
+
+MDM Enrollment Help:
+- Email: mdm@contoso.com
+- Phone: 1-800-CONTOSO
+- Walk-through available
+- Remote assistance offered
+
+Device Issues:
+- Helpdesk: 1-800-CONTOSO (24/7)
+- Self-service: Company Portal app
+- Knowledge base: https://kb.contoso.com
+
+Replacement Devices:
+- Company-owned: Request via helpdesk
+- BYOD: Use personal insurance
+- Loaner available (company-owned)
+
+BEST PRACTICES
+
+Security:
+- Keep OS and apps updated
+- Use strong device password
+- Enable biometric lock
+- Don't jailbreak/root device
+- Report lost/stolen immediately
+- Don't share device with others
+
+Performance:
+- Restart device weekly
+- Clear app caches regularly
+- Update apps regularly
+- Manage storage space
+- Uninstall unused apps
+
+Work-Life Balance (BYOD):
+- Use work profile for work
+- Personal profile for personal
+- Turn off work notifications after hours
+- Separate work and personal time
+- Set boundaries
+
+FREQUENTLY ASKED QUESTIONS
+
+Q: Can IT see my personal photos?
+A: No, only work data in work profile is visible to IT (BYOD).
+
+Q: What happens if I unenroll my device?
+A: Work apps and data removed, lose access to company resources.
+
+Q: Can I use personal apps on company phone?
+A: Limited personal use allowed, subject to security policies.
+
+Q: Does MDM drain my battery?
+A: Minimal impact, comparable to other background apps.
+
+Q: Can I disable MDM temporarily?
+A: No, continuous compliance required for access.
+
+Q: What if I want to stop using BYOD?
+A: Unenroll anytime, work data wiped, stipend stops.
+
+Q: Do I need MDM just for email?
+A: Yes, any access to company data requires MDM.
+
+Q: Can IT read my texts?
+A: No, personal texts are private (BYOD). Company texts on company devices are company property.
+
+Q: What if my device is broken?
+A: Contact helpdesk for company-owned. Use personal insurance for BYOD.
+
+Q: Can I switch from BYOD to company-owned?
+A: Yes, submit request via IT Portal with manager approval.
+
+RELATED DOCUMENTATION
+- Mobile Security Policy (Doc ID: SEC-009)
+- BYOD Policy (Doc ID: IT-012)
+- Data Classification Policy (Doc ID: SEC-006)
+- Acceptable Use Policy (Doc ID: IT-001)
+
+---
+
+Questions? Contact mdm@contoso.com
+Enrollment Help: 1-800-CONTOSO
