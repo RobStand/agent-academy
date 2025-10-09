@@ -235,14 +235,9 @@ Understanding how these capabilities integrate with your agent helps you design 
     - Optimize model selection and data retrieval strategies.
     - Continuously improve based on user feedback.
 
-## 🧪 Lab 07: BYOM and BYOD from Azure AI Foundry to your agent
+## 🧪 Lab 7.1: Deploy a model in Azure AI Foundry
 
-In this lab, you'll put BYOM and BYOD into practice by deploying an AI model, creating a searchable knowledge base, and integrating both with your Copilot Studio agent.
-
-- [7.1 Deploy a model in Azure AI Foundry](#lab-1-deploy-a-model-in-azure-ai-foundry)
-- [7.2 Use the model in a custom prompt action](#lab-2-use-the-model-in-a-custom-prompt-action)
-- [7.3 Create an index in Azure AI Search](#lab-3-create-an-index-in-azure-ai-search)
-- [7.4: Use the AI Search knowledge source in Copilot Studio](#lab-4-use-the-ai-search-knowledge-source-in-copilot-studio)
+In this lab, you'll put BYOM into practice by deploying an AI model that you will use in your agent. You'll deploy the Cohere Command R+ model, which is specifically optimized for retrieval-augmented generation (RAG) and knowledge base applications.
 
 ### Prerequisites to complete this mission
 
@@ -252,95 +247,73 @@ In this lab, you'll put BYOM and BYOD into practice by deploying an AI model, cr
 
 1. Sample documents from [IT documentation](https://download-directory.github.io/?url=https://github.com/RobStand/agent-academy/tree/main/docs/commander/07-extend-with-azure-ai/assets/it-documentation&filename=commander_sampledata).
 
-### Lab 1: Deploy a model in Azure AI Foundry
+### 7.1.1: Select the model from the Model Catalog
 
-In this exercise, you'll deploy the Cohere Command R+ model, which is specifically optimized for retrieval-augmented generation (RAG) and knowledge base applications.
+1. Navigate to [Azure AI Foundry](https://ai.azure.com) and sign in with your Azure credentials.
+    ![Navigate to AI Foundry](./assets/7-navigate-ai-foundry.png)
 
-#### Why Cohere Command R+ for IT Policies?
+1. Select **Go to full model catalog** and search for `Cohere-command-r-plus`. Cohere Command R+ is the ideal model choice for this scenario because it is specifically designed for document Q&A. It is excellent at technical and policy language, automatically generates accurate inline citations, stays faithful to source documents, minimizing hallucinations, and handles lengthy policy documents with ease.
 
-Command R+ is the ideal choice for this scenario because:
-- **Purpose-built for RAG**: Specifically designed for document Q&A
-- **Native citation support**: Automatically generates accurate inline citations
-- **Superior grounding**: Stays faithful to source documents, minimizing hallucinations
-- **Enterprise-optimized**: Excellent at technical and policy language
-- **128k context window**: Handles lengthy policy documents with ease
-- **Cost-effective**: Competitive pricing for high-accuracy RAG ($0.50-3 per 1M tokens)
+    Select the `Cohere-command-r-plus-08-2024` model.
+    ![Search model catalog](./assets/7-search-model-catalog.png)
 
-#### Step 2.1: Deploy Cohere Command R+ model
+1. The model details for `Cohere-command-r-plus-08-2024` will be displayed, including information about the model, supported languages, model architecture, and pricing.
 
-1. In Azure AI Foundry (ai.azure.com), ensure you're in your project.
+    Select **Use this model**.
+    ![Use Cohere model](./assets/7-use-the-model.png)
 
-    ![In project](./assets/lab2_01_InProject.png)
+### 7.1.2: Create an AI Foundry project
 
-1. Go to **Models + endpoints** in the left navigation.
+1. Before AI Foundry can deploy your model, you need to create an AI Foundry project.
 
-    ![Select Models and Endpoints](./assets/lab2_02_SelectModelsEndpoints.png)
+    Enter a name for your AI Foundry project. Expand **Advanced options** if you want to specify options, such as a specific resource group name. For this lab, you can accept the defaults.
 
-1. Click **+ Deploy model** → **Deploy base model**.
+    Select **Create**.
+    ![Create AI Foundry project](./assets/7-create-ai-foundry-project.png)
 
-    ![Deploy base model](./assets/lab2_03_DeployBaseModel.png)
+### 7.1.3: Deploy the model
 
-1. Search for **Cohere Command R+** in the model catalog.
+1. Because `Cohere-command-r-plus` is available through the Azure Marketplace, AI Foundry will ask you to agree to the Terms of use to proceed with the deployment.
 
-    ![Search Command R+](./assets/lab2_04_SearchCommandR.png)
+    Select **Agree and Proceed**.
+    ![Deploy from Azure Marketplace](./assets/7-deploy-from-marketplace.png)
 
-1. Select **Cohere Command R+** from the results.
+1. The deployment name will appear in Copilot Studio when you connect to it later, so you will want a memorable name that helps you identify the model easily.
 
-    ![Select Command R+](./assets/lab2_05_SelectCommandR.png)
+    Leave the default **Deployment name** as `Cohere-command-r-plus-08-2024`.
 
-1. Configure the deployment:
-    - **Deployment name**: `cohere-command-r-plus`
-    - **Model version**: Select latest (Command R+ 08-2024 or newer)
-    - **Deployment type**: Standard
-    - **Tokens per minute rate limit**: `10000` (start here, adjust based on usage)
-    
-    Click **Deploy**.
+    Select **Deploy**.
+    ![Deploy model](./assets/7-deploy-model.png)
 
-    ![Configure deployment](./assets/lab2_06_ConfigureDeployment.png)
+1. AI Foundry displays the details of your model deployment. Your deployed model is accessible through **Models + endpoints** in the navigation on the left.
 
-1. Wait for deployment to complete. This may take 2-3 minutes.
+    Note the following information from the model deployment, as you'll need it later:
 
-    ![Deployment in progress](./assets/lab2_07_DeploymentProgress.png)
+    - **Endpoint URL**
+    - **API Key**
+    - **Deployment name**
 
-1. Once deployed, you'll see the deployment in your list with status "Succeeded".
-
-    ![Deployment complete](./assets/lab2_08_DeploymentComplete.png)
-
-1. Click on the deployment to view its details. Note the following information (you'll need it later):
-    - **Endpoint URL** (Target URI)
-    - **API Key** (Primary key)
-    - **Deployment name**: `cohere-command-r-plus`
-
-    ![Deployment details](./assets/lab2_09_DeploymentDetails.png)
+    ![Deployment complete](./assets/7-model-deployment-details.png)
 
 **Important:** Keep your API key secure. Don't share it or commit it to source control.
 
-#### Step 2.2: Test the model (optional)
+### 7.1.4: Test the model
 
-You can optionally test the model before integrating it with Copilot Studio.
+You can test the model in Azure AI Foundry before integrating it with Copilot Studio.
 
-1. In the deployment details page, look for a **Test** or **Playground** option.
+1. In the deployed model details page, select **Open in playground**.
 
-    ![Test option](./assets/lab2_10_TestOption.png)
+1. Try a simple prompt: `What are the key components of a good password policy?`
 
-1. Try a simple prompt:
+1. Review the response from the model. Note that, while the recommendations are good, they are general in nature.
 
-    ```text
-    System: You are a helpful assistant.
-    User: What are the key components of a good password policy?
-    ```
+    ![Test prompt in Playground](./assets/7-test-prompt-in-playground.png)
 
-    ![Test prompt](./assets/lab2_11_TestPrompt.png)
+You've successfully deployed Cohere Command R+, a model specifically optimized for the RAG scenario you're building. In the next lab, you'll connect both your AI Search index and this model to Copilot Studio.
 
-1. Review the response to verify the model is working correctly.
+#### Lab 7.2: Create Azure AI Search resource in Azure AI Foundry
 
-    ![Test response](./assets/lab2_12_TestResponse.png)
-
-Great! You've successfully deployed Cohere Command R+, a model specifically optimized for the RAG scenario you're building. In the next lab, you'll connect both your AI Search index and this model to Copilot Studio.
-
-#### Step 1.1: Create Azure AI Search resource in Azure AI Foundry
-
-1. Navigate to **Azure AI Foundry** at https://ai.azure.com and sign in with your Azure credentials.
+1. Navigate to **Azure AI Foundry** at <https://ai.azure.com> and sign in with your Azure credentials.
 
     ![Navigate to AI Foundry](./assets/lab1_01_NavigateToAIFoundry.png)
 
@@ -366,14 +339,14 @@ Great! You've successfully deployed Cohere Command R+, a model specifically opti
     ![Select AI Search](./assets/lab1_05_SelectAISearch.png)
 
 1. Choose to create a new AI Search resource:
-    
+
     Click **Create new Azure AI Search** and configure:
     - **Resource name**: `contoso-it-policies-search` (must be globally unique)
     - **Subscription**: Select your subscription
     - **Resource group**: Select or create new
     - **Location**: Select a region close to you
     - **Pricing tier**: Select **Basic** (sufficient for this lab)
-    
+
     Click **Create**.
 
     ![Configure AI Search](./assets/lab1_06_ConfigureAISearch.png)
@@ -384,7 +357,7 @@ Great! You've successfully deployed Cohere Command R+, a model specifically opti
 
 1. The AI Search resource is now available in your project under Connected resources.
 
-#### Step 1.2: Deploy an embedding model
+#### Step 7.2.1: Deploy an embedding model
 
 To create vector embeddings of your documents, you need to deploy an embedding model.
 
@@ -407,7 +380,7 @@ To create vector embeddings of your documents, you need to deploy an embedding m
     - **Model version**: Select latest
     - **Deployment type**: Standard
     - **Tokens per minute rate limit**: `50000` (sufficient for indexing)
-    
+
     Click **Deploy**.
 
     ![Configure embedding deployment](./assets/lab1_11_ConfigureEmbeddingDeployment.png)
@@ -418,7 +391,7 @@ To create vector embeddings of your documents, you need to deploy an embedding m
 
 1. Note the deployment name - you'll use it in the next step.
 
-#### Step 1.3: Upload documents and create search index
+#### Step 7.2.2: Upload documents and create search index
 
 Now you'll upload the IT policy documents and create a searchable index.
 
@@ -439,7 +412,7 @@ Now you'll upload the IT policy documents and create a searchable index.
     - **Upload files**: Click to browse and upload your 10 IT policy documents
         - You can upload all `.txt` files at once
         - Maximum file size: 16MB per file on Basic tier
-    
+
     Click **Next**.
 
     ![Configure data source](./assets/lab1_16_ConfigureDataSource.png)
@@ -450,19 +423,19 @@ Now you'll upload the IT policy documents and create a searchable index.
     - **Chunk size**: `1000` characters (optimal for Command R+)
     - **Chunk overlap**: `200` characters (ensures context continuity)
     - **Enable semantic ranking**: Toggle **ON** ✓ (critical for best results)
-    
+
     Click **Next**.
 
     ![Configure index settings](./assets/lab1_17_ConfigureIndexSettings.png)
 
 1. Configure index schema:
-    
+
     The system automatically creates fields from your documents. Verify these key fields are configured correctly:
     - **content**: Searchable ✓, Retrievable ✓
     - **title** (or metadata_storage_name): Searchable ✓, Retrievable ✓, Filterable ✓
     - **filepath**: Retrievable ✓
     - **contentVector**: Auto-created for vector search
-    
+
     Click **Next**.
 
     ![Configure schema](./assets/lab1_18_ConfigureSchema.png)
@@ -470,7 +443,7 @@ Now you'll upload the IT policy documents and create a searchable index.
 1. Review and create:
     - Review your configuration
     - Click **Create**
-    
+
     The indexing process will begin automatically.
 
     ![Review and create](./assets/lab1_19_ReviewCreate.png)
@@ -484,7 +457,7 @@ Now you'll upload the IT policy documents and create a searchable index.
 
     ![Monitor indexing](./assets/lab1_20_MonitorIndexing.png)
 
-#### Step 1.4: Test the search index
+#### Step 7.2.3: Test the search index
 
 Before moving forward, verify that your index is working correctly.
 
@@ -494,17 +467,20 @@ Before moving forward, verify that your index is working correctly.
 
 1. Try these test queries:
 
-    **Query 1:** 
+    **Query 1:**
+
     ```text
     password requirements
     ```
-    
+
     **Query 2:**
+
     ```text
     how to reset password
     ```
-    
+
     **Query 3:**
+
     ```text
     VPN connection setup
     ```
@@ -520,6 +496,7 @@ Before moving forward, verify that your index is working correctly.
     ![Review results](./assets/lab1_23_ReviewResults.png)
 
 **Troubleshooting:**
+
 - **No documents indexed**: Check file formats and sizes
 - **Partial indexing**: Review error logs in index details
 - **Poor search results**: Verify semantic ranking is enabled
@@ -533,7 +510,7 @@ In this exercise, you'll create a Copilot in Copilot Studio and connect both you
 
 #### Step 3.1: Create a new Copilot
 
-1. Navigate to **Copilot Studio** at https://copilotstudio.microsoft.com and sign in.
+1. Navigate to **Copilot Studio** at <https://copilotstudio.microsoft.com> and sign in.
 
     ![Navigate to Copilot Studio](./assets/lab3_01_NavigateCopilotStudio.png)
 
@@ -549,7 +526,7 @@ In this exercise, you'll create a Copilot in Copilot Studio and connect both you
     - **Name**: `IT Policy Assistant`
     - **Description**: `Helps employees find answers to IT policy questions with accurate citations`
     - **Language**: Select your language (English recommended)
-    
+
     Click **Create**.
 
     ![Configure copilot](./assets/lab3_04_ConfigureCopilot.png)
@@ -746,6 +723,7 @@ The system prompt is crucial for controlling how your copilot responds. Command 
     ![Save topic](./assets/lab3_31_SaveTopic.png)
 
 **Note:** The system prompt you just configured is specifically optimized for Cohere Command R+'s strengths:
+
 - Emphasizes grounding and citation (Command R+'s native capabilities)
 - Uses clear structure (Command R+ excels with well-defined guidelines)
 - Focuses on accuracy (Command R+'s primary strength)
@@ -980,29 +958,34 @@ Test your copilot with various scenarios to verify it's working correctly.
 For each test response, evaluate these quality factors:
 
 **Accuracy:**
+
 - [ ] Information matches source documents
 - [ ] No hallucinated or made-up facts
 - [ ] Correctly interprets policy requirements
 
 **Citations:**
+
 - [ ] Every factual claim has a citation
 - [ ] Citations reference correct documents
 - [ ] Citation format is consistent
 - [ ] Multiple sources cited when appropriate
 
 **Completeness:**
+
 - [ ] Answers the full question
 - [ ] Provides relevant context
 - [ ] Includes next steps when applicable
 - [ ] Offers contact information when needed
 
 **Clarity:**
+
 - [ ] Response is easy to understand
 - [ ] Technical terms are explained
 - [ ] Formatting aids readability
 - [ ] Appropriate length (not too brief or verbose)
 
 **Tone:**
+
 - [ ] Professional and helpful
 - [ ] Appropriate for workplace
 - [ ] Friendly without being casual
@@ -1046,8 +1029,8 @@ For each test response, evaluate these quality factors:
 Based on your testing, document any issues or improvements needed:
 
 **If responses lack detail:**
-- Consider adjusting the system prompt to request more comprehensive answers# 🚀 Mission: Extend agents with Azure AI
 
+- Consider adjusting the system prompt to request more comprehensive answers# 🚀 Mission: Extend agents with Azure AI
 
 ## ✅ Mission Complete
 
