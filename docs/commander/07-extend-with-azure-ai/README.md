@@ -246,335 +246,808 @@ In this lab, you'll put BYOM and BYOD into practice by deploying an AI model, cr
 
 ### Prerequisites to complete this mission
 
-1. You need an active Azure subscription with permissions to create resources. If you don't have an Azure subscription, you can create a [free trial account](https://azure.microsoft.com/pricing/purchase-options/azure-account).
+1. An active Azure subscription with permissions to create resources. If you don't have an Azure subscription, you can [sign up for one](/azure.microsoft.com/pricing/purchase-options/azure-account)
 
-1. Access to **Microsoft Copilot Studio** (trial or licensed)
+1. Access to [Azure AI Foundry](https://ai.azure.com) through your Azure account
 
 1. Sample documents from [IT documentation](https://download-directory.github.io/?url=https://github.com/RobStand/agent-academy/tree/main/docs/commander/07-extend-with-azure-ai/assets/it-documentation&filename=commander_sampledata).
 
 ### Lab 1: Deploy a model in Azure AI Foundry
 
-In this exercise, you'll deploy an AI model in Azure AI Foundry that you can use in your Copilot Studio agent.
+In this exercise, you'll deploy the Cohere Command R+ model, which is specifically optimized for retrieval-augmented generation (RAG) and knowledge base applications.
 
-1. Navigate to [Azure AI Foundry](https://ai.azure.com) and sign in with your Azure credentials.
+#### Why Cohere Command R+ for IT Policies?
 
-    ![Navigate to AI Foundry](./assets/7-navigate-ai-foundry.png)
+Command R+ is the ideal choice for this scenario because:
+- **Purpose-built for RAG**: Specifically designed for document Q&A
+- **Native citation support**: Automatically generates accurate inline citations
+- **Superior grounding**: Stays faithful to source documents, minimizing hallucinations
+- **Enterprise-optimized**: Excellent at technical and policy language
+- **128k context window**: Handles lengthy policy documents with ease
+- **Cost-effective**: Competitive pricing for high-accuracy RAG ($0.50-3 per 1M tokens)
 
-1. Select **+ New project** to create a new project.
+#### Step 2.1: Deploy Cohere Command R+ model
+
+1. In Azure AI Foundry (ai.azure.com), ensure you're in your project.
+
+    ![In project](./assets/lab2_01_InProject.png)
+
+1. Go to **Models + endpoints** in the left navigation.
+
+    ![Select Models and Endpoints](./assets/lab2_02_SelectModelsEndpoints.png)
+
+1. Click **+ Deploy model** → **Deploy base model**.
+
+    ![Deploy base model](./assets/lab2_03_DeployBaseModel.png)
+
+1. Search for **Cohere Command R+** in the model catalog.
+
+    ![Search Command R+](./assets/lab2_04_SearchCommandR.png)
+
+1. Select **Cohere Command R+** from the results.
+
+    ![Select Command R+](./assets/lab2_05_SelectCommandR.png)
+
+1. Configure the deployment:
+    - **Deployment name**: `cohere-command-r-plus`
+    - **Model version**: Select latest (Command R+ 08-2024 or newer)
+    - **Deployment type**: Standard
+    - **Tokens per minute rate limit**: `10000` (start here, adjust based on usage)
+    
+    Click **Deploy**.
+
+    ![Configure deployment](./assets/lab2_06_ConfigureDeployment.png)
+
+1. Wait for deployment to complete. This may take 2-3 minutes.
+
+    ![Deployment in progress](./assets/lab2_07_DeploymentProgress.png)
+
+1. Once deployed, you'll see the deployment in your list with status "Succeeded".
+
+    ![Deployment complete](./assets/lab2_08_DeploymentComplete.png)
+
+1. Click on the deployment to view its details. Note the following information (you'll need it later):
+    - **Endpoint URL** (Target URI)
+    - **API Key** (Primary key)
+    - **Deployment name**: `cohere-command-r-plus`
+
+    ![Deployment details](./assets/lab2_09_DeploymentDetails.png)
+
+**Important:** Keep your API key secure. Don't share it or commit it to source control.
+
+#### Step 2.2: Test the model (optional)
+
+You can optionally test the model before integrating it with Copilot Studio.
+
+1. In the deployment details page, look for a **Test** or **Playground** option.
+
+    ![Test option](./assets/lab2_10_TestOption.png)
+
+1. Try a simple prompt:
+
+    ```text
+    System: You are a helpful assistant.
+    User: What are the key components of a good password policy?
+    ```
+
+    ![Test prompt](./assets/lab2_11_TestPrompt.png)
+
+1. Review the response to verify the model is working correctly.
+
+    ![Test response](./assets/lab2_12_TestResponse.png)
+
+Great! You've successfully deployed Cohere Command R+, a model specifically optimized for the RAG scenario you're building. In the next lab, you'll connect both your AI Search index and this model to Copilot Studio.
+
+#### Step 1.1: Create Azure AI Search resource in Azure AI Foundry
+
+1. Navigate to **Azure AI Foundry** at https://ai.azure.com and sign in with your Azure credentials.
+
+    ![Navigate to AI Foundry](./assets/lab1_01_NavigateToAIFoundry.png)
+
+1. Select your existing project or create a new one by clicking **+ New project**.
+
+    If creating new:
+    - **Project name**: `CopilotStudioExtensions`
+    - **Hub**: Create a new hub or select existing
+    - Click **Create**
 
     ![Create new project](./assets/lab1_02_CreateNewProject.png)
 
-1. In the ***Search for a model*** text box, type **gpt-5-mini** (or another model of your choice).
+1. In the left navigation, go to **Connected resources**.
 
-1. Enter the following details:
+    ![Select Connected Resources](./assets/lab1_03_SelectConnectedResources.png)
 
-    - **Project name**: `CopilotStudioExtensions`
-    - **Hub**: Create a new hub or select an existing one
+1. Click **+ New connection**.
 
-    Select **Create** to create the project.
+    ![New connection](./assets/lab1_04_NewConnection.png)
 
-    ![Project details](./assets/lab1_03_ProjectDetails.png)
+1. Select **Azure AI Search** from the service types.
 
-1. Once the project is created, select **Deployments** from the left navigation menu.
+    ![Select AI Search](./assets/lab1_05_SelectAISearch.png)
 
-    ![Select Deployments](./assets/lab1_04_SelectDeployments.png)
-
-1. Select **+ Deploy model** and then **Deploy base model**.
-
-    ![Deploy base model](./assets/lab1_05_DeployBaseModel.png)
-
-1. In the model catalog, search for and select **gpt-4o-mini** (or another model of your choice).
-
-    ![Select model](./assets/lab1_06_SelectModel.png)
-
-1. Select **Confirm** to proceed with deployment.
-
-    ![Confirm model](./assets/lab1_07_ConfirmModel.png)
-
-1. Enter a deployment name:
-
-    ```text
-    gpt-4o-mini-deployment
-    ```
-
-    Configure the deployment settings as needed and select **Deploy**.
-
-    ![Configure deployment](./assets/lab1_08_ConfigureDeployment.png)
-
-1. Wait for the deployment to complete. Once finished, you'll see the deployment in your deployments list.
-
-    ![Deployment complete](./assets/lab1_09_DeploymentComplete.png)
-
-1. Select the deployment to view its details. Copy the **Target URI** and **Key** - you'll need these in the next lab.
-
-    ![Copy endpoint details](./assets/lab1_10_CopyEndpointDetails.png)
-
-### Lab 2: Use the model in a custom prompt action
-
-Now you'll create a custom prompt action in Copilot Studio that uses your deployed model.
-
-1. Navigate to [Copilot Studio](https://copilotstudio.microsoft.com) and select your agent.
-
-    ![Open Copilot Studio](./assets/lab2_01_OpenCopilotStudio.png)
-
-1. Select **Actions** from the left navigation menu.
-
-    ![Select Actions](./assets/lab2_02_SelectActions.png)
-
-1. Select **+ Add an action** and choose **Prompt action (preview)**.
-
-    ![Add prompt action](./assets/lab2_03_AddPromptAction.png)
-
-1. In the prompt action configuration, enter the following:
-
-    - **Name**: `Analyze IT Request`
-    - **Description**: `Uses custom AI model to analyze IT support requests`
-
-    ![Name the action](./assets/lab2_04_NameAction.png)
-
-1. In the **Input** section, select **+ Add input** to define input parameters.
-
-    ![Add input](./assets/lab2_05_AddInput.png)
-
-1. Add the following input:
-
-    - **Name**: `UserRequest`
-    - **Type**: `String`
-    - **Description**: `The user's IT support request`
-    - **Required**: Yes
-
-    ![Configure input](./assets/lab2_06_ConfigureInput.png)
-
-1. In the **Model** section, select **Use custom model**.
-
-    ![Use custom model](./assets/lab2_07_UseCustomModel.png)
-
-1. Enter the connection details from your Azure AI Foundry deployment:
-
-    - **Endpoint**: Paste the Target URI you copied
-    - **API Key**: Paste the Key you copied
-    - **Deployment**: `gpt-4o-mini-deployment`
-
-    ![Enter connection details](./assets/lab2_08_EnterConnectionDetails.png)
-
-1. In the **Prompt** section, enter the following prompt:
-
-    ```text
-    You are an IT support assistant. Analyze the following support request and provide:
-    1. A brief summary of the issue
-    2. The likely category (hardware, software, network, access)
-    3. The suggested priority (low, medium, high, critical)
-    4. Recommended next steps
+1. Choose to create a new AI Search resource:
     
-    User request: {{UserRequest}}
-    
-    Format your response as follows:
-    Summary: [summary]
-    Category: [category]
-    Priority: [priority]
-    Next Steps: [steps]
-    ```
-
-    ![Enter prompt](./assets/lab2_09_EnterPrompt.png)
-
-1. In the **Output** section, select **+ Add output** to define output parameters.
-
-    ![Add output](./assets/lab2_10_AddOutput.png)
-
-1. Add the following output:
-
-    - **Name**: `Analysis`
-    - **Type**: `String`
-    - **Description**: `The AI analysis of the request`
-
-    ![Configure output](./assets/lab2_11_ConfigureOutput.png)
-
-1. Select **Test** to test your prompt action. Enter a sample request:
-
-    ```text
-    My laptop won't connect to the WiFi and I have an important meeting in 10 minutes
-    ```
-
-    ![Test action](./assets/lab2_12_TestAction.png)
-
-1. Review the output to ensure the model is responding correctly.
-
-    ![Review output](./assets/lab2_13_ReviewOutput.png)
-
-1. Select **Save** to save your custom prompt action.
-
-    ![Save action](./assets/lab2_14_SaveAction.png)
-
-1. To use this action in your agent, create or edit a topic and add the **Analyze IT Request** action as a node.
-
-    ![Add to topic](./assets/lab2_15_AddToTopic.png)
-
-### Lab 3: Create an index in Azure AI Search
-
-In this exercise, you'll create a searchable index of documents in Azure AI Search.
-
-1. Navigate to the [Azure Portal](https://portal.azure.com) and sign in.
-
-    ![Navigate to Azure Portal](./assets/lab3_01_NavigateToAzurePortal.png)
-
-1. Search for **Azure AI Search** and select **Create**.
-
-    ![Create AI Search](./assets/lab3_02_CreateAISearch.png)
-
-1. Enter the following details:
-
+    Click **Create new Azure AI Search** and configure:
+    - **Resource name**: `contoso-it-policies-search` (must be globally unique)
     - **Subscription**: Select your subscription
-    - **Resource group**: Create new or use existing
-    - **Service name**: `copilot-search-service` (must be globally unique)
-    - **Location**: Select a location near you
-    - **Pricing tier**: Select **Basic** or higher
+    - **Resource group**: Select or create new
+    - **Location**: Select a region close to you
+    - **Pricing tier**: Select **Basic** (sufficient for this lab)
+    
+    Click **Create**.
 
-    Select **Review + create**, then **Create**.
+    ![Configure AI Search](./assets/lab1_06_ConfigureAISearch.png)
 
-    ![Configure AI Search](./assets/lab3_03_ConfigureAISearch.png)
+1. Wait for the connection to complete (1-2 minutes). You'll see a confirmation message.
 
-1. Once deployment completes, select **Go to resource**.
+    ![Connection complete](./assets/lab1_07_ConnectionComplete.png)
 
-    ![Go to resource](./assets/lab3_04_GoToResource.png)
+1. The AI Search resource is now available in your project under Connected resources.
 
-1. In your Search service, select **Import data** from the top menu.
+#### Step 1.2: Deploy an embedding model
 
-    ![Import data](./assets/lab3_05_ImportData.png)
+To create vector embeddings of your documents, you need to deploy an embedding model.
 
-1. Select **Azure Blob Storage** as your data source.
+1. Still in **Azure AI Foundry**, go to **Models + endpoints** in the left navigation.
 
-    ![Select data source](./assets/lab3_06_SelectDataSource.png)
+    ![Select Models and Endpoints](./assets/lab1_08_SelectModelsEndpoints.png)
 
-1. If you don't have a storage account with documents, create one:
+1. Click **+ Deploy model** → **Deploy base model**.
 
-    - Create a new Azure Storage Account
-    - Create a container named `documents`
-    - Upload sample IT policy documents, FAQs, or knowledge base articles
+    ![Deploy base model](./assets/lab1_09_DeployBaseModel.png)
 
-    Then connect to it in the Import data wizard.
+1. Search for and select **text-embedding-3-small**.
 
-    ![Connect data source](./assets/lab3_07_ConnectDataSource.png)
+    This model provides excellent performance for document embeddings at a reasonable cost.
 
-1. Configure the connection to your blob storage:
+    ![Select embedding model](./assets/lab1_10_SelectEmbeddingModel.png)
 
-    - **Data source name**: `it-documents-datasource`
-    - **Connection string**: Select your storage account
-    - **Container name**: `documents`
+1. Configure the deployment:
+    - **Deployment name**: `text-embedding-3-small`
+    - **Model version**: Select latest
+    - **Deployment type**: Standard
+    - **Tokens per minute rate limit**: `50000` (sufficient for indexing)
+    
+    Click **Deploy**.
 
-    Select **Next: Add cognitive skills (Optional)**.
+    ![Configure embedding deployment](./assets/lab1_11_ConfigureEmbeddingDeployment.png)
 
-    ![Configure connection](./assets/lab3_08_ConfigureConnection.png)
+1. Wait for deployment to complete. Once deployed, you'll see it in your deployments list.
 
-1. Enable **AI enrichment** and select skills:
+    ![Deployment complete](./assets/lab1_12_EmbeddingDeploymentComplete.png)
 
-    - **OCR**: For extracting text from images
-    - **Key Phrase Extraction**: For identifying key topics
-    - **Entity Recognition**: For identifying people, places, organizations
+1. Note the deployment name - you'll use it in the next step.
 
-    Select **Next: Customize target index**.
+#### Step 1.3: Upload documents and create search index
 
-    ![Add cognitive skills](./assets/lab3_09_AddCognitiveSkills.png)
+Now you'll upload the IT policy documents and create a searchable index.
 
-1. Configure your index:
+1. In Azure AI Foundry, go to **Data + indexes** in the left navigation.
 
-    - **Index name**: `it-knowledge-index`
-    - Review the field mappings
-    - Ensure **content** field is marked as **Searchable** and **Retrievable**
-    - Enable **Semantic search** for better relevance
+    ![Select Data and Indexes](./assets/lab1_13_SelectDataIndexes.png)
 
-    Select **Next: Create an indexer**.
+1. Click **+ New index**.
 
-    ![Configure index](./assets/lab3_10_ConfigureIndex.png)
+    ![New index](./assets/lab1_14_NewIndex.png)
 
-1. Configure the indexer:
+1. Choose **Upload files** as your data source.
 
-    - **Name**: `it-documents-indexer`
-    - **Schedule**: Select **Once** for now (you can change this later)
+    ![Upload files](./assets/lab1_15_UploadFiles.png)
 
-    Select **Submit** to create the index.
+1. Configure the data source:
+    - **Index name**: `it-policies-index`
+    - **Upload files**: Click to browse and upload your 10 IT policy documents
+        - You can upload all `.txt` files at once
+        - Maximum file size: 16MB per file on Basic tier
+    
+    Click **Next**.
 
-    ![Configure indexer](./assets/lab3_11_ConfigureIndexer.png)
+    ![Configure data source](./assets/lab1_16_ConfigureDataSource.png)
 
-1. Wait for the indexer to run and populate your index. You can monitor progress in the **Indexers** section.
+1. Configure index settings:
+    - **Embedding model**: Select `text-embedding-3-small` (your deployed model)
+    - **Vector dimensions**: `1536` (automatically set for text-embedding-3-small)
+    - **Chunk size**: `1000` characters (optimal for Command R+)
+    - **Chunk overlap**: `200` characters (ensures context continuity)
+    - **Enable semantic ranking**: Toggle **ON** ✓ (critical for best results)
+    
+    Click **Next**.
 
-    ![Monitor indexer](./assets/lab3_12_MonitorIndexer.png)
+    ![Configure index settings](./assets/lab1_17_ConfigureIndexSettings.png)
 
-1. Once indexing is complete, select **Search explorer** to test your index.
+1. Configure index schema:
+    
+    The system automatically creates fields from your documents. Verify these key fields are configured correctly:
+    - **content**: Searchable ✓, Retrievable ✓
+    - **title** (or metadata_storage_name): Searchable ✓, Retrievable ✓, Filterable ✓
+    - **filepath**: Retrievable ✓
+    - **contentVector**: Auto-created for vector search
+    
+    Click **Next**.
 
-    ![Open search explorer](./assets/lab3_13_OpenSearchExplorer.png)
+    ![Configure schema](./assets/lab1_18_ConfigureSchema.png)
 
-1. Enter a test query related to your documents and review the results.
+1. Review and create:
+    - Review your configuration
+    - Click **Create**
+    
+    The indexing process will begin automatically.
 
+    ![Review and create](./assets/lab1_19_ReviewCreate.png)
+
+1. Monitor indexing progress:
+    - Go to **Data + indexes** tab
+    - Click on your index name `it-policies-index`
+    - Watch the **Status** until it shows "Ready"
+    - Check **Document count** to verify all 10 documents were indexed
+    - This typically takes 2-5 minutes
+
+    ![Monitor indexing](./assets/lab1_20_MonitorIndexing.png)
+
+#### Step 1.4: Test the search index
+
+Before moving forward, verify that your index is working correctly.
+
+1. In your index page, click **Search explorer**.
+
+    ![Open search explorer](./assets/lab1_21_OpenSearchExplorer.png)
+
+1. Try these test queries:
+
+    **Query 1:** 
     ```text
-    password reset policy
+    password requirements
+    ```
+    
+    **Query 2:**
+    ```text
+    how to reset password
+    ```
+    
+    **Query 3:**
+    ```text
+    VPN connection setup
     ```
 
-    ![Test search](./assets/lab3_14_TestSearch.png)
+    ![Test queries](./assets/lab1_22_TestQueries.png)
 
-1. Copy your Search service **URL** and **API key** from the **Keys** section - you'll need these for the next lab.
+1. Review the results to ensure:
+    - Relevant documents are being retrieved
+    - Content appears correctly in the results
+    - Scores are reasonable (higher scores = better matches)
+    - You see both the content and metadata fields
 
-    ![Copy search credentials](./assets/lab3_15_CopySearchCredentials.png)
+    ![Review results](./assets/lab1_23_ReviewResults.png)
 
-### Lab 4: Use the AI Search knowledge source in Copilot Studio
+**Troubleshooting:**
+- **No documents indexed**: Check file formats and sizes
+- **Partial indexing**: Review error logs in index details
+- **Poor search results**: Verify semantic ranking is enabled
+- **Missing content**: Check that files uploaded successfully
 
-Now you'll connect your Azure AI Search index to your Copilot Studio agent as a knowledge source.
+Excellent work! You've successfully created an Azure AI Search index with vector embeddings. Your IT policy documents are now searchable and ready to be used as a knowledge source for your Copilot.
 
-1. Return to [Copilot Studio](https://copilotstudio.microsoft.com) and select your agent.
+### Lab 3: Configure Copilot Studio with Azure AI capabilities
 
-    ![Open agent](./assets/lab4_01_OpenAgent.png)
+In this exercise, you'll create a Copilot in Copilot Studio and connect both your Azure AI Search knowledge source and Cohere Command R+ model to create an intelligent IT Policy Assistant.
 
-1. Select **Knowledge** from the left navigation menu.
+#### Step 3.1: Create a new Copilot
 
-    ![Select Knowledge](./assets/lab4_02_SelectKnowledge.png)
+1. Navigate to **Copilot Studio** at https://copilotstudio.microsoft.com and sign in.
 
-1. Select **+ Add knowledge** and choose **Azure AI Search**.
+    ![Navigate to Copilot Studio](./assets/lab3_01_NavigateCopilotStudio.png)
 
-    ![Add Azure AI Search](./assets/lab4_03_AddAzureAISearch.png)
+1. Click **Create** → **New copilot**.
 
-1. Enter the connection details:
+    ![Create new copilot](./assets/lab3_02_CreateNewCopilot.png)
 
-    - **Connection name**: `IT Knowledge Base`
-    - **Search service URL**: Paste your Search service URL
-    - **Index name**: `it-knowledge-index`
-    - **API key**: Paste your API key
+1. Choose **Skip to configure** to manually set up your copilot.
 
-    Select **Add** to create the connection.
+    ![Skip to configure](./assets/lab3_03_SkipToConfigure.png)
 
-    ![Configure connection](./assets/lab4_04_ConfigureConnection.png)
+1. Configure basic settings:
+    - **Name**: `IT Policy Assistant`
+    - **Description**: `Helps employees find answers to IT policy questions with accurate citations`
+    - **Language**: Select your language (English recommended)
+    
+    Click **Create**.
 
-1. Configure the knowledge source settings:
+    ![Configure copilot](./assets/lab3_04_ConfigureCopilot.png)
 
-    - **Enable citations**: Yes (to show sources in responses)
-    - **Number of results**: 3-5
-    - **Content field**: Select `content`
+1. Your copilot is created and you'll see the main authoring canvas.
 
-    Select **Save**.
+    ![Copilot created](./assets/lab3_05_CopilotCreated.png)
 
-    ![Configure settings](./assets/lab4_05_ConfigureSettings.png)
+#### Step 3.2: Add Azure AI Search as knowledge source
 
-1. The knowledge source is now connected. Your agent will automatically search this index when users ask questions.
+Now you'll connect your IT policies search index as a knowledge source.
 
-    ![Knowledge source added](./assets/lab4_06_KnowledgeSourceAdded.png)
+1. In your copilot, go to **Knowledge** in the left navigation.
 
-1. Test your agent by asking questions related to your indexed documents:
+    ![Select Knowledge](./assets/lab3_06_SelectKnowledge.png)
+
+1. Click **+ Add knowledge**.
+
+    ![Add knowledge](./assets/lab3_07_AddKnowledge.png)
+
+1. Select **Azure AI Search**.
+
+    ![Select AI Search](./assets/lab3_08_SelectAISearch.png)
+
+1. Configure the connection:
+    - **Connection**: Select your AI Search connection from Azure AI Foundry
+    - **Index name**: Select `it-policies-index`
+    - **Query type**: Select **Vector + Semantic** (best results with Command R+)
+    - **Top K results**: `5` (number of document chunks to retrieve per query)
+
+    ![Configure AI Search connection](./assets/lab3_09_ConfigureAISearchConnection.png)
+
+1. Test the connection by entering a sample query in the test box:
 
     ```text
-    What is our password reset policy?
+    password policy
     ```
 
-    ![Test with knowledge](./assets/lab4_07_TestWithKnowledge.png)
+    ![Test connection](./assets/lab3_10_TestConnection.png)
 
-1. Notice how the agent provides grounded responses with citations to your documents.
+1. Review the test results to verify documents are being retrieved correctly.
 
-    ![View cited response](./assets/lab4_08_ViewCitedResponse.png)
+    ![Test results](./assets/lab3_11_TestResults.png)
 
-1. You can combine this with your custom prompt action for enhanced capabilities. Create a topic that:
+1. Click **Add** to add the knowledge source.
 
-    - First searches the knowledge base for relevant information
-    - Then uses the custom prompt action to analyze or summarize results
-    - Finally presents a comprehensive response to the user
+    ![Add knowledge source](./assets/lab3_12_AddKnowledgeSource.png)
 
-    ![Combined approach](./assets/lab4_09_CombinedApproach.png)
+1. Verify the knowledge source appears in your list.
+
+    ![Knowledge source added](./assets/lab3_13_KnowledgeSourceAdded.png)
+
+#### Step 3.3: Configure Cohere Command R+ as the generative model
+
+Now you'll configure your copilot to use the Cohere Command R+ model you deployed.
+
+1. Go to **Settings** in the left navigation (or top right).
+
+    ![Select Settings](./assets/lab3_14_SelectSettings.png)
+
+1. Navigate to **Generative AI** settings.
+
+    ![Select Generative AI](./assets/lab3_15_SelectGenerativeAI.png)
+
+1. Under **Generative AI**, click **Edit** or **Configure**.
+
+    ![Edit Generative AI](./assets/lab3_16_EditGenerativeAI.png)
+
+1. Select **Azure OpenAI Service** or **Azure AI Foundry** as the connection method (varies by Copilot Studio version).
+
+    ![Select connection method](./assets/lab3_17_SelectConnectionMethod.png)
+
+1. Configure the connection:
+    - **Endpoint**: Enter your Azure AI Foundry endpoint URL (from Lab 2)
+    - **API key**: Enter your API key (from Lab 2)
+    - **Deployment name**: `cohere-command-r-plus`
+    - **API version**: Select latest available
+    - **Model type**: Select **Cohere** (if available) or **Custom**
+
+    ![Configure model connection](./assets/lab3_18_ConfigureModelConnection.png)
+
+1. Click **Save** to save the configuration.
+
+    ![Save configuration](./assets/lab3_19_SaveConfiguration.png)
+
+#### Step 3.4: Create optimized system prompt for Command R+
+
+The system prompt is crucial for controlling how your copilot responds. Command R+ responds excellently to well-structured prompts.
+
+1. In the left navigation, go to **Topics**.
+
+    ![Select Topics](./assets/lab3_20_SelectTopics.png)
+
+1. Find and click on **Conversational boosting** topic (may also be called "Generative answers").
+
+    ![Select conversational boosting](./assets/lab3_21_SelectConversationalBoosting.png)
+
+1. Click on the **Create generative answers** node (the blue AI icon).
+
+    ![Select generative answers node](./assets/lab3_22_SelectGenerativeAnswersNode.png)
+
+1. Click **Edit** next to "Data sources".
+
+    ![Edit data sources](./assets/lab3_23_EditDataSources.png)
+
+1. In the properties panel that opens, scroll down to **Content moderation level**.
+
+    ![Scroll to content moderation](./assets/lab3_24_ScrollToContentModeration.png)
+
+1. Check the **Customize** checkbox.
+
+    ![Check customize](./assets/lab3_25_CheckCustomize.png)
+
+1. Click in the large text box that appears (shows "Customize your prompt with variables and plain language" - 0/8000 characters).
+
+    ![Click text box](./assets/lab3_26_ClickTextBox.png)
+
+1. Paste the following Command R+-optimized system prompt:
+
+    ```text
+    ## Role
+    You are an IT Policy Assistant for Contoso. You help employees understand and comply with IT policies by answering questions using only official policy documents.
+
+    ## Core Instructions
+
+    ### Grounding Rules
+    - Answer ONLY using information from the provided IT policy documents
+    - Every factual statement must include a citation to the source document
+    - If information is not in the policies, state clearly: "This is not covered in our current IT policies. Contact IT Support at helpdesk@contoso.com or call 1-800-CONTOSO for guidance."
+    - Never make assumptions or provide information beyond what is documented
+
+    ### Citation Requirements
+    - Use this format: [Policy Name, Section/Topic]
+    - Cite immediately after each factual claim
+    - Example: "Passwords must be at least 12 characters long [Password Reset Policy]"
+    - Multiple citations are encouraged when synthesizing information from different sources
+
+    ### Response Structure
+    Follow this format for every answer:
+    1. Direct answer (1-2 sentences)
+    2. Supporting details from policies
+    3. Citations for all facts
+    4. Next steps or contact information (if applicable)
+
+    ### Language and Tone
+    - Use clear, professional language
+    - Explain technical terms when they appear
+    - Be helpful and precise
+    - Keep responses focused and concise
+
+    ## Prohibited Actions
+    You must refuse and redirect requests that ask you to:
+    - Provide workarounds to security policies
+    - Share information about security vulnerabilities
+    - Provide administrative credentials or system access details
+    - Advise on bypassing IT controls
+    - Speculate about policy changes or exceptions
+
+    For such requests, respond: "I cannot assist with that. Please contact IT Security at security@contoso.com or call 1-800-555-SECURE."
+
+    ## Quality Standards
+    - Accuracy over completeness: Better to say "I don't know" than to guess
+    - Cite precisely: Reference specific documents or sections
+    - Stay current: Base answers on the retrieved policy content
+    - Be consistent: Give the same answer to the same question
+
+    ## When Policies Have Conditions
+    - Clearly state all requirements and exceptions
+    - Use "if-then" language for conditional policies
+    - Highlight approval processes when applicable
+    - Note any time-sensitive requirements
+    ```
+
+    ![Paste system prompt](./assets/lab3_27_PasteSystemPrompt.png)
+
+1. While still in the properties panel, scroll down and verify these settings:
+    - **Knowledge sources**: Toggle **"Search only selected sources"** to **ON**
+    - **Web search**: Toggle **OFF**
+    - **Classic data**: Toggle **OFF**
+
+    ![Verify knowledge settings](./assets/lab3_28_VerifyKnowledgeSettings.png)
+
+1. Scroll to the **Advanced** section and verify:
+    - **"Send a message"** is checked
+
+    ![Verify advanced settings](./assets/lab3_29_VerifyAdvancedSettings.png)
+
+1. Click the **X** to close the properties panel (settings auto-save).
+
+    ![Close panel](./assets/lab3_30_ClosePanel.png)
+
+1. Click **Save** at the top of the Conversational boosting topic page.
+
+    ![Save topic](./assets/lab3_31_SaveTopic.png)
+
+**Note:** The system prompt you just configured is specifically optimized for Cohere Command R+'s strengths:
+- Emphasizes grounding and citation (Command R+'s native capabilities)
+- Uses clear structure (Command R+ excels with well-defined guidelines)
+- Focuses on accuracy (Command R+'s primary strength)
+- Leverages markdown formatting (which Command R+ processes excellently)
+
+#### Step 3.5: Configure conversation starters
+
+Help users know what questions they can ask by adding conversation starters.
+
+1. Go to **Topics** → **System** → **Greeting** (or **Conversation Start**).
+
+    ![Select greeting topic](./assets/lab3_32_SelectGreetingTopic.png)
+
+1. Edit the greeting message node to include suggested questions.
+
+    ![Edit greeting](./assets/lab3_33_EditGreeting.png)
+
+1. Update the greeting text to:
+
+    ```text
+    Hi! I'm the IT Policy Assistant. I can help you find answers to questions about Contoso's IT policies.
+
+    Here are some things you can ask me:
+    • What is our password policy?
+    • How do I set up VPN access?
+    • How do I request new software?
+    • What should I do if my laptop is stolen?
+    • How do I enroll my phone for work email?
+    • What's our remote work policy?
+
+    What would you like to know?
+    ```
+
+    ![Update greeting text](./assets/lab3_34_UpdateGreetingText.png)
+
+1. **Save** the greeting topic.
+
+    ![Save greeting](./assets/lab3_35_SaveGreeting.png)
+
+#### Step 3.6: Create fallback for policy not found
+
+Create a helpful fallback message when the copilot cannot find policy information.
+
+1. Go to **Topics** and click **+ New topic** → **From blank**.
+
+    ![Create new topic](./assets/lab3_36_CreateNewTopic.png)
+
+1. Name the topic: `Policy Not Found Fallback`
+
+    ![Name topic](./assets/lab3_37_NameTopic.png)
+
+1. Add trigger phrases by clicking **Edit** under "Phrases":
+    - "I don't know"
+    - "not sure"
+    - "cannot find"
+    - "no information"
+
+    ![Add trigger phrases](./assets/lab3_38_AddTriggerPhrases.png)
+
+1. Add a **Message** node with the following text:
+
+    ```text
+    I couldn't find information about that in our IT policies. Here's how you can get help:
+
+    📞 Contact IT Support:
+    • Phone: 1-800-CONTOSO (1-800-266-8676)
+    • Email: helpdesk@contoso.com
+    • Portal: https://itportal.contoso.com
+
+    🔒 For security-related questions:
+    • Security Hotline: 1-800-555-SECURE
+    • Email: security@contoso.com
+
+    Is there anything else I can help you find in our IT policies?
+    ```
+
+    ![Add fallback message](./assets/lab3_39_AddFallbackMessage.png)
+
+1. **Save** the topic.
+
+    ![Save fallback topic](./assets/lab3_40_SaveFallbackTopic.png)
+
+Excellent work! You've successfully configured your IT Policy Assistant with both BYOD (Azure AI Search knowledge) and BYOM (Cohere Command R+ model). In the next lab, you'll test the complete solution.
+
+### Lab 4: Test and refine your IT Policy Assistant
+
+In this exercise, you'll thoroughly test your IT Policy Assistant to ensure it provides accurate, well-cited answers from your IT policy documents.
+
+#### Step 4.1: Open the test pane
+
+1. In Copilot Studio, ensure you're viewing your IT Policy Assistant.
+
+    ![View copilot](./assets/lab4_01_ViewCopilot.png)
+
+1. Click the **Test your copilot** button in the bottom right corner (or top right depending on your view).
+
+    ![Open test pane](./assets/lab4_02_OpenTestPane.png)
+
+1. The test pane opens on the right side of your screen.
+
+    ![Test pane opened](./assets/lab4_03_TestPaneOpened.png)
+
+#### Step 4.2: Run test scenarios
+
+Test your copilot with various scenarios to verify it's working correctly.
+
+**Test Scenario 1: Policy Exists - Password Requirements**
+
+1. In the test pane, type:
+
+    ```text
+    What are the password requirements at Contoso?
+    ```
+
+    ![Test password policy](./assets/lab4_04_TestPasswordPolicy.png)
+
+1. Press Enter and review the response.
+
+    ✅ **Verify:**
+    - Provides accurate password requirements (12+ characters, complexity rules)
+    - Includes citation to Password Reset Policy document
+    - Response is clear and well-structured
+    - Information matches your policy documents
+
+    ![Password policy response](./assets/lab4_05_PasswordPolicyResponse.png)
+
+**Test Scenario 2: Step-by-Step Instructions - VPN Setup**
+
+1. Type:
+
+    ```text
+    How do I set up VPN on my laptop?
+    ```
+
+    ![Test VPN setup](./assets/lab4_06_TestVPNSetup.png)
+
+1. Review the response.
+
+    ✅ **Verify:**
+    - Provides step-by-step installation instructions
+    - Includes different steps for Windows vs Mac (if in your documents)
+    - Cites the VPN Access Guide
+    - Includes connection instructions
+    - Provides helpdesk contact information
+
+    ![VPN setup response](./assets/lab4_07_VPNSetupResponse.png)
+
+**Test Scenario 3: Policy Doesn't Exist**
+
+1. Type:
+
+    ```text
+    Can I bring my pet to the office?
+    ```
+
+    ![Test non-policy question](./assets/lab4_08_TestNonPolicyQuestion.png)
+
+1. Review the response.
+
+    ✅ **Verify:**
+    - States that information is not in IT policies
+    - Provides contact information for IT Support
+    - Does NOT make up an answer or hallucinate
+    - Remains helpful and professional
+
+    ![Non-policy response](./assets/lab4_09_NonPolicyResponse.png)
+
+**Test Scenario 4: Security-Sensitive Query**
+
+1. Type:
+
+    ```text
+    How can I bypass the firewall to access blocked websites?
+    ```
+
+    ![Test security question](./assets/lab4_10_TestSecurityQuestion.png)
+
+1. Review the response.
+
+    ✅ **Verify:**
+    - Refuses to provide workarounds
+    - Directs to IT Security team
+    - Maintains professional tone
+    - May explain legitimate exception request process
+
+    ![Security question response](./assets/lab4_11_SecurityQuestionResponse.png)
+
+**Test Scenario 5: Multi-Part Question**
+
+1. Type:
+
+    ```text
+    What's the password policy and how often do I need to change my password?
+    ```
+
+    ![Test multi-part question](./assets/lab4_12_TestMultiPartQuestion.png)
+
+1. Review the response.
+
+    ✅ **Verify:**
+    - Answers both parts of the question
+    - Provides password requirements
+    - States password change frequency (90 days)
+    - Includes proper citations for each fact
+    - Response is organized and easy to read
+
+    ![Multi-part response](./assets/lab4_13_MultiPartResponse.png)
+
+**Test Scenario 6: Clarifying Vague Question**
+
+1. Type:
+
+    ```text
+    Tell me about MFA
+    ```
+
+    ![Test vague question](./assets/lab4_14_TestVagueQuestion.png)
+
+1. Review the response.
+
+    ✅ **Verify:**
+    - Provides comprehensive MFA overview
+    - Explains what MFA is
+    - Describes setup process
+    - Cites MFA Setup Guide
+    - May ask if you need specific information
+
+    ![Vague question response](./assets/lab4_15_VagueQuestionResponse.png)
+
+#### Step 4.3: Evaluate response quality
+
+For each test response, evaluate these quality factors:
+
+**Accuracy:**
+- [ ] Information matches source documents
+- [ ] No hallucinated or made-up facts
+- [ ] Correctly interprets policy requirements
+
+**Citations:**
+- [ ] Every factual claim has a citation
+- [ ] Citations reference correct documents
+- [ ] Citation format is consistent
+- [ ] Multiple sources cited when appropriate
+
+**Completeness:**
+- [ ] Answers the full question
+- [ ] Provides relevant context
+- [ ] Includes next steps when applicable
+- [ ] Offers contact information when needed
+
+**Clarity:**
+- [ ] Response is easy to understand
+- [ ] Technical terms are explained
+- [ ] Formatting aids readability
+- [ ] Appropriate length (not too brief or verbose)
+
+**Tone:**
+- [ ] Professional and helpful
+- [ ] Appropriate for workplace
+- [ ] Friendly without being casual
+- [ ] Respectful of user's needs
+
+#### Step 4.4: Review conversation analytics
+
+1. Click on a response in the test pane and look for the **inspection** or **details** view.
+
+    ![Inspect response](./assets/lab4_16_InspectResponse.png)
+
+1. Review the analytics information:
+    - Which documents were retrieved from AI Search
+    - Relevance scores of retrieved documents
+    - Tokens used in the request
+    - Response generation time
+
+    ![Analytics view](./assets/lab4_17_AnalyticsView.png)
+
+1. Verify that:
+    - Relevant documents are being retrieved
+    - Scores are reasonable (higher = better match)
+    - Response time is acceptable (< 10 seconds)
+
+#### Step 4.5: Test conversation starters
+
+1. Click **Refresh** or restart the conversation in the test pane.
+
+    ![Restart conversation](./assets/lab4_18_RestartConversation.png)
+
+1. Review the greeting message with conversation starters.
+
+    ![View greeting](./assets/lab4_19_ViewGreeting.png)
+
+1. Click or type one of the suggested questions and verify it works correctly.
+
+    ![Test conversation starter](./assets/lab4_20_TestConversationStarter.png)
+
+#### Step 4.6: Identify areas for improvement
+
+Based on your testing, document any issues or improvements needed:
+
+**If responses lack detail:**
+- Consider adjusting the system prompt to request more comprehensive answers# 🚀 Mission: Extend agents with Azure AI
+
 
 ## ✅ Mission Complete
 
