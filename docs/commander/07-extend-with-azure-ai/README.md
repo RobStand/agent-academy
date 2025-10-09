@@ -247,75 +247,63 @@ In this lab, you'll put BYOM into practice by deploying an AI model that you wil
 
 1. Sample documents from [IT documentation](https://download-directory.github.io/?url=https://github.com/RobStand/agent-academy/tree/main/docs/commander/07-extend-with-azure-ai/assets/it-documentation&filename=commander_sampledata).
 
-### 7.1.1: Select the model from the Model Catalog
+### 7.1.1: Create AI Foundry resources
 
 1. Navigate to [Azure AI Foundry](https://ai.azure.com) and sign in with your Azure credentials.
     ![Navigate to AI Foundry](./assets/7-navigate-ai-foundry.png)
 
-1. Select **Go to full model catalog** and search for `Cohere-command-r-plus`. Cohere Command R+ is the ideal model choice for this scenario because it is specifically designed for document Q&A. It is excellent at technical and policy language, automatically generates accurate inline citations, stays faithful to source documents, minimizing hallucinations, and handles lengthy policy documents with ease.
+1. Once you are logged in, navigate to [All resources](https://ai.azure.com/allResources) in AI Foundry.
 
-    Select the `Cohere-command-r-plus-08-2024` model.
-    ![Search model catalog](./assets/7-search-model-catalog.png)
+    Select **Create new**. Choose `AI hub resource` and select **Next**.
+    ![Create new AI hub resource](./assets/7-create-ai-hub-resource.png)
 
-1. The model details for `Cohere-command-r-plus-08-2024` will be displayed, including information about the model, supported languages, model architecture, and pricing.
-
-    Select **Use this model**.
-    ![Use Cohere model](./assets/7-use-the-model.png)
-
-### 7.1.2: Create an AI Foundry project
-
-1. Before AI Foundry can deploy your model, you need to create an AI Foundry project.
-
-    Enter a name for your AI Foundry project. Expand **Advanced options** if you want to specify options, such as a specific resource group name. For this lab, you can accept the defaults.
+1. Name your project `commander-workshop`. Rename the hub `commander-hub`. Expand **Advanced options** if you want to specify options, such as a specific resource group name. For this lab, you can accept the defaults.
 
     Select **Create**.
     ![Create AI Foundry project](./assets/7-create-ai-foundry-project.png)
 
-### 7.1.3: Deploy the model
+### 7.1.2: Deploy a model
+
+Now that you have AI Foundry resources set up, you can deploy a model.
+
+We're using `Cohere Command R+` because is the ideal model choice for this scenario. It is specifically designed for document Q&A. It is excellent at technical and policy language and automatically generates accurate inline citations. It stays faithful to source documents, minimizing hallucinations, and handles lengthy policy documents with ease.
+
+1. In the left-hand navigation, select **Models + endpoints**.
+
+1. Select **Deploy model**, then select **Deploy base model**.
+
+    ![Deploy base model](./assets/7-deploy-base-model.png)
+
+1. Search for `Cohere-command-r-plus`.
+
+    Select the `Cohere-command-r-plus-08-2024` model and select **Confirm**.
+    ![Search model catalog](./assets/7-search-model-catalog.png)
 
 1. Because `Cohere-command-r-plus` is available through the Azure Marketplace, AI Foundry will ask you to agree to the Terms of use to proceed with the deployment.
 
     Select **Agree and Proceed**.
     ![Deploy from Azure Marketplace](./assets/7-deploy-from-marketplace.png)
 
-1. The deployment name will appear in Copilot Studio when you connect to it later, so you will want a memorable name that helps you identify the model easily.
-
-    Leave the default **Deployment name** as `Cohere-command-r-plus-08-2024`.
+1. Leave the default **Deployment name** as `Cohere-command-r-plus-08-2024`. The deployment name will appear in Copilot Studio when you connect to it later, so you will want a memorable name that helps you identify the model easily.
 
     Select **Deploy**.
     ![Deploy model](./assets/7-deploy-model.png)
 
-1. AI Foundry displays the details of your model deployment. Your deployed model is accessible through **Models + endpoints** in the navigation on the left.
+1. AI Foundry displays the details of your model deployment. Note the following information from the model deployment, as you'll need it later:
 
-    Note the following information from the model deployment, as you'll need it later:
-
-    - **Endpoint URL**
-    - **API Key**
-    - **Deployment name**
+    - **Target URI**: This is the URL for our model's endpoint.
+    - **API Key**: This is the primary key for authentication.
+    - **Deployment name**: This is the name you chose (or left default) when deploying the model.
 
     ![Deployment complete](./assets/7-model-deployment-details.png)
 
 **Important:** Keep your API key secure. Don't share it or commit it to source control.
 
-### 7.1.4: Test the model
-
-You can test the model in Azure AI Foundry before integrating it with Copilot Studio.
-
-1. In the deployed model details page, select **Open in playground**.
-
-1. Try a simple prompt: `What are the key components of a good password policy?`
-
-1. Review the response from the model. Note that, while the recommendations are good, they are general in nature.
-
-    ![Test prompt in Playground](./assets/7-test-prompt-in-playground.png)
-
-You've successfully deployed Cohere Command R+, a model specifically optimized for the RAG scenario you're building. In the next lab, you'll connect both your AI Search index and this model to Copilot Studio.
-
-#### Lab 7.2: Create Azure AI Search resource in Azure AI Foundry
+### Lab 7.2: Create Azure AI Search resource in Azure AI Foundry
 
 1. Navigate to **Azure AI Foundry** at <https://ai.azure.com> and sign in with your Azure credentials.
 
-    ![Navigate to AI Foundry](./assets/lab1_01_NavigateToAIFoundry.png)
+    ![Navigate to AI Foundry](./assets/7-navigate-ai-foundry.png)
 
 1. Select your existing project or create a new one by clicking **+ New project**.
 
@@ -504,7 +492,7 @@ Before moving forward, verify that your index is working correctly.
 
 Excellent work! You've successfully created an Azure AI Search index with vector embeddings. Your IT policy documents are now searchable and ready to be used as a knowledge source for your Copilot.
 
-### Lab 3: Configure Copilot Studio with Azure AI capabilities
+### Lab 7.3: Configure Copilot Studio with Azure AI capabilities
 
 In this exercise, you'll create a Copilot in Copilot Studio and connect both your Azure AI Search knowledge source and Cohere Command R+ model to create an intelligent IT Policy Assistant.
 
