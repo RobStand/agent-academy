@@ -386,13 +386,15 @@ Now you will add the IT sample documents to Azure AI Foundry.
 
 1. Select **Create vector index**. The indexing process will begin automatically and may take a while.
 
+    ![Indexing complete](./assets/7-index-complete.png)
+
 Excellent work! You've successfully created an Azure AI Search index with vector embeddings. Your IT policy documents are now searchable and ready to be used as a knowledge source for your Copilot Studio agent.
 
-### Lab 7.3: Configure Copilot Studio with Azure AI capabilities
+## 🧪Lab 7.3: Configure Copilot Studio with Azure AI capabilities
 
-In this exercise, you'll create a Copilot in Copilot Studio and connect both your Azure AI Search knowledge source and Cohere Command R+ model to create an intelligent IT Policy Assistant.
+Now it's time connect both your Azure AI Search knowledge source and Cohere Command R+ model to create an intelligent IT Policy Assistant.
 
-#### Step 3.1: Create a new Copilot
+### 7.3.1: Create a new Copilot
 
 1. Navigate to **Copilot Studio** at <https://copilotstudio.microsoft.com> and sign in.
 
@@ -419,7 +421,7 @@ In this exercise, you'll create a Copilot in Copilot Studio and connect both you
 
     ![Copilot created](./assets/lab3_05_CopilotCreated.png)
 
-#### Step 3.2: Add Azure AI Search as knowledge source
+### 7.3.2: Add Azure AI Search as knowledge source
 
 Now you'll connect your IT policies search index as a knowledge source.
 
@@ -463,7 +465,7 @@ Now you'll connect your IT policies search index as a knowledge source.
 
     ![Knowledge source added](./assets/lab3_13_KnowledgeSourceAdded.png)
 
-#### Step 3.3: Configure Cohere Command R+ as the generative model
+### 7.3.3: Configure Cohere Command R+ as the generative model
 
 Now you'll configure your copilot to use the Cohere Command R+ model you deployed.
 
@@ -496,7 +498,7 @@ Now you'll configure your copilot to use the Cohere Command R+ model you deploye
 
     ![Save configuration](./assets/lab3_19_SaveConfiguration.png)
 
-#### Step 3.4: Create optimized system prompt for Command R+
+### 7.3.4: Create optimized system prompt for Command R+
 
 The system prompt is crucial for controlling how your copilot responds. Command R+ responds excellently to well-structured prompts.
 
@@ -613,7 +615,7 @@ The system prompt is crucial for controlling how your copilot responds. Command 
 - Focuses on accuracy (Command R+'s primary strength)
 - Leverages markdown formatting (which Command R+ processes excellently)
 
-#### Step 3.5: Configure conversation starters
+### 7.3.5: Configure conversation starters
 
 Help users know what questions they can ask by adding conversation starters.
 
@@ -647,7 +649,7 @@ Help users know what questions they can ask by adding conversation starters.
 
     ![Save greeting](./assets/lab3_35_SaveGreeting.png)
 
-#### Step 3.6: Create fallback for policy not found
+### 7.3.6: Create fallback for policy not found
 
 Create a helpful fallback message when the copilot cannot find policy information.
 
@@ -696,7 +698,7 @@ Excellent work! You've successfully configured your IT Policy Assistant with bot
 
 In this exercise, you'll thoroughly test your IT Policy Assistant to ensure it provides accurate, well-cited answers from your IT policy documents.
 
-#### Step 4.1: Open the test pane
+#### 7.4.1: Open the test pane
 
 1. In Copilot Studio, ensure you're viewing your IT Policy Assistant.
 
@@ -710,7 +712,7 @@ In this exercise, you'll thoroughly test your IT Policy Assistant to ensure it p
 
     ![Test pane opened](./assets/lab4_03_TestPaneOpened.png)
 
-#### Step 4.2: Run test scenarios
+#### 7.4.2: Run test scenarios
 
 Test your copilot with various scenarios to verify it's working correctly.
 
@@ -837,7 +839,7 @@ Test your copilot with various scenarios to verify it's working correctly.
 
     ![Vague question response](./assets/lab4_15_VagueQuestionResponse.png)
 
-#### Step 4.3: Evaluate response quality
+#### 7.4.3: Evaluate response quality
 
 For each test response, evaluate these quality factors:
 
@@ -875,7 +877,7 @@ For each test response, evaluate these quality factors:
 - [ ] Friendly without being casual
 - [ ] Respectful of user's needs
 
-#### Step 4.4: Review conversation analytics
+#### 7.4.4: Review conversation analytics
 
 1. Click on a response in the test pane and look for the **inspection** or **details** view.
 
@@ -894,7 +896,7 @@ For each test response, evaluate these quality factors:
     - Scores are reasonable (higher = better match)
     - Response time is acceptable (< 10 seconds)
 
-#### Step 4.5: Test conversation starters
+#### 7.4.5: Test conversation starters
 
 1. Click **Refresh** or restart the conversation in the test pane.
 
@@ -908,7 +910,7 @@ For each test response, evaluate these quality factors:
 
     ![Test conversation starter](./assets/lab4_20_TestConversationStarter.png)
 
-#### Step 4.6: Identify areas for improvement
+#### 7.4.6: Identify areas for improvement
 
 Based on your testing, document any issues or improvements needed:
 
