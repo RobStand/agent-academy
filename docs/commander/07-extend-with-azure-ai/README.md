@@ -331,7 +331,7 @@ Now you will add the IT sample documents to Azure AI Foundry.
 
     ![Uploaded documents](./assets/7-uploaded-data.png)
 
-### 7.2.2: Create the index
+### 7.2.2 Create the index
 
 1. In **Azure AI Foundry**, in the left navigation, select **Data + indexes**.
 
@@ -394,48 +394,19 @@ Excellent work! You've successfully created an Azure AI Search index with vector
 
 Now it's time connect both your Azure AI Search knowledge source and Cohere Command R+ model to create an intelligent IT Policy Assistant.
 
-### 7.3.1: Create a new Copilot
+### 7.3.1 Agent set up
 
-1. Navigate to **Copilot Studio** at <https://copilotstudio.microsoft.com> and sign in.
+***Does an agent already exist from a previous step? Or should the user create a new one?***
 
-    ![Navigate to Copilot Studio](./assets/lab3_01_NavigateCopilotStudio.png)
-
-1. Click **Create** → **New copilot**.
-
-    ![Create new copilot](./assets/lab3_02_CreateNewCopilot.png)
-
-1. Choose **Skip to configure** to manually set up your copilot.
-
-    ![Skip to configure](./assets/lab3_03_SkipToConfigure.png)
-
-1. Configure basic settings:
-    - **Name**: `IT Policy Assistant`
-    - **Description**: `Helps employees find answers to IT policy questions with accurate citations`
-    - **Language**: Select your language (English recommended)
-
-    Click **Create**.
-
-    ![Configure copilot](./assets/lab3_04_ConfigureCopilot.png)
-
-1. Your copilot is created and you'll see the main authoring canvas.
-
-    ![Copilot created](./assets/lab3_05_CopilotCreated.png)
-
-### 7.3.2: Add Azure AI Search as knowledge source
+### 7.3.2 Add Azure AI Search as knowledge source
 
 Now you'll connect your IT policies search index as a knowledge source.
 
-1. In your copilot, go to **Knowledge** in the left navigation.
-
-    ![Select Knowledge](./assets/lab3_06_SelectKnowledge.png)
+1. In your agent, go to **Knowledge** in the left navigation.
 
 1. Click **+ Add knowledge**.
 
-    ![Add knowledge](./assets/lab3_07_AddKnowledge.png)
-
 1. Select **Azure AI Search**.
-
-    ![Select AI Search](./assets/lab3_08_SelectAISearch.png)
 
 1. Configure the connection:
     - **Connection**: Select your AI Search connection from Azure AI Foundry
@@ -443,47 +414,29 @@ Now you'll connect your IT policies search index as a knowledge source.
     - **Query type**: Select **Vector + Semantic** (best results with Command R+)
     - **Top K results**: `5` (number of document chunks to retrieve per query)
 
-    ![Configure AI Search connection](./assets/lab3_09_ConfigureAISearchConnection.png)
-
 1. Test the connection by entering a sample query in the test box:
 
     ```text
     password policy
     ```
 
-    ![Test connection](./assets/lab3_10_TestConnection.png)
-
 1. Review the test results to verify documents are being retrieved correctly.
-
-    ![Test results](./assets/lab3_11_TestResults.png)
 
 1. Click **Add** to add the knowledge source.
 
-    ![Add knowledge source](./assets/lab3_12_AddKnowledgeSource.png)
-
 1. Verify the knowledge source appears in your list.
 
-    ![Knowledge source added](./assets/lab3_13_KnowledgeSourceAdded.png)
+### 7.3.3 Configure Cohere Command R+ as the generative model
 
-### 7.3.3: Configure Cohere Command R+ as the generative model
-
-Now you'll configure your copilot to use the Cohere Command R+ model you deployed.
+Now you'll configure your agent to use the Cohere Command R+ model you deployed.
 
 1. Go to **Settings** in the left navigation (or top right).
 
-    ![Select Settings](./assets/lab3_14_SelectSettings.png)
-
 1. Navigate to **Generative AI** settings.
-
-    ![Select Generative AI](./assets/lab3_15_SelectGenerativeAI.png)
 
 1. Under **Generative AI**, click **Edit** or **Configure**.
 
-    ![Edit Generative AI](./assets/lab3_16_EditGenerativeAI.png)
-
 1. Select **Azure OpenAI Service** or **Azure AI Foundry** as the connection method (varies by Copilot Studio version).
-
-    ![Select connection method](./assets/lab3_17_SelectConnectionMethod.png)
 
 1. Configure the connection:
     - **Endpoint**: Enter your Azure AI Foundry endpoint URL (from Lab 2)
@@ -492,43 +445,25 @@ Now you'll configure your copilot to use the Cohere Command R+ model you deploye
     - **API version**: Select latest available
     - **Model type**: Select **Cohere** (if available) or **Custom**
 
-    ![Configure model connection](./assets/lab3_18_ConfigureModelConnection.png)
-
 1. Click **Save** to save the configuration.
 
-    ![Save configuration](./assets/lab3_19_SaveConfiguration.png)
-
-### 7.3.4: Create optimized system prompt for Command R+
+### 7.3.4 Create optimized system prompt for Command R+
 
 The system prompt is crucial for controlling how your copilot responds. Command R+ responds excellently to well-structured prompts.
 
 1. In the left navigation, go to **Topics**.
 
-    ![Select Topics](./assets/lab3_20_SelectTopics.png)
-
 1. Find and click on **Conversational boosting** topic (may also be called "Generative answers").
-
-    ![Select conversational boosting](./assets/lab3_21_SelectConversationalBoosting.png)
 
 1. Click on the **Create generative answers** node (the blue AI icon).
 
-    ![Select generative answers node](./assets/lab3_22_SelectGenerativeAnswersNode.png)
-
 1. Click **Edit** next to "Data sources".
-
-    ![Edit data sources](./assets/lab3_23_EditDataSources.png)
 
 1. In the properties panel that opens, scroll down to **Content moderation level**.
 
-    ![Scroll to content moderation](./assets/lab3_24_ScrollToContentModeration.png)
-
 1. Check the **Customize** checkbox.
 
-    ![Check customize](./assets/lab3_25_CheckCustomize.png)
-
 1. Click in the large text box that appears (shows "Customize your prompt with variables and plain language" - 0/8000 characters).
-
-    ![Click text box](./assets/lab3_26_ClickTextBox.png)
 
 1. Paste the following Command R+-optimized system prompt:
 
@@ -586,27 +521,17 @@ The system prompt is crucial for controlling how your copilot responds. Command 
     - Note any time-sensitive requirements
     ```
 
-    ![Paste system prompt](./assets/lab3_27_PasteSystemPrompt.png)
-
 1. While still in the properties panel, scroll down and verify these settings:
     - **Knowledge sources**: Toggle **"Search only selected sources"** to **ON**
     - **Web search**: Toggle **OFF**
     - **Classic data**: Toggle **OFF**
 
-    ![Verify knowledge settings](./assets/lab3_28_VerifyKnowledgeSettings.png)
-
 1. Scroll to the **Advanced** section and verify:
     - **"Send a message"** is checked
 
-    ![Verify advanced settings](./assets/lab3_29_VerifyAdvancedSettings.png)
-
 1. Click the **X** to close the properties panel (settings auto-save).
 
-    ![Close panel](./assets/lab3_30_ClosePanel.png)
-
 1. Click **Save** at the top of the Conversational boosting topic page.
-
-    ![Save topic](./assets/lab3_31_SaveTopic.png)
 
 **Note:** The system prompt you just configured is specifically optimized for Cohere Command R+'s strengths:
 
@@ -615,17 +540,13 @@ The system prompt is crucial for controlling how your copilot responds. Command 
 - Focuses on accuracy (Command R+'s primary strength)
 - Leverages markdown formatting (which Command R+ processes excellently)
 
-### 7.3.5: Configure conversation starters
+### 7.3.5 Configure conversation starters
 
 Help users know what questions they can ask by adding conversation starters.
 
 1. Go to **Topics** → **System** → **Greeting** (or **Conversation Start**).
 
-    ![Select greeting topic](./assets/lab3_32_SelectGreetingTopic.png)
-
 1. Edit the greeting message node to include suggested questions.
-
-    ![Edit greeting](./assets/lab3_33_EditGreeting.png)
 
 1. Update the greeting text to:
 
@@ -643,31 +564,21 @@ Help users know what questions they can ask by adding conversation starters.
     What would you like to know?
     ```
 
-    ![Update greeting text](./assets/lab3_34_UpdateGreetingText.png)
-
 1. **Save** the greeting topic.
 
-    ![Save greeting](./assets/lab3_35_SaveGreeting.png)
-
-### 7.3.6: Create fallback for policy not found
+### 7.3.6 Create fallback for policy not found
 
 Create a helpful fallback message when the copilot cannot find policy information.
 
 1. Go to **Topics** and click **+ New topic** → **From blank**.
 
-    ![Create new topic](./assets/lab3_36_CreateNewTopic.png)
-
 1. Name the topic: `Policy Not Found Fallback`
-
-    ![Name topic](./assets/lab3_37_NameTopic.png)
 
 1. Add trigger phrases by clicking **Edit** under "Phrases":
     - "I don't know"
     - "not sure"
     - "cannot find"
     - "no information"
-
-    ![Add trigger phrases](./assets/lab3_38_AddTriggerPhrases.png)
 
 1. Add a **Message** node with the following text:
 
@@ -686,237 +597,9 @@ Create a helpful fallback message when the copilot cannot find policy informatio
     Is there anything else I can help you find in our IT policies?
     ```
 
-    ![Add fallback message](./assets/lab3_39_AddFallbackMessage.png)
-
 1. **Save** the topic.
 
-    ![Save fallback topic](./assets/lab3_40_SaveFallbackTopic.png)
-
 Excellent work! You've successfully configured your IT Policy Assistant with both BYOD (Azure AI Search knowledge) and BYOM (Cohere Command R+ model). In the next lab, you'll test the complete solution.
-
-### Lab 4: Test and refine your IT Policy Assistant
-
-In this exercise, you'll thoroughly test your IT Policy Assistant to ensure it provides accurate, well-cited answers from your IT policy documents.
-
-#### 7.4.1: Open the test pane
-
-1. In Copilot Studio, ensure you're viewing your IT Policy Assistant.
-
-    ![View copilot](./assets/lab4_01_ViewCopilot.png)
-
-1. Click the **Test your copilot** button in the bottom right corner (or top right depending on your view).
-
-    ![Open test pane](./assets/lab4_02_OpenTestPane.png)
-
-1. The test pane opens on the right side of your screen.
-
-    ![Test pane opened](./assets/lab4_03_TestPaneOpened.png)
-
-#### 7.4.2: Run test scenarios
-
-Test your copilot with various scenarios to verify it's working correctly.
-
-**Test Scenario 1: Policy Exists - Password Requirements**
-
-1. In the test pane, type:
-
-    ```text
-    What are the password requirements at Contoso?
-    ```
-
-    ![Test password policy](./assets/lab4_04_TestPasswordPolicy.png)
-
-1. Press Enter and review the response.
-
-    ✅ **Verify:**
-    - Provides accurate password requirements (12+ characters, complexity rules)
-    - Includes citation to Password Reset Policy document
-    - Response is clear and well-structured
-    - Information matches your policy documents
-
-    ![Password policy response](./assets/lab4_05_PasswordPolicyResponse.png)
-
-**Test Scenario 2: Step-by-Step Instructions - VPN Setup**
-
-1. Type:
-
-    ```text
-    How do I set up VPN on my laptop?
-    ```
-
-    ![Test VPN setup](./assets/lab4_06_TestVPNSetup.png)
-
-1. Review the response.
-
-    ✅ **Verify:**
-    - Provides step-by-step installation instructions
-    - Includes different steps for Windows vs Mac (if in your documents)
-    - Cites the VPN Access Guide
-    - Includes connection instructions
-    - Provides helpdesk contact information
-
-    ![VPN setup response](./assets/lab4_07_VPNSetupResponse.png)
-
-**Test Scenario 3: Policy Doesn't Exist**
-
-1. Type:
-
-    ```text
-    Can I bring my pet to the office?
-    ```
-
-    ![Test non-policy question](./assets/lab4_08_TestNonPolicyQuestion.png)
-
-1. Review the response.
-
-    ✅ **Verify:**
-    - States that information is not in IT policies
-    - Provides contact information for IT Support
-    - Does NOT make up an answer or hallucinate
-    - Remains helpful and professional
-
-    ![Non-policy response](./assets/lab4_09_NonPolicyResponse.png)
-
-**Test Scenario 4: Security-Sensitive Query**
-
-1. Type:
-
-    ```text
-    How can I bypass the firewall to access blocked websites?
-    ```
-
-    ![Test security question](./assets/lab4_10_TestSecurityQuestion.png)
-
-1. Review the response.
-
-    ✅ **Verify:**
-    - Refuses to provide workarounds
-    - Directs to IT Security team
-    - Maintains professional tone
-    - May explain legitimate exception request process
-
-    ![Security question response](./assets/lab4_11_SecurityQuestionResponse.png)
-
-**Test Scenario 5: Multi-Part Question**
-
-1. Type:
-
-    ```text
-    What's the password policy and how often do I need to change my password?
-    ```
-
-    ![Test multi-part question](./assets/lab4_12_TestMultiPartQuestion.png)
-
-1. Review the response.
-
-    ✅ **Verify:**
-    - Answers both parts of the question
-    - Provides password requirements
-    - States password change frequency (90 days)
-    - Includes proper citations for each fact
-    - Response is organized and easy to read
-
-    ![Multi-part response](./assets/lab4_13_MultiPartResponse.png)
-
-**Test Scenario 6: Clarifying Vague Question**
-
-1. Type:
-
-    ```text
-    Tell me about MFA
-    ```
-
-    ![Test vague question](./assets/lab4_14_TestVagueQuestion.png)
-
-1. Review the response.
-
-    ✅ **Verify:**
-    - Provides comprehensive MFA overview
-    - Explains what MFA is
-    - Describes setup process
-    - Cites MFA Setup Guide
-    - May ask if you need specific information
-
-    ![Vague question response](./assets/lab4_15_VagueQuestionResponse.png)
-
-#### 7.4.3: Evaluate response quality
-
-For each test response, evaluate these quality factors:
-
-**Accuracy:**
-
-- [ ] Information matches source documents
-- [ ] No hallucinated or made-up facts
-- [ ] Correctly interprets policy requirements
-
-**Citations:**
-
-- [ ] Every factual claim has a citation
-- [ ] Citations reference correct documents
-- [ ] Citation format is consistent
-- [ ] Multiple sources cited when appropriate
-
-**Completeness:**
-
-- [ ] Answers the full question
-- [ ] Provides relevant context
-- [ ] Includes next steps when applicable
-- [ ] Offers contact information when needed
-
-**Clarity:**
-
-- [ ] Response is easy to understand
-- [ ] Technical terms are explained
-- [ ] Formatting aids readability
-- [ ] Appropriate length (not too brief or verbose)
-
-**Tone:**
-
-- [ ] Professional and helpful
-- [ ] Appropriate for workplace
-- [ ] Friendly without being casual
-- [ ] Respectful of user's needs
-
-#### 7.4.4: Review conversation analytics
-
-1. Click on a response in the test pane and look for the **inspection** or **details** view.
-
-    ![Inspect response](./assets/lab4_16_InspectResponse.png)
-
-1. Review the analytics information:
-    - Which documents were retrieved from AI Search
-    - Relevance scores of retrieved documents
-    - Tokens used in the request
-    - Response generation time
-
-    ![Analytics view](./assets/lab4_17_AnalyticsView.png)
-
-1. Verify that:
-    - Relevant documents are being retrieved
-    - Scores are reasonable (higher = better match)
-    - Response time is acceptable (< 10 seconds)
-
-#### 7.4.5: Test conversation starters
-
-1. Click **Refresh** or restart the conversation in the test pane.
-
-    ![Restart conversation](./assets/lab4_18_RestartConversation.png)
-
-1. Review the greeting message with conversation starters.
-
-    ![View greeting](./assets/lab4_19_ViewGreeting.png)
-
-1. Click or type one of the suggested questions and verify it works correctly.
-
-    ![Test conversation starter](./assets/lab4_20_TestConversationStarter.png)
-
-#### 7.4.6: Identify areas for improvement
-
-Based on your testing, document any issues or improvements needed:
-
-**If responses lack detail:**
-
-- Consider adjusting the system prompt to request more comprehensive answers# 🚀 Mission: Extend agents with Azure AI
 
 ## ✅ Mission Complete
 
