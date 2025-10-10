@@ -266,7 +266,7 @@ In this lab, you'll put BYOM into practice by deploying an AI model that you wil
 
 Now that you have AI Foundry resources set up, you can deploy a model.
 
-We're using `Cohere Command R+` because is the ideal model choice for this scenario. It is specifically designed for document Q&A. It is excellent at technical and policy language and automatically generates accurate inline citations. It stays faithful to source documents, minimizing hallucinations, and handles lengthy policy documents with ease.
+We're using `Cohere Command R+` because it is the ideal model choice for this scenario. It is specifically designed for document Q&A. It is excellent at technical and policy language and automatically generates accurate inline citations. It stays faithful to source documents, minimizing hallucinations, and handles lengthy policy documents with ease.
 
 1. In the left-hand navigation, select **Models + endpoints**.
 
