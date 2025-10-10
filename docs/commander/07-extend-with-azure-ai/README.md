@@ -34,11 +34,11 @@ Bring Your Own Model (BYOM) allows you to use custom or third-party AI models wi
 ### Types of models you can bring
 
 - **Azure OpenAI models** - GPT-4, GPT-3.5, and other models deployed in your Azure subscription.
-- **Azure AI model catalog** - access models from the extensive Azure AI Foundry catalog.
+- **Azure AI model catalog** - access 1900+ models from the extensive Azure AI Foundry model catalog.
 - **Custom fine-tuned models** - models you've trained or fine-tuned on your specific data.
 - **Open-source models** - popular models like Llama, Mistral, or Phi deployed in Azure.
 
-## 📊 What is Bring Your Own Data (BYOD)?
+## 📊 What does Bring Your Own Data mean?
 
 Bring Your Own Data (BYOD) enables you to connect your own enterprise data sources to your Copilot Studio agents, allowing them to provide grounded, accurate responses based on your organization's information.
 
@@ -354,10 +354,15 @@ Now you will add the IT sample documents to Azure AI Foundry.
 1. The Azure portal will open in a new window and display **Create a search service**.
 
     Enter the details.
+
     **Subscription** - The subscription you're using for this lab.
+
     **Resource group** - The resource group you created for the AI Foundry project
+
     **Service name** - Enter a unique name for the service
+
     **Location** - Select a region where you created your AI Foundry project or another region near you
+
     **Pricing tier** - Select `Free` since you are using a small set of documents
 
     Select **Review + create**, then **Create**.
