@@ -323,7 +323,9 @@ Now you will add the IT sample documents to Azure AI Foundry.
 
     Select **Next**.
 
-1. Enter `IT-Documents` in **Data name**.
+    ![Upload documents](./assets/7-add-documents-data.png)
+
+1. Enter `it-policies-guides` in **Data name**.
 
     Select **Create**.
 
@@ -335,17 +337,17 @@ Now you will add the IT sample documents to Azure AI Foundry.
 
 1. In **Azure AI Foundry**, in the left navigation, select **Data + indexes**.
 
-    ![Select data and indexes](./assets/7-data-indexes.png)
-
-1. Select the **Indexes** tab.
+    Select the **Indexes** tab.
 
     Select **+ New index**.
 
-1. The **Create a vector index** window will load. This is where you will configure the index in AI Foundry. 
+    ![Select data and indexes](./assets/7-add-index.png)
+
+1. The **Create a vector index** window will load. This is where you will configure the index in AI Foundry.
 
    In the **Data source** dropdown, choose `Data in Azure AI Foundry`.
 
-1. Select the `IT-documents` folder.
+1. Select the `it-policies-guides` folder.
 
     Select **Next**.
 
@@ -366,6 +368,7 @@ Now you will add the IT sample documents to Azure AI Foundry.
     **Pricing tier** - Select `Free` since you are using a small set of documents
 
     Select **Review + create**, then **Create**.
+
     ![Enter AI Search service details](./assets/7-ai-search-configuration.png)
 
 1. Wait for the connection to complete (1-2 minutes). You'll see a confirmation message.
@@ -376,11 +379,11 @@ Now you will add the IT sample documents to Azure AI Foundry.
 
 1. In the **Connect an existing resource** window, you should see the Azure AI Search resource you created. Select **Add connection** next to the resource.
 
-        ![Connect existing AI Search resource](./assets/7-connect-existing-resource.png)
+    ![Connect existing AI Search resource](./assets/7-connect-existing-resource.png)
 
 1. In the **Select Azure AI Search service** dropdown, select your AI Search service.
 
-1. For **Vector index**, enter `it-documents-index`.
+1. For **Vector index**, enter `it-policies-guides-index`.
 
     Select **Next**.
 
@@ -395,7 +398,7 @@ Now you will add the IT sample documents to Azure AI Foundry.
 
 Excellent work! You've successfully created an Azure AI Search index with vector embeddings. Your IT policy documents are now searchable and ready to be used as a knowledge source for your Copilot Studio agent.
 
-## 🧪Lab 7.3: Configure Copilot Studio with Azure AI capabilities
+## 🧪Lab 7.3:  Configure the agent with Azure AI capabilities
 
 Now it's time connect both your Azure AI Search knowledge source and Cohere Command R+ model to create an intelligent IT Policy Assistant.
 
@@ -431,180 +434,203 @@ Now you'll connect your IT policies search index as a knowledge source.
 
 1. Verify the knowledge source appears in your list.
 
-### 7.3.3 Configure Cohere Command R+ as the generative model
+### 7.3.3: Create a custom prompt action using Command R+
 
-Now you'll configure your agent to use the Cohere Command R+ model you deployed.
+Now you'll create a custom prompt action that explicitly uses Cohere Command R+ with your AI Search knowledge source. This demonstrates the BYOM (Bring Your Own Model) capability.
 
-1. Go to **Settings** in the left navigation (or top right).
+**Why use a custom prompt action?**
+- Makes the RAG (Retrieval-Augmented Generation) flow explicit and transparent
+- You control exactly how the model receives search results
+- Demonstrates the full integration between AI Search and your custom model
+- Allows fine-tuned control over the prompt and response format
 
-1. Navigate to **Generative AI** settings.
+1. In your copilot, go to **Actions** in the left navigation.
 
-1. Under **Generative AI**, click **Edit** or **Configure**.
+    ![Select Actions](./assets/lab3_14_SelectActions.png)
 
-1. Select **Azure OpenAI Service** or **Azure AI Foundry** as the connection method (varies by Copilot Studio version).
+1. Click **+ Add an action**.
 
-1. Configure the connection:
-    - **Endpoint**: Enter your Azure AI Foundry endpoint URL (from Lab 2)
-    - **API key**: Enter your API key (from Lab 2)
+    ![Add action](./assets/lab3_15_AddAction.png)
+
+1. Select **Create a prompt** (may also be labeled "Prompt action" or "Custom prompt").
+
+    ![Create prompt action](./assets/lab3_16_CreatePromptAction.png)
+
+1. Configure the basic action details:
+    - **Name**: `Search IT Policies with Command R+`
+    - **Description**: `Searches IT policy documents and generates accurate answers with citations using Cohere Command R+`
+
+    ![Configure action details](./assets/lab3_17_ConfigureActionDetails.png)
+
+1. Click **Next** or navigate to the **Input** section.
+
+1. Add an input parameter by clicking **+ Add input**:
+    - **Name**: `UserQuestion`
+    - **Type**: **Text**
+    - **Description**: `The user's question about IT policies`
+    - **Sample data**: `What is the password policy?`
+    - **Required**: Yes ✓
+
+    ![Add input parameter](./assets/lab3_18_AddInputParameter.png)
+
+1. Click **Next** or navigate to the **Prompt** section.
+
+1. In the **Prompt** section, configure the connection to your AI Search index:
+    - Click **Add data source** or **Connect to data**
+    - Select **Azure AI Search**
+    - Choose your connection and index: `it-policies-guides-index`
+    - **Search type**: Vector + Semantic
+    - **Top K**: 5
+
+    ![Connect AI Search to prompt](./assets/lab3_19_ConnectAISearch.png)
+
+1. Now configure the connection to Cohere Command R+:
+    - Look for **Model** or **Generative AI** section
+    - Select **Use custom Azure endpoint** or **Azure AI Foundry**
+    - **Endpoint URL**: Enter your Command R+ endpoint from Lab 2
+    - **API Key**: Enter your API key from Lab 2
     - **Deployment name**: `cohere-command-r-plus`
-    - **API version**: Select latest available
-    - **Model type**: Select **Cohere** (if available) or **Custom**
+    - **API Version**: Latest
 
-1. Click **Save** to save the configuration.
+    ![Configure Command R+ connection](./assets/lab3_20_ConfigureCommandR.png)
 
-### 7.3.4 Create optimized system prompt for Command R+
-
-The system prompt is crucial for controlling how your copilot responds. Command R+ responds excellently to well-structured prompts.
-
-1. In the left navigation, go to **Topics**.
-
-1. Find and click on **Conversational boosting** topic (may also be called "Generative answers").
-
-1. Click on the **Create generative answers** node (the blue AI icon).
-
-1. Click **Edit** next to "Data sources".
-
-1. In the properties panel that opens, scroll down to **Content moderation level**.
-
-1. Check the **Customize** checkbox.
-
-1. Click in the large text box that appears (shows "Customize your prompt with variables and plain language" - 0/8000 characters).
-
-1. Paste the following Command R+-optimized system prompt:
+1. In the **Prompt** text area, enter the following prompt that combines the user question with retrieved documents:
 
     ```text
-    ## Role
-    You are an IT Policy Assistant for Contoso. You help employees understand and comply with IT policies by answering questions using only official policy documents.
+    You are an IT Policy Assistant for Contoso. Answer the user's question using ONLY the information from the provided IT policy documents below.
 
-    ## Core Instructions
+    ## Instructions
+    - Provide accurate, helpful answers based solely on the documents
+    - Include citations in this format: [Document Name]
+    - If the information is not in the documents, say: "This information is not in our IT policies. Contact IT Support at helpdesk@contoso.com or 1-800-CONTOSO."
+    - Be clear, professional, and concise
+    - Explain technical terms when needed
 
-    ### Grounding Rules
-    - Answer ONLY using information from the provided IT policy documents
-    - Every factual statement must include a citation to the source document
-    - If information is not in the policies, state clearly: "This is not covered in our current IT policies. Contact IT Support at helpdesk@contoso.com or call 1-800-CONTOSO for guidance."
-    - Never make assumptions or provide information beyond what is documented
+    ## Retrieved Policy Documents
+    {{DataSources}}
 
-    ### Citation Requirements
-    - Use this format: [Policy Name, Section/Topic]
-    - Cite immediately after each factual claim
-    - Example: "Passwords must be at least 12 characters long [Password Reset Policy]"
-    - Multiple citations are encouraged when synthesizing information from different sources
+    ## User Question
+    {{UserQuestion}}
 
-    ### Response Structure
-    Follow this format for every answer:
-    1. Direct answer (1-2 sentences)
-    2. Supporting details from policies
-    3. Citations for all facts
-    4. Next steps or contact information (if applicable)
-
-    ### Language and Tone
-    - Use clear, professional language
-    - Explain technical terms when they appear
-    - Be helpful and precise
-    - Keep responses focused and concise
-
-    ## Prohibited Actions
-    You must refuse and redirect requests that ask you to:
-    - Provide workarounds to security policies
-    - Share information about security vulnerabilities
-    - Provide administrative credentials or system access details
-    - Advise on bypassing IT controls
-    - Speculate about policy changes or exceptions
-
-    For such requests, respond: "I cannot assist with that. Please contact IT Security at security@contoso.com or call 1-800-555-SECURE."
-
-    ## Quality Standards
-    - Accuracy over completeness: Better to say "I don't know" than to guess
-    - Cite precisely: Reference specific documents or sections
-    - Stay current: Base answers on the retrieved policy content
-    - Be consistent: Give the same answer to the same question
-
-    ## When Policies Have Conditions
-    - Clearly state all requirements and exceptions
-    - Use "if-then" language for conditional policies
-    - Highlight approval processes when applicable
-    - Note any time-sensitive requirements
+    ## Your Response
+    Provide a clear answer with proper citations:
     ```
 
-1. While still in the properties panel, scroll down and verify these settings:
-    - **Knowledge sources**: Toggle **"Search only selected sources"** to **ON**
-    - **Web search**: Toggle **OFF**
-    - **Classic data**: Toggle **OFF**
+    ![Enter prompt template](./assets/lab3_21_EnterPromptTemplate.png)
 
-1. Scroll to the **Advanced** section and verify:
-    - **"Send a message"** is checked
+    **Note:** The `{{DataSources}}` variable will be automatically populated with the chunks retrieved from AI Search. The `{{UserQuestion}}` references your input parameter.
 
-1. Click the **X** to close the properties panel (settings auto-save).
+1. Click **Next** or navigate to the **Output** section.
 
-1. Click **Save** at the top of the Conversational boosting topic page.
+1. Configure the output:
+    - **Name**: `PolicyAnswer`
+    - **Type**: **Text**
+    - **Description**: `The answer generated by Command R+ based on IT policies`
 
-**Note:** The system prompt you just configured is specifically optimized for Cohere Command R+'s strengths:
+    ![Configure output](./assets/lab3_22_ConfigureOutput.png)
 
-- Emphasizes grounding and citation (Command R+'s native capabilities)
-- Uses clear structure (Command R+ excels with well-defined guidelines)
-- Focuses on accuracy (Command R+'s primary strength)
-- Leverages markdown formatting (which Command R+ processes excellently)
+1. Click **Save** to save your custom prompt action.
 
-### 7.3.5 Configure conversation starters
+    ![Save action](./assets/lab3_23_SaveAction.png)
 
-Help users know what questions they can ask by adding conversation starters.
+### 7.3.4: Add the custom action to a topic
 
-1. Go to **Topics** → **System** → **Greeting** (or **Conversation Start**).
+Now you'll create a topic that uses this custom prompt action to answer IT policy questions.
 
-1. Edit the greeting message node to include suggested questions.
+1. Go to **Topics** in the left navigation.
 
-1. Update the greeting text to:
+    ![Select Topics](./assets/lab3_24_SelectTopics.png)
+
+1. Click **+ New topic** → **From blank**.
+
+    ![Create new topic](./assets/lab3_25_CreateNewTopic.png)
+
+1. Name the topic: `IT Policy Questions`
+
+    ![Name topic](./assets/lab3_26_NameTopic.png)
+
+1. Add trigger phrases by clicking **Edit** under "Trigger phrases":
+    - "I have a question about policy"
+    - "What is the policy for"
+    - "Tell me about"
+    - "How do I"
+    - "What should I do"
+    - "password policy"
+    - "VPN setup"
+    - "software request"
+    
+    (Add more based on your policy documents)
+
+    ![Add trigger phrases](./assets/lab3_27_AddTriggerPhrases.png)
+
+1. Click **+** to add a node, then select **Ask a question**.
+
+    ![Add question node](./assets/lab3_28_AddQuestionNode.png)
+
+1. Configure the question node:
+    - **Message**: `What would you like to know about our IT policies?`
+    - **Identify**: Select **User's entire response**
+    - **Save response as**: `Topic.UserQuestion`
+
+    ![Configure question](./assets/lab3_29_ConfigureQuestion.png)
+
+1. Click **+** below the question node and select **Call an action**.
+
+    ![Add action node](./assets/lab3_30_AddActionNode.png)
+
+1. Select your custom action: **Search IT Policies with Command R+**
+
+    ![Select custom action](./assets/lab3_31_SelectCustomAction.png)
+
+1. Map the input parameter:
+    - For **UserQuestion** input, click the **>** icon
+    - Select **Topic.UserQuestion** (the variable from your question node)
+
+    ![Map input parameter](./assets/lab3_32_MapInputParameter.png)
+
+1. Click **+** below the action node and select **Send a message**.
+
+    ![Add message node](./assets/lab3_33_AddMessageNode.png)
+
+1. In the message node, click **Insert variable** (the `{x}` icon).
+
+    ![Insert variable](./assets/lab3_34_InsertVariable.png)
+
+1. Select the output from your action: **PolicyAnswer**
+
+    ![Select policy answer variable](./assets/lab3_35_SelectPolicyAnswerVariable.png)
+
+1. The message node should now show: `{Topic.PolicyAnswer}`
+
+    ![Message with variable](./assets/lab3_36_MessageWithVariable.png)
+
+1. Add one more node: Click **+** and select **Send a message**.
+
+1. Configure this message to ask for follow-up:
 
     ```text
-    Hi! I'm the IT Policy Assistant. I can help you find answers to questions about Contoso's IT policies.
-
-    Here are some things you can ask me:
-    • What is our password policy?
-    • How do I set up VPN access?
-    • How do I request new software?
-    • What should I do if my laptop is stolen?
-    • How do I enroll my phone for work email?
-    • What's our remote work policy?
-
-    What would you like to know?
+    Do you have any other questions about our IT policies?
     ```
 
-1. **Save** the greeting topic.
-
-### 7.3.6 Create fallback for policy not found
-
-Create a helpful fallback message when the copilot cannot find policy information.
-
-1. Go to **Topics** and click **+ New topic** → **From blank**.
-
-1. Name the topic: `Policy Not Found Fallback`
-
-1. Add trigger phrases by clicking **Edit** under "Phrases":
-    - "I don't know"
-    - "not sure"
-    - "cannot find"
-    - "no information"
-
-1. Add a **Message** node with the following text:
-
-    ```text
-    I couldn't find information about that in our IT policies. Here's how you can get help:
-
-    📞 Contact IT Support:
-    • Phone: 1-800-CONTOSO (1-800-266-8676)
-    • Email: helpdesk@contoso.com
-    • Portal: https://itportal.contoso.com
-
-    🔒 For security-related questions:
-    • Security Hotline: 1-800-555-SECURE
-    • Email: security@contoso.com
-
-    Is there anything else I can help you find in our IT policies?
-    ```
+    ![Add follow-up message](./assets/lab3_37_AddFollowUpMessage.png)
 
 1. **Save** the topic.
 
-Excellent work! You've successfully configured your IT Policy Assistant with both BYOD (Azure AI Search knowledge) and BYOM (Cohere Command R+ model). In the next lab, you'll test the complete solution.
+    ![Save topic](./assets/lab3_38_SaveTopic.png)
+
+**What you've built:**
+- A custom topic that triggers on IT policy questions
+- Uses your custom prompt action that:
+  1. Takes the user's question
+  2. Searches your AI Search index for relevant policy documents
+  3. Sends both the question and retrieved documents to Command R+
+  4. Command R+ generates an accurate, cited answer
+  5. Returns the answer to the user
+
+This is the complete BYOM + BYOD integration! The flow is:
+```
+User Question → Topic → Custom Action → AI Search (retrieves docs) → Command R+ (generates answer) → User sees answer
+```
 
 ## ✅ Mission Complete
 
