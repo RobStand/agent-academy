@@ -357,7 +357,7 @@ Now you will add the IT sample documents to Azure AI Foundry.
 
     Enter the details.
 
-    **Subscription** - The subscription you're using for this lab.
+    **Subscription** - The subscription you're using for this lab
 
     **Resource group** - The resource group you created for the AI Foundry project
 
@@ -365,7 +365,7 @@ Now you will add the IT sample documents to Azure AI Foundry.
 
     **Location** - Select a region where you created your AI Foundry project or another region near you
 
-    **Pricing tier** - Select `Free` since you are using a small set of documents
+    **Pricing tier** - Select `Basic`. The free tier does not include semantic ranking
 
     Select **Review + create**, then **Create**.
 
@@ -375,7 +375,15 @@ Now you will add the IT sample documents to Azure AI Foundry.
 
     ![Connection complete](./assets/7-search-service-complete.png)
 
-1. The AI Search resource is now available. Go back to AI Foundry to select the AI Search service you created. In the **Select Azure AI Search service** dropdown, select **Connect other Azure AI Search resource**.
+1. The AI Search resource is now available. Now is a good time to take note of the search service endpoint URL and the API key. You'll need these when you add AI Search as a knowledge source in Copilot Studio.
+
+    Select **Go to resource**.
+
+    The endpoint URL is displayed under **Essentials**.
+
+    The admin keys are in **Settings** → **Keys**.
+
+1. Go back to AI Foundry to select the AI Search service you created. In the **Select Azure AI Search service** dropdown, select **Connect other Azure AI Search resource**.
 
 1. In the **Connect an existing resource** window, you should see the Azure AI Search resource you created. Select **Add connection** next to the resource.
 
@@ -410,27 +418,23 @@ Now it's time connect both your Azure AI Search knowledge source and Cohere Comm
 
 Now you'll connect your IT policies search index as a knowledge source.
 
-1. In your agent, go to **Knowledge** in the left navigation.
+1. In your agent, select the **Knowledge** tab in the navigation bar. Select **+ Add knowledge**.
 
-1. Click **+ Add knowledge**.
-
-1. Select **Azure AI Search**.
+1. Select **Azure AI Search**. Select the dropdown under **Your connections** and select **Create new connection**
 
 1. Configure the connection:
-    - **Connection**: Select your AI Search connection from Azure AI Foundry
-    - **Index name**: Select `it-policies-index`
-    - **Query type**: Select **Vector + Semantic** (best results with Command R+)
-    - **Top K results**: `5` (number of document chunks to retrieve per query)
 
-1. Test the connection by entering a sample query in the test box:
+    - **Authentication type**: Access key
+    - **Azure AI Search Endpoint URL**: Your AI Search service endpoint URL
+    - **Azure AI Search Admin Key**: Your AI Search service admin key
 
-    ```text
-    password policy
-    ```
+    ![Configure AI Search connection](./assets/7-configure-ai-search-connection.png)
 
-1. Review the test results to verify documents are being retrieved correctly.
+1. Select **Create**. You'll see the index you create in AI Foundry automatically selected.
 
-1. Click **Add** to add the knowledge source.
+    Select **Add to agent**
+
+    ![Select AI Search index](./assets/7-select-ai-search-index.png)
 
 1. Verify the knowledge source appears in your list.
 
@@ -660,3 +664,14 @@ These capabilities unlock powerful enterprise scenarios and allow you to create 
 📺 [Bring Your Own AI Models to Copilot Studio](https://www.youtube.com/watch?v=example)
 
 📺 [Grounding Copilot with Azure AI Search](https://www.youtube.com/watch?v=example)
+
+```text
+"How much PTO do I get after 5 years?"
+"What's the 401k match?"
+"Can I work remotely from Canada for 2 weeks?"
+"What's covered by the home office stipend?"
+"How many weeks of parental leave for non-birth parents?"
+"What holidays does Contoso observe?"
+"How do I request bereavement leave?"
+"What's the tuition reimbursement limit?"
+```
