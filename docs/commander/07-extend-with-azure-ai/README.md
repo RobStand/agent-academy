@@ -235,17 +235,19 @@ Understanding how these capabilities integrate with your agent helps you design 
     - Optimize model selection and data retrieval strategies.
     - Continuously improve based on user feedback.
 
-## 🧪 Lab 7.1: Deploy a model in Azure AI Foundry
-
-In this lab, you'll put BYOM into practice by deploying an AI model that you will use in your agent. You'll deploy the Cohere Command R+ model, which is specifically optimized for retrieval-augmented generation (RAG) and knowledge base applications.
+## 🧪Lab 7.1: BYOD from AI Search to your agent
 
 ### Prerequisites to complete this mission
 
-1. An active Azure subscription with permissions to create resources. If you don't have an Azure subscription, you can [sign up for one](/azure.microsoft.com/pricing/purchase-options/azure-account)
+1. An active Azure subscription with permissions to create resources
 
 1. Access to [Azure AI Foundry](https://ai.azure.com) through your Azure account
 
-1. Sample documents from [IT documentation](https://download-directory.github.io/?url=https://github.com/RobStand/agent-academy/tree/main/docs/commander/07-extend-with-azure-ai/assets/it-documentation&filename=commander_sampledata).
+1. Sample documents from [IT policies](https://download-directory.github.io/?url=https://github.com/RobStand/agent-academy/tree/main/docs/commander/07-extend-with-azure-ai/assets/it-documentation&filename=commander_sampledata).
+
+1. [HR policy training data](./assets/hr-policies/hr_policy_training_data.jsonl)
+
+First we will set up an AI Search index for the IT policies. You'll use this index as a knowledge source in Copilot Studio later.
 
 ### 7.1.1 Create AI Foundry resources
 
@@ -262,50 +264,9 @@ In this lab, you'll put BYOM into practice by deploying an AI model that you wil
     Select **Create**.
     ![Create AI Foundry project](./assets/7-create-ai-foundry-project.png)
 
-### 7.1.2 Deploy a model
+### 7.1.2 Add the IT policies to AI Foundry
 
-Now that you have AI Foundry resources set up, you can deploy a model.
-
-We're using `Cohere Command R+` because it is the ideal model choice for this scenario. It is specifically designed for document Q&A. It is excellent at technical and policy language and automatically generates accurate inline citations. It stays faithful to source documents, minimizing hallucinations, and handles lengthy policy documents with ease.
-
-1. In the left-hand navigation, select **Models + endpoints**.
-
-1. Select **Deploy model**, then select **Deploy base model**.
-
-    ![Deploy base model](./assets/7-deploy-base-model.png)
-
-1. Search for `Cohere-command-r-plus`.
-
-    Select the `Cohere-command-r-plus-08-2024` model and select **Confirm**.
-    ![Search model catalog](./assets/7-search-model-catalog.png)
-
-1. Because `Cohere-command-r-plus` is available through the Azure Marketplace, AI Foundry will ask you to agree to the Terms of use to proceed with the deployment.
-
-    Select **Agree and Proceed**.
-    ![Deploy from Azure Marketplace](./assets/7-deploy-from-marketplace.png)
-
-1. Leave the default **Deployment name** as `Cohere-command-r-plus-08-2024`. The deployment name will appear in Copilot Studio when you connect to it later, so you will want a memorable name that helps you identify the model easily.
-
-    Select **Deploy**.
-    ![Deploy model](./assets/7-deploy-model.png)
-
-1. AI Foundry displays the details of your model deployment. Note the following information from the model deployment, as you'll need it later:
-
-    - **Target URI**: This is the URL for our model's endpoint.
-    - **API Key**: This is the primary key for authentication.
-    - **Deployment name**: This is the name you chose (or left default) when deploying the model.
-
-    ![Deployment complete](./assets/7-model-deployment-details.png)
-
-**Important:** Keep your API key secure. Don't share it or commit it to source control.
-
-## 🧪Lab 7.2: Create Azure AI Search resource in Azure AI Foundry
-
-Now let's set up the AI Search index for the IT policies and documentation. You'll use this index as a knowledge source in Copilot Studio later.
-
-### 7.2.1 Add data
-
-Now you will add the IT sample documents to Azure AI Foundry.
+Now you will add the IT policy documents to Azure AI Foundry.
 
 1. In **Azure AI Foundry**, in the left navigation, select **Data + indexes**.
 
@@ -319,7 +280,7 @@ Now you will add the IT sample documents to Azure AI Foundry.
 
 1. Select `Upload files or folder`, then `Upload files`.
 
-1. Navigate to the folder containing the sample files, select all of them, and select **Open**.
+1. Navigate to the folder containing the IT policy documents, select all of files, and select **Open**.
 
     Select **Next**.
 
@@ -333,7 +294,7 @@ Now you will add the IT sample documents to Azure AI Foundry.
 
     ![Uploaded documents](./assets/7-uploaded-data.png)
 
-### 7.2.2 Create the index
+### 7.1.3 Create the index
 
 1. In **Azure AI Foundry**, in the left navigation, select **Data + indexes**.
 
@@ -347,7 +308,7 @@ Now you will add the IT sample documents to Azure AI Foundry.
 
    In the **Data source** dropdown, choose `Data in Azure AI Foundry`.
 
-1. Select the `it-policies-guides` folder.
+1. Select the `it-policies` folder.
 
     Select **Next**.
 
@@ -385,13 +346,13 @@ Now you will add the IT sample documents to Azure AI Foundry.
 
 1. Go back to AI Foundry to select the AI Search service you created. In the **Select Azure AI Search service** dropdown, select **Connect other Azure AI Search resource**.
 
-1. In the **Connect an existing resource** window, you should see the Azure AI Search resource you created. Select **Add connection** next to the resource.
+1. In the **Connect an existing resource** window, you will see the Azure AI Search resource you created. Select **Add connection** next to the resource.
 
     ![Connect existing AI Search resource](./assets/7-connect-existing-resource.png)
 
 1. In the **Select Azure AI Search service** dropdown, select your AI Search service.
 
-1. For **Vector index**, enter `it-policies-guides-index`.
+1. For **Vector index**, enter `it-policies-index`.
 
     Select **Next**.
 
@@ -406,17 +367,9 @@ Now you will add the IT sample documents to Azure AI Foundry.
 
 Excellent work! You've successfully created an Azure AI Search index with vector embeddings. Your IT policy documents are now searchable and ready to be used as a knowledge source for your Copilot Studio agent.
 
-## 🧪Lab 7.3:  Configure the agent with Azure AI capabilities
+### 7.1.4 Add Azure AI Search as knowledge source
 
-Now it's time connect both your Azure AI Search knowledge source and Cohere Command R+ model to create an intelligent IT Policy Assistant.
-
-### 7.3.1 Agent set up
-
-***Does an agent already exist from a previous step? Or should the user create a new one?***
-
-### 7.3.2 Add Azure AI Search as knowledge source
-
-Now you'll connect your IT policies search index as a knowledge source.
+Now you'll connect your AI Search index as a knowledge source for your agent.
 
 1. In your agent, select the **Knowledge** tab in the navigation bar. Select **+ Add knowledge**.
 
@@ -438,203 +391,35 @@ Now you'll connect your IT policies search index as a knowledge source.
 
 1. Verify the knowledge source appears in your list.
 
-### 7.3.3: Create a custom prompt action using Command R+
+## 🧪 Lab 7.2: Deploy a model in Azure AI Foundry
 
-Now you'll create a custom prompt action that explicitly uses Cohere Command R+ with your AI Search knowledge source. This demonstrates the BYOM (Bring Your Own Model) capability.
+In this lab, you'll put BYOM into practice by deploying a fine-tuned model that you will use in your agent.
 
-**Why use a custom prompt action?**
-- Makes the RAG (Retrieval-Augmented Generation) flow explicit and transparent
-- You control exactly how the model receives search results
-- Demonstrates the full integration between AI Search and your custom model
-- Allows fine-tuned control over the prompt and response format
+### 7.2.2 Deploy a model
 
-1. In your copilot, go to **Actions** in the left navigation.
+1. In the left-hand navigation, select **Models + endpoints**.
 
-    ![Select Actions](./assets/lab3_14_SelectActions.png)
+1. Select **Deploy model**, then select **Deploy base model**.
 
-1. Click **+ Add an action**.
+    ![Deploy base model](./assets/7-deploy-base-model.png)
 
-    ![Add action](./assets/lab3_15_AddAction.png)
+1. Search for `gpt-4.1-mini`.
 
-1. Select **Create a prompt** (may also be labeled "Prompt action" or "Custom prompt").
+    Select the `gpt-4.1-mini` model and select **Confirm**.
+    ![Search model catalog](./assets/7-search-model-catalog.png)
 
-    ![Create prompt action](./assets/lab3_16_CreatePromptAction.png)
+1. Enter `gpt-4.1-mini-tuned` in **Deployment name**.
 
-1. Configure the basic action details:
-    - **Name**: `Search IT Policies with Command R+`
-    - **Description**: `Searches IT policy documents and generates accurate answers with citations using Cohere Command R+`
+    Select **Deploy**.
 
-    ![Configure action details](./assets/lab3_17_ConfigureActionDetails.png)
+1. AI Foundry displays the details of your model deployment. Note the following information from the model deployment, as you'll need it later:
 
-1. Click **Next** or navigate to the **Input** section.
+    - **Target URI**: This is the URL for our model's endpoint.
+    - **API Key**: This is the primary key for authentication.
+    - **Deployment name**: This is the name you chose (or left default) when deploying the model.
 
-1. Add an input parameter by clicking **+ Add input**:
-    - **Name**: `UserQuestion`
-    - **Type**: **Text**
-    - **Description**: `The user's question about IT policies`
-    - **Sample data**: `What is the password policy?`
-    - **Required**: Yes ✓
+**Important:** Keep your API key secure. Don't share it or commit it to source control.
 
-    ![Add input parameter](./assets/lab3_18_AddInputParameter.png)
-
-1. Click **Next** or navigate to the **Prompt** section.
-
-1. In the **Prompt** section, configure the connection to your AI Search index:
-    - Click **Add data source** or **Connect to data**
-    - Select **Azure AI Search**
-    - Choose your connection and index: `it-policies-guides-index`
-    - **Search type**: Vector + Semantic
-    - **Top K**: 5
-
-    ![Connect AI Search to prompt](./assets/lab3_19_ConnectAISearch.png)
-
-1. Now configure the connection to Cohere Command R+:
-    - Look for **Model** or **Generative AI** section
-    - Select **Use custom Azure endpoint** or **Azure AI Foundry**
-    - **Endpoint URL**: Enter your Command R+ endpoint from Lab 2
-    - **API Key**: Enter your API key from Lab 2
-    - **Deployment name**: `cohere-command-r-plus`
-    - **API Version**: Latest
-
-    ![Configure Command R+ connection](./assets/lab3_20_ConfigureCommandR.png)
-
-1. In the **Prompt** text area, enter the following prompt that combines the user question with retrieved documents:
-
-    ```text
-    You are an IT Policy Assistant for Contoso. Answer the user's question using ONLY the information from the provided IT policy documents below.
-
-    ## Instructions
-    - Provide accurate, helpful answers based solely on the documents
-    - Include citations in this format: [Document Name]
-    - If the information is not in the documents, say: "This information is not in our IT policies. Contact IT Support at helpdesk@contoso.com or 1-800-CONTOSO."
-    - Be clear, professional, and concise
-    - Explain technical terms when needed
-
-    ## Retrieved Policy Documents
-    {{DataSources}}
-
-    ## User Question
-    {{UserQuestion}}
-
-    ## Your Response
-    Provide a clear answer with proper citations:
-    ```
-
-    ![Enter prompt template](./assets/lab3_21_EnterPromptTemplate.png)
-
-    **Note:** The `{{DataSources}}` variable will be automatically populated with the chunks retrieved from AI Search. The `{{UserQuestion}}` references your input parameter.
-
-1. Click **Next** or navigate to the **Output** section.
-
-1. Configure the output:
-    - **Name**: `PolicyAnswer`
-    - **Type**: **Text**
-    - **Description**: `The answer generated by Command R+ based on IT policies`
-
-    ![Configure output](./assets/lab3_22_ConfigureOutput.png)
-
-1. Click **Save** to save your custom prompt action.
-
-    ![Save action](./assets/lab3_23_SaveAction.png)
-
-### 7.3.4: Add the custom action to a topic
-
-Now you'll create a topic that uses this custom prompt action to answer IT policy questions.
-
-1. Go to **Topics** in the left navigation.
-
-    ![Select Topics](./assets/lab3_24_SelectTopics.png)
-
-1. Click **+ New topic** → **From blank**.
-
-    ![Create new topic](./assets/lab3_25_CreateNewTopic.png)
-
-1. Name the topic: `IT Policy Questions`
-
-    ![Name topic](./assets/lab3_26_NameTopic.png)
-
-1. Add trigger phrases by clicking **Edit** under "Trigger phrases":
-    - "I have a question about policy"
-    - "What is the policy for"
-    - "Tell me about"
-    - "How do I"
-    - "What should I do"
-    - "password policy"
-    - "VPN setup"
-    - "software request"
-    
-    (Add more based on your policy documents)
-
-    ![Add trigger phrases](./assets/lab3_27_AddTriggerPhrases.png)
-
-1. Click **+** to add a node, then select **Ask a question**.
-
-    ![Add question node](./assets/lab3_28_AddQuestionNode.png)
-
-1. Configure the question node:
-    - **Message**: `What would you like to know about our IT policies?`
-    - **Identify**: Select **User's entire response**
-    - **Save response as**: `Topic.UserQuestion`
-
-    ![Configure question](./assets/lab3_29_ConfigureQuestion.png)
-
-1. Click **+** below the question node and select **Call an action**.
-
-    ![Add action node](./assets/lab3_30_AddActionNode.png)
-
-1. Select your custom action: **Search IT Policies with Command R+**
-
-    ![Select custom action](./assets/lab3_31_SelectCustomAction.png)
-
-1. Map the input parameter:
-    - For **UserQuestion** input, click the **>** icon
-    - Select **Topic.UserQuestion** (the variable from your question node)
-
-    ![Map input parameter](./assets/lab3_32_MapInputParameter.png)
-
-1. Click **+** below the action node and select **Send a message**.
-
-    ![Add message node](./assets/lab3_33_AddMessageNode.png)
-
-1. In the message node, click **Insert variable** (the `{x}` icon).
-
-    ![Insert variable](./assets/lab3_34_InsertVariable.png)
-
-1. Select the output from your action: **PolicyAnswer**
-
-    ![Select policy answer variable](./assets/lab3_35_SelectPolicyAnswerVariable.png)
-
-1. The message node should now show: `{Topic.PolicyAnswer}`
-
-    ![Message with variable](./assets/lab3_36_MessageWithVariable.png)
-
-1. Add one more node: Click **+** and select **Send a message**.
-
-1. Configure this message to ask for follow-up:
-
-    ```text
-    Do you have any other questions about our IT policies?
-    ```
-
-    ![Add follow-up message](./assets/lab3_37_AddFollowUpMessage.png)
-
-1. **Save** the topic.
-
-    ![Save topic](./assets/lab3_38_SaveTopic.png)
-
-**What you've built:**
-- A custom topic that triggers on IT policy questions
-- Uses your custom prompt action that:
-  1. Takes the user's question
-  2. Searches your AI Search index for relevant policy documents
-  3. Sends both the question and retrieved documents to Command R+
-  4. Command R+ generates an accurate, cited answer
-  5. Returns the answer to the user
-
-This is the complete BYOM + BYOD integration! The flow is:
-```
-User Question → Topic → Custom Action → AI Search (retrieves docs) → Command R+ (generates answer) → User sees answer
-```
 
 ## ✅ Mission Complete
 
