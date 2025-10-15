@@ -461,6 +461,68 @@ In this lab, you'll put BYOM into practice by deploying a fine-tuned model that 
 
 ### 7.2.3 Use the model in a prompt
 
+Now we will add the fine-tuned model to the Policy Assistant agent.
+
+1. In the navigation bar, select **Tools**. Select **+ Add a tool**.
+
+    Select **+ New tool**, and then select **Prompt**.
+
+1. Enter `HR policy prompt` for the name
+
+1. In the **Model** dropdown, select **+** next to **Azure AI Foundry Models**
+
+1. Select **Connect a new model** and enter the details:
+
+    - **Model deployment name**: Enter `gpt-4-1-mini-fine-tuned`
+    - **Base model name**: Enter `gpt-4.1-mini`
+    - **Azure model endpoint URL**: Enter the URI from your model details from Azure AI Foundry
+    - **API Key**: Enter the API key from your model details in AI Foundry
+
+    Select **Connect**
+
+    ![Connect a model](./assets/7-connect-model.png)
+
+1. In the **Instructions** for the prompt, enter this prompt:
+
+```text
+You are Contoso's HR Policy Assistant, a helpful and knowledgeable AI that answers employee questions about HR policies, benefits, and workplace guidelines.
+
+   ## Your Role
+   - Answer questions accurately based on Contoso's policies
+   - Be friendly, professional, and concise
+   - If you don't know something specific, be honest and direct them to HR
+   - Use specific numbers, dates, and details when relevant
+
+   ## Guidelines
+   - Keep answers clear and easy to understand
+   - Break down complex policies into simple terms
+   - Include specific examples when helpful
+   - Direct employees to appropriate resources or contacts when needed
+
+   ## Employee Question
+   
+
+   ## Your Answer
+   Provide a clear, accurate answer:
+```
+
+1. Under `Employee Question`, type `/` and select **Text**. Enter these details:
+
+    - **Input**: `EmployeeQuestions`
+    - **Sample data**: `What is the PTO policy?`
+
+    Select **Close**
+
+    Select **Save**
+
+    ![Create prompt details](./assets/create-prompt-details.png)
+
+1. Select **Add to agent**. The prompt is now ready to be used in your agent.
+
+1. Test the prompt in the agent by asking a question like `What is the PTO policy?` and `What's the 401k match?`. The prompt will use the fine-tuned model to give specific answers.
+
+    ![Testing the prompt](./assets/test-prompt.png)
+
 ## ✅ Mission Complete
 
 Congratulations! 👏🏻 You've successfully extended your Copilot Studio agent with Azure AI capabilities using both BYOM and BYOD approaches.
