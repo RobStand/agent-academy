@@ -397,20 +397,49 @@ In this lab, you'll put BYOM into practice by deploying a fine-tuned model that 
 
 ### 7.2.2 Deploy a model
 
-1. In the left-hand navigation, select **Models + endpoints**.
+1. In the left-hand navigation, select **Fine-tuning**.
 
-1. Select **Deploy model**, then select **Deploy base model**.
+1. Select **+ Fine-tune model**. Search for `gpt-4.1-mini`.
 
-    ![Deploy base model](./assets/7-deploy-base-model.png)
-
-1. Search for `gpt-4.1-mini`.
-
-    Select the `gpt-4.1-mini` model and select **Confirm**.
+    Select the `gpt-4.1-mini` model and select **Next**.
     ![Search model catalog](./assets/7-search-model-catalog.png)
 
-1. Enter `gpt-4.1-mini-tuned` in **Deployment name**.
+1. You get a confirmation that a new Azure OpenAI resource will be created. 
 
-    Select **Deploy**.
+    Select **Confirm**.
+
+1. Now enter the details for your fine-tuned model:
+
+    - **Connected AI resource**: This defaults to the OpenAI resource that was created for you
+    - **Method**: Select `Supervised`
+    - **Base model**: Select the `gpt-4.1-mini` model
+    - **Training type**: Select `Standard`
+    - **Automatically deploy when fine-tuning is complete**: Select `Yes`
+    - **Deployment type**: Select Developer
+
+    ![Create fine-tuned model](./assets/7-create-fine-tuned-model.png)
+
+1. Now it's time to add your training data.
+
+    Select **+ Add training data**
+
+    In the **Training data** dropdown, select **Upload files**
+
+    Select **Upload file**
+
+    Navigate to the folder containing the `hr_policy_training_data.jsonl` file. Select it and select **Open**.
+
+    Select **Apply**
+
+    ![Fine tune the model](./assets/7-fine-tune-the-model.png)
+
+1. With your fine-tuned model details entered and your training data added, you're ready to create the model.
+
+    Select **Submit**.
+
+    ![Create the fine-tuned model](./assets/7-create-fine-tuned-model.png)
+
+1. AI Foundry will queue the fine-tuning job, and it will take some time to fine-tune the model. When the process is complete, the status will change from **Queued** to **Ready**.
 
 1. AI Foundry displays the details of your model deployment. Note the following information from the model deployment, as you'll need it later:
 
