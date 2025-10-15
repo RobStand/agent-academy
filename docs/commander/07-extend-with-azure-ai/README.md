@@ -518,9 +518,22 @@ Provide a clear, accurate answer
 
 1. Select **Add to agent**. The prompt is now ready to be used in your agent.
 
-1. Test the prompt in the agent by asking a question like `What is the PTO policy?` and `What's the 401k match?`. The prompt will use the fine-tuned model to give specific answers.
+1. Test the prompt in the agent by asking a question:
 
+    ```text
+    How much PTO do I get after 5 years?
+    What's the 401k match?
+    Can I work remotely from Canada for 2 weeks?
+    What's covered by the home office stipend?
+    How many weeks of parental leave for non-birth parents?
+    What holidays does Contoso observe?
+    How do I request bereavement leave?
+    What's the tuition reimbursement limit?
+    ```
+
+    The prompt will use the fine-tuned model to give specific answers.
     ![Testing the prompt](./assets/7-test-prompt.png)
+
 
 ## ✅ Mission Complete
 
@@ -551,13 +564,4 @@ These capabilities unlock powerful enterprise scenarios and allow you to create 
 
 📺 [Grounding Copilot with Azure AI Search](https://www.youtube.com/watch?v=example)
 
-```text
-"How much PTO do I get after 5 years?"
-"What's the 401k match?"
-"Can I work remotely from Canada for 2 weeks?"
-"What's covered by the home office stipend?"
-"How many weeks of parental leave for non-birth parents?"
-"What holidays does Contoso observe?"
-"How do I request bereavement leave?"
-"What's the tuition reimbursement limit?"
-```
+
