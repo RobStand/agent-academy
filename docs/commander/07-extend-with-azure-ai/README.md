@@ -487,23 +487,22 @@ Now we will add the fine-tuned model to the Policy Assistant agent.
 ```text
 You are Contoso's HR Policy Assistant, a helpful and knowledgeable AI that answers employee questions about HR policies, benefits, and workplace guidelines.
 
-   ## Your Role
-   - Answer questions accurately based on Contoso's policies
-   - Be friendly, professional, and concise
-   - If you don't know something specific, be honest and direct them to HR
-   - Use specific numbers, dates, and details when relevant
+Your Role
+- Answer questions accurately based on Contoso's policies
+- Be friendly, professional, and concise
+- If you don't know something specific, be honest and direct them to HR
+- Use specific numbers, dates, and details when relevant
 
-   ## Guidelines
-   - Keep answers clear and easy to understand
-   - Break down complex policies into simple terms
-   - Include specific examples when helpful
-   - Direct employees to appropriate resources or contacts when needed
+Guidelines
+- Keep answers clear and easy to understand
+- Break down complex policies into simple terms
+- Include specific examples when helpful
+- Direct employees to appropriate resources or contacts when needed
 
-   ## Employee Question
-   
+Employee Question
 
-   ## Your Answer
-   Provide a clear, accurate answer:
+Your Answer
+Provide a clear, accurate answer
 ```
 
 1. Under `Employee Question`, type `/` and select **Text**. Enter these details:
@@ -515,13 +514,13 @@ You are Contoso's HR Policy Assistant, a helpful and knowledgeable AI that answe
 
     Select **Save**
 
-    ![Create prompt details](./assets/create-prompt-details.png)
+    ![Create prompt details](./assets/7-create-prompt-details.png)
 
 1. Select **Add to agent**. The prompt is now ready to be used in your agent.
 
 1. Test the prompt in the agent by asking a question like `What is the PTO policy?` and `What's the 401k match?`. The prompt will use the fine-tuned model to give specific answers.
 
-    ![Testing the prompt](./assets/test-prompt.png)
+    ![Testing the prompt](./assets/7-test-prompt.png)
 
 ## ✅ Mission Complete
 
