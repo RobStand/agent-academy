@@ -391,7 +391,9 @@ Now you'll connect your AI Search index as a knowledge source for your agent.
 
 1. Verify the knowledge source appears in your list.
 
-## 🧪 Lab 7.2: Deploy a model in Azure AI Foundry
+1. TODO: Show the knowledge source working in the agent.
+
+## 🧪 Lab 7.2: BYOM from Azure AI Foundry to your agent
 
 In this lab, you'll put BYOM into practice by deploying a fine-tuned model that you will use in your agent.
 
@@ -414,10 +416,10 @@ In this lab, you'll put BYOM into practice by deploying a fine-tuned model that 
     - **Method**: Select `Supervised`
     - **Base model**: Select the `gpt-4.1-mini` model
     - **Training type**: Select `Standard`
-    - **Automatically deploy when fine-tuning is complete**: Select `Yes`
-    - **Deployment type**: Select Developer
+    - **Automatically deploy when fine-tuning is complete**: Select `No`
+    - **Deployment type**: Select `Developer`
 
-    ![Create fine-tuned model](./assets/7-create-fine-tuned-model.png)
+    ![Create the fine-tuned model](./assets/7-create-fine-tuned-model.png)
 
 1. Now it's time to add your training data.
 
@@ -437,9 +439,15 @@ In this lab, you'll put BYOM into practice by deploying a fine-tuned model that 
 
     Select **Submit**.
 
-    ![Create the fine-tuned model](./assets/7-create-fine-tuned-model.png)
+1. AI Foundry will queue the fine-tuning job, and it will take some time to fine-tune the model. When the process is complete, the status will change from **Queued** to **Completed**.
 
-1. AI Foundry will queue the fine-tuning job, and it will take some time to fine-tune the model. When the process is complete, the status will change from **Queued** to **Ready**.
+    ![Fine-tuned model](./assets/7-fine-tuning.png)
+
+1. Now it's time to deploy the fine-tuned model. Select **Use this model**.
+
+1. Enter `gpt-4.1-mini-fine-tuned` for the **Deployment name**
+
+    Select **Deploy**
 
 1. AI Foundry displays the details of your model deployment. Note the following information from the model deployment, as you'll need it later:
 
@@ -447,8 +455,11 @@ In this lab, you'll put BYOM into practice by deploying a fine-tuned model that 
     - **API Key**: This is the primary key for authentication.
     - **Deployment name**: This is the name you chose (or left default) when deploying the model.
 
+    ![Fine tuned model](./assets/7-model-deployment-details.png)
+
 **Important:** Keep your API key secure. Don't share it or commit it to source control.
 
+### 7.2.3 Use the model in a prompt
 
 ## ✅ Mission Complete
 
