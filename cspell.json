@@ -3,6 +3,7 @@
   "language": "en",
   "words": [
     "Anson",
+    "appname",
     "applicationnumber",
     "BYOM",
     "candidateid",
@@ -46,10 +47,13 @@
     "superfences",
     "tasklist",
     "Tele",
+    "TESTPERSON",
     "touchpoints",
     "UPIA",
     "upserts",
     "Venv",
+    "viewid",
+    "utcnow",
     "Weinstock",
     "XPIA",
     "Yendys"

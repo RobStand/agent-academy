@@ -4,6 +4,10 @@
 
 > **⏱️ Operation Time Window:** `~60 minutes`
 
+🎥 **Watch the Walkthrough**
+
+[![Trigger video thumbnail](./assets/video-thumbnail.jpg)](https://www.youtube.com/watch?v=7iPAZaA8nJs "Watch the walkthrough on YouTube")
+
 ## 🎯  Mission Brief
 
 You’ve built an agent. It listens, learns, and answers questions - but now it’s time to get more tactical. In this mission, you’ll go deep under the hood and teach your agent how to respond to specific prompts with precision.
@@ -430,6 +434,10 @@ Agent responds with,
 ## 🧪 Lab 07 - Add a new topic with conversation nodes
 
 We're now going to learn how to add a new topic with a trigger and tools. This lab will cover creating a topic from blank so that you understand how to customize topics to your needs.
+
+- [7.1 Add a new topic from blank](#71-add-a-new-topic-from-blank)
+- [7.2 Define the trigger inputs and outputs](#72-define-the-trigger-inputs-and-outputs)
+- [7.3 Add a tool using a connector](#73-add-a-tool-using-a-connector)
 
 ### ✨ Use case
 
