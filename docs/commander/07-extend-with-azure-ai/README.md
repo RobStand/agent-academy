@@ -235,7 +235,7 @@ Understanding how these capabilities integrate with your agent helps you design 
     - Optimize model selection and data retrieval strategies.
     - Continuously improve based on user feedback.
 
-## 🧪Lab 7.1: BYOD from AI Search to your agent
+## 🧪Lab 7.1: Configure the Azure resources
 
 ### Prerequisites to complete this mission
 
@@ -243,131 +243,129 @@ Understanding how these capabilities integrate with your agent helps you design 
 
 1. Access to [Azure AI Foundry](https://ai.azure.com) through your Azure account
 
-1. Sample documents from [IT policies](https://download-directory.github.io/?url=https://github.com/RobStand/agent-academy/tree/main/docs/commander/07-extend-with-azure-ai/assets/it-documentation&filename=commander_sampledata).
+1. Sample documents from [IT policies](https://download-directory.github.io/?url=https://github.com/RobStand/agent-academy/tree/main/docs/commander/07-extend-with-azure-ai/assets/it-documentation&filename=commander_sampledata)
 
-1. [HR policy training data](./assets/hr-policies/hr_policy_training_data.jsonl)
+### 7.1.1 Create a resource group
+
+The first thing to do is to create a resource group that will organize all of the various Azure resources you need for the labs.
+
+1. Navigate to [Azure portal](https://portal.azure.com) and log in
+1. Select **Resource groups**
+1. Select **+ Create**
+1. Configure the resource group:
+
+    - **Subscription**: Choose the Azure subscription you want to use
+    - **Resource group name**: Enter `rg-commander-workshop`
+    - **Region**: Choose the region closest to you
+  
+    [Create the resource group](assets/7-create-azure-resource-group.png)
+
+1. Select **Review + create**, then **Create**
+1. Wait a little bit for Azure to create the resource group
+1. When it's finished, select **Go to resource** and Azure will load your new resource group
+
+    [Deployed resource group](assets/7-deployed-resource-group.png)
+
+Now you are ready to create the Azure services you need for the labs.
+
+### 7.1.2 Create an Azure OpenAI service
+
+Next, you need an Azure OpenAI service.
+
+1. In your resource group, select **+ Create**
+1. Search for `Azure OpenAI`
+1. Select **Azure services only**
+1. In the results, look for **Azure OpenAI** and select **Create**, then **Azure OpenAI**
+1. Configure the new Azure OpenAI service:
+
+    - **Subscription**: Choose the Azure subscription you want to use
+    - **Resource group**: Select `rg-commander-workshop`
+    - **Region**: Choose the region you selected for your resource group
+    - **Name**: Enter a unique name for the service
+    - **Pricing tier**: Choose `Standard SO`
+
+    [Create Azure OpenAI service](assets/7-create-azure-openai-service.png)
+
+1. Select **Next** to navigate through the options
+1. Select **Create**
+
+Azure will deploy your new OpenAI service and you're ready to proceed.
+
+### 7.1.3 Set up Azure AI Foundry
+
+You need an Azure AI Foundry resource and project to manage the models you'll use in the BYOD and BYOM labs.
+
+1. Navigate to your resource group in Azure portal and select **+ Create**
+1. Search for `AI Foundry`
+1. In the results, look for **Azure AI Foundry** and select **Create**, then **Azure AI Foundry**
+1. Configure the AI Foundry resource:
+
+    - **Subscription**: Choose the Azure subscription you want to use
+    - **Resource group**: Select `rg-commander-workshop`
+    - **Name**: Enter a unique name for the AI Foundry resource
+    - **Region**: Choose the region you selected for your resource group
+    - **Default project name**: Enter `commander-workshop-7`
+
+    [Create AI Foundry resource](assets/7-create-ai-foundry-resource.png)
+
+1. Select **Next to navigate through the options
+1. Select **Create**
+
+Your AI Foundry resource and project are ready.
+
+### 7.1.4 Set up Azure Blob Storage
+
+Next, you'll create a storage account and upload the policy documents to it to use in the BYOD lab.
+
+1. Navigate to your resource group in Azure portal and select **+ Create**
+1. Search for `Storage Account`
+1. In the results, look for **Storage Account** and select **Create**, then **Storage Account**
+1. Configure the Storage Account resource:
+
+    - **Subscription**: Choose the Azure subscription you want to use
+    - **Resource group**: Select `rg-commander-workshop`
+    - **Storage account name**: Enter a unique name for the AI Foundry resource
+    - **Region**: Choose the region you selected for your resource group
+    - **Preferred storage type**: Choose `Azure Blob Storage or Azure Data Lake Storage Gen 2`
+    - **Primary workload**: Choose **Backup and archive**
+    - **Performance**: Choose **Standard**
+
+    [Create storage account](assets/7-create-storage-account.png)
+
+1. Select **Review + create**, then **Create**.
+1. When Azure finishes deploying the storage account, select **Go to resource**
+1. In the left navigation, expand **Containers** and select **Add container**
+1. Enter `policies` in the **Name** field and select **Create**
+
+    [Create blob container](assets/7-create-blob-container.png)
+
+1. In the new `policies` container, on the toolbar, select **Upload**
+1. Select the IT policy documents you downloaded from GitHub
+1. Select **Upload**
+1. The policy documents will appear in the container
+
+    [Upload files to blob](assets/7-upload-files-to-blob.png)
+
+## 🧪Lab 7.2: BYOD from AI Search to your agent
+
+1. An active Azure subscription with resources created in Lab 7.1
+
+### 7.2.1 Create the AI Search service
 
 First we will set up an AI Search index for the IT policies. You'll use this index as a knowledge source in Copilot Studio later.
 
-### 7.1.1 Create AI Foundry resources
+1. Search for AI Search
+1. Create the service
 
-1. Navigate to [Azure AI Foundry](https://ai.azure.com) and sign in with your Azure credentials.
-    ![Navigate to AI Foundry](./assets/7-navigate-ai-foundry.png)
+### 7.2.2 Import the policy documents
 
-1. Once you are logged in, navigate to [All resources](https://ai.azure.com/allResources) in AI Foundry.
+1. Import data
+1. Choose Azure Blob Storage
+1. Choose RAG
+1. Connect it to the deployed Open AI service
+1. Select the model deployment
 
-    Select **Create new**. Choose `AI hub resource` and select **Next**.
-    ![Create new AI hub resource](./assets/7-create-ai-hub-resource.png)
-
-1. Name your project `commander-workshop`. Rename the hub `commander-hub`. Expand **Advanced options** if you want to specify options, such as a specific resource group name. For this lab, you can accept the defaults.
-
-    Select **Create**.
-    ![Create AI Foundry project](./assets/7-create-ai-foundry-project.png)
-
-### 7.1.2 Add the IT policies to AI Foundry
-
-Now you will add the IT policy documents to Azure AI Foundry.
-
-1. In **Azure AI Foundry**, in the left navigation, select **Data + indexes**.
-
-    ![Select data and indexes](./assets/7-data-indexes.png)
-
-1. Select the **Data files** tab.
-
-    Select **+ New data**.
-
-1. Select `Upload files/folders` in the **Data source** dropdown.
-
-1. Select `Upload files or folder`, then `Upload files`.
-
-1. Navigate to the folder containing the IT policy documents, select all of files, and select **Open**.
-
-    Select **Next**.
-
-    ![Upload documents](./assets/7-add-documents-data.png)
-
-1. Enter `it-policies-guides` in **Data name**.
-
-    Select **Create**.
-
-1. The documents are now uploaded to AI Foundry and ready to be used.
-
-    ![Uploaded documents](./assets/7-uploaded-data.png)
-
-### 7.1.3 Create the index
-
-1. In **Azure AI Foundry**, in the left navigation, select **Data + indexes**.
-
-    Select the **Indexes** tab.
-
-    Select **+ New index**.
-
-    ![Select data and indexes](./assets/7-add-index.png)
-
-1. The **Create a vector index** window will load. This is where you will configure the index in AI Foundry.
-
-   In the **Data source** dropdown, choose `Data in Azure AI Foundry`.
-
-1. Select the `it-policies` folder.
-
-    Select **Next**.
-
-1. Now you need to create an Azure AI Search service to ingest your data. Select **Create a new Azure AI Search resource**.
-
-1. The Azure portal will open in a new window and display **Create a search service**.
-
-    Enter the details.
-
-    **Subscription** - The subscription you're using for this lab
-
-    **Resource group** - The resource group you created for the AI Foundry project
-
-    **Service name** - Enter a unique name for the service
-
-    **Location** - Select a region where you created your AI Foundry project or another region near you
-
-    **Pricing tier** - Select `Basic`. The free tier does not include semantic ranking
-
-    Select **Review + create**, then **Create**.
-
-    ![Enter AI Search service details](./assets/7-ai-search-configuration.png)
-
-1. Wait for the connection to complete (1-2 minutes). You'll see a confirmation message.
-
-    ![Connection complete](./assets/7-search-service-complete.png)
-
-1. The AI Search resource is now available. Now is a good time to take note of the search service endpoint URL and the API key. You'll need these when you add AI Search as a knowledge source in Copilot Studio.
-
-    Select **Go to resource**.
-
-    The endpoint URL is displayed under **Essentials**.
-
-    The admin keys are in **Settings** → **Keys**.
-
-1. Go back to AI Foundry to select the AI Search service you created. In the **Select Azure AI Search service** dropdown, select **Connect other Azure AI Search resource**.
-
-1. In the **Connect an existing resource** window, you will see the Azure AI Search resource you created. Select **Add connection** next to the resource.
-
-    ![Connect existing AI Search resource](./assets/7-connect-existing-resource.png)
-
-1. In the **Select Azure AI Search service** dropdown, select your AI Search service.
-
-1. For **Vector index**, enter `it-policies-index`.
-
-    Select **Next**.
-
-1. An embedding model is required for the vector index. In the **Embedding model** dropdown, choose `text-embedding-3-small`. This is a good, low cost embedding model for this scenario.
-
-    Select **Next**.
-    ![Configure search settings](./assets/7-configure-search-settings.png)
-
-1. Select **Create vector index**. The indexing process will begin automatically and may take a while.
-
-    ![Indexing complete](./assets/7-index-complete.png)
-
-Excellent work! You've successfully created an Azure AI Search index with vector embeddings. Your IT policy documents are now searchable and ready to be used as a knowledge source for your Copilot Studio agent.
-
-### 7.1.4 Add Azure AI Search as knowledge source
+### 7.2.3 Add Azure AI Search as knowledge source
 
 Now you'll connect your AI Search index as a knowledge source for your agent.
 
@@ -393,7 +391,7 @@ Now you'll connect your AI Search index as a knowledge source for your agent.
 
 1. TODO: Show the knowledge source working in the agent.
 
-## 🧪 Lab 7.2: BYOM from Azure AI Foundry to your agent
+## 🧪 Lab 7.3: BYOM from Azure AI Foundry to your agent
 
 In this lab, you'll put BYOM into practice by deploying a fine-tuned model that you will use in your agent.
 
