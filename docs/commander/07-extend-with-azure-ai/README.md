@@ -316,8 +316,27 @@ Your AI Foundry resource and project are ready.
 ### 7.1.4 Deploy an embedding model
 
 1. Navigate to [Azure AI Foundry](https://ai.foundry.com)
-1. Connect the OpenAI service
-1. Deploy a model
+1. In the left-hand navigation, select **Management center**
+    ![Select management center](assets/7-foundry-select-management-center.png)
+1. Select **Connected resources**
+1. Select **+ New connection**
+1. Select **Azure OpenAI**
+    ![Create new connection](assets/7-foundry-new-connection.png)
+1. Select **Add connection** for the OpenAI service you created
+1. In the left-hand navigation, select **Go to project**
+1. Under **My assets** in the left-hand navigation, select **Models + endpoints**
+1. Select **Deploy model**, then select **Deploy base model**
+    ![Deploy base model](assets/7-foundry-deploy-base-model.png)
+1. Enter `text embedding` in the **search** box
+1. Select **text-embedding-ada-002**
+1. Select **Confirm**
+    ![Select embedding model](assets/7-foundry-search-embedding-model.png)
+1. Select **Customize**
+1. For **Connected AI resource**, select the Azure OpenAI resource that you created previously
+    ![Customize model deployment](assets/7-foundry-use-connected-resource.png)
+1. Select **Deploy**
+
+You now have an embedding model that you will use later in the BYOD lab.
 
 ### 7.1.5 Set up Azure Blob Storage
 
