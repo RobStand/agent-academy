@@ -323,6 +323,8 @@ Your AI Foundry resource and project are ready.
 1. Select **Azure OpenAI**
     ![Create new connection](assets/7-foundry-new-connection.png)
 1. Select **Add connection** for the OpenAI service you created
+    ![Add OpenAI connection](assets/7-foundry-add-openai-connection.png)
+1. Select **Close**
 1. In the left-hand navigation, select **Go to project**
 1. Under **My assets** in the left-hand navigation, select **Models + endpoints**
 1. Select **Deploy model**, then select **Deploy base model**
@@ -336,7 +338,7 @@ Your AI Foundry resource and project are ready.
     ![Customize model deployment](assets/7-foundry-use-connected-resource.png)
 1. Select **Deploy**
 
-You now have an embedding model that you will use later in the BYOD lab.
+You now have an embedding model that you will use in the BYOD lab.
 
 ### 7.1.5 Set up Azure Blob Storage
 
@@ -352,8 +354,8 @@ Next, you'll create a storage account and upload the policy documents to it to u
     - **Storage account name**: Enter a unique name for the storage account resource
     - **Region**: Choose the region you selected for your resource group
     - **Preferred storage type**: Choose `Azure Blob Storage or Azure Data Lake Storage Gen 2`
-    - **Primary workload**: Choose **Backup and archive**
-    - **Performance**: Choose **Standard**
+    - **Primary workload**: Choose `Backup and archive`
+    - **Performance**: Choose `Standard`
 
     ![Create storage account](assets/7-create-storage-account.png)
 
@@ -371,9 +373,15 @@ Next, you'll create a storage account and upload the policy documents to it to u
 
     ![Upload files to blob](assets/7-upload-files-to-blob.png)
 
-### 7.1.6 Create the AI Search service
+## 🧪Lab 7.2: BYOD from AI Search to your agent
 
-Now you need to create an Azure AI Search service to provide the "data" part of BYOD.
+1. An active Azure subscription with resources created in Lab 7.1
+
+In this lab, you use Azure AI Foundry and Azure AI Search to bring your own data from Azure to enhance the knowledge of a Copilot Studio agent.
+
+### 7.2.1 Create the AI Search service
+
+The first thing to do is to create an Azure AI Search service to provide the "data" part of BYOD.
 
 1. On the Azure portal home page, select `AI Search` under **Azure services**
 
@@ -385,30 +393,37 @@ Now you need to create an Azure AI Search service to provide the "data" part of 
     - **Resource group**: Select `rg-commander-workshop`
     - **Service name**: Enter a unique name for the service
     - **Region**: Choose the region you selected for your resource group
-    - **Pricing tier**: Select **Basic**
+    - **Pricing tier**: Select `Basic`
 
     ![Create AI Search service](assets/7-create-ai-search-service.png)
 
 1. Select **Review + create**, then **Create**
 1. When Azure finishes creating the service, select **Go to resource**
-1. Your AI Search service is ready to use
 
-With all the Azure resources successfully created and configured, you are ready to proceed with the BYOD lab.
-
-## 🧪Lab 7.2: BYOD from AI Search to your agent
-
-1. An active Azure subscription with resources created in Lab 7.1
-
-In this lab, you use Azure AI Foundry and Azure AI Search to bring your own data from Azure to enhance the knowledge of a Copilot Studio agent.
-
-### 7.2.1 Import data into AI Search
+### 7.2.2 Import data into AI Search
 
 1. In your AI Search service, select **Import data (new)** on the tool bar
 
-    ![Deployed AI Search service](assets/7-deployed-ai-search-service.png)
+    ![Import data in AI Search](assets/7-ai-search-import-data.png)
 
 1. For **Choose a data source**, select **Azure Blob Storage**
+    ![Choose data source](assets/7-ai-search-choose-data-source.png)
 1. For **What scenario are you targeting?**, select **RAG**
+    ![Select target scenario](assets/7-ai-search-select-target-scenario.png)
+1. Configure the connection to Azure Blob Storage:
+
+    - **Subscription**: The Azure subscription you want to use
+    - **Storage account**: Select the storage account you created in Lab 7.1
+    - **Blob container**: Select `policies`
+    - **Parsing mode**: Select `Text`
+
+    ![Configure Azure Blob Storage](assets/7-ai-search-configure-blob-storage-connection.png)
+1. Select **Next**
+1. Configure the text vectorization:
+
+    - **Kind**: 
+
+
 1. Connect it to the deployed Open AI service
 1. Select the model deployment
 
