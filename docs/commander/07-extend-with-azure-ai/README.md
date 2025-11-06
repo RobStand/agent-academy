@@ -235,7 +235,9 @@ Understanding how these capabilities integrate with your agent helps you design 
     - Optimize model selection and data retrieval strategies.
     - Continuously improve based on user feedback.
 
-## 🧪Lab 7.1: Configure the Azure resources
+## 🧪Lab 7.1: Bring your own data from Azure to your agent
+
+In this lab, you use Azure AI Foundry and Azure AI Search to bring your own data from Azure to enhance the knowledge of a Copilot Studio agent.
 
 ### Prerequisites to complete this mission
 
@@ -245,114 +247,48 @@ Understanding how these capabilities integrate with your agent helps you design 
 
 1. Sample documents from [IT policies](https://download-directory.github.io/?url=https://github.com/RobStand/agent-academy/tree/main/docs/commander/07-extend-with-azure-ai/assets/it-documentation&filename=commander_sampledata)
 
-### 7.1.1 Create a resource group
+### 7.1.1 Create an Azure AI Foundry resource
 
-The first thing to do is to create a resource group that will organize all of the various Azure resources you need for the labs.
-
-1. Navigate to [Azure portal](https://portal.azure.com) and log in
-1. Select **Resource groups**
-1. Select **+ Create**
-1. Configure the resource group:
-
-    - **Subscription**: Choose the Azure subscription you want to use
-    - **Resource group name**: Enter `rg-commander-workshop`
-    - **Region**: Choose the region closest to you
-  
-    ![Create the resource group](assets/7-create-azure-resource-group.png)
-
-1. Select **Review + create**, then **Create**
-1. Wait a little bit for Azure to create the resource group
-1. When it's finished, select **Go to resource** and Azure will load your new resource group
-
-    ![Deployed resource group](assets/7-deployed-resource-group.png)
-
-Now you are ready to create the Azure services you need for the labs.
-
-### 7.1.2 Create an Azure OpenAI service
-
-Next, you need an Azure OpenAI service.
-
-1. In your resource group, select **+ Create**
-1. Search for `Azure OpenAI`
-1. Select **Azure services only**
-1. In the results, look for **Azure OpenAI** and select **Create**, then **Azure OpenAI**
-1. Configure the new Azure OpenAI service:
-
-    - **Subscription**: Choose the Azure subscription you want to use
-    - **Resource group**: Select `rg-commander-workshop`
-    - **Region**: Choose the region you selected for your resource group
-    - **Name**: Enter a unique name for the service
-    - **Pricing tier**: Choose `Standard SO`
-
-    ![Create Azure OpenAI service](assets/7-create-azure-openai-service.png)
-
-1. Select **Next** to navigate through the options
-1. Select **Create**
-
-Azure will deploy your new OpenAI service and you're ready to proceed.
-
-### 7.1.3 Set up Azure AI Foundry
-
-You need an Azure AI Foundry resource and project to manage the models you'll use in the BYOD and BYOM labs.
-
-1. Navigate to your resource group in Azure portal and select **+ Create**
-1. Search for `AI Foundry`
-1. In the results, look for **Azure AI Foundry** and select **Create**, then **Azure AI Foundry**
+1. On the Azure portal home page, select `Azure AI Foundry` under **Azure services** or search for it in the **Search** box
+1. Select **Create a resource**
+    ![Create AI Foundry resource](assets/7-create-ai-foundry-resource.png)
 1. Configure the AI Foundry resource:
 
     - **Subscription**: Choose the Azure subscription you want to use
-    - **Resource group**: Select `rg-commander-workshop`
+    - **Resource group**: Select **Create new** and name it `rg-commander-workshop`
     - **Name**: Enter a unique name for the AI Foundry resource
-    - **Region**: Choose the region you selected for your resource group
+    - **Region**: Choose the region closest to you
     - **Default project name**: Enter `commander-workshop-7`
 
-    ![Create AI Foundry resource](assets/7-create-ai-foundry-resource.png)
+    ![Configure AI Foundry resource](assets/7-foundry-configure-resource.png)
 
-1. Select **Next** to navigate through the options
+1. Select **Next** to proceed through the options
 1. Select **Create**
 
-Your AI Foundry resource and project are ready.
-
-### 7.1.4 Deploy an embedding model
+### 7.1.2 Deploy an embedding model
 
 1. Navigate to [Azure AI Foundry](https://ai.foundry.com)
-1. In the left-hand navigation, select **Management center**
-    ![Select management center](assets/7-foundry-select-management-center.png)
-1. Select **Connected resources**
-1. Select **+ New connection**
-1. Select **Azure OpenAI**
-    ![Create new connection](assets/7-foundry-new-connection.png)
-1. Select **Add connection** for the OpenAI service you created
-    ![Add OpenAI connection](assets/7-foundry-add-openai-connection.png)
-1. Select **Close**
-1. In the left-hand navigation, select **Go to project**
 1. Under **My assets** in the left-hand navigation, select **Models + endpoints**
 1. Select **Deploy model**, then select **Deploy base model**
     ![Deploy base model](assets/7-foundry-deploy-base-model.png)
-1. Enter `text embedding` in the **search** box
-1. Select **text-embedding-ada-002**
+1. Enter `text embedding` in the **Search** box
+1. Select `text-embedding-ada-002`
 1. Select **Confirm**
     ![Select embedding model](assets/7-foundry-search-embedding-model.png)
-1. Select **Customize**
-1. For **Connected AI resource**, select the Azure OpenAI resource that you created previously
-    ![Customize model deployment](assets/7-foundry-use-connected-resource.png)
 1. Select **Deploy**
+    ![Deploy embedding model](assets/7-foundry-deploy-embedding-model.png)
 
-You now have an embedding model that you will use in the BYOD lab.
+### 7.1.3 Set up Azure Blob Storage
 
-### 7.1.5 Set up Azure Blob Storage
-
-Next, you'll create a storage account and upload the policy documents to it to use in the BYOD lab.
-
-1. Navigate to your resource group in Azure portal and select **+ Create**
-1. Search for `Storage Account`
-1. In the results, look for **Storage Account** and select **Create**, then **Storage Account**
+1. Navigate to the [Azure portal](https://portal.azure.com)
+1. Search for **Storage accounts** and select it in the search results
+1. Select **Create**
 1. Configure the Storage Account resource:
 
     - **Subscription**: Choose the Azure subscription you want to use
     - **Resource group**: Select `rg-commander-workshop`
     - **Storage account name**: Enter a unique name for the storage account resource
-    - **Region**: Choose the region you selected for your resource group
+    - **Region**: Choose the region you selected for your AI Foundry resource
     - **Preferred storage type**: Choose `Azure Blob Storage or Azure Data Lake Storage Gen 2`
     - **Primary workload**: Choose `Backup and archive`
     - **Performance**: Choose `Standard`
@@ -373,17 +309,9 @@ Next, you'll create a storage account and upload the policy documents to it to u
 
     ![Upload files to blob](assets/7-upload-files-to-blob.png)
 
-## 🧪Lab 7.2: BYOD from AI Search to your agent
+### 7.1.4 Create an AI Search service
 
-1. An active Azure subscription with resources created in Lab 7.1
-
-In this lab, you use Azure AI Foundry and Azure AI Search to bring your own data from Azure to enhance the knowledge of a Copilot Studio agent.
-
-### 7.2.1 Create the AI Search service
-
-The first thing to do is to create an Azure AI Search service to provide the "data" part of BYOD.
-
-1. On the Azure portal home page, select `AI Search` under **Azure services**
+1. On the Azure portal home page, select `AI Search` under **Azure services** or search for it
 
     ![AI Search service](assets/7-ai-search-service.png)
 
@@ -392,7 +320,7 @@ The first thing to do is to create an Azure AI Search service to provide the "da
     - **Subscription**: Choose the Azure subscription you want to use
     - **Resource group**: Select `rg-commander-workshop`
     - **Service name**: Enter a unique name for the service
-    - **Region**: Choose the region you selected for your resource group
+    - **Region**: Choose the region you selected for your AI Foundry resource
     - **Pricing tier**: Select `Basic`
 
     ![Create AI Search service](assets/7-create-ai-search-service.png)
@@ -400,15 +328,15 @@ The first thing to do is to create an Azure AI Search service to provide the "da
 1. Select **Review + create**, then **Create**
 1. When Azure finishes creating the service, select **Go to resource**
 
-### 7.2.2 Import data into AI Search
+### 7.1.5 Import data into AI Search
 
 1. In your AI Search service, select **Import data (new)** on the tool bar
 
     ![Import data in AI Search](assets/7-ai-search-import-data.png)
 
-1. For **Choose a data source**, select **Azure Blob Storage**
+1. Select **Azure Blob Storage**
     ![Choose data source](assets/7-ai-search-choose-data-source.png)
-1. For **What scenario are you targeting?**, select **RAG**
+1. Select **RAG**
     ![Select target scenario](assets/7-ai-search-select-target-scenario.png)
 1. Configure the connection to Azure Blob Storage:
 
@@ -418,16 +346,25 @@ The first thing to do is to create an Azure AI Search service to provide the "da
     - **Parsing mode**: Select `Text`
 
     ![Configure Azure Blob Storage](assets/7-ai-search-configure-blob-storage-connection.png)
+    
 1. Select **Next**
+
 1. Configure the text vectorization:
 
-    - **Kind**: 
+    - **Kind**: Select `Azure AI Foundry`
+    - **Subscription**: Select the Azure subscription you want to use
+    - **Azure AI Foundry/Hub project**: Select `commander-workshop-7`
+    - **Model deployment**: Select `text-embedding-ada-002`
+  
+1. Tick the box to acknowledge that connecting to an AI Foundry project will incur additional costs to your account.
+1. Select **Next**
+1. Ensure **Enable semantic ranker** is ticked
+1. Select **Next**
+1. Select **Create**
 
+    ![Verify AI Search configuration](assets/7-ai-search-index-verification.png)
 
-1. Connect it to the deployed Open AI service
-1. Select the model deployment
-
-### 7.2.3 Add Azure AI Search as knowledge source
+### 7.1.6 Add Azure AI Search as knowledge source
 
 Now you'll connect your AI Search index as a knowledge source for your agent.
 
