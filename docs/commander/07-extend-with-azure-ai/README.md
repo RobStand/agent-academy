@@ -258,13 +258,13 @@ The first thing to do is to create a resource group that will organize all of th
     - **Resource group name**: Enter `rg-commander-workshop`
     - **Region**: Choose the region closest to you
   
-    [Create the resource group](assets/7-create-azure-resource-group.png)
+    ![Create the resource group](assets/7-create-azure-resource-group.png)
 
 1. Select **Review + create**, then **Create**
 1. Wait a little bit for Azure to create the resource group
 1. When it's finished, select **Go to resource** and Azure will load your new resource group
 
-    [Deployed resource group](assets/7-deployed-resource-group.png)
+    ![Deployed resource group](assets/7-deployed-resource-group.png)
 
 Now you are ready to create the Azure services you need for the labs.
 
@@ -284,7 +284,7 @@ Next, you need an Azure OpenAI service.
     - **Name**: Enter a unique name for the service
     - **Pricing tier**: Choose `Standard SO`
 
-    [Create Azure OpenAI service](assets/7-create-azure-openai-service.png)
+    ![Create Azure OpenAI service](assets/7-create-azure-openai-service.png)
 
 1. Select **Next** to navigate through the options
 1. Select **Create**
@@ -306,9 +306,9 @@ You need an Azure AI Foundry resource and project to manage the models you'll us
     - **Region**: Choose the region you selected for your resource group
     - **Default project name**: Enter `commander-workshop-7`
 
-    [Create AI Foundry resource](assets/7-create-ai-foundry-resource.png)
+    ![Create AI Foundry resource](assets/7-create-ai-foundry-resource.png)
 
-1. Select **Next to navigate through the options
+1. Select **Next** to navigate through the options
 1. Select **Create**
 
 Your AI Foundry resource and project are ready.
@@ -330,21 +330,23 @@ Next, you'll create a storage account and upload the policy documents to it to u
     - **Primary workload**: Choose **Backup and archive**
     - **Performance**: Choose **Standard**
 
-    [Create storage account](assets/7-create-storage-account.png)
+    ![Create storage account](assets/7-create-storage-account.png)
 
 1. Select **Review + create**, then **Create**.
 1. When Azure finishes deploying the storage account, select **Go to resource**
 1. In the left navigation, expand **Containers** and select **Add container**
 1. Enter `policies` in the **Name** field and select **Create**
 
-    [Create blob container](assets/7-create-blob-container.png)
+    ![Create blob container](assets/7-create-blob-container.png)
 
 1. In the new `policies` container, on the toolbar, select **Upload**
 1. Select the IT policy documents you downloaded from GitHub
 1. Select **Upload**
 1. The policy documents will appear in the container
 
-    [Upload files to blob](assets/7-upload-files-to-blob.png)
+    ![Upload files to blob](assets/7-upload-files-to-blob.png)
+
+Now you are ready to proceed with the BYOD lab.
 
 ## 🧪Lab 7.2: BYOD from AI Search to your agent
 
