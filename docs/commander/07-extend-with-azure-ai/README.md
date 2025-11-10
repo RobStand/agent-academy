@@ -328,7 +328,7 @@ In this lab, you will create a Policy Advisor agent and use Azure AI Foundry and
 
 1. On the Azure portal home page, select `AI Search` under **Azure services** or search for it
 
-    ![AI Search service](assets/7-ai-search-service.png)
+1. Select **Create**
 
 1. Configure the AI Search service:
 
@@ -411,27 +411,37 @@ Now you'll connect your AI Search index as a knowledge source for your agent.
 
     ```text
     What do I do if I am locked out of my account?
+    How do I reset my password?
     Who must enroll in MFA?
     What are my options for Mac hardware?
     ```
 
 The agent will call the AI Search knowledge source, which will use semantic search to answer your questions.
-
     ![Test the agent](assets/7-copilot-studio-test-the-agent.png)
 
-## 🧪 Lab 7.3: BYOM from Azure AI Foundry to your agent
+## 🧪 Lab 7.2: BYOM from Azure AI Foundry to your agent
 
 In this lab, you'll put BYOM into practice by deploying a model from AI Foundry and using it in your agent to summarize information from documents.
 
-### 7.2.2 Deploy a model
+### 7.2.1 Deploy a summarization model
 
-1. Deploy Llama model in AI Foundry
+1. Navigate to [Azure AI Foundry](https://ai.foundry.com)
+1. Under **My assets** in the left-hand navigation, select **Models + endpoints**
+1. Select **Deploy model**, then select **Deploy base model**
+    ![Deploy base model](assets/7-foundry-deploy-base-model.png)
+1. Enter `Llama-3.3` in the **Search** box
+1. Select `Llama-3.3-70B-Instruct`
+1. Select **Confirm**
+    ![Select summarization model](assets/7-foundry-search-llama-model.png)
+1. Select **Deploy**
+    ![Deploy summarization model](assets/7-foundry-deploy-llama-model.png)
 
-### 7.2.3 Use the model in a prompt
+### 7.2.2 Use the model in a prompt
 
-1. In the navigation bar, select **Tools**. Select **+ Add a tool**.
-
-    Select **+ New tool**, and then select **Prompt**.
+1. In the navigation bar, select **Tools**.
+1. Select **+ Add a tool**
+1. Select **+ New tool**
+1. Select **Prompt**
 
 1. Enter `IT policy prompt` for the name
 
@@ -465,44 +475,12 @@ In this lab, you'll put BYOM into practice by deploying a model from AI Foundry 
 1. Save
 1. Add to agent and configure
 
-### 7.2.4 Create the summarization topic
+### 7.2.3 Create the summarization topic
 
 1. Create a topic
 1. Add Generative Answers node
 1. Add Prompt node
 1. Add Message node
-
-### 7.2.5 Use the model in a prompt
-
-
-1. Under `Employee Question`, type `/` and select **Text**. Enter these details:
-
-    - **Input**: `EmployeeQuestion`
-    - **Sample data**: `What is the PTO policy?`
-
-    Select **Close**
-
-    Select **Save**
-
-    ![Create prompt details](./assets/7-create-prompt-details.png)
-
-1. Select **Add to agent**. The prompt is now ready to be used in your agent.
-
-1. Test the prompt in the agent by asking a question:
-
-    ```text
-    How much PTO do I get after 5 years?
-    What's the 401k match?
-    Can I work remotely from Canada for 2 weeks?
-    What's covered by the home office stipend?
-    How many weeks of parental leave for non-birth parents?
-    What holidays does Contoso observe?
-    How do I request bereavement leave?
-    What's the tuition reimbursement limit?
-    ```
-
-    The prompt will use the fine-tuned model to give specific answers.
-    ![Testing the prompt](./assets/7-test-prompt.png)
 
 ## ✅ Mission Complete
 
