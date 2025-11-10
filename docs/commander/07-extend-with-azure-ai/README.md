@@ -421,119 +421,63 @@ The agent will call the AI Search knowledge source, which will use semantic sear
 
 ## 🧪 Lab 7.3: BYOM from Azure AI Foundry to your agent
 
-In this lab, you'll put BYOM into practice by deploying a fine-tuned model that you will use in your agent.
+In this lab, you'll put BYOM into practice by deploying a model from AI Foundry and using it in your agent to summarize information from documents.
 
 ### 7.2.2 Deploy a model
 
-1. In the left-hand navigation, select **Fine-tuning**.
-
-1. Select **+ Fine-tune model**. Search for `gpt-4.1-mini`.
-
-    Select the `gpt-4.1-mini` model and select **Next**.
-    ![Search model catalog](./assets/7-search-model-catalog.png)
-
-1. You get a confirmation that a new Azure OpenAI resource will be created. 
-
-    Select **Confirm**.
-
-1. Now enter the details for your fine-tuned model:
-
-    - **Connected AI resource**: This defaults to the OpenAI resource that was created for you
-    - **Method**: Select `Supervised`
-    - **Base model**: Select the `gpt-4.1-mini` model
-    - **Training type**: Select `Standard`
-    - **Automatically deploy when fine-tuning is complete**: Select `No`
-    - **Deployment type**: Select `Developer`
-
-    ![Create the fine-tuned model](./assets/7-create-fine-tuned-model.png)
-
-1. Now it's time to add your training data.
-
-    Select **+ Add training data**
-
-    In the **Training data** dropdown, select **Upload files**
-
-    Select **Upload file**
-
-    Navigate to the folder containing the `hr_policy_training_data.jsonl` file. Select it and select **Open**.
-
-    Select **Apply**
-
-    ![Fine tune the model](./assets/7-fine-tune-the-model.png)
-
-1. With your fine-tuned model details entered and your training data added, you're ready to create the model.
-
-    Select **Submit**.
-
-1. AI Foundry will queue the fine-tuning job, and it will take some time to fine-tune the model. When the process is complete, the status will change from **Queued** to **Completed**.
-
-    ![Fine-tuned model](./assets/7-fine-tuning.png)
-
-1. Now it's time to deploy the fine-tuned model. Select **Use this model**.
-
-1. Enter `gpt-4.1-mini-fine-tuned` for the **Deployment name**
-
-    Select **Deploy**
-
-1. AI Foundry displays the details of your model deployment. Note the following information from the model deployment, as you'll need it later:
-
-    - **Target URI**: This is the URL for our model's endpoint.
-    - **API Key**: This is the primary key for authentication.
-    - **Deployment name**: This is the name you chose (or left default) when deploying the model.
-
-    ![Fine tuned model](./assets/7-model-deployment-details.png)
-
-**Important:** Keep your API key secure. Don't share it or commit it to source control.
+1. Deploy Llama model in AI Foundry
 
 ### 7.2.3 Use the model in a prompt
-
-Now we will add the fine-tuned model to the Policy Assistant agent.
 
 1. In the navigation bar, select **Tools**. Select **+ Add a tool**.
 
     Select **+ New tool**, and then select **Prompt**.
 
-1. Enter `HR policy prompt` for the name
+1. Enter `IT policy prompt` for the name
 
 1. In the **Model** dropdown, select **+** next to **Azure AI Foundry Models**
 
 1. Select **Connect a new model** and enter the details:
 
-    - **Model deployment name**: Enter `gpt-4-1-mini-fine-tuned`
-    - **Base model name**: Enter `gpt-4.1-mini`
+    - **Model deployment name**: Enter `llama`
+    - **Base model name**: Enter `llama`
     - **Azure model endpoint URL**: Enter the URI from your model details from Azure AI Foundry
     - **API Key**: Enter the API key from your model details in AI Foundry
 
     Select **Connect**
 
-    ![Connect a model](./assets/7-connect-model.png)
-
 1. In the **Instructions** for the prompt, enter this prompt:
 
-```text
-You are Contoso's HR Policy Assistant, a helpful and knowledgeable AI that answers employee questions about HR policies, benefits, and workplace guidelines.
+    ```text
+    You summarize long documents into concise, easy to understand paragraphs.
+    
+    Task: 
+    - Summarize Search Results 
+    - Use plain English.
+    - Answer the user’s question using ONLY the retrieved content. 
+    - Aggregate and deduplicate information. 
+    - Preserve factual accuracy. 
+    - Don't include sources. Just provide a paragraph.
+    - If information is missing, say so.
+    ```
 
-Your Role
-- Answer questions accurately based on Contoso's policies
-- Be friendly, professional, and concise
-- If you don't know something specific, be honest and direct them to HR
-- Use specific numbers, dates, and details when relevant
+1. Add the input parameter
+1. Save
+1. Add to agent and configure
 
-Guidelines
-- Keep answers clear and easy to understand
-- Break down complex policies into simple terms
-- Include specific examples when helpful
-- Direct employees to appropriate resources or contacts when needed
+### 7.2.4 Create the summarization topic
 
-Employee Question
+1. Create a topic
+1. Add Generative Answers node
+1. Add Prompt node
+1. Add Message node
 
-Your Answer
-Provide a clear, accurate answer
-```
+### 7.2.5 Use the model in a prompt
+
 
 1. Under `Employee Question`, type `/` and select **Text**. Enter these details:
 
-    - **Input**: `EmployeeQuestions`
+    - **Input**: `EmployeeQuestion`
     - **Sample data**: `What is the PTO policy?`
 
     Select **Close**
@@ -559,7 +503,6 @@ Provide a clear, accurate answer
 
     The prompt will use the fine-tuned model to give specific answers.
     ![Testing the prompt](./assets/7-test-prompt.png)
-
 
 ## ✅ Mission Complete
 
