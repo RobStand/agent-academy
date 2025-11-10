@@ -237,7 +237,7 @@ Understanding how these capabilities integrate with your agent helps you design 
 
 ## 🧪Lab 7.1: Bring your own data from Azure to your agent
 
-In this lab, you use Azure AI Foundry and Azure AI Search to bring your own data from Azure to enhance the knowledge of a Copilot Studio agent.
+In this lab, you will create a Policy Advisor agent and use Azure AI Foundry and Azure AI Search to bring your own data from Azure to enhance the agent's knowledge and capabilities.
 
 ### Prerequisites to complete this mission
 
@@ -247,7 +247,22 @@ In this lab, you use Azure AI Foundry and Azure AI Search to bring your own data
 
 1. Sample documents from [IT policies](https://download-directory.github.io/?url=https://github.com/RobStand/agent-academy/tree/main/docs/commander/07-extend-with-azure-ai/assets/it-documentation&filename=commander_sampledata)
 
-### 7.1.1 Create an Azure AI Foundry resource
+### 7.1.1 Create the Policy Advisor agent
+
+1. Navigate to [Copilot Studio](https://copilotstudio.microsoft.com)
+1. Enter this prompt in **What would you like to build?**:
+
+    `You are a policy agent named "Policy Advisor". You help employees with questions about policies. You are only able to answer questions from your own knowledge sources.`
+    ![Create agent from prompt](assets/7-create-copilot-studio-agent.png)
+
+1. Select **Create** and wait for the agent to be created
+1. Select **Settings**
+1. Turn off `Use general knowledge` and `Use information from the web`
+    ![Disable other knowledge sources](assets/7-copilot-studio-disable-internal-knowledge.png)
+
+1. Select **Save**
+
+### 7.1.2 Create an Azure AI Foundry resource
 
 1. On the Azure portal home page, select `Azure AI Foundry` under **Azure services** or search for it in the **Search** box
 1. Select **Create a resource**
@@ -265,7 +280,7 @@ In this lab, you use Azure AI Foundry and Azure AI Search to bring your own data
 1. Select **Next** to proceed through the options
 1. Select **Create**
 
-### 7.1.2 Deploy an embedding model
+### 7.1.3 Deploy an embedding model
 
 1. Navigate to [Azure AI Foundry](https://ai.foundry.com)
 1. Under **My assets** in the left-hand navigation, select **Models + endpoints**
@@ -346,7 +361,7 @@ In this lab, you use Azure AI Foundry and Azure AI Search to bring your own data
     - **Parsing mode**: Select `Text`
 
     ![Configure Azure Blob Storage](assets/7-ai-search-configure-blob-storage-connection.png)
-    
+
 1. Select **Next**
 
 1. Configure the text vectorization:
@@ -368,27 +383,41 @@ In this lab, you use Azure AI Foundry and Azure AI Search to bring your own data
 
 Now you'll connect your AI Search index as a knowledge source for your agent.
 
-1. In your agent, select the **Knowledge** tab in the navigation bar. Select **+ Add knowledge**.
-
-1. Select **Azure AI Search**. Select the dropdown under **Your connections** and select **Create new connection**
+1. Navigate to [Copilot Studio](https://copilotstudio.microsoft.com)
+1. Open the `Policy Advisor` agent
+1. Select the **Knowledge** tab in the navigation bar
+1. Select **+ Add knowledge**
+1. Select **Azure AI Search**
+1. Select the dropdown under **Your connections** and select **Create new connection**
 
 1. Configure the connection:
 
     - **Authentication type**: Access key
-    - **Azure AI Search Endpoint URL**: Your AI Search service endpoint URL
-    - **Azure AI Search Admin Key**: Your AI Search service admin key
+    - **Azure AI Search Endpoint URL**: Select the AI Search service endpoint URL from Azure portal
+    - **Azure AI Search Admin Key**: Select the AI Search service admin key from Azure portal
 
-    ![Configure AI Search connection](./assets/7-configure-ai-search-connection.png)
+    ![Configure AI Search connection](./assets/7-copilot-studio-configure-ai-search-connection.png)
 
 1. Select **Create**. You'll see the index you create in AI Foundry automatically selected.
 
     Select **Add to agent**
 
-    ![Select AI Search index](./assets/7-select-ai-search-index.png)
+    ![Select AI Search index](./assets/7-copilot-studio-available-indexes.png)
 
-1. Verify the knowledge source appears in your list.
+1. Verify the AI Search knowledge source appears in the list of knowledge sources
+    ![Verify knowledge source](assets/7-copilot-studio-verify-knowledge-source.png)
 
-1. TODO: Show the knowledge source working in the agent.
+1. Test the agent with these queries:
+
+    ```text
+    What do I do if I am locked out of my account?
+    Who must enroll in MFA?
+    What are my options for Mac hardware?
+    ```
+
+The agent will call the AI Search knowledge source, which will use semantic search to answer your questions.
+
+    ![Test the agent](assets/7-copilot-studio-test-the-agent.png)
 
 ## 🧪 Lab 7.3: BYOM from Azure AI Foundry to your agent
 
