@@ -249,13 +249,15 @@ In this lab, you will create a Policy Advisor agent and use Azure AI Foundry and
 
 ### 7.1.1 Create the Policy Advisor agent
 
-1. Navigate to [Copilot Studio](https://copilotstudio.microsoft.com)
+1. Navigate to [Copilot Studio](https://copilotstudio.preview.microsoft.com)
 1. Enter this prompt in **What would you like to build?**:
 
-    `You are a policy agent named "Policy Advisor". You help employees with questions about policies. You are only able to answer questions from your own knowledge sources.`
+    `You are a virtual help desk agent named HelpIT. You help employees with questions about IT policies and guides. You are only able to answer questions from your own knowledge sources.`
     ![Create agent from prompt](assets/7-create-copilot-studio-agent.png)
 
-1. Select **Create** and wait for the agent to be created
+1. Select the arrow
+1. Select **Create**
+1. Wait for Copilot Studio to finish setting up the agent
 1. Select **Settings**
 1. Turn off `Use general knowledge` and `Use information from the web`
     ![Disable other knowledge sources](assets/7-copilot-studio-disable-internal-knowledge.png)
@@ -407,6 +409,8 @@ Now you'll connect your AI Search index as a knowledge source for your agent.
 1. Verify the AI Search knowledge source appears in the list of knowledge sources
     ![Verify knowledge source](assets/7-copilot-studio-verify-knowledge-source.png)
 
+### 7.1.7 Test the BYOD scenario
+
 1. Test the agent with these queries:
 
     ```text
@@ -432,29 +436,37 @@ In this lab, you'll put BYOM into practice by deploying a model from AI Foundry 
 1. Enter `Llama-3.3` in the **Search** box
 1. Select `Llama-3.3-70B-Instruct`
 1. Select **Confirm**
-    ![Select summarization model](assets/7-foundry-search-llama-model.png)
+    ![Select summarization model](assets/7-foundry-search-summarization-model.png)
 1. Select **Deploy**
-    ![Deploy summarization model](assets/7-foundry-deploy-llama-model.png)
+    ![Deploy summarization model](assets/7-foundry-deploy-summarization-model.png)
 
 ### 7.2.2 Use the model in a prompt
 
 1. In the navigation bar, select **Tools**.
 1. Select **+ Add a tool**
 1. Select **+ New tool**
+
+    ![Create new tool](assets/7-copilot-studio-new-tool.png)
+
 1. Select **Prompt**
 
 1. Enter `IT policy prompt` for the name
 
 1. In the **Model** dropdown, select **+** next to **Azure AI Foundry Models**
 
+    ![Add custom model](assets/7-copilot-studio-add-custom-model.png)
+
 1. Select **Connect a new model** and enter the details:
 
-    - **Model deployment name**: Enter `llama`
-    - **Base model name**: Enter `llama`
-    - **Azure model endpoint URL**: Enter the URI from your model details from Azure AI Foundry
-    - **API Key**: Enter the API key from your model details in AI Foundry
+    - **Model deployment name**: Enter `Llama-3.3-70B-Instruct`
+    - **Base model name**: Enter `Llama-3.3-70B-Instruct`
+    - **Azure model endpoint URL**: Enter the value of `Target URI` from your model details in Azure AI Foundry
+    - **API Key**: Enter the value of `Key` from your model details in AI Foundry
+    - **Model description**: Enter `Summarization model`
 
-    Select **Connect**
+    ![Summarization model connection details](assets/7-copilot-studio-connect-summarization-model.png)
+
+1. Select **Connect**
 
 1. In the **Instructions** for the prompt, enter this prompt:
 
@@ -467,20 +479,82 @@ In this lab, you'll put BYOM into practice by deploying a model from AI Foundry 
     - Answer the user’s question using ONLY the retrieved content. 
     - Aggregate and deduplicate information. 
     - Preserve factual accuracy. 
-    - Don't include sources. Just provide a paragraph.
     - If information is missing, say so.
     ```
 
-1. Add the input parameter
-1. Save
-1. Add to agent and configure
+1. Highlight the text `Search Results`
+1. Select **+ Add content**
+1. Select **Text**
+1. Enter `SearchResults`
+1. Select **Close**
+1. Select **Save**
+1. Select **Add and configure**
+1. In the **Inputs** section, change the **Fill using** dropdown to **Custom value**
+1. Enter `SearchResults` in **Value**
+1. Select **Save**
+
+    ![Custom prompt configuration](assets/7-copilot-studio-custom-prompt.png)
 
 ### 7.2.3 Create the summarization topic
 
-1. Create a topic
-1. Add Generative Answers node
-1. Add Prompt node
-1. Add Message node
+1. In the navigation bar, select **Topics**
+1. Select **+ Add a topic** and choose **From blank**
+1. Name the topic `Summarization`
+1. In the **Trigger** node, enter this value for **Describe what the topic does**:
+   `This topic provides summaries of IT policies and guides. It responds to requests like "Summarize the WFH policy" and "Explain the password policy"`
+
+### 7.2.4 Use generative answers to get the knowledge
+
+1. Select **+** to add a node
+1. Select **Advanced**, then **Generative answers**
+1. Select **...** next to the **Enter or select a value** box
+1. Select `Activity.Text` under **System**
+1. Under **Data sources**, select **Edit**
+1. In the properties box, select **Search only selected sources**
+1. Select the Azure AI Search knowledge source you added in Lab 7.1
+
+    ![Create generative answers node](assets/7-copilot-studio-create-generative-answers-node.png)
+
+1. Scroll down and expand **Advanced**
+1. Select **Select a variable**
+1. Select **Create new**
+1. Select the variable and name it `KnowledgeResults`
+
+    ![Create KnowledgeResults variable](assets/7-copilot-studio-create-knowledgeresults-variable.png)
+
+### 7.2.5 Pass the knowledge to the custom prompt
+
+1. Select **+** to add a node
+1. Select **Add a tool**
+1. Select **IT Policy prompt**
+1. In the **Inputs** section, set the value of `SearchResults` to `KnowledgeResults`
+1. In the **Outputs** section, create a new variable named `Summary` and set it to the value of `predictionOutput`
+
+    ![Configure prompt node](assets/7-copilot-studio-configure-prompt-node.png)
+
+### 7.2.6 Output the summary
+
+1. Select **+** to add a node
+1. Select **Send a message**
+1. Select **{x}**
+1. Select `Summary.text`
+
+    ![Select Summary variable for message](assets/7-copilot-studio-select-message-variable.png)
+
+1. Select **Save**
+
+### 7.2.7 Test the BYOM scenario
+
+1. Test the agent with these prompts to see how the summarization works:
+
+    ```text
+    Explain the data backup and recovery policy
+    Summarize good passwords
+    Describe the home office technology setup
+    ```
+
+The agent will output the results from the document knowledge source first, then output a summary of the document.
+    ![Summarization output example](assets/7-copilot-studio-summarization-example.png)
 
 ## ✅ Mission Complete
 
