@@ -1,0 +1,1452 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://microsoft.github.io/agent-academy/translations/fi/docs/recruit/07-add-new-topic-with-trigger/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../../images/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Index - Copilot Studio Agent Academy</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tehtava-07-lisaa-uusi-aihe-jossa-on-laukaisin-ja-solmuja" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="Copilot Studio Agent Academy" class="md-header__button md-logo" aria-label="Copilot Studio Agent Academy" data-md-component="logo">
+      
+  <img src="../../../../../images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot Studio Agent Academy
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Index
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/microsoft/agent-academy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/agent-academy
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../recruit/" class="md-tabs__link">
+          
+  
+  
+  Recruit
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../operative/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Operative (Coming Soon)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../commander/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Commander (Coming Soon)
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="Copilot Studio Agent Academy" class="md-nav__button md-logo" aria-label="Copilot Studio Agent Academy" data-md-component="logo">
+      
+  <img src="../../../../../images/logo.png" alt="logo">
+
+    </a>
+    Copilot Studio Agent Academy
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/microsoft/agent-academy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/agent-academy
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../recruit/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recruit
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../operative/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operative (Coming Soon)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../commander/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Commander (Coming Soon)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#koodinimi-operatiivinen-pysy-aiheessa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🕵️‍♂️ Koodinimi: OPERATIIVINEN PYSY AIHEESSA
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tehtavan-kuvaus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Tehtävän kuvaus
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tavoitteet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔎 Tavoitteet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mika-on-aihe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🤔 Mikä on aihe?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#miksi-aiheet-ovat-hyodyllisia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🐦 Miksi aiheet ovat hyödyllisiä?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aiheiden-tyypit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🪺 Aiheiden tyypit
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aiheen-anatomia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧬 Aiheen anatomia
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#power-fxn-kaytto-solmuissasi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏋🏻‍♀️ Power Fx:n käyttö solmuissasi
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kuinka-luon-ja-muokkaan-aiheita" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏗️ Kuinka luon ja muokkaan aiheita?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ok-miten-suunnittelen-aiheet-agentilleni" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        👩🏻‍🎨 OK, miten suunnittelen aiheet agentilleni?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#labra-07-lisaa-uusi-aihe-keskustelusolmuilla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 Labra 07 - Lisää uusi aihe keskustelusolmuilla
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tehtava-suoritettu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Tehtävä suoritettu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#taktiset-resurssit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 Taktiset resurssit
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<!--
+CO_OP_TRANSLATOR_METADATA:
+{
+  "original_hash": "c04b3587170139bc23e3b5cfc24c89ac",
+  "translation_date": "2025-10-17T01:18:18+00:00",
+  "source_file": "docs/recruit/07-add-new-topic-with-trigger/README.md",
+  "language_code": "fi"
+}
+-->
+<h1 id="tehtava-07-lisaa-uusi-aihe-jossa-on-laukaisin-ja-solmuja">🚨 Tehtävä 07: Lisää uusi aihe, jossa on laukaisin ja solmuja<a class="headerlink" href="#tehtava-07-lisaa-uusi-aihe-jossa-on-laukaisin-ja-solmuja" title="Permanent link">&para;</a></h1>
+<h2 id="koodinimi-operatiivinen-pysy-aiheessa">🕵️‍♂️ Koodinimi: <code>OPERATIIVINEN PYSY AIHEESSA</code><a class="headerlink" href="#koodinimi-operatiivinen-pysy-aiheessa" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><strong>⏱️ Operaatioaikaikkuna:</strong> <code>~60 minuuttia</code></p>
+</blockquote>
+<p>🎥 <strong>Katso opastusvideo</strong></p>
+<p><a href="https://www.youtube.com/watch?v=7iPAZaA8nJs" title="Katso opastus YouTubessa"><img alt="Laukaisuvideon pikkukuva" src="../../../../../translated_images/video-thumbnail.a84cf7cb473be282861469420c5e2c16adb53bcfd64c7c07fbd579e8d32bf8b2.fi.jpg" /></a></p>
+<h2 id="tehtavan-kuvaus">🎯 Tehtävän kuvaus<a class="headerlink" href="#tehtavan-kuvaus" title="Permanent link">&para;</a></h2>
+<p>Olet rakentanut agentin. Se kuuntelee, oppii ja vastaa kysymyksiin - mutta nyt on aika toimia tarkemmin. Tässä tehtävässä sukellat syvälle ja opetat agenttiasi vastaamaan tarkasti tiettyihin kysymyksiin.</p>
+<p>Aiheiden ja laukaisimien avulla agenttisi voi:</p>
+<ul>
+<li>
+<p>Tunnistaa tarkoituksen</p>
+</li>
+<li>
+<p>Ohjata keskusteluja loogisesti</p>
+</li>
+<li>
+<p>Kerätä ja tallentaa muuttujia</p>
+</li>
+<li>
+<p>Laukaista prosesseja ja ryhtyä toimiin</p>
+</li>
+</ul>
+<p>Et vain rakenna dialogia, vaan kytket sen päätöksentekokeskuksen. Tervetuloa Neuraaliseen Nexus-maailmaan.</p>
+<h2 id="tavoitteet">🔎 Tavoitteet<a class="headerlink" href="#tavoitteet" title="Permanent link">&para;</a></h2>
+<p>Tässä tehtävässä opit:</p>
+<ol>
+<li>Ymmärtämään, mitä aiheet ovat ja niiden roolin agentin rakenteellisessa keskustelussa</li>
+<li>Oppimaan aiheiden anatomian, mukaan lukien laukaisulauseet ja keskustelusolmut</li>
+<li>Tutustumaan erilaisiin keskustelusolmuihin ja käyttämään Power Fx:ää dynaamiseen logiikkaan</li>
+<li>Luomaan räätälöityjä aiheita alusta alkaen käyttäjän pyyntöjen ja tehtävien käsittelyyn</li>
+<li>Rakentamaan toimivan aiheen, joka yhdistyy SharePoint-dataan liittimien ja työkalujen avulla</li>
+</ol>
+<h2 id="mika-on-aihe">🤔 Mikä on aihe?<a class="headerlink" href="#mika-on-aihe" title="Permanent link">&para;</a></h2>
+<p>Aihe on rakenteellinen keskustelu, joka auttaa agenttiasi vastaamaan tiettyihin käyttäjän kysymyksiin tai tehtäviin. Ajattele aihetta mini-keskusteluna tai tehtävänä, jonka agenttisi voi hoitaa. Jokainen aihe on suunniteltu vastaamaan tiettyyn käyttäjän kysymykseen tai pyyntöön.</p>
+<h3 id="aiheen-tarkoitus">🌌 Aiheen tarkoitus<a class="headerlink" href="#aiheen-tarkoitus" title="Permanent link">&para;</a></h3>
+<p>Aiheilla on kolme yleistä tarkoitusta käyttäjien tarpeiden mukaan:</p>
+<p><strong>Informatiivinen</strong> - vastaa kysymyksiin, kuten:</p>
+<ul>
+<li><code>Mikä on …?</code></li>
+<li><code>Milloin …?</code></li>
+<li><code>Miksi …?</code></li>
+<li><code>Voitko kertoa minulle …?</code></li>
+</ul>
+<p><strong>Tehtävän suorittaminen</strong> - auttaa käyttäjiä <em>tekemään</em> jotain:</p>
+<ul>
+<li><code>"Haluan …"</code></li>
+<li><code>"Kuinka voin …?"</code></li>
+<li><code>"Tarvitsen …?"</code></li>
+</ul>
+<p><strong>Vianetsintä</strong> - ratkaisee ongelmia:</p>
+<ul>
+<li><code>Jokin ei toimi …</code></li>
+<li><code>Kohtaan virheilmoituksen …</code></li>
+<li><code>Näen jotain odottamatonta …?</code></li>
+</ul>
+<p>Voit myös luoda aiheita epäselville kysymyksille, kuten <code>Tarvitsen apua</code>, jotka pyytävät käyttäjältä lisätietoja ennen jatkamista.</p>
+<h2 id="miksi-aiheet-ovat-hyodyllisia">🐦 Miksi aiheet ovat hyödyllisiä?<a class="headerlink" href="#miksi-aiheet-ovat-hyodyllisia" title="Permanent link">&para;</a></h2>
+<p>Aiheet auttavat sinua:</p>
+<ul>
+<li>
+<p>Järjestämään agenttisi tiedot.</p>
+</li>
+<li>
+<p>Tekemään keskusteluista luonnollisempia.</p>
+</li>
+<li>
+<p>Ratkaisemaan käyttäjän ongelmat tehokkaasti.</p>
+</li>
+</ul>
+<h2 id="aiheiden-tyypit">🪺 Aiheiden tyypit<a class="headerlink" href="#aiheiden-tyypit" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p><strong>Järjestelmäaiheet</strong> - nämä ovat sisäänrakennettuja ja käsittelevät yleisiä tapahtumia, kuten:</p>
+<ul>
+<li>Keskustelun aloittaminen</li>
+<li>Keskustelun lopettaminen</li>
+<li>Virheiden käsittely</li>
+<li>Käyttäjien kirjautumisen pyytäminen</li>
+<li>Eskalointi ihmiskäsittelijälle</li>
+</ul>
+</li>
+<li>
+<p><strong>Räätälöidyt aiheet</strong> - nämä luodaan käsittelemään tiettyjä tehtäviä tai kysymyksiä, kuten:</p>
+<ul>
+<li>Työntekijän lomapyyntö</li>
+<li>Uuden tai korvaavan laitteen pyytäminen</li>
+</ul>
+</li>
+</ol>
+<p><img alt="Aiheiden tyypit" src="../../../../../translated_images/7.0_01_Topics.6e55d2e01c1cc0994b7af05be3c1629b78d46b37cc82f59c7893d4ad90af707e.fi.png" /></p>
+<h2 id="aiheen-anatomia">🧬 Aiheen anatomia<a class="headerlink" href="#aiheen-anatomia" title="Permanent link">&para;</a></h2>
+<p>Jokainen aihe sisältää yleensä seuraavat osat.</p>
+<h3 id="laukaisulauseet">🗣️ Laukaisulauseet<a class="headerlink" href="#laukaisulauseet" title="Permanent link">&para;</a></h3>
+<p>Nämä ovat sanoja tai lauseita, joita käyttäjät voivat sanoa aloittaakseen aiheen.</p>
+<p><strong>Esimerkkejä:</strong></p>
+<p>Lomapyyntöaiheelle laukaisulauseet voivat olla</p>
+<ul>
+<li><code>Haluan pitää lomaa</code></li>
+<li><code>Pyydä lomaa</code></li>
+<li><code>Hae vapaata</code></li>
+<li><code>Kuinka voin tehdä lomapyynnön?</code></li>
+</ul>
+<p>Laitteen pyyntöaiheelle laukaisulauseet voivat olla</p>
+<ul>
+<li><code>Tarvitsen uuden laitteen</code></li>
+<li><code>Voinko pyytää laitetta?</code></li>
+<li><code>Voitko auttaa laitteen pyynnössä?</code></li>
+</ul>
+<h3 id="keskustelusolmut">💬 Keskustelusolmut<a class="headerlink" href="#keskustelusolmut" title="Permanent link">&para;</a></h3>
+<p>Aihe koostuu solmuista, jotka ovat askeleita, joita agentti seuraa, kun aihe laukaistaan. Näitä askeleita yhdistämällä rakennetaan keskusteluvirta, jota agentti seuraa vuorovaikutuksessa käyttäjien kanssa.</p>
+<p>Ajattele näitä ohjeina tai toimintoina, kuten:</p>
+<ul>
+<li>Käyttäjän kysymysten esittäminen</li>
+<li>Viestien lähettäminen</li>
+<li>Ulkoisen palvelun, kuten lomahallintajärjestelmän, kutsuminen</li>
+<li>Muuttujien asettaminen tai tarkistaminen</li>
+<li>Ehtojen käyttäminen keskustelun haaroittamiseen</li>
+<li>Ohjaaminen toiseen aiheeseen</li>
+</ul>
+<p><img alt="Keskustelusolmut" src="../../../../../translated_images/7.0_03_ConversationNodes.7b1d93b7d4522d544d7f9eed597a5ef30b9f96ee1670efd048528ce13423481a.fi.png" /></p>
+<p>Seuraavat ovat päätyypit solmuista, joita voit lisätä agenttiin:</p>
+<h4 id="laheta-viesti">Lähetä viesti<a class="headerlink" href="#laheta-viesti" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Tarkoitus</strong> - lähettää viesti käyttäjälle.</li>
+<li><strong>Esimerkki</strong> - <code>Kiitos pyynnöstäsi! Autan sinua siinä.</code></li>
+</ul>
+<p>Tämä solmu antaa agenttisi lähettää viestejä käyttäjille, jotka voivat olla yksinkertaista tekstiä tai rikasta sisältöä, kuten kuvia, videoita, kortteja, pikavastauksia ja mukautettuja kortteja.</p>
+<p>Voit personoida viestejä muuttujien avulla, lisätä useita viestivaihtoehtoja vaihtelun vuoksi ja jopa mukauttaa puhetta ääniaktivoiduilla kanavilla.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Ajattele tätä "sano jotain" -blokiksi, joka auttaa agenttiasi kommunikoimaan selkeästi ja vuorovaikutteisesti käyttäjien kanssa.</p>
+</div>
+<h4 id="kysy-kysymys">Kysy kysymys<a class="headerlink" href="#kysy-kysymys" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Tarkoitus</strong> - kysyy käyttäjältä kysymyksen ja odottaa vastausta.</li>
+<li><strong>Esimerkki</strong> - <code>Mitkä ovat lomapäiväsi?</code></li>
+</ul>
+<p>Tämä solmu käytetään kysymään käyttäjiltä tiettyä tietoa keskustelun aikana ja tallentamaan heidän vastauksensa muuttujiksi myöhempää käyttöä varten.</p>
+<p>Voit mukauttaa kysymyksen tyyppiä, kuten tekstisyötettä, tai käyttää entiteettejä määritellyn arvolistan kanssa, josta käyttäjä valitsee, ja määrittää, miten agentti käyttäytyy, jos käyttäjä antaa virheellisen vastauksen tai ohittaa kysymyksen.</p>
+<p>Se tukee myös rikasta sisältöä, kuten kuvia ja pikavastauksia, ja antaa sinun hienosäätää validointia, uudelleenkysymistä ja keskeytysasetuksia, jotta keskustelu sujuu sujuvasti.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Ajattele tätä "kysy ja kuuntele" -blokiksi, joka auttaa agenttiasi vuorovaikuttamaan käyttäjien kanssa rakenteellisella tavalla, jonka sinä määrität.</p>
+</div>
+<h4 id="kysy-mukautetulla-kortilla">Kysy mukautetulla kortilla<a class="headerlink" href="#kysy-mukautetulla-kortilla" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Tarkoitus</strong> - lähettää rikastettu, vuorovaikutteinen kortti JSON:n avulla.</li>
+<li><strong>Esimerkki</strong> - kortti, joka näyttää kalenterin päivämäärän valitsimen käyttäjälle päivämäärän valitsemiseksi.</li>
+</ul>
+<p>Tämä solmu näyttää rikastettuja, vuorovaikutteisia kortteja, joita käyttäjät voivat täyttää ja lähettää, kuten lomakkeita tekstikentillä, painikkeilla ja kuvilla. Se tallentaa käyttäjän syötteen muuttujiksi, joita agenttisi voi käyttää myöhemmin keskustelussa.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Ajattele tätä mukautettavana "lomakkeen rakentaja" -blokiksi, joka tekee agentistasi kiinnostavamman ja kykenevämmän keräämään yksityiskohtaista tietoa käyttäjiltä.</p>
+</div>
+<h4 id="lisaa-ehto">Lisää ehto<a class="headerlink" href="#lisaa-ehto" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Tarkoitus</strong> - lisää logiikkaa keskusteluun. Tarkistaa jotain ja päättää, mitä tehdä seuraavaksi.</li>
+<li><strong>Esimerkki</strong> - jos käyttäjä sanoo <code>Kyllä</code>, siirry seuraavaan vaiheeseen. Jos <code>Ei</code>, lopeta keskustelu.</li>
+</ul>
+<p>Tämä solmu luo päätöspisteitä agenttisi keskusteluvirtaan tarkistamalla, täyttääkö muuttuja tietyt kriteerit. Jos ehto on tosi tai epätosi, agentti seuraa eri polkuja.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Ajattele tätä "jos-else" -blokiksi, joka auttaa agenttiasi tekemään päätöksiä käyttäjän syötteen tai tallennetun datan perusteella.</p>
+</div>
+<h4 id="muuttujien-hallinta">Muuttujien hallinta<a class="headerlink" href="#muuttujien-hallinta" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Tarkoitus</strong> - tallentaa tai tyhjentää tietoa (kutsutaan muuttujiksi) keskustelun aikana.</li>
+<li><strong>Esimerkki</strong> - tallentaa päivämäärän, jonka käyttäjä valitsi Kysy kysymys -solmussa, joka näyttää mukautetun kortin.</li>
+</ul>
+<p>Tämä solmu antaa sinun tallentaa ja hallita tietoa keskustelun aikana, kuten käyttäjän nimen, vastauksen tai mieltymykset. Voit käyttää erilaisia muuttujatyyppejä, kuten tekstiä, numeroita tai päivämääriä, ja ne voivat olla rajattuja yhteen aiheeseen, jaettuja aiheiden välillä (globaalit) tai jopa haettuja järjestelmästä tai ympäristöstä.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Ajattele tätä "muistilaatikkona", joka auttaa agenttiasi muistamaan tietoa ja käyttämään sitä keskustelun edetessä käyttäjän kanssa.</p>
+</div>
+<h4 id="aiheen-hallinta">Aiheen hallinta<a class="headerlink" href="#aiheen-hallinta" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Tarkoitus</strong> - siirtää keskustelu toiseen aiheeseen tai askeleeseen aiheen sisällä, siirtää keskustelu tai lopettaa aiheen tai keskustelun.</li>
+<li><strong>Esimerkki</strong> - ohjaa "Lomapolitiikka" -aiheeseen.</li>
+</ul>
+<p>Tämä solmu antaa agenttisi siirtyä aiheesta toiseen ilman, että keskustelu alkaa alusta, lopettaa aiheen, siirtää tai lopettaa keskustelun tai siirtyä eri askeleeseen saman aiheen sisällä. Se auttaa ohjaamaan käyttäjiä keskustelun eri osien läpi sujuvasti siirtymällä aiheiden välillä, ja voit välittää muuttujia niiden välillä säilyttääksesi kontekstin.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Ajattele tätä "siirry toiseen osioon/askeleeseen" -blokiksi, joka auttaa agenttiasi olemaan joustava keskustelussa käyttäjien kanssa.</p>
+</div>
+<h4 id="lisaa-tyokalu">Lisää työkalu<a class="headerlink" href="#lisaa-tyokalu" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Tarkoitus</strong> - yhdistää työkaluihin, kuten liittimiin, agenttiprosesseihin, kehotteisiin, mukautettuun hakuun, hakukyselyyn, taitoihin, mallikontekstiprotokollaan.</li>
+<li><strong>Esimerkki</strong> - Agenttiprosessi suoritetaan sen jälkeen, kun käyttäjä lähettää lomapyyntönsä.</li>
+</ul>
+<p>Tämä solmu antaa agenttisi mahdollisuuden olla vuorovaikutuksessa ulkoisten järjestelmien kanssa tai suorittaa tiettyjä tehtäviä, kuten lähettää sähköposteja, tarkistaa säätä tai käyttää tietokantoja. Voit lisätä työkaluja sisäänrakennettujen liittimien, mukautettujen API:iden, agenttiprosessien, kehotteiden tai yhdistää mallikontekstiprotokollan (MCP) palvelimiin ja jopa graafisen käyttöliittymän automaation työpöytäsovelluksille tietokoneen käyttötyökalun avulla.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Ajattele työkaluja "toimintablokkeina", jotka antavat agentillesi supervoimia tehdä asioita <em>keskustelun</em> ulkopuolella, kuten kutsua API:ta, suorittaa prosessi tai kerätä käyttäjän syötettä automaattisesti.</p>
+</div>
+<h4 id="generatiivinen-vastaussolmu">Generatiivinen vastaussolmu<a class="headerlink" href="#generatiivinen-vastaussolmu" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Tarkoitus</strong> - käyttää suurta kielimallia tuottamaan luonnollisia, ihmismäisiä vastauksia käyttäjän kysymyksen ja mahdollisten liitettyjen tietojen perusteella.</li>
+<li><strong>Esimerkki</strong> - käyttää liitettyä tietolähdettä, joka sisältää tietoa lomaoikeuksista, vastatakseen käyttäjän kysymyksiin lomapyynnöistä.</li>
+</ul>
+<p>Tämä solmu mahdollistaa agenttisi vastaamaan käyttäjän kysymyksiin eri tietolähteistä, kuten verkkosivustoista, asiakirjoista, SharePointista tai mukautetusta datasta. Sitä voidaan käyttää varajärjestelmänä, kun sopivaa aihetta ei löydy, tai aiheen sisällä antamaan yksityiskohtaisempia, dynaamisia vastauksia määrittelemiisi lähteisiin perustuen.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Ajattele tätä "älykäs vastausblokki", joka auttaa agenttiasi antamaan hyödyllisiä, tarkkoja vastauksia etsimällä luotettavaa sisältöä, jonka olet määritellyt.</p>
+</div>
+<h4 id="http-pyyntosolmu">HTTP-pyyntösolmu<a class="headerlink" href="#http-pyyntosolmu" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Tarkoitus</strong> - yhdistää agenttisi ulkoisiin järjestelmiin lähettämällä API-kutsuja (esimerkiksi <code>GET</code> tai <code>POST</code>) tietojen hakemiseksi tai päivittämiseksi.</li>
+<li><strong>Esimerkki</strong> - kun käyttäjä kysyy lomapäivien saldoaan, agentti suorittaa <code>GET</code>-pyynnön lomahallintajärjestelmään, hakee <code>remainingLeaveDays</code> API-vastauksesta ja vastaa käyttäjälle arvolla.</li>
+</ul>
+<p>Tämä solmu antaa agenttisi yhdistää ulkoisiin järjestelmiin lähettämällä REST API -kutsuja, kuten <code>GET</code>- tai <code>POST</code>-pyyntöjä. Voit mukauttaa pyyntöä otsikoilla, sisällöllä ja jopa käyttää Power Fx:ää sisällyttääksesi dynaamisia tietoja, ja tallentaa vastauksen muuttujiksi myöhempää käyttöä varten keskustelussa.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Ajattele tätä "hanki tietoa" -blokiksi, joka auttaa agenttiasi kommunikoimaan muiden palveluiden kanssa, kuten käyttäjätietojen hakeminen tai datan lähettäminen toiseen järjestelmään.</p>
+</div>
+<h4 id="laheta-tapahtuma">Lähetä tapahtuma<a class="headerlink" href="#laheta-tapahtuma" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Tarkoitus</strong> - antaa agenttisi lähettää ei-viestitoimintoja, kuten järjestelmäpäivityksiä tai työkalujen laukaisuja - asiakkaalle tai kanavalle, auttaen sitä suorittamaan tehtäviä.</li>
+<li><strong>Esimerkki</strong> - reagoi käyttäjän liittymiseen keskusteluun näyttämällä tervetuloviestin.</li>
+</ul>
+<p>Tämä solmu antaa agenttisi lähettää ei-viestitoimintoja ulkoisiin järjestelmiin tai kanaviin, jotka voivat sitten päättää, miten reagoida. Annat jokaiselle tapahtumalle nimen ja liität siihen arvon, joka voi olla yksinkertainen numero tai teksti, muuttuja tai Power Fx -kaava, ja se lähetetään JSON-objektina.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Ajattele tätä "hiljainen laukaisin" -blokiksi, joka auttaa agenttiasi tekemään asioita kulissien takana tai kommunikoimaan ulkoisten työkalujen kanssa ilman, että käyttäjän tarvitsee sanoa mitään.</p>
+</div>
+<h2 id="power-fxn-kaytto-solmuissasi">🏋🏻‍♀️ Power Fx:n käyttö solmuissasi<a class="headerlink" href="#power-fxn-kaytto-solmuissasi" title="Permanent link">&para;</a></h2>
+<p>Copilot Studiossa Power Fx on matalan koodin ohjelmointikieli, jota käytetään lisäämään logiikkaa ja dynaamista käyttäytymistä agenttiisi. Se on sama kieli, jota käytetään Microsoft Power Appsissa, ja se on suunniteltu yksinkertaiseksi ja Excel-tyyliseksi, mikä tekee siitä helppokäyttöisen kehittäjille ja ei-kehittäjille.</p>
+<p><img alt="Power Fx -kaava" src="../../../../../translated_images/7.3_13_EnterFormula.d17cc9f73e01e1cab8e2420a55bcb726ae0a0e55673f81ee3d7fe12d20148b92.fi.png" /></p>
+<h3 id="mita-power-fx-voi-tehda-aiheissa">Mitä Power Fx voi tehdä aiheissa<a class="headerlink" href="#mita-power-fx-voi-tehda-aiheissa" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Asettaa ja käsitellä muuttujia<ul>
+<li>Esimerkki: <code>Set(userName, "Adele Vance")</code></li>
+</ul>
+</li>
+<li>Luoda ehtoja<ul>
+<li>Esimerkki: <code>If(score &gt; 80, "Hyväksytty", "Hylätty")</code></li>
+</ul>
+</li>
+<li>Muotoilla ja muuntaa dataa<ul>
+<li>Esimerkki: <code>Text(DateValue, "pp/kk/vvvv")</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="miksi-kayttaa-power-fxaa">Miksi käyttää Power Fx:ää?<a class="headerlink" href="#miksi-kayttaa-power-fxaa" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>Joustava:</strong> voit rakentaa logiikkaa ilman täysiä koodirivejä.</p>
+</li>
+<li>
+<p><strong>Tuttu:</strong> jos olet käyttänyt Excel-kaavoja, se tuntuu hyvin samankaltaiselta.</p>
+</li>
+<li>
+<p><strong>Tehokas:</strong> se antaa sinun personoida keskusteluja, validoida syötteitä ja hallita, miten agenttisi käyttäytyy käyttäjädatan perusteella.</p>
+</li>
+</ul>
+<h2 id="kuinka-luon-ja-muokkaan-aiheita">🏗️ Kuinka luon ja muokkaan aiheita?<a class="headerlink" href="#kuinka-luon-ja-muokkaan-aiheita" title="Permanent link">&para;</a></h2>
+<p>On kaksi tapaa, joilla voit luoda ja muokata aiheita agenteillesi.</p>
+<h3 id="1-luo-tyhjasta">1. Luo tyhjästä<a class="headerlink" href="#1-luo-tyhjasta" title="Permanent link">&para;</a></h3>
+<p>Tämä antaa sinun rakentaa räätälöityjä keskusteluvirtoja alusta alkaen, ja voit lisätä tai poistaa solmuja tarpeen mukaan, kun muokkaat aihetta.</p>
+<p><img alt="Lisää aihe" src="../../../../../translated_images/7.0_04_AddATopic.111df124a4a7ff8b41e3f577fbef08885ac52d9d6c0c705a82f5968e5ccc384d.fi.png" /></p>
+<h4 id="miksi-tama-on-hyodyllista">Miksi tämä on hyödyllistä<a class="headerlink" href="#miksi-tama-on-hyodyllista" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Se antaa sinulle täyden hallinnan siitä, miten agenttisi vastaa
+Tämä mahdollistaa sen, että voit kuvata haluamasi asiat luonnollisella kielellä, ja Copilot rakentaa keskustelun puolestasi. Sama pätee myös aiheen muokkaamiseen – käytä luonnollista kieltä, ja Copilot tarkistaa ja muokkaa aiheen puolestasi.</li>
+</ul>
+<h4 id="mita-copilot-tukee">Mitä Copilot tukee<a class="headerlink" href="#mita-copilot-tukee" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Voi luoda ja muokata:<ul>
+<li>Viestisolmuja</li>
+<li>Kysymyssolmuja</li>
+<li>Ehtosolmuja</li>
+</ul>
+</li>
+<li>Ei tue edistyneitä asetuksia, kuten miten käyttäjää kehotetaan vastaamaan uudelleen, jos hän ei vastaa, tai miten keskeytyksiä hallitaan kysymyksen aikana. Voit silti säätää näitä asetuksia manuaalisesti tarvittaessa.</li>
+</ul>
+<h4 id="miksi-tama-on-hyodyllista_1">Miksi tämä on hyödyllistä<a class="headerlink" href="#miksi-tama-on-hyodyllista_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Nopeuttaa kehitystä tekoälyavustuksella.</li>
+<li>Mahdollistaa keskittymisen logiikkaan ja käyttäjäkokemukseen toistuvan asetuksen sijaan.</li>
+<li>Helpottaa keskustelujen kulkujen iterointia ja parantamista vähäisellä vaivalla.</li>
+</ul>
+<h4 id="esimerkkikehotteet">✨ Esimerkkikehotteet<a class="headerlink" href="#esimerkkikehotteet" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p><strong>Luo aihe</strong></p>
+<ul>
+<li><code>Hyväksy käyttäjän nimi, ikä ja syntymäaika ja toista sitten heidän vastauksensa takaisin heille</code></li>
+<li><code>Kerää käyttäjän katuosoite, osavaltio ja postinumero. Käyttäjän tulisi voida yrittää uudelleen jokaista kysymystä enintään 4 kertaa</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Muokkaa aihetta</strong></p>
+<ul>
+<li><code>Lisää kysymys käyttäjän syntymäajan kysymiseksi</code></li>
+<li><code>Yhteenveto kerätystä tiedosta Adaptive Cardissa.</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="ok-miten-suunnittelen-aiheet-agentilleni">👩🏻‍🎨 OK, miten suunnittelen aiheet agentilleni?<a class="headerlink" href="#ok-miten-suunnittelen-aiheet-agentilleni" title="Permanent link">&para;</a></h2>
+<h3 id="vaihe-1-ymmarra-mita-kayttajat-tarvitsevat">🧙🏻‍♂️ Vaihe 1 - ymmärrä, mitä käyttäjät tarvitsevat<a class="headerlink" href="#vaihe-1-ymmarra-mita-kayttajat-tarvitsevat" title="Permanent link">&para;</a></h3>
+<p>Aloita tunnistamalla yleiset kysymykset tai tehtävät, joita käyttäjät kysyvät agentiltasi. Nämä voivat olla:</p>
+<ul>
+<li>Kysymyksiä, joita käyttäjät kysyvät usein, kuten <code>mitkä ovat oikeuteni sairauslomiin?</code></li>
+<li>Yleisiä tehtäviä, joita käyttäjät haluavat suorittaa, kuten lomakkeen lähettäminen</li>
+<li>Ongelmia, joita käyttäjät usein kohtaavat, kuten kirjautumisongelmat</li>
+</ul>
+<h3 id="vaihe-2-ryhmittele-skenaariot">📦 Vaihe 2 - Ryhmittele skenaariot<a class="headerlink" href="#vaihe-2-ryhmittele-skenaariot" title="Permanent link">&para;</a></h3>
+<p>Järjestä käyttäjien tarpeet kolmeen kategoriaan aiheen tarkoituksen perusteella:</p>
+<ul>
+<li>Tiedottaminen - käyttäjä haluaa tietää jotain</li>
+<li>Tehtävän suorittaminen - käyttäjä haluaa tehdä jotain</li>
+<li>Ongelmanratkaisu - käyttäjä tarvitsee apua ongelman ratkaisemiseksi</li>
+</ul>
+<h3 id="vaihe-3-suunnittele-keskustelu">🗺️ Vaihe 3 - Suunnittele keskustelu<a class="headerlink" href="#vaihe-3-suunnittele-keskustelu" title="Permanent link">&para;</a></h3>
+<p>Piirrä yksinkertainen keskustelun kulku siitä, miten agentin tulisi vastata</p>
+<ul>
+<li>Aloita tervehdyksellä tai vahvistuksella</li>
+<li>Kysy jatkokysymyksiä saadaksesi lisätietoja</li>
+<li>Anna vastauksia tai suorita toimintoja</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Pidä keskustelu lyhyenä ja keskittyneenä. Kysy vain, mitä on tarpeen.</p>
+</div>
+<h3 id="vaihe-4-kasittele-erilaisia-keskustelutyyppeja">🔀 Vaihe 4 - Käsittele erilaisia keskustelutyyppejä<a class="headerlink" href="#vaihe-4-kasittele-erilaisia-keskustelutyyppeja" title="Permanent link">&para;</a></h3>
+<p>Suunnittele molempia varten:</p>
+<ul>
+<li>
+<p><strong>Yksivaiheinen</strong> - yksi kysymys, yksi vastaus</p>
+</li>
+<li>
+<p><strong>Monivaiheinen</strong> - edestakainen keskustelu jatkokysymyksineen</p>
+</li>
+</ul>
+<p>Esimerkki:</p>
+<ul>
+<li>
+<p>Käyttäjä: <code>Haluan hakea lomaa.</code></p>
+</li>
+<li>
+<p>Agentti: <code>Selvä! Milloin haluaisit aloittaa lomasi?</code></p>
+</li>
+<li>
+<p>Käyttäjä: <code>15. heinäkuuta</code></p>
+</li>
+<li>
+<p>Agentti: <code>Selvä. Ja milloin lomasi päättyy?</code></p>
+</li>
+<li>
+<p>Käyttäjä: <code>22. heinäkuuta.</code></p>
+</li>
+<li>
+<p>Agentti: <code>Kiitos! Mikä on lomasi syy?</code></p>
+</li>
+<li>
+<p>Käyttäjä: <code>Perheloma.</code></p>
+</li>
+<li>
+<p>Agentti: <code>Kiitos tiedoista. Olen lähettänyt lomapyyntösi 15.–22. heinäkuuta perhelomaa varten. Saat pian vahvistuksen.</code></p>
+</li>
+</ul>
+<h3 id="vaihe-5-kayta-tekoalya-odottamattomiin-kysymyksiin">🤖 Vaihe 5 - Käytä tekoälyä odottamattomiin kysymyksiin<a class="headerlink" href="#vaihe-5-kayta-tekoalya-odottamattomiin-kysymyksiin" title="Permanent link">&para;</a></h3>
+<p>Vaikka olisit suunnitellut aiheen lomapyyntöjä varten, käyttäjät saattavat esittää kysymyksiä, jotka eivät suoraan liity aiheeseen. Tässä tekoälyominaisuudet, kuten <em>Conversational boosting</em> -järjestelmäaihe, ovat hyödyllisiä.</p>
+<p>Tämä aihe sisältää generatiivisten vastausten solmun, jonka avulla agenttisi voi käyttää yhdistettyjä tietolähteitä heti. Kaikki agenttitasolla lisätyt tietolähteet sisältyvät automaattisesti generatiivisten vastausten solmuun <em>Conversational boosting</em> -järjestelmäaiheessa.</p>
+<h4 id="esimerkki">Esimerkki<a class="headerlink" href="#esimerkki" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Käyttäjä: <code>Voinko siirtää käyttämättömät lomapäivät ensi vuoteen?</code></li>
+</ul>
+<p>Tämä kysymys ei ehkä ole osa ennalta määriteltyä aiheen kulkua, varsinkin jos aihe käsittelee vain lomapyyntöjen lähettämistä.</p>
+<h4 id="miten-tekoaly-auttaa">Miten tekoäly auttaa<a class="headerlink" href="#miten-tekoaly-auttaa" title="Permanent link">&para;</a></h4>
+<p>Jos agenttisi on yhdistetty yrityksesi HR-politiikkadokumentteihin tai sisäiseen verkkosivustoon, tekoäly voi:</p>
+<ul>
+<li>Etsiä asiaankuuluvan lomapolitiikan</li>
+<li>Ymmärtää ja tiivistää säännöt</li>
+<li>Agentti vastaa: <code>HR-politiikan mukaan voit siirtää käyttämättömät lomapäivät seuraavaan kalenterivuoteen. Lisätietoja löydät HR-portaalin lomapolitiikkaosiosta.</code></li>
+</ul>
+<h4 id="miksi-tama-on-hyodyllista_2">Miksi tämä on hyödyllistä<a class="headerlink" href="#miksi-tama-on-hyodyllista_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Sinun ei tarvitse manuaalisesti luoda aihetta jokaiselle politiikkaan liittyvälle kysymykselle.</li>
+<li>Tekoäly voi hakea tarkkoja vastauksia luotettavista tietolähteistä.</li>
+<li>Parantaa käyttäjäkokemusta tekemällä agentista älykkäämmän ja reagoivamman.</li>
+</ul>
+<h3 id="vaihe-6-testaa-aihe-keskustelun-kulku">🔬 Vaihe 6 - Testaa aihe, keskustelun kulku<a class="headerlink" href="#vaihe-6-testaa-aihe-keskustelun-kulku" title="Permanent link">&para;</a></h3>
+<p>Ennen aiheen julkaisemista:</p>
+<ul>
+<li>Testaa käyttämällä oikeita kysymyksiä tai oikeita esimerkkisyötteitä.</li>
+<li>Varmista, että se kuulostaa luonnolliselta ja hyödylliseltä.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Tee aiheeseesi parannuksia testauksen perusteella, kuten lisäämällä solmuja tai poistamalla solmuja ja ohjaamalla toiseen aiheeseen.</p>
+</div>
+<h3 id="vaihe-7-valta-verkkosivuston-sisallon-kopioimista">⚠️ Vaihe 7 - Vältä verkkosivuston sisällön kopioimista<a class="headerlink" href="#vaihe-7-valta-verkkosivuston-sisallon-kopioimista" title="Permanent link">&para;</a></h3>
+<p>Älä kopioi sisältöä, joka on jo verkkosivustollasi.</p>
+<ul>
+<li>Keskity aiheisiin, joista käyttäjät kysyvät usein.</li>
+<li>Lisää uusia aiheita chat-historian tai tukipyyntöjen perusteella.</li>
+</ul>
+<h3 id="esimerkki-keskustelun-kulusta">✨ Esimerkki keskustelun kulusta<a class="headerlink" href="#esimerkki-keskustelun-kulusta" title="Permanent link">&para;</a></h3>
+<p>Alla on esimerkki aiheesta, joka käsittelee lomapyyntöjä.</p>
+<h4 id="vaihe-1-laukaisulause">Vaihe 1: Laukaisulause<a class="headerlink" href="#vaihe-1-laukaisulause" title="Permanent link">&para;</a></h4>
+<p>Käyttäjä kirjoittaa,</p>
+<p><code>Haluan hakea lomaa</code></p>
+<h4 id="vaihe-2-agentti-kysyy-lisatietoja-adaptive-cardin-avulla">Vaihe 2: Agentti kysyy lisätietoja Adaptive Cardin avulla<a class="headerlink" href="#vaihe-2-agentti-kysyy-lisatietoja-adaptive-cardin-avulla" title="Permanent link">&para;</a></h4>
+<p>Agentti kysyy,</p>
+<p><code>Selvä! Mitkä päivämäärät haluaisit ottaa vapaaksi?</code></p>
+<p>Adaptive Card sisältää aloituspäivän ja lopetuspäivän kalenterivalintakontrollin.</p>
+<h4 id="vaihe-3-kayttaja-antaa-paivamaarat">Vaihe 3: Käyttäjä antaa päivämäärät<a class="headerlink" href="#vaihe-3-kayttaja-antaa-paivamaarat" title="Permanent link">&para;</a></h4>
+<p>Käyttäjä valitsee aloituspäiväksi 5. elokuuta 2025 ja lopetuspäiväksi 10. elokuuta 2025 ja lähettää kortin. Päivämääräarvot tallennetaan Adaptive Cardin tuloksiin muuttujina.</p>
+<h4 id="vaihe-4-pilvivirtaus-suoritetaan">Vaihe 4: Pilvivirtaus suoritetaan<a class="headerlink" href="#vaihe-4-pilvivirtaus-suoritetaan" title="Permanent link">&para;</a></h4>
+<p>Power Automate -pilvivirtaus suoritetaan, joka luo uuden pyynnön lomahallintajärjestelmään ja lähettää sähköpostin ilmoittaakseen esimiehelle lomapyynnöstä.</p>
+<h4 id="vaihe-5-laheta-vahvistusviesti-kayttajalle">Vaihe 5: Lähetä vahvistusviesti käyttäjälle<a class="headerlink" href="#vaihe-5-laheta-vahvistusviesti-kayttajalle" title="Permanent link">&para;</a></h4>
+<p>Agentti vastaa,</p>
+<p><code>Lomapyyntösi ajalle 5.–10. elokuuta on lähetetty. Esimiehesi tarkistaa sen ja palaa asiaan pian.</code></p>
+<h2 id="labra-07-lisaa-uusi-aihe-keskustelusolmuilla">🧪 Labra 07 - Lisää uusi aihe keskustelusolmuilla<a class="headerlink" href="#labra-07-lisaa-uusi-aihe-keskustelusolmuilla" title="Permanent link">&para;</a></h2>
+<p>Nyt opimme, kuinka lisätä uusi aihe laukaisimella ja työkaluilla. Tässä labrassa käsitellään aiheen luomista tyhjästä, jotta ymmärrät, kuinka mukauttaa aiheet tarpeisiisi.</p>
+<ul>
+<li><a href="../../../../../docs/recruit/07-add-new-topic-with-trigger">7.1 Lisää uusi aihe tyhjästä</a></li>
+<li><a href="../../../../../docs/recruit/07-add-new-topic-with-trigger">7.2 Määritä laukaisimen syötteet ja tulosteet</a></li>
+<li><a href="../../../../../docs/recruit/07-add-new-topic-with-trigger">7.3 Lisää työkalu liittimen avulla</a></li>
+</ul>
+<h3 id="kayttotapaus">✨ Käyttötapaus<a class="headerlink" href="#kayttotapaus" title="Permanent link">&para;</a></h3>
+<p><strong>Minä työntekijänä</strong></p>
+<p><strong>Haluan</strong> tietää, mitkä laitteet ovat saatavilla</p>
+<p><strong>Jotta</strong> minulla olisi lista saatavilla olevista laitteista</p>
+<p>Aloitetaan!</p>
+<h3 id="esivaatimukset">Esivaatimukset<a class="headerlink" href="#esivaatimukset" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>SharePoint-lista</strong></p>
+<p>Käytämme <strong>Devices</strong>-SharePoint-listaa <a href="../00-course-setup/#step-4-create-new-sharepoint-site">Lesson 00 - Kurssin asetukset - Vaihe 3: Luo uusi SharePoint-sivusto</a>.</p>
+<p>Jos et ole vielä luonut <strong>Devices</strong>-SharePoint-listaa, palaa kohtaan <a href="../00-course-setup/#step-4-create-new-sharepoint-site">Lesson 00 - Kurssin asetukset - Vaihe 3: Luo uusi SharePoint-sivusto</a>.</p>
+</li>
+<li>
+<p><strong>Contoso Helpdesk Agent</strong></p>
+<p>Käytämme aiemmin luotua agenttia kohdasta <a href="../06-create-agent-from-conversation/">Lesson 06 - Luo mukautettu agentti luonnollisella kielellä Copilotin avulla ja yhdistä se tietoihisi</a>.</p>
+</li>
+</ol>
+<h3 id="71-lisaa-uusi-aihe-tyhjasta">7.1 Lisää uusi aihe tyhjästä<a class="headerlink" href="#71-lisaa-uusi-aihe-tyhjasta" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Valitse <strong>Topics-välilehti</strong> agentin nimen lähellä. Jos et näe sitä näkyvissä, valitse <strong>+6</strong>, jolloin näet <strong>Topics</strong>-listauksen.</p>
+<p><img alt="Valitse Topics" src="../../../../../translated_images/7.1_01_Topics.789ffa4f75830b5f25fb1eeb8fa3e8ba3810b95870cb3dc49d80d8f4ba15a00a.fi.png" /></p>
+</li>
+<li>
+<p><strong>Topics-välilehti</strong> latautuu, ja oletuksena <em>Custom</em>-aiheet näytetään. Voit suodattaa aiheet All, Custom ja System. Custom- ja System-aiheet, jotka näet tällä hetkellä, luotiin automaattisesti, kun agentti otettiin käyttöön.</p>
+<p>Valitse <strong>+ Add a topic</strong> ja valitse <strong>From blank</strong>.</p>
+<p><img alt="Luo aihe tyhjästä" src="../../../../../translated_images/7.1_02_FromBlank.f3fe83fad24825f8eb498b19af8e472810f657868613b96b3b4e033fa1042e75.fi.png" /></p>
+</li>
+<li>
+<p>Anna aiheelle nimi. Kopioi ja liitä seuraava.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Available devices
+</span></code></pre></div>
+<p><img alt="Nimeä aihe" src="../../../../../translated_images/7.1_03_TopicName.06eb34ebe94516c1d898b5dff183f9586f7526f9316bc122dca641ac29967966.fi.png" /></p>
+</li>
+<li>
+<p>Anna laukaisukuvauksen, joka kuvaa, mitä aihe tekee. Kopioi ja liitä seuraava.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>This topic helps users find devices that are available from our SharePoint Devices list. User can ask to see available devices and it will return a list of devices that are available which can include laptops, smartphones, accessories and more.
+</span></code></pre></div>
+<p><img alt="Anna nimi ja kuvaus laukaisimelle" src="../../../../../translated_images/7.1_04_TriggerDescription.cb748c0358b3af249fcc0fdb0b262185ffed14d8cf628186b8a65ad4bbf14172.fi.png" /></p>
+</li>
+</ol>
+<h3 id="72-maarita-laukaisimen-syotteet-ja-tulosteet">7.2 Määritä laukaisimen syötteet ja tulosteet<a class="headerlink" href="#72-maarita-laukaisimen-syotteet-ja-tulosteet" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Seuraavaksi lisäämme uuden syöttömuuttujan, jota generatiivinen tekoäly käyttää orkesteroinnissaan saadakseen laitetyypin arvon käyttäjän viestistä. Valitse aiheen <strong>More ellipsis (...)</strong> ja valitse <strong>Details</strong>, jotta näet aiheen yksityiskohdat.</p>
+<p><img alt="Valitse aiheen yksityiskohdat" src="../../../../../translated_images/7.2_01_SelectTopicDetails.cc1b97a86718e101084c366514cc306fe82243a014a44c579394e0f70ba5ca53.fi.png" /></p>
+</li>
+<li>
+<p><strong>Topic details</strong>-paneeli on nyt latautunut. Valitse <strong>Input</strong>-välilehti.</p>
+<p><img alt="Input-välilehti" src="../../../../../translated_images/7.2_02_SelectInputTab.d0b900eb02a8f982324f59e3b7aca34c2cdba78263acdc9301225e1c3e6338b6.fi.png" /></p>
+</li>
+<li>
+<p>Valitse <strong>Create a new variable</strong>.</p>
+<p><img alt="Luo uusi syöttömuuttuja" src="../../../../../translated_images/7.2_03_CreateANewVariable.0d45780268d9b6250617c45a9ddd557cdaa23945b66539b313ca8d74f2c96cc2.fi.png" /></p>
+</li>
+<li>
+<p>Anna muuttujalle nimi. Kopioi ja liitä seuraava.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>VarDeviceType
+</span></code></pre></div>
+<p><img alt="Syöttömuuttujan nimi" src="../../../../../translated_images/7.2_04_VariableName.56555922eab13cad52fa29d846f4e515d82c2e9bf61c86705f080a1ba4f3b1af.fi.png" /></p>
+</li>
+<li>
+<p>Nyt meidän täytyy määrittää syöttö- ja tulostemuuttujamme. Seuraavat ovat ominaisuuksia, jotka voidaan määrittää aiheen syötteille ja tulosteille.</p>
+<table>
+<thead>
+<tr>
+<th>Kenttä</th>
+<th style="text-align: left;">Arvo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Miten agentti täyttää tämän syötteen?</td>
+<td style="text-align: left;">Määrittää, miten agentti täyttää tämän muuttujan arvolla ennen aiheen suorittamista. Oletuksena se on asetettu <em>Täytä dynaamisesti parhaalla vaihtoehdolla</em>. Muuten voit ohittaa syötteen arvolla kysymättä käyttäjältä</td>
+</tr>
+<tr>
+<td>Muuttujan tietotyyppi</td>
+<td style="text-align: left;">Muuttujan tietotyyppi. Tuetut tietotyypit ovat <code>String</code>, <code>Boolean</code>, <code>Number</code>, <code>Date</code>, <code>DateTime</code>, <code>DateTimeNoTimeZone</code>, <code>Time</code>, <code>Record</code>, <code>Table</code>, <code>Unspecified</code>, <code>From sample data</code></td>
+</tr>
+<tr>
+<td>Näyttönimi</td>
+<td style="text-align: left;">Muuttujan nimi</td>
+</tr>
+<tr>
+<td>Tunnista nimellä</td>
+<td style="text-align: left;">Entiteettityyppi, jotta agentti voi tunnistaa oikean arvotyypin</td>
+</tr>
+<tr>
+<td>Kuvaus</td>
+<td style="text-align: left;">Kuvaus auttaa agenttia täyttämään syötteet automaattisesti ennen aiheen suorittamista tai luomaan kysymyksiä arvojen kysymiseksi</td>
+</tr>
+</tbody>
+</table>
+<p><em>Miten agentti täyttää tämän syötteen?</em>, <em>Muuttujan tietotyyppi</em> ja <em>Näyttönimi</em> voivat pysyä ennallaan. Päivitä <strong>Tunnista nimellä</strong>-ominaisuus <strong>Käyttäjän koko vastaus</strong>.</p>
+<p><img alt="Päivitä Tunnista nimellä" src="../../../../../translated_images/7.2_05_IdentifyAs.a502101e6f60c27ed8c8b1eff049b8ceedd0531845b932f9b7608ad3d8220090.fi.png" /></p>
+</li>
+<li>
+<p>Kopioi ja liitä seuraava kuvaukseksi.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>List of possible values: Laptop, Desktop, Smartphone
+</span></code></pre></div>
+<p><img alt="Kuvaus" src="../../../../../translated_images/7.2_06_InputDescription.844e1776080e595c6c221bcc33d7a269abcc7e4755c8f11b284c3950f42166b5.fi.png" /></p>
+</li>
+<li>
+<p>Seuraavaksi määritellään aiheen tuloste. Valitse <strong>Output</strong>-välilehti.</p>
+<p><img alt="Valitse Output-välilehti" src="../../../../../translated_images/7.2_07_SelectOutputTab.ab5aa0a2f385f1492df5a67f8f2cbed752dc0258c1e1ddb9928d204405ec403a.fi.png" /></p>
+</li>
+<li>
+<p>Valitse <strong>Create a new variable</strong>.</p>
+<p><img alt="Luo uusi tulostemuuttuja" src="../../../../../translated_images/7.2_08_CreateANewVariable.5518205f121014ff4757af062bedfd38ce768c8f38291dd9d6489d67cd5d5dc8.fi.png" /></p>
+</li>
+<li>
+<p>Päivitä seuraavat ominaisuudet.</p>
+<p><strong>Muuttujan nimi</strong> - Kopioi ja liitä seuraava.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>VarAvailableDevices
+</span></code></pre></div>
+<p><strong>Muuttujan tietotyyppi</strong> - Valitse <strong>Table</strong> tietotyypiksi.</p>
+<p><strong>Muuttujan kuvaus</strong> - Kopioi ja liitä seuraava.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>List of available devices by device type
+</span></code></pre></div>
+<p><img alt="Tulosteen ominaisuudet" src="../../../../../translated_images/7.2_09_OutputVariable.fb0e159fbad5052280040090352c50faf4d91228095c3762e75440b2842e0d29.fi.png" /></p>
+</li>
+<li>
+<p>Olemme nyt määrittäneet aiheen syötteet ja tulosteet. Valitse <strong>X-ikoni</strong> poistuaksesi <strong>Topic details</strong>-paneelista.</p>
+<p><img alt="Poistu aiheen yksityiskohtien paneelista." src="../../../../../translated_images/7.2_10_ExitTopicDetailsPane.6e8981434f04049bef7ab93f9545ee433087e1c99cdfe27b355ee9858ddfde99.fi.png" /></p>
+</li>
+</ol>
+<h3 id="73-lisaa-tyokalu-liittimen-avulla">7.3 Lisää työkalu liittimen avulla<a class="headerlink" href="#73-lisaa-tyokalu-liittimen-avulla" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Seuraavaksi lisätään solmu, joka mahdollistaa agentin hakea laitelistauksen <strong>Devices</strong>-SharePoint-listasta. Valitse <strong>+ ikoni</strong> laukaisimen alapuolella.</p>
+<p><img alt="Lisää työkalu" src="../../../../../translated_images/7.3_01_AddNode.4656328835f7a28bc5f66c440d620a0990bf098e858619ff2c32a9b14fae7c4f.fi.png" /></p>
+</li>
+<li>
+<p>Valitse <strong>Add a tool</strong>-solmu ja sitten <strong>Connector</strong>-välilehti. Etsi <code>Get items</code> ja valitse <strong>Get items</strong> SharePoint-liittimen toiminto.</p>
+<p><img alt="Valitse get items" src="../../../../../translated_images/7.3_02_GetItems.a6bdfb122449de789e7c58592f4c3e3a0f38b7bdcec2e0e5eab34b2d9d991f97.fi.png" /></p>
+</li>
+<li>
+<p>Liittimelle täytyy luoda uusi yhteys. Valitse <strong>chevron</strong>-ikoni ja valitse <strong>Create new connection</strong>.</p>
+<p><img alt="Lisää työkalu" src="../../../../../translated_images/7.3_03_CreateNewConnection.03f49fab97e5f5f2a298e4b1b2e5081304c9c98c5f3ad5be0302c241c3d83d94.fi.png" /></p>
+</li>
+<li>
+<p>Näytetään kaksi vaihtoehtoa, joiden avulla voit yhdistää suoraan SharePoint Onlineen tai paikalliseen SharePointiin. Oletuksena <strong>Connect directly (cloud-services)</strong>-vaihtoehto on valittuna, ja sitä käytämme yhteyden luomiseen.
+Valitse <strong>Luo</strong>.</p>
+</li>
+</ol>
+<p><img alt="Valitse Luo" src="../../../../../translated_images/7.3_04_SelectCreate.f2216f1e276ed153e06d5b5d47f170a0f9cc6854aa05f0736623acb3aeee1229.fi.png" /></p>
+<ol>
+<li>Valitse kirjautunut käyttäjätilisi.</li>
+</ol>
+<p><img alt="Valitse kirjautunut käyttäjätili" src="../../../../../translated_images/7.3_05_SelectSignedInUserAccount.e27a0ada918a1cf4477f3966adcc5f1d033a8998a2589d02d1208f21f5d93938.fi.png" /></p>
+<ol>
+<li>Seuraavaksi sinun täytyy vahvistaa, että käyttäjätiliäsi voidaan käyttää SharePoint-liittimen yhteyteen. Valitse <strong>Salli pääsy</strong>.</li>
+</ol>
+<p><img alt="Valitse salli pääsy" src="../../../../../translated_images/7.3_06_AllowAccess.69f012dbcedf7ebc1869e648a5eaa661d085b15aa7a2eb69e69c5b63adfa36dd.fi.png" /></p>
+<ol>
+<li>Valitse <strong>Lähetä</strong>, jotta <strong>Hae kohteet</strong> SharePoint-liittimen toiminto lisätään solmuksi aiheeseen.</li>
+</ol>
+<p><img alt="Lähetä" src="../../../../../translated_images/7.3_07_ConnectedSelectSubmit.16ec31ef062696cabb6e7964879debd177f2b9162f88ef95ae1b4eed85e08a21.fi.png" /></p>
+<ol>
+<li><strong>Hae kohteet</strong> SharePoint-liittimen toiminto on nyt lisätty aiheeseen. Voimme nyt aloittaa toiminnon syötteiden määrittämisen. Valitse <strong>kolmen pisteen (...) kuvake</strong> ja valitse <strong>Ominaisuudet</strong>.</li>
+</ol>
+<p><img alt="Valitse Ominaisuudet" src="../../../../../translated_images/7.3_08_GetItemsProperties.32bdda34a1d73a55eb2893695e4b4cf15cd899806e616d0b0b5015471414c9d7.fi.png" /></p>
+<ol>
+<li>
+<p><strong>Hae kohteet</strong> -määrittelypaneeli avautuu, ja oletuksena näet <strong>Syötteet</strong>-välilehden. Valitse <strong>Aloitus</strong>-välilehti ja kirjoita kuvaus <strong>Käyttökuvaus</strong>-kenttään. Kopioi ja liitä seuraava.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Retrieves devices from SharePoint list
+</span></code></pre></div>
+</li>
+</ol>
+<blockquote>
+<p>Tämä on hyödyllistä, kun tarkastelemme agentin <em>Hallitse yhteyksiäsi</em> -sivua. Palaamme tähän pian.</p>
+</blockquote>
+<p><img alt="Hae kohteet kuvaus" src="../../../../../translated_images/7.3_09_UpdateDescription.76a8d2ebddd4c3e4ca423daad7485afa60f31f37c97e16529d94e224f9709d60.fi.png" /></p>
+<ol>
+<li>Valitse <strong>Syötteet</strong>-välilehti ja valitse <strong>Contoso IT</strong> -sivusto ja <strong>Laitteet</strong>-lista, jonka loit <a href="../00-course-setup/#step-4-create-new-sharepoint-site">Oppitunti 00 - Kurssin asennus - Vaihe 3: Luo uusi SharePoint-sivusto</a>.</li>
+</ol>
+<p><img alt="Määritä Hae kohteet syötteet" src="../../../../../translated_images/7.3_10_GetItemsInputs.17f8689e660c480dd405ab2ab57db34dcd2b8e697ec09d54c8f8649eb619c58b.fi.png" /></p>
+<ol>
+<li>Nyt, jotta näytetään vain laitteet SharePoint-listasta seuraavien perusteella:</li>
+<li>valittu arvo,</li>
+<li>ja vain laitteet, joiden tila on <em>Saatavilla</em>,</li>
+</ol>
+<p>meidän täytyy soveltaa suodatinta. Tämä tehdään syöttämällä suodatuskysely Power Fx:n avulla. Valitse <strong>kolmen pisteen (...) kuvake</strong>.</p>
+<p><img alt="Valitse kolmen pisteen kuvake" src="../../../../../translated_images/7.3_11_SelectVariable.33bfe876cc230569ea0f6cc5e1efa100432509e44342e9b3d6a9e65ee2bc525f.fi.png" /></p>
+<ol>
+<li>Oletuksena olet <strong>Mukautettu</strong>-välilehdellä. Valitse <strong>Kaava</strong>-välilehti.</li>
+</ol>
+<p><img alt="Valitse Kaava-välilehti" src="../../../../../translated_images/7.3_12_SelectFormula.a7aba25c95956d113865da3f30da3f3872e12c7a7a8f3c65098a3e3fac9616a4.fi.png" /></p>
+<ol>
+<li>Valitse <strong>laajenna</strong>-kuvake suurentaaksesi <strong>Kaava</strong>-kenttää. Kopioi ja liitä seuraava Power Fx -lauseke.</li>
+</ol>
+<p>Käytämme <code>Concatenate</code>-funktiota luodaksemme lausekkeen, joka suodattaa:
+   - SharePoint-sarakkeen <strong>Tila</strong> yhtä kuin <em>Saatavilla</em>,
+   - ja SharePoint-sarakkeen <strong>Omaisuustyyppi</strong> yhtä kuin <em>valittu laite kysymyssolmusta</em>.</p>
+<div class="language-text highlight"><pre><span></span><code>```text
+Concatenate(&quot;Status eq &#39;Available&#39; and AssetType eq &#39;&quot;, Topic.VarDeviceType, &quot;&#39;&quot;)
+```
+</code></pre></div>
+<p>Valitse <strong>Lisää</strong>.</p>
+<p><img alt="Syötä Power Fx -lauseke ja valitse lisää" src="../../../../../translated_images/7.3_13_EnterFormula.d17cc9f73e01e1cab8e2420a55bcb726ae0a0e55673f81ee3d7fe12d20148b92.fi.png" /></p>
+<ol>
+<li>Power Fx -lauseke sovelletaan nyt <strong>Hae kohteet</strong> -toiminnon Suodatuskysely-syöteparametriin. Seuraavaksi valitse <strong>Kaikki kohteet</strong> -näkymä <strong>Rajoita sarakkeet näkymän mukaan</strong> -kohdassa. Tämä hakee vain listan sarakkeet valitun näkymän perusteella.</li>
+</ol>
+<p><img alt="Listaa sarakkeet näkymän mukaan" src="../../../../../translated_images/7.3_14_LimitColumnsByView.5537126aaa087bd7f81cc35dfe182aa72cdbec4fe1fb5c2e15823a1275dcaa71.fi.png" /></p>
+<ol>
+<li>Seuraavaksi päivitämme muuttujan nimen tulosteelle. Valitse <strong>Tulosteet</strong>-välilehti ja valitse <code>GetItems</code>-muuttuja.</li>
+</ol>
+<p><img alt="Päivitä muuttuja" src="../../../../../translated_images/7.3_15_ConfigureOutputs.d4cb0c5c8e37d1859ed705bd1582fce2d063e7f4d65cc036127a846d743ff391.fi.png" /></p>
+<ol>
+<li>
+<p>Päivitä nimi seuraavaksi.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>VarDevices
+</span></code></pre></div>
+</li>
+</ol>
+<p><img alt="Päivitä muuttujan nimi" src="../../../../../translated_images/7.3_16_RenameVariable.55d7adb355808d39fe515bf980af123c60e218fa427354079e86efc412dc0f83.fi.png" /></p>
+<ol>
+<li>Vieritä alas ja valitse <strong>Käyttö</strong>-osiossa <strong>Globaali</strong>. Tämä tekee muuttujasta käytettävissä olevan kaikille aiheille.</li>
+</ol>
+<p><img alt="Päivitä globaaliksi muuttujaksi" src="../../../../../translated_images/7.3_17_UpdateToGlobalVariable.09bdb05c0938898a04e48b6bcebee1584f17080b63b2577594be74f9f77a5bc3.fi.png" /></p>
+<ol>
+<li><strong>Sulje</strong> <strong>Muuttujan ominaisuudet</strong> -paneeli.</li>
+</ol>
+<p><img alt="Sulje Muuttujan ominaisuudet -paneeli" src="../../../../../translated_images/7.3_18_ExitVariablePropertiesPane.b1a5e76dfe490bdf1274d8e8c78df44f9b3e3542180fa52fb6f903a980ef31ab.fi.png" /></p>
+<ol>
+<li>Valitse <strong>plus +</strong> -kuvake lisätäksesi uuden solmun, valitse <strong>Muuttujan hallinta</strong> ja sen jälkeen <strong>Aseta muuttujan arvo</strong>.</li>
+</ol>
+<p><img alt="Lisää Aseta muuttujan arvo -solmu" src="../../../../../translated_images/7.3_19_AddSetAVariableValueNode.958d21c21727ef92506fe76cf0458f05ac8508d84d0a4917077d2889410330e2.fi.png" /></p>
+<ol>
+<li>Valitse <strong>suurempi kuin</strong> -kuvake <strong>Aseta muuttuja</strong> -syöteparametrille.</li>
+</ol>
+<p><img alt="Aseta muuttuja" src="../../../../../translated_images/7.3_20_SelectAVariable.9d3beb144002569b947c90cbec22afcc9cb34f277b21e3f65dcaf69831abc438.fi.png" /></p>
+<ol>
+<li>Valitse aiemmin luotu aiheen tuloste muuttujaksi, <strong>VarAvailableDevices</strong>.</li>
+</ol>
+<p><img alt="Tallenna aihe" src="../../../../../translated_images/7.3_21_SelectVarAvailableDevicesOutput.8d7259eb6ce1bc7c89de10b768b62dc3008ad7468c094249282bfe66436d1672.fi.png" /></p>
+<ol>
+<li>Seuraavaksi valitse <strong>kolmen pisteen (...) kuvake</strong> määrittääksesi muuttujan arvon.</li>
+</ol>
+<p><img alt="Valitse muuttujan arvo" src="../../../../../translated_images/7.3_22_SelectVariable.f16319e644afc97d24a8cddaf64a7df9fcc52acd7e284b21f20b685a6e53887a.fi.png" /></p>
+<ol>
+<li>Käytämme nyt PowerFx-lauseketta asettaaksemme muuttujan arvoksi <code>value</code>-ominaisuuden, joka palautetaan <strong>Hae kohteet</strong> -vastauksessa, ja teemme <a href="https://learn.microsoft.com/microsoft-copilot-studio/advanced-power-fx?WT.mc_id=power-172618-ebenitez">muuttujan laajuuden</a> globaaliksi lisäämällä etuliitteen <code>Global</code>.</li>
+</ol>
+<p>Valitse <strong>Lisää</strong> ja <strong>tallenna</strong> aihe.</p>
+<p><img alt="Power Fx -kaava muuttujan arvolle" src="../../../../../translated_images/7.3_23_PowerFxFormula.f860daa2c8423021926f0697177279ede3d8d443714d471a77e655c3c42edb07.fi.png" /></p>
+<ol>
+<li>Seuraavaksi meidän täytyy päivittää agentin ohjeet. Valitse <strong>Yleiskatsaus</strong>-välilehti ja valitse <strong>Muokkaa</strong>.</li>
+</ol>
+<p><img alt="Muokkaa ohjeita" src="../../../../../translated_images/7.3_24_EditInstructions.ce65a6cbcd74792885230af1da432fbb4079fd8b0f5af24ab840453a900b67a8.fi.png" /></p>
+<ol>
+<li>
+<p>Lisää uusi rivi ohjeisiin, kopioi ja liitä seuraava.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>- Help find available devices and give full details using [Available devices]. Always extract the VarDeviceType from the inputs. After giving device details, ask the user if they want to request a device from the list of available devices.
+</span></code></pre></div>
+</li>
+</ol>
+<p>Tämä ohje opastaa generatiivista tekoälyä käyttämään <strong>Saatavilla olevat laitteet</strong> -laukaisinta näyttääkseen listan saatavilla olevista laitteista <strong>Laitteet</strong> SharePoint-listasta. Valitse koko aiheen paikkamerkki hakasuluissa.</p>
+<p><img alt="Lisää ohjeet" src="../../../../../translated_images/7.3_25_AddInstructions.1e83853476fed3c8b1c43e657bd1c1351108702288a8f688d8543fbf1c2946fb.fi.png" /></p>
+<ol>
+<li>Kirjoita eteenpäin vinoviiva <code>/</code> ja lista aiheista ilmestyy. Valitse <strong>Saatavilla olevat laitteet</strong> -aihe.</li>
+</ol>
+<p><img alt="Viittaa laukaisimeen" src="../../../../../translated_images/7.3_26_SelectAvailableDevicesTopic.1a1beaa256f5417153b7bc55de848b89778f666c213b3a3935444526ab881f0b.fi.png" /></p>
+<ol>
+<li><strong>Tallenna</strong> päivitetyt ohjeet.</li>
+</ol>
+<p><img alt="Tallenna ohjeet" src="../../../../../translated_images/7.3_27_SaveUpdatedInstructions.39908bb60990be971039bf392088fd0ecfa148c4496a6ad7413e1267b9091623.fi.png" /></p>
+<ol>
+<li>
+<p>Nyt testaamme päivitettyä agenttia. Valitse <strong>Testaa</strong> oikeasta yläkulmasta näyttääksesi testipaneelin ja <strong>päivitä</strong> testipaneeli. Syötä seuraava viesti agentille.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>I need a laptop
+</span></code></pre></div>
+</li>
+</ol>
+<p><img alt="Testaa" src="../../../../../translated_images/7.3_28_Test.a273496de273bf3bebb9ac1504c1cedd8947c250ccf8454cf38b2effbdf66f71.fi.png" /></p>
+<ol>
+<li>Ennen kuin agentti voi jatkaa, käyttäjän täytyy vahvistaa, että heidän yhteyttään voidaan käyttää. Valitse <strong>Salli</strong>.</li>
+</ol>
+<p><img alt="Valitse salli" src="../../../../../translated_images/7.3_29_SelectAllow.9f508c4001270252924d889792ecf0cc2a984954b903bb00f7ce6b2dc43d08e3.fi.png" /></p>
+<ol>
+<li>Agentti suorittaa SharePoint-työkalun, joka hakee suodatetun listan laitteista, joissa laitetyyppi on "kannettava" ja tila on "saatavilla", Power Fx -lausekkeen avulla. Vastaus palautetaan käyttäjälle luettelomuodossa.</li>
+</ol>
+<p><img alt="Testin vastaus" src="../../../../../translated_images/7.3_30_TestResponse.b60253568edc8b68d737a62960f4a3fa3620d2ba4658b05aa2503ad5fd763383.fi.png" /></p>
+<ol>
+<li>Viimeinen asia, jonka opimme, on tarkastella käytettyjä yhteyksiä agentin <em>Hallitse yhteyksiäsi</em> -sivulla. Valitse <strong>kolmen pisteen (...)</strong> ja valitse <strong>Hallitse yhteyttä</strong>.</li>
+</ol>
+<p><img alt="Hallitse yhteyttä" src="../../../../../translated_images/7.3_31_ManageConnections.151932ec4f907e020b67c418cf591806da164c74f6b1d9b73c04d7374d9fc505.fi.png" /></p>
+<ol>
+<li>Tällä sivulla näemme kaikki agentin käyttämät yhteydet. Tällä hetkellä listattuna on vain yksi yhteys, joka liittyy SharePoint-työkaluun, joka lisättiin aiheeseen. Valitse <strong>1 työkalu</strong> <strong>Käytössä</strong>-sarakkeessa.</li>
+</ol>
+<p><img alt="Käytössä" src="../../../../../translated_images/7.3_32_UsedBy.1e5ff032f1e02a565a0dafdde4f9436486ed3f012fcc23b824871a71b6de543e.fi.png" /></p>
+<ol>
+<li>Täällä näemme yksityiskohdat Hae kohteet -toiminnosta ja muistamme aiemmin syötetyn <em>käyttökuvauksen</em>. Tämä on paikka, jossa näemme käyttökuvauksen. Valitse <strong>Sulje</strong>.</li>
+</ol>
+<blockquote>
+<p>Tämä kertoo meille, mitä toimintoja käytetään ja niiden tarkoituksen. Tämä auttaa pitämään yhteydet järjestyksessä 📁.</p>
+</blockquote>
+<p><img alt="Käyttökuvaus" src="../../../../../translated_images/7.3_33_UsedByInformation.74a42aedb6dc906c678ff8b281a8706e1c0156ee7375111ed20e02d1a1dfd808.fi.png" /></p>
+<ol>
+<li>Palaa Copilot Studion selaimen välilehteen ja <strong>päivitä</strong> testipaneeli tyhjentääksesi testin.</li>
+</ol>
+<h2 id="tehtava-suoritettu">✅ Tehtävä suoritettu<a class="headerlink" href="#tehtava-suoritettu" title="Permanent link">&para;</a></h2>
+<p>Onnittelut! 👏🏻 Olet oppinut, kuinka lisätä uusi aihe alusta alkaen, kuinka lisätä työkalu, joka kutsuu Hae kohteet SharePoint-liittimen toiminnon, ja käyttää Power Fx:ää suodattamaan vastausta niin, että palautetaan vain laitteet, joiden tila on saatavilla ja laitetyyppi on kannettava. 🙌🏻</p>
+<p>Tämä on <strong>Lab 07 - Lisää uusi aihe keskustelusolmuilla</strong> loppu, valitse alla oleva linkki siirtyäksesi seuraavaan oppituntiin. Laajennamme tämän laboratorion käyttötapausta seuraavan oppitunnin laboratoriossa.</p>
+<p>⏭️ <a href="../08-add-adaptive-card/">Siirry <strong>Paranna käyttäjävuorovaikutusta mukautetuilla korteilla</strong> -oppituntiin</a></p>
+<h2 id="taktiset-resurssit">📚 Taktiset resurssit<a class="headerlink" href="#taktiset-resurssit" title="Permanent link">&para;</a></h2>
+<p>🔗 <a href="https://learn.microsoft.com/microsoft-copilot-studio/authoring-system-topics?mc_id=power-172618-ebenitez">Käytä järjestelmäaiheita</a></p>
+<p>🔗 <a href="https://learn.microsoft.com/microsoft-copilot-studio/guidance/topics-overview?WT.mc_id=power-172618-ebenitez">Aiheet Microsoft Copilot Studiossa</a></p>
+<p>🔗 <a href="https://learn.microsoft.com/microsoft-copilot-studio/authoring-triggers?WT.mc_id=power-172618-ebenitez">Aiheiden laukaisimien asettaminen</a></p>
+<p>🔗 <a href="https://learn.microsoft.com/microsoft-copilot-studio/guidance/defining-chatbot-topics?WT.mc_id=power-172618-ebenitez">Agenttiaiheiden määrittäminen</a></p>
+<p>🔗 <a href="https://learn.microsoft.com/microsoft-copilot-studio/advanced-power-fx?WT.mc_id=power-172618-ebenitez">Luo lausekkeita Power Fx:llä</a></p>
+<p>📺 <a href="https://aka.ms/ai-in-action/copilot-studio/ep6">Luo aiheita luonnollisella kielellä</a></p>
+<p>📺 <a href="https://aka.ms/ai-in-action/copilot-studio/ep4">Lisää toimintoja agenteille liittimien avulla</a></p>
+<p><img src="https://m365-visitor-stats.azurewebsites.net/agent-academy/recruit/07-add-new-topic-with-trigger" alt="Analytiikka" /></p>
+<hr />
+<p><strong>Vastuuvapauslauseke</strong>:<br />
+Tämä asiakirja on käännetty käyttämällä tekoälypohjaista käännöspalvelua <a href="https://github.com/Azure/co-op-translator">Co-op Translator</a>. Vaikka pyrimme tarkkuuteen, huomioithan, että automaattiset käännökset voivat sisältää virheitä tai epätarkkuuksia. Alkuperäistä asiakirjaa sen alkuperäisellä kielellä tulisi pitää ensisijaisena lähteenä. Kriittisen tiedon osalta suositellaan ammattimaista ihmiskäännöstä. Emme ole vastuussa väärinkäsityksistä tai virhetulkinnoista, jotka johtuvat tämän käännöksen käytöstä.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.expand", "navigation.footer", "navigation.instant", "navigation.path", "navigation.prune", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "content.tabs.link", "toc.follow", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

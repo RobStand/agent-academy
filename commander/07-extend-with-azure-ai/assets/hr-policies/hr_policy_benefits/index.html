@@ -1,0 +1,1211 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://microsoft.github.io/agent-academy/commander/07-extend-with-azure-ai/assets/hr-policies/hr_policy_benefits/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../../images/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Contoso Corporation - Copilot Studio Agent Academy</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#contoso-corporation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="Copilot Studio Agent Academy" class="md-header__button md-logo" aria-label="Copilot Studio Agent Academy" data-md-component="logo">
+      
+  <img src="../../../../../images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot Studio Agent Academy
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Contoso Corporation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/microsoft/agent-academy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/agent-academy
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../recruit/" class="md-tabs__link">
+          
+  
+  
+  Recruit
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../operative/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Operative (Coming Soon)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Commander (Coming Soon)
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="Copilot Studio Agent Academy" class="md-nav__button md-logo" aria-label="Copilot Studio Agent Academy" data-md-component="logo">
+      
+  <img src="../../../../../images/logo.png" alt="logo">
+
+    </a>
+    Copilot Studio Agent Academy
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/microsoft/agent-academy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/agent-academy
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../recruit/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recruit
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../operative/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operative (Coming Soon)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Commander (Coming Soon)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#employee-benefits-and-compensation-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Employee Benefits and Compensation Guide
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-welcome-to-contoso-benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Welcome to Contoso Benefits
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-benefits-eligibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Benefits Eligibility
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-health-insurance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Health Insurance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-health-savings-and-spending-accounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Health Savings and Spending Accounts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-retirement-savings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Retirement Savings
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-insurance-benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Insurance Benefits
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-work-life-benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Work-Life Benefits
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-professional-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Professional Development
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-wellness-programs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Wellness Programs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-perks-and-discounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Perks and Discounts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-compensation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Compensation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-additional-leave-benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Additional Leave Benefits
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-international-employees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. International Employees
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-cobra-and-post-employment-benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. COBRA and Post-Employment Benefits
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-benefits-administration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Benefits Administration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-legal-notices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Legal Notices
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="contoso-corporation">Contoso Corporation<a class="headerlink" href="#contoso-corporation" title="Permanent link">&para;</a></h1>
+<h2 id="employee-benefits-and-compensation-guide">Employee Benefits and Compensation Guide<a class="headerlink" href="#employee-benefits-and-compensation-guide" title="Permanent link">&para;</a></h2>
+<p><strong>Policy Number:</strong> HR-2025-003<br />
+<strong>Effective Date:</strong> January 1, 2025<br />
+<strong>Last Revised:</strong> January 1, 2025<br />
+<strong>Policy Owner:</strong> Human Resources Department</p>
+<hr />
+<h2 id="1-welcome-to-contoso-benefits">1. Welcome to Contoso Benefits<a class="headerlink" href="#1-welcome-to-contoso-benefits" title="Permanent link">&para;</a></h2>
+<p>At Contoso, we believe that comprehensive benefits are essential to attracting and retaining top talent. This guide outlines the benefits available to you as a Contoso employee. We're committed to supporting your physical, mental, financial, and social wellbeing.</p>
+<h2 id="2-benefits-eligibility">2. Benefits Eligibility<a class="headerlink" href="#2-benefits-eligibility" title="Permanent link">&para;</a></h2>
+<h3 id="21-full-time-employees">2.1 Full-Time Employees<a class="headerlink" href="#21-full-time-employees" title="Permanent link">&para;</a></h3>
+<p>Full-time employees (30+ hours per week) are eligible for all benefits outlined in this guide, beginning on their first day of employment.</p>
+<h3 id="22-part-time-employees">2.2 Part-Time Employees<a class="headerlink" href="#22-part-time-employees" title="Permanent link">&para;</a></h3>
+<p>Part-time employees (20-29 hours per week) are eligible for:
+- Prorated PTO
+- 401(k) with company match
+- Employee Assistance Program (EAP)
+- Some voluntary benefits</p>
+<h3 id="23-enrollment-periods">2.3 Enrollment Periods<a class="headerlink" href="#23-enrollment-periods" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>New Hire Enrollment:</strong> 30 days from start date</li>
+<li><strong>Annual Open Enrollment:</strong> November 1-30 for coverage beginning January 1</li>
+<li><strong>Qualifying Life Events:</strong> 30 days from event (marriage, birth, etc.)</li>
+</ul>
+<h2 id="3-health-insurance">3. Health Insurance<a class="headerlink" href="#3-health-insurance" title="Permanent link">&para;</a></h2>
+<h3 id="31-medical-insurance">3.1 Medical Insurance<a class="headerlink" href="#31-medical-insurance" title="Permanent link">&para;</a></h3>
+<p>Contoso offers three medical plan options through Aetna:</p>
+<p><strong>PPO Standard Plan</strong>
+- Monthly Premium: $75 (employee only), $200 (family)
+- Deductible: $1,500 individual / $3,000 family
+- Out-of-Pocket Max: $5,000 individual / $10,000 family
+- Coinsurance: 80/20 after deductible
+- Primary Care: $25 copay
+- Specialist: $50 copay</p>
+<p><strong>PPO Plus Plan</strong>
+- Monthly Premium: $150 (employee only), $400 (family)
+- Deductible: $500 individual / $1,000 family
+- Out-of-Pocket Max: $3,000 individual / $6,000 family
+- Coinsurance: 90/10 after deductible
+- Primary Care: $20 copay
+- Specialist: $35 copay</p>
+<p><strong>High Deductible Health Plan (HDHP) with HSA</strong>
+- Monthly Premium: $0 (employee only), $100 (family)
+- Deductible: $2,800 individual / $5,600 family
+- Out-of-Pocket Max: $5,000 individual / $10,000 family
+- Coinsurance: 100% after deductible (no copays)
+- HSA Compatible: Yes
+- <strong>Company HSA Contribution:</strong> $1,000 (individual) / $2,000 (family) annually</p>
+<p><strong>Additional Medical Benefits:</strong>
+- Preventive care covered at 100%
+- Telemedicine through Teladoc ($0 copay)
+- Prescription drug coverage through CVS Caremark
+- Mental health parity (same coverage as medical)</p>
+<h3 id="32-dental-insurance">3.2 Dental Insurance<a class="headerlink" href="#32-dental-insurance" title="Permanent link">&para;</a></h3>
+<p>Contoso offers dental coverage through Delta Dental:</p>
+<p><strong>Standard Dental Plan</strong>
+- Monthly Premium: $20 (employee only), $50 (family)
+- Annual Maximum: $2,000 per person
+- Preventive: 100% covered (cleanings, exams, x-rays)
+- Basic: 80% covered after $50 deductible (fillings, extractions)
+- Major: 50% covered after $50 deductible (crowns, bridges)
+- Orthodontia: 50% covered, $1,500 lifetime max</p>
+<h3 id="33-vision-insurance">3.3 Vision Insurance<a class="headerlink" href="#33-vision-insurance" title="Permanent link">&para;</a></h3>
+<p>Vision coverage provided through VSP:</p>
+<p><strong>Standard Vision Plan</strong>
+- Monthly Premium: $10 (employee only), $25 (family)
+- Eye Exam: $10 copay annually
+- Lenses: $25 copay annually
+- Frames: $150 allowance every 24 months
+- Contact Lenses: $150 allowance (in lieu of glasses)
+- Discounts on LASIK and additional eyewear</p>
+<h3 id="34-coverage-tiers">3.4 Coverage Tiers<a class="headerlink" href="#34-coverage-tiers" title="Permanent link">&para;</a></h3>
+<p>All health plans offer the following coverage tiers:
+- Employee Only
+- Employee + Spouse/Partner
+- Employee + Child(ren)
+- Employee + Family</p>
+<h3 id="35-dependent-eligibility">3.5 Dependent Eligibility<a class="headerlink" href="#35-dependent-eligibility" title="Permanent link">&para;</a></h3>
+<p>Eligible dependents include:
+- Legal spouse or domestic partner
+- Children up to age 26 (biological, adopted, step, foster)
+- Disabled dependents beyond age 26 (with documentation)</p>
+<h2 id="4-health-savings-and-spending-accounts">4. Health Savings and Spending Accounts<a class="headerlink" href="#4-health-savings-and-spending-accounts" title="Permanent link">&para;</a></h2>
+<h3 id="41-health-savings-account-hsa">4.1 Health Savings Account (HSA)<a class="headerlink" href="#41-health-savings-account-hsa" title="Permanent link">&para;</a></h3>
+<p>Available only with HDHP plan:</p>
+<p><strong>Employee Contributions (2025):</strong>
+- Individual: Up to $4,300
+- Family: Up to $8,550
+- Age 55+ catch-up: Additional $1,000</p>
+<p><strong>Company Contributions:</strong>
+- Individual: $1,000 annually (deposited monthly)
+- Family: $2,000 annually (deposited monthly)</p>
+<p><strong>Benefits:</strong>
+- Tax-deductible contributions
+- Tax-free growth
+- Tax-free withdrawals for qualified medical expenses
+- Funds roll over year to year (you keep forever)
+- Portable if you leave Contoso</p>
+<p><strong>Eligible Expenses:</strong> Medical, dental, vision, prescriptions, first aid supplies, some over-the-counter medications</p>
+<h3 id="42-flexible-spending-account-fsa">4.2 Flexible Spending Account (FSA)<a class="headerlink" href="#42-flexible-spending-account-fsa" title="Permanent link">&para;</a></h3>
+<p>Available with PPO plans only:</p>
+<p><strong>Healthcare FSA:</strong>
+- Contribute up to $3,200 annually
+- Use-it-or-lose-it (must spend by December 31)
+- Grace period: Through March 15 of following year
+- Debit card provided for easy access</p>
+<p><strong>Dependent Care FSA:</strong>
+- Contribute up to $5,000 annually (per household)
+- For childcare or eldercare expenses
+- Available with any medical plan</p>
+<h3 id="43-wellness-incentives-for-hsa">4.3 Wellness Incentives for HSA<a class="headerlink" href="#43-wellness-incentives-for-hsa" title="Permanent link">&para;</a></h3>
+<p>Complete wellness activities to earn additional HSA contributions (up to $500):</p>
+<ul>
+<li>Annual biometric screening: $100</li>
+<li>Complete health assessment: $50</li>
+<li>Participate in wellness challenge: $100</li>
+<li>Annual dental cleaning: $50</li>
+<li>Annual vision exam: $50</li>
+<li>Fitness achievement (150 workouts/year): $150</li>
+</ul>
+<h2 id="5-retirement-savings">5. Retirement Savings<a class="headerlink" href="#5-retirement-savings" title="Permanent link">&para;</a></h2>
+<h3 id="51-401k-plan">5.1 401(k) Plan<a class="headerlink" href="#51-401k-plan" title="Permanent link">&para;</a></h3>
+<p>Contoso's 401(k) plan is administered by Fidelity:</p>
+<p><strong>Company Match:</strong>
+- 100% match on first 3% of salary you contribute
+- 50% match on next 2% of salary
+- <strong>Maximum company match: 4% of salary</strong></p>
+<p><strong>Example:</strong> If you earn $100,000 and contribute 5%:
+- Your contribution: $5,000
+- Company match: $4,000 (3% full match + 1% half match)</p>
+<p><strong>Key Features:</strong>
+- Enrollment: Immediate (day 1)
+- Company match begins: After 90 days
+- Vesting: Immediate (100% vested from day one)
+- Investment options: 25+ mutual funds, target date funds, self-directed brokerage</p>
+<p><strong>Contribution Limits (2025):</strong>
+- Under 50: $23,000
+- Age 50+: $30,500 (with $7,500 catch-up)</p>
+<p><strong>Roth 401(k) Option:</strong> After-tax contributions available</p>
+<h3 id="52-financial-planning-services">5.2 Financial Planning Services<a class="headerlink" href="#52-financial-planning-services" title="Permanent link">&para;</a></h3>
+<p>All employees have access to:
+- Free financial planning consultation (1 hour annually)
+- Retirement planning tools and calculators
+- Investment advice through Fidelity
+- Educational webinars (monthly)
+- Student loan refinancing resources</p>
+<h2 id="6-insurance-benefits">6. Insurance Benefits<a class="headerlink" href="#6-insurance-benefits" title="Permanent link">&para;</a></h2>
+<h3 id="61-life-insurance">6.1 Life Insurance<a class="headerlink" href="#61-life-insurance" title="Permanent link">&para;</a></h3>
+<p><strong>Basic Life Insurance (Company-Paid):</strong>
+- Coverage: 1x annual salary (up to $500,000)
+- No cost to employee
+- Automatic enrollment</p>
+<p><strong>Supplemental Life Insurance (Employee-Paid):</strong>
+- Employee: Up to 5x salary (max $1,000,000)
+- Spouse: Up to $500,000
+- Child: $10,000 per child
+- Guaranteed issue amount: $300,000 (no medical exam)</p>
+<p><strong>Accidental Death &amp; Dismemberment (AD&amp;D):</strong>
+- Included with life insurance at no additional cost
+- Coverage: Same as life insurance amount
+- Covers accidental death or loss of limbs, sight, speech, or hearing</p>
+<h3 id="62-disability-insurance">6.2 Disability Insurance<a class="headerlink" href="#62-disability-insurance" title="Permanent link">&para;</a></h3>
+<p><strong>Short-Term Disability (Company-Paid):</strong>
+- Coverage: 60% of base salary
+- Waiting period: 7 days
+- Duration: Up to 90 days
+- No cost to employee</p>
+<p><strong>Long-Term Disability (Company-Paid):</strong>
+- Coverage: 60% of base salary
+- Waiting period: 90 days
+- Duration: Until age 65 or recovery
+- No cost to employee</p>
+<p><strong>Supplemental Disability (Employee-Paid):</strong>
+- Additional coverage available to bring total to 80% of salary
+- Premium based on age and salary</p>
+<h3 id="63-critical-illness-insurance">6.3 Critical Illness Insurance<a class="headerlink" href="#63-critical-illness-insurance" title="Permanent link">&para;</a></h3>
+<p>Voluntary coverage available:
+- Lump sum payment upon diagnosis of covered condition
+- Coverage for cancer, heart attack, stroke, and more
+- Coverage amounts: $10,000 to $50,000
+- Employee, spouse, and children can be covered</p>
+<h3 id="64-accident-insurance">6.4 Accident Insurance<a class="headerlink" href="#64-accident-insurance" title="Permanent link">&para;</a></h3>
+<p>Voluntary coverage available:
+- Lump sum payments for covered accidents
+- Covers emergency room visits, hospital stays, fractures, etc.
+- No deductibles or copays
+- Coverage for employee and family</p>
+<h2 id="7-work-life-benefits">7. Work-Life Benefits<a class="headerlink" href="#7-work-life-benefits" title="Permanent link">&para;</a></h2>
+<h3 id="71-employee-assistance-program-eap">7.1 Employee Assistance Program (EAP)<a class="headerlink" href="#71-employee-assistance-program-eap" title="Permanent link">&para;</a></h3>
+<p>Free, confidential support for all employees and household members:</p>
+<p><strong>Services Include:</strong>
+- Mental health counseling (8 sessions per issue per year)
+- Substance abuse support
+- Financial counseling and debt management
+- Legal consultation (1 hour per issue)
+- Childcare and eldercare resources
+- Crisis support (24/7)
+- Work-life balance coaching</p>
+<p><strong>Access:</strong>
+- Phone: 1-800-EAP-HELP (24/7)
+- Website: eap.contoso.com
+- Mobile app: ComPsych Guidance
+- Company code: CONTOSO2025</p>
+<p><strong>Privacy:</strong> EAP services are completely confidential and not reported to Contoso.</p>
+<h3 id="72-backup-childcare-and-eldercare">7.2 Backup Childcare and Eldercare<a class="headerlink" href="#72-backup-childcare-and-eldercare" title="Permanent link">&para;</a></h3>
+<p>Through Bright Horizons:
+- 10 subsidized backup care days per year
+- In-home care or center-based care
+- Emergency care when regular arrangements fall through
+- $15 per day copay
+- Senior care services available</p>
+<h3 id="73-adoption-assistance">7.3 Adoption Assistance<a class="headerlink" href="#73-adoption-assistance" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Reimbursement up to $10,000 per child</li>
+<li>Covers adoption fees, legal fees, travel expenses</li>
+<li>Submit receipts through Workday</li>
+<li>Available for domestic and international adoptions</li>
+</ul>
+<h3 id="74-commuter-benefits">7.4 Commuter Benefits<a class="headerlink" href="#74-commuter-benefits" title="Permanent link">&para;</a></h3>
+<p>Pre-tax payroll deductions for:
+- Transit passes (bus, train, subway)
+- Parking expenses
+- Save up to 40% through tax savings
+- Annual limit: $3,200 (2025)</p>
+<h3 id="75-gym-membership-reimbursement">7.5 Gym Membership Reimbursement<a class="headerlink" href="#75-gym-membership-reimbursement" title="Permanent link">&para;</a></h3>
+<ul>
+<li>$50 per month reimbursement</li>
+<li>Covers gym memberships, fitness classes, sports leagues</li>
+<li>Submit receipts monthly through Expensify</li>
+<li>Must show proof of attendance (check-in logs)</li>
+</ul>
+<h2 id="8-professional-development">8. Professional Development<a class="headerlink" href="#8-professional-development" title="Permanent link">&para;</a></h2>
+<h3 id="81-tuition-reimbursement">8.1 Tuition Reimbursement<a class="headerlink" href="#81-tuition-reimbursement" title="Permanent link">&para;</a></h3>
+<p><strong>Annual Budget:</strong> $5,000 per employee</p>
+<p><strong>Eligible Programs:</strong>
+- Undergraduate or graduate degrees
+- Professional certifications (PMP, CPA, etc.)
+- Job-related courses and training
+- Online learning platforms (Coursera, Udemy, etc.)
+- Conference attendance</p>
+<p><strong>Requirements:</strong>
+- Employed 6+ months
+- Manager approval before enrollment
+- Grade of B or better (or Pass)
+- Program must be job-related or career-advancing</p>
+<p><strong>Process:</strong>
+1. Submit Learning Request in Workday
+2. Pay tuition upfront
+3. Submit receipts and proof of completion
+4. Reimbursement within 30 days</p>
+<p><strong>Repayment:</strong> If you leave within 12 months of reimbursement, you must repay the amount.</p>
+<h3 id="82-linkedin-learning">8.2 LinkedIn Learning<a class="headerlink" href="#82-linkedin-learning" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Free access to all LinkedIn Learning courses</li>
+<li>16,000+ courses in business, technology, and creative skills</li>
+<li>Access through Workday Learning</li>
+</ul>
+<h3 id="83-conference-attendance">8.3 Conference Attendance<a class="headerlink" href="#83-conference-attendance" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Budget varies by role and level</li>
+<li>Submit conference request through manager</li>
+<li>Covers registration, travel, hotel, meals</li>
+<li>Share learnings with team upon return</li>
+</ul>
+<h2 id="9-wellness-programs">9. Wellness Programs<a class="headerlink" href="#9-wellness-programs" title="Permanent link">&para;</a></h2>
+<h3 id="91-on-site-fitness-centers">9.1 On-Site Fitness Centers<a class="headerlink" href="#91-on-site-fitness-centers" title="Permanent link">&para;</a></h3>
+<p>Available at main offices:
+- Cardio equipment, weights, group fitness classes
+- Locker rooms and showers
+- Free for all employees
+- Guest passes available</p>
+<h3 id="92-mental-health-resources">9.2 Mental Health Resources<a class="headerlink" href="#92-mental-health-resources" title="Permanent link">&para;</a></h3>
+<ul>
+<li>EAP counseling (8 sessions per issue)</li>
+<li>Headspace subscription (free)</li>
+<li>Mental health days (use sick leave)</li>
+<li>Monthly stress management workshops</li>
+<li>Mindfulness and meditation programs</li>
+</ul>
+<h3 id="93-wellness-challenges">9.3 Wellness Challenges<a class="headerlink" href="#93-wellness-challenges" title="Permanent link">&para;</a></h3>
+<p>Quarterly challenges with prizes:
+- Step challenges (team-based)
+- Nutrition challenges
+- Sleep improvement programs
+- Hydration tracking</p>
+<p><strong>Prizes:</strong> Gift cards, extra floating holiday, wellness swag</p>
+<h3 id="94-annual-flu-shots">9.4 Annual Flu Shots<a class="headerlink" href="#94-annual-flu-shots" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Free flu shots at on-site clinics</li>
+<li>Scheduled in October/November</li>
+<li>Available to all employees</li>
+</ul>
+<h3 id="95-biometric-screening">9.5 Biometric Screening<a class="headerlink" href="#95-biometric-screening" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Free annual health screening</li>
+<li>Measures: blood pressure, cholesterol, glucose, BMI</li>
+<li>Confidential results (not shared with Contoso)</li>
+<li>Earn $100 HSA contribution for participation</li>
+</ul>
+<h2 id="10-perks-and-discounts">10. Perks and Discounts<a class="headerlink" href="#10-perks-and-discounts" title="Permanent link">&para;</a></h2>
+<h3 id="101-employee-discount-program">10.1 Employee Discount Program<a class="headerlink" href="#101-employee-discount-program" title="Permanent link">&para;</a></h3>
+<p>Access to discounts through Perks at Work:
+- Retail: 10-40% off major retailers
+- Electronics: Apple, Dell, Lenovo discounts
+- Travel: Hotels, car rentals, attractions
+- Entertainment: Movie tickets, theme parks
+- Cell phone plans: AT&amp;T, Verizon, T-Mobile discounts</p>
+<h3 id="102-company-events">10.2 Company Events<a class="headerlink" href="#102-company-events" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Annual holiday party</li>
+<li>Summer picnic/family day</li>
+<li>Team building events (quarterly)</li>
+<li>Volunteer days (2 paid days per year)</li>
+</ul>
+<h3 id="103-employee-recognition">10.3 Employee Recognition<a class="headerlink" href="#103-employee-recognition" title="Permanent link">&para;</a></h3>
+<p><strong>Service Awards:</strong>
+- 1 year: $100 gift card
+- 5 years: $500 gift + extra week PTO
+- 10 years: $1,500 gift + extra week PTO
+- 15 years: $2,500 gift + extra week PTO
+- 20+ years: $5,000 gift + extra week PTO</p>
+<p><strong>Spot Bonuses:</strong> Managers can award $100-$500 for exceptional work</p>
+<h3 id="104-referral-bonuses">10.4 Referral Bonuses<a class="headerlink" href="#104-referral-bonuses" title="Permanent link">&para;</a></h3>
+<p>Earn bonuses for successful referrals:
+- Individual contributors: $2,500
+- Senior/Lead roles: $5,000
+- Director+: $7,500
+- Hard-to-fill roles: Up to $10,000</p>
+<p>Payment: 50% after 90 days, 50% after 6 months</p>
+<h2 id="11-compensation">11. Compensation<a class="headerlink" href="#11-compensation" title="Permanent link">&para;</a></h2>
+<h3 id="111-pay-structure">11.1 Pay Structure<a class="headerlink" href="#111-pay-structure" title="Permanent link">&para;</a></h3>
+<p>Contoso uses market-based compensation:
+- Regular benchmarking against industry standards
+- Geographic pay differentials
+- Pay bands by level and role
+- Annual merit increases based on performance</p>
+<h3 id="112-payroll-schedule">11.2 Payroll Schedule<a class="headerlink" href="#112-payroll-schedule" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Pay frequency:</strong> Bi-weekly (26 pay periods)</li>
+<li><strong>Pay day:</strong> Every other Friday</li>
+<li><strong>Direct deposit:</strong> Mandatory</li>
+<li><strong>Pay stubs:</strong> Available in Workday</li>
+</ul>
+<h3 id="113-performance-reviews-and-merit-increases">11.3 Performance Reviews and Merit Increases<a class="headerlink" href="#113-performance-reviews-and-merit-increases" title="Permanent link">&para;</a></h3>
+<p><strong>Annual Review Cycle:</strong>
+- Self-assessment: January 15
+- Manager review: January 31
+- Results communicated: February 28
+- Merit increases effective: March 1</p>
+<p><strong>Merit Increase Guidelines:</strong>
+- Exceptional: 8-10%
+- Exceeds: 5-7%
+- Achieves: 3-4%
+- Developing: 0-2%
+- Needs Improvement: 0%</p>
+<h3 id="114-bonus-program">11.4 Bonus Program<a class="headerlink" href="#114-bonus-program" title="Permanent link">&para;</a></h3>
+<p><strong>Eligibility:</strong>
+- All employees at level 5 and above
+- Pro-rated for new hires based on start date</p>
+<p><strong>Bonus Targets:</strong>
+- Individual contributors: 10-15% of base
+- Senior/Lead: 15-20% of base
+- Managers: 20-25% of base
+- Directors: 25-35% of base
+- VP+: 35-50% of base</p>
+<p><strong>Payout:</strong>
+- Based on company performance and individual rating
+- Paid in March following review cycle</p>
+<h3 id="115-equity-compensation">11.5 Equity Compensation<a class="headerlink" href="#115-equity-compensation" title="Permanent link">&para;</a></h3>
+<p><strong>Stock Options (Level 7+):</strong>
+- Granted annually based on performance
+- 4-year vesting schedule (25% per year)
+- 10-year exercise window</p>
+<p><strong>Restricted Stock Units (VP+):</strong>
+- Granted annually
+- 3-year vesting schedule
+- Dividend equivalents paid</p>
+<h2 id="12-additional-leave-benefits">12. Additional Leave Benefits<a class="headerlink" href="#12-additional-leave-benefits" title="Permanent link">&para;</a></h2>
+<h3 id="121-volunteer-time-off">12.1 Volunteer Time Off<a class="headerlink" href="#121-volunteer-time-off" title="Permanent link">&para;</a></h3>
+<ul>
+<li>2 paid days per year for volunteering</li>
+<li>Can be used in half-day increments</li>
+<li>Must be with approved 501(c)(3) organizations</li>
+<li>Log in Workday as "Volunteer Time"</li>
+</ul>
+<h3 id="122-sabbatical-future-benefit">12.2 Sabbatical (Future Benefit)<a class="headerlink" href="#122-sabbatical-future-benefit" title="Permanent link">&para;</a></h3>
+<p>Starting 2026, employees with 7+ years of service may request:
+- 4-week paid sabbatical
+- Must be taken in one continuous block
+- Requires 6 months advance notice
+- One sabbatical per career at Contoso</p>
+<h3 id="123-wellness-days">12.3 Wellness Days<a class="headerlink" href="#123-wellness-days" title="Permanent link">&para;</a></h3>
+<ul>
+<li>2 additional floating days specifically for wellness</li>
+<li>Use for mental health, preventive care, or self-care</li>
+<li>Separate from PTO and floating holidays</li>
+</ul>
+<h2 id="13-international-employees">13. International Employees<a class="headerlink" href="#13-international-employees" title="Permanent link">&para;</a></h2>
+<h3 id="131-global-benefits">13.1 Global Benefits<a class="headerlink" href="#131-global-benefits" title="Permanent link">&para;</a></h3>
+<p>International employees receive locally compliant benefits that may include:
+- Statutory health coverage
+- Pension/retirement plans
+- Country-specific leave entitlements
+- Local holidays</p>
+<p>Contact your local HR representative for specific benefit details in your country.</p>
+<h3 id="132-visa-sponsorship">13.2 Visa Sponsorship<a class="headerlink" href="#132-visa-sponsorship" title="Permanent link">&para;</a></h3>
+<p>Contoso sponsors work visas including:
+- H-1B (specialty occupations)
+- L-1 (intracompany transfers)
+- TN (USMCA professionals)
+- Green card sponsorship (case-by-case)</p>
+<p><strong>Support provided:</strong>
+- Immigration attorney
+- Legal fees covered by Contoso
+- Relocation assistance
+- Ongoing compliance support</p>
+<p>Contact immigration@contoso.com for more information.</p>
+<h2 id="14-cobra-and-post-employment-benefits">14. COBRA and Post-Employment Benefits<a class="headerlink" href="#14-cobra-and-post-employment-benefits" title="Permanent link">&para;</a></h2>
+<h3 id="141-cobra-continuation">14.1 COBRA Continuation<a class="headerlink" href="#141-cobra-continuation" title="Permanent link">&para;</a></h3>
+<p>Upon termination, you may continue health coverage:
+- Coverage available for 18 months (sometimes longer)
+- You pay full premium plus 2% administration fee
+- Must elect within 60 days of termination
+- Information provided automatically upon separation</p>
+<h3 id="142-401k-after-leaving">14.2 401(k) After Leaving<a class="headerlink" href="#142-401k-after-leaving" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Your 401(k) remains yours (fully vested)</li>
+<li>Options: Leave at Fidelity, roll to IRA, roll to new employer</li>
+<li>Contact Fidelity directly to manage account</li>
+</ul>
+<h2 id="15-benefits-administration">15. Benefits Administration<a class="headerlink" href="#15-benefits-administration" title="Permanent link">&para;</a></h2>
+<h3 id="151-making-changes">15.1 Making Changes<a class="headerlink" href="#151-making-changes" title="Permanent link">&para;</a></h3>
+<p><strong>New Hires:</strong> 30 days from start date to enroll</p>
+<p><strong>Annual Open Enrollment:</strong> November 1-30 each year</p>
+<p><strong>Qualifying Life Events (QLE):</strong>
+Within 30 days of event:
+- Marriage or divorce
+- Birth or adoption of child
+- Loss of other coverage
+- Change in employment status
+- Death of dependent</p>
+<h3 id="152-contacts-and-resources">15.2 Contacts and Resources<a class="headerlink" href="#152-contacts-and-resources" title="Permanent link">&para;</a></h3>
+<p><strong>Benefits Team:</strong> benefits@contoso.com or 1-800-CONTOSO-HR</p>
+<p><strong>Medical:</strong> Aetna at 1-800-AET-HELP</p>
+<p><strong>Dental:</strong> Delta Dental at 1-800-DELTA-DD</p>
+<p><strong>Vision:</strong> VSP at 1-800-VSP-HELP</p>
+<p><strong>401(k):</strong> Fidelity at 1-800-FIDELITY or netbenefits.com</p>
+<p><strong>EAP:</strong> ComPsych at 1-800-EAP-HELP</p>
+<p><strong>Benefits Portal:</strong> benefits.contoso.com</p>
+<h3 id="153-cost-transparency">15.3 Cost Transparency<a class="headerlink" href="#153-cost-transparency" title="Permanent link">&para;</a></h3>
+<p>View current benefit costs and plan details at:
+- benefits.contoso.com
+- Workday → Pay → Benefits</p>
+<h2 id="16-legal-notices">16. Legal Notices<a class="headerlink" href="#16-legal-notices" title="Permanent link">&para;</a></h2>
+<p>This guide provides a summary of benefits. Full plan documents govern in case of discrepancy. Contoso reserves the right to modify, suspend, or terminate any benefit plan at any time. This guide does not constitute a contract of employment.</p>
+<hr />
+<p><strong>Questions?</strong></p>
+<p>Contact your HR Business Partner (find in Workday) or the Benefits Team at benefits@contoso.com.</p>
+<p><strong>Approved by:</strong><br />
+Sarah Mitchell, Chief Human Resources Officer<br />
+David Rodriguez, Chief Financial Officer<br />
+January 1, 2025</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.expand", "navigation.footer", "navigation.instant", "navigation.path", "navigation.prune", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "content.tabs.link", "toc.follow", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1341 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://microsoft.github.io/agent-academy/commander/07-extend-with-azure-ai/assets/hr-policies/hr_policy_expense/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../../images/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Contoso Corporation - Copilot Studio Agent Academy</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#contoso-corporation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="Copilot Studio Agent Academy" class="md-header__button md-logo" aria-label="Copilot Studio Agent Academy" data-md-component="logo">
+      
+  <img src="../../../../../images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot Studio Agent Academy
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Contoso Corporation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/microsoft/agent-academy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/agent-academy
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../recruit/" class="md-tabs__link">
+          
+  
+  
+  Recruit
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../operative/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Operative (Coming Soon)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Commander (Coming Soon)
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="Copilot Studio Agent Academy" class="md-nav__button md-logo" aria-label="Copilot Studio Agent Academy" data-md-component="logo">
+      
+  <img src="../../../../../images/logo.png" alt="logo">
+
+    </a>
+    Copilot Studio Agent Academy
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/microsoft/agent-academy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/agent-academy
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../recruit/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recruit
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../operative/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operative (Coming Soon)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Commander (Coming Soon)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#travel-and-expense-reimbursement-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Travel and Expense Reimbursement Policy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-purpose-and-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Purpose and Scope
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-expense-management-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Expense Management System
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-corporate-credit-cards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Corporate Credit Cards
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-air-travel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Air Travel
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ground-transportation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Ground Transportation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-lodging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Lodging
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-meals-and-entertainment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Meals and Entertainment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-international-travel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. International Travel
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-conference-and-event-attendance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Conference and Event Attendance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-professional-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Professional Development
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-office-and-home-office-expenses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Office and Home Office Expenses
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-other-business-expenses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Other Business Expenses
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-non-reimbursable-expenses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Non-Reimbursable Expenses
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-approval-and-review-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Approval and Review Process
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-expense-auditing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Expense Auditing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-tax-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Tax Considerations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-special-situations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Special Situations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-resources-and-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. Resources and Support
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-policy-exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19. Policy Exceptions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20-policy-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        20. Policy Updates
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="contoso-corporation">Contoso Corporation<a class="headerlink" href="#contoso-corporation" title="Permanent link">&para;</a></h1>
+<h2 id="travel-and-expense-reimbursement-policy">Travel and Expense Reimbursement Policy<a class="headerlink" href="#travel-and-expense-reimbursement-policy" title="Permanent link">&para;</a></h2>
+<p><strong>Policy Number:</strong> FIN-2025-001<br />
+<strong>Effective Date:</strong> January 1, 2025<br />
+<strong>Last Revised:</strong> January 1, 2025<br />
+<strong>Policy Owner:</strong> Finance Department</p>
+<hr />
+<h2 id="1-purpose-and-scope">1. Purpose and Scope<a class="headerlink" href="#1-purpose-and-scope" title="Permanent link">&para;</a></h2>
+<h3 id="11-purpose">1.1 Purpose<a class="headerlink" href="#11-purpose" title="Permanent link">&para;</a></h3>
+<p>This policy establishes guidelines for:
+- Business travel arrangements and expenses
+- Employee expense reimbursement
+- Appropriate use of company funds
+- Compliance with tax regulations and accounting standards</p>
+<h3 id="12-scope">1.2 Scope<a class="headerlink" href="#12-scope" title="Permanent link">&para;</a></h3>
+<p>This policy applies to:
+- All Contoso employees traveling on company business
+- All business-related expenses requiring reimbursement
+- Corporate credit card usage
+- Travel arranged through Contoso's travel management company</p>
+<h3 id="13-policy-principles">1.3 Policy Principles<a class="headerlink" href="#13-policy-principles" title="Permanent link">&para;</a></h3>
+<p><strong>Fiscal Responsibility:</strong> Spend company money as if it were your own
+<strong>Business Necessity:</strong> Travel and expenses must have clear business purpose
+<strong>Cost Effectiveness:</strong> Choose reasonable, economical options
+<strong>Compliance:</strong> Follow all company policies and legal requirements
+<strong>Transparency:</strong> Document and report all expenses accurately</p>
+<h2 id="2-expense-management-system">2. Expense Management System<a class="headerlink" href="#2-expense-management-system" title="Permanent link">&para;</a></h2>
+<h3 id="21-expensify-platform">2.1 Expensify Platform<a class="headerlink" href="#21-expensify-platform" title="Permanent link">&para;</a></h3>
+<p>All expenses must be submitted through Expensify:
+- Web: expensify.contoso.com
+- Mobile app: Download from App Store or Google Play
+- SmartScan: Photo receipts for automatic entry
+- Company code: CONTOSO2025</p>
+<h3 id="22-submission-requirements">2.2 Submission Requirements<a class="headerlink" href="#22-submission-requirements" title="Permanent link">&para;</a></h3>
+<p><strong>Receipts Required:</strong>
+- All expenses $25 or more require itemized receipt
+- Credit card statements are not sufficient
+- Per diem meals do not require receipts
+- Lost receipts: Complete Missing Receipt Form in Expensify</p>
+<p><strong>Submission Timing:</strong>
+- Submit within 30 days of expense date
+- Monthly travel expenses: Submit within 7 days of return
+- End of year: Submit by December 20 for current year processing</p>
+<p><strong>Required Information:</strong>
+- Business purpose
+- Attendees (for meals and entertainment)
+- Client/project name (if applicable)
+- Expense category
+- Receipt image</p>
+<h2 id="3-corporate-credit-cards">3. Corporate Credit Cards<a class="headerlink" href="#3-corporate-credit-cards" title="Permanent link">&para;</a></h2>
+<h3 id="33-eligibility">3.3 Eligibility<a class="headerlink" href="#33-eligibility" title="Permanent link">&para;</a></h3>
+<p>Corporate credit cards issued to:
+- Employees who travel regularly (5+ trips per year)
+- Managers and above
+- Employees with business development responsibilities
+- Others by Finance approval</p>
+<h3 id="32-card-usage">3.2 Card Usage<a class="headerlink" href="#32-card-usage" title="Permanent link">&para;</a></h3>
+<p><strong>Appropriate Use:</strong>
+- Business travel expenses
+- Client entertainment
+- Business supplies and materials
+- Professional development (approved)</p>
+<p><strong>Inappropriate Use:</strong>
+- Personal expenses of any kind
+- Cash advances (unless pre-approved for international travel)
+- Family or friend expenses
+- Expenses for non-Contoso employees without authorization</p>
+<h3 id="33-card-responsibilities">3.3 Card Responsibilities<a class="headerlink" href="#33-card-responsibilities" title="Permanent link">&para;</a></h3>
+<p>Cardholders must:
+- Keep card secure and report lost/stolen immediately
+- Review charges weekly
+- Reconcile monthly statements in Expensify
+- Report fraudulent charges immediately
+- Return card upon termination</p>
+<p><strong>Misuse consequences:</strong>
+- Card revocation
+- Repayment of personal charges
+- Disciplinary action up to termination</p>
+<h3 id="34-card-disputes">3.4 Card Disputes<a class="headerlink" href="#34-card-disputes" title="Permanent link">&para;</a></h3>
+<p>For disputed charges:
+1. Contact Finance: finance@contoso.com
+2. Provide documentation
+3. Complete dispute form
+4. Finance will work with card issuer</p>
+<h2 id="4-air-travel">4. Air Travel<a class="headerlink" href="#4-air-travel" title="Permanent link">&para;</a></h2>
+<h3 id="41-booking-requirements">4.1 Booking Requirements<a class="headerlink" href="#41-booking-requirements" title="Permanent link">&para;</a></h3>
+<p><strong>Advance Booking:</strong>
+- Domestic: Book 14+ days in advance
+- International: Book 30+ days in advance
+- Last-minute exceptions require manager approval</p>
+<p><strong>Booking Method:</strong>
+- Use Contoso Travel (travel.contoso.com) for all business travel
+- Direct booking with airline only if emergency (notify Travel team)
+- Contoso Travel available 24/7: 1-800-CONTOSO-TRAVEL</p>
+<h3 id="42-class-of-service">4.2 Class of Service<a class="headerlink" href="#42-class-of-service" title="Permanent link">&para;</a></h3>
+<p><strong>Domestic Flights:</strong>
+- All employees: Economy class
+- Flights over 5 hours: Economy Plus/Comfort+ permitted
+- First class: Requires VP+ approval</p>
+<p><strong>International Flights:</strong>
+- Flights under 6 hours: Economy
+- Flights 6-12 hours: Premium Economy permitted
+- Flights over 12 hours: Business class permitted for Director+
+- First class: Requires C-level approval</p>
+<p><strong>Upgrades:</strong>
+- Personal upgrades (points, miles, personal funds): Permitted
+- Complimentary upgrades: Permitted
+- Company-paid upgrades: Follow guidelines above</p>
+<h3 id="43-airline-loyalty-programs">4.3 Airline Loyalty Programs<a class="headerlink" href="#43-airline-loyalty-programs" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Employees keep all frequent flyer miles and points</li>
+<li>Must use for business when possible to reduce costs</li>
+<li>Personal credit card points for business travel: Keep points, but book through Contoso Travel</li>
+</ul>
+<h3 id="44-flight-changes-and-cancellations">4.4 Flight Changes and Cancellations<a class="headerlink" href="#44-flight-changes-and-cancellations" title="Permanent link">&para;</a></h3>
+<p><strong>Change Fees:</strong>
+- Business necessity changes: Reimbursable
+- Personal convenience changes: Not reimbursable
+- Notify Contoso Travel immediately of changes</p>
+<p><strong>Travel Insurance:</strong>
+- International travel: Included automatically
+- Domestic travel: Optional, recommended for expensive trips</p>
+<h2 id="5-ground-transportation">5. Ground Transportation<a class="headerlink" href="#5-ground-transportation" title="Permanent link">&para;</a></h2>
+<h3 id="51-rental-cars">5.1 Rental Cars<a class="headerlink" href="#51-rental-cars" title="Permanent link">&para;</a></h3>
+<p><strong>When Appropriate:</strong>
+- Multiple meetings at different locations
+- Location without reliable public transit
+- Group travel (3+ people)
+- Cost-effective compared to rideshare</p>
+<p><strong>Rental Guidelines:</strong>
+- Mid-size or smaller vehicle (compact, economy, mid-size)
+- Full-size: Permitted for 3+ passengers
+- SUV/Luxury: Not permitted without approval
+- Use corporate discount code: CONTOSO2025
+- Decline rental car insurance (covered by corporate policy)
+- Refuel before return to avoid premium charges</p>
+<h3 id="52-personal-car-mileage">5.2 Personal Car Mileage<a class="headerlink" href="#52-personal-car-mileage" title="Permanent link">&para;</a></h3>
+<p><strong>Reimbursement Rate:</strong> $0.67 per mile (2025 IRS rate)</p>
+<p><strong>Requirements:</strong>
+- Submit mileage in Expensify with start/end addresses
+- Must be more economical than rental car
+- Insurance: Personal auto insurance required</p>
+<p><strong>Included in Mileage:</strong>
+- Gas and oil
+- Repairs and maintenance
+- Insurance and registration
+- Do not submit separate receipts for these</p>
+<p><strong>Not Reimbursable:</strong>
+- Commuting to/from office
+- Personal errands during business trip
+- Traffic tickets or parking violations</p>
+<h3 id="53-rideshare-and-taxi">5.3 Rideshare and Taxi<a class="headerlink" href="#53-rideshare-and-taxi" title="Permanent link">&para;</a></h3>
+<p><strong>When to Use:</strong>
+- Airport to hotel transfers
+- Single meetings
+- Cities with limited parking
+- More economical than rental</p>
+<p><strong>Guidelines:</strong>
+- Use Uber or Lyft business profile (links to Expensify)
+- Standard/UberX service appropriate
+- Premium services (Black, Lux) require justification
+- Tip: 15-20% is reasonable
+- Share rides when traveling with colleagues</p>
+<h3 id="54-public-transportation">5.4 Public Transportation<a class="headerlink" href="#54-public-transportation" title="Permanent link">&para;</a></h3>
+<p><strong>Encouraged When:</strong>
+- Available and reliable
+- Cost-effective
+- Safe at travel times</p>
+<p><strong>Reimbursable:</strong>
+- Trains, subways, buses
+- Airport shuttles
+- Transit passes for multi-day trips</p>
+<h3 id="55-parking">5.5 Parking<a class="headerlink" href="#55-parking" title="Permanent link">&para;</a></h3>
+<p><strong>Reimbursable:</strong>
+- Airport parking (economy lot when possible)
+- Parking at meeting/event locations
+- Hotel parking (if not included in rate)</p>
+<p><strong>Not Reimbursable:</strong>
+- Parking at home office
+- Parking tickets or violations
+- Valet parking (unless only option)</p>
+<h2 id="6-lodging">6. Lodging<a class="headerlink" href="#6-lodging" title="Permanent link">&para;</a></h2>
+<h3 id="61-hotel-selection">6.1 Hotel Selection<a class="headerlink" href="#61-hotel-selection" title="Permanent link">&para;</a></h3>
+<p><strong>Booking:</strong>
+- Book through Contoso Travel for best rates
+- Use preferred hotel partners when available
+- Select hotels near meeting locations when possible</p>
+<p><strong>Rate Guidelines:</strong>
+- US Cities (Tier 1 - NYC, SF, LA, Boston): Up to $300/night
+- US Cities (Tier 2 - Seattle, Austin, Denver): Up to $200/night
+- US Cities (Tier 3 - Other): Up to $150/night
+- International: Varies by location (check Contoso Travel)</p>
+<p><strong>Exceeding Guidelines:</strong>
+- Conference hotels: Permitted at conference rate
+- Limited availability: Document in expense report
+- Safety/location concerns: Manager pre-approval</p>
+<h3 id="62-hotel-loyalty-programs">6.2 Hotel Loyalty Programs<a class="headerlink" href="#62-hotel-loyalty-programs" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Enroll in hotel loyalty programs</li>
+<li>Keep all points and benefits</li>
+<li>Use points for business travel when possible</li>
+</ul>
+<h3 id="63-alternative-accommodations">6.3 Alternative Accommodations<a class="headerlink" href="#63-alternative-accommodations" title="Permanent link">&para;</a></h3>
+<p><strong>Airbnb/VRBO:</strong>
+- Permitted for extended stays (7+ nights) if more economical
+- Must be commercially listed (not personal residence)
+- Book through Contoso Travel when possible
+- Ensure adequate insurance coverage</p>
+<p><strong>Extended Stay Hotels:</strong>
+- Recommended for trips over 7 days
+- Must include kitchen facilities
+- Typically more economical</p>
+<h3 id="64-hotel-expenses">6.4 Hotel Expenses<a class="headerlink" href="#64-hotel-expenses" title="Permanent link">&para;</a></h3>
+<p><strong>Reimbursable:</strong>
+- Room rate and tax
+- Business-related internet (if not included)
+- Business phone calls
+- Hotel parking (if necessary)</p>
+<p><strong>Not Reimbursable:</strong>
+- Movies, minibar, spa services
+- Room service premium charges
+- Personal phone calls
+- Laundry for trips under 7 days
+- Hotel gym fees (if not included)</p>
+<h2 id="7-meals-and-entertainment">7. Meals and Entertainment<a class="headerlink" href="#7-meals-and-entertainment" title="Permanent link">&para;</a></h2>
+<h3 id="71-per-diem-meals-no-receipts-required">7.1 Per Diem Meals (No Receipts Required)<a class="headerlink" href="#71-per-diem-meals-no-receipts-required" title="Permanent link">&para;</a></h3>
+<p>When traveling overnight on business:
+- <strong>Breakfast:</strong> $15
+- <strong>Lunch:</strong> $20
+- <strong>Dinner:</strong> $35
+- <strong>Daily Total:</strong> $70</p>
+<p><strong>Per Diem Rules:</strong>
+- Available for overnight business travel only
+- No receipts required
+- Cannot claim per diem AND meal receipts for same meal
+- Reduced by 50% on travel days (departure/return)
+- Not available if meals provided (conference, client)</p>
+<h3 id="72-actual-meal-expenses-receipts-required">7.2 Actual Meal Expenses (Receipts Required)<a class="headerlink" href="#72-actual-meal-expenses-receipts-required" title="Permanent link">&para;</a></h3>
+<p>Instead of per diem, submit actual costs:
+- <strong>Breakfast:</strong> Up to $20
+- <strong>Lunch:</strong> Up to $30
+- <strong>Dinner:</strong> Up to $50
+- Requires itemized receipt</p>
+<p><strong>Tips:</strong> 15-20% is appropriate and reimbursable</p>
+<h3 id="73-business-meals-non-travel">7.3 Business Meals (Non-Travel)<a class="headerlink" href="#73-business-meals-non-travel" title="Permanent link">&para;</a></h3>
+<p><strong>Team Meals:</strong>
+- Limit: $30 per person
+- Occasions: Team celebrations, working meals, quarterly events
+- Manager approval required for team size 5+
+- Alcohol: See Section 7.5</p>
+<p><strong>Client Meals:</strong>
+- Limit: $75 per person (higher with approval)
+- Must include Contoso employee
+- Document client name and business purpose
+- Itemized receipt required</p>
+<h3 id="74-entertainment">7.4 Entertainment<a class="headerlink" href="#74-entertainment" title="Permanent link">&para;</a></h3>
+<p><strong>Client Entertainment:</strong>
+- Sporting events, concerts, theater, golf, etc.
+- Must have clear business purpose
+- Contoso employee must attend
+- Manager approval required for expenses over $500
+- Document attendees and business purpose</p>
+<p><strong>Team Entertainment:</strong>
+- Team building activities
+- Department celebrations
+- Must be inclusive to all team members
+- Manager approval required</p>
+<h3 id="75-alcohol">7.5 Alcohol<a class="headerlink" href="#75-alcohol" title="Permanent link">&para;</a></h3>
+<p><strong>Business Meals/Entertainment:</strong>
+- Moderate alcohol consumption permitted with clients
+- Limit: 2 drinks per person for business meals
+- Never drink and drive
+- Use judgment and professionalism</p>
+<p><strong>Internal Meals:</strong>
+- Alcohol not reimbursed for meals without clients/customers present
+- Exception: Company-sponsored events only</p>
+<p><strong>Not Reimbursable:</strong>
+- Hotel minibar alcohol
+- Alcohol purchased at stores/markets
+- Excessive alcohol consumption</p>
+<h2 id="8-international-travel">8. International Travel<a class="headerlink" href="#8-international-travel" title="Permanent link">&para;</a></h2>
+<h3 id="81-pre-travel-requirements">8.1 Pre-Travel Requirements<a class="headerlink" href="#81-pre-travel-requirements" title="Permanent link">&para;</a></h3>
+<p><strong>Before international travel:</strong>
+- Notify Security: globalsecurity@contoso.com
+- Register with travel tracking system
+- Review destination safety information
+- Ensure passport valid 6+ months beyond travel
+- Obtain necessary visas
+- Purchase international phone/data plan
+- Notify bank of travel dates</p>
+<h3 id="82-international-expense-considerations">8.2 International Expense Considerations<a class="headerlink" href="#82-international-expense-considerations" title="Permanent link">&para;</a></h3>
+<p><strong>Currency:</strong>
+- Pay in local currency when possible (better exchange rates)
+- Use corporate card for automatic conversion
+- Convert all expenses to USD in Expensify
+- Exchange rate applied: Date of transaction</p>
+<p><strong>Receipts:</strong>
+- Keep all receipts (even under $25) for international travel
+- International VAT/GST: Keep detailed receipts for recovery</p>
+<p><strong>Per Diem:</strong>
+- Varies by country (check Contoso Travel for rates)
+- Typically higher than US rates</p>
+<h3 id="83-required-documentation">8.3 Required Documentation<a class="headerlink" href="#83-required-documentation" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Visa receipts and fees</li>
+<li>Passport photos (if required for visa)</li>
+<li>International travel insurance (automatically included)</li>
+<li>Business invitations (for visa applications)</li>
+</ul>
+<h2 id="9-conference-and-event-attendance">9. Conference and Event Attendance<a class="headerlink" href="#9-conference-and-event-attendance" title="Permanent link">&para;</a></h2>
+<h3 id="91-approval-process">9.1 Approval Process<a class="headerlink" href="#91-approval-process" title="Permanent link">&para;</a></h3>
+<p>Conference attendance requires:
+- Manager approval
+- Submit Conference Attendance Form in Workday
+- Include: Conference name, dates, location, cost, business justification</p>
+<h3 id="92-registration">9.2 Registration<a class="headerlink" href="#92-registration" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Register early for early-bird discounts</li>
+<li>Book through Contoso Travel for hotel/flight</li>
+<li>Conference hotel: Use conference rate even if exceeds guidelines</li>
+</ul>
+<h3 id="93-reimbursable-conference-expenses">9.3 Reimbursable Conference Expenses<a class="headerlink" href="#93-reimbursable-conference-expenses" title="Permanent link">&para;</a></h3>
+<p><strong>Always Reimbursable:</strong>
+- Conference registration
+- Hotel at conference rate
+- Transportation to/from conference
+- Business meals not provided by conference</p>
+<p><strong>Sometimes Reimbursable:</strong>
+- Workshops or additional sessions (with approval)
+- Conference materials or books
+- Networking events</p>
+<p><strong>Not Reimbursable:</strong>
+- Tourist activities
+- Spa services
+- Extended stay for personal reasons</p>
+<h2 id="10-professional-development">10. Professional Development<a class="headerlink" href="#10-professional-development" title="Permanent link">&para;</a></h2>
+<h3 id="101-training-and-certification">10.1 Training and Certification<a class="headerlink" href="#101-training-and-certification" title="Permanent link">&para;</a></h3>
+<p><strong>Reimbursable:</strong>
+- Job-related training courses
+- Professional certification exams and materials
+- Online learning platforms (Coursera, Udemy, etc.)
+- Books and materials for approved development</p>
+<p><strong>Requirements:</strong>
+- Manager approval before registration
+- Submit through Career Development budget, not expenses
+- See Tuition Reimbursement Policy for degree programs</p>
+<h3 id="102-professional-memberships">10.2 Professional Memberships<a class="headerlink" href="#102-professional-memberships" title="Permanent link">&para;</a></h3>
+<p><strong>Reimbursable:</strong>
+- Professional association dues
+- Industry organization memberships
+- Required licenses and certifications</p>
+<p><strong>Requirements:</strong>
+- Must be job-related
+- Manager approval annually
+- Submit receipt through Expensify</p>
+<h2 id="11-office-and-home-office-expenses">11. Office and Home Office Expenses<a class="headerlink" href="#11-office-and-home-office-expenses" title="Permanent link">&para;</a></h2>
+<h3 id="111-office-supplies">11.1 Office Supplies<a class="headerlink" href="#111-office-supplies" title="Permanent link">&para;</a></h3>
+<p><strong>Reimbursable:</strong>
+- Supplies needed for work but not stocked in office
+- Books and reference materials
+- Software or apps (with IT approval)</p>
+<p><strong>Not Reimbursable:</strong>
+- Items available through office supply system
+- Personal preference items</p>
+<h3 id="112-home-office-equipment">11.2 Home Office Equipment<a class="headerlink" href="#112-home-office-equipment" title="Permanent link">&para;</a></h3>
+<ul>
+<li>$500 annual stipend for remote/hybrid employees</li>
+<li>Eligible items: Desk, chair, monitor, keyboard, mouse, lighting</li>
+<li>Submit through Home Office Stipend category</li>
+<li>See Remote Work Policy for details</li>
+</ul>
+<h3 id="113-internet-and-phone">11.3 Internet and Phone<a class="headerlink" href="#113-internet-and-phone" title="Permanent link">&para;</a></h3>
+<p><strong>Internet:</strong>
+- $50/month reimbursement if required to upgrade for work
+- Requires manager approval
+- Must demonstrate business necessity</p>
+<p><strong>Mobile Phone:</strong>
+- $75/month for employees in eligible roles
+- Contact HR to determine eligibility
+- Personal device or company-provided</p>
+<h2 id="12-other-business-expenses">12. Other Business Expenses<a class="headerlink" href="#12-other-business-expenses" title="Permanent link">&para;</a></h2>
+<h3 id="121-shipping-and-postage">12.1 Shipping and Postage<a class="headerlink" href="#121-shipping-and-postage" title="Permanent link">&para;</a></h3>
+<p><strong>Reimbursable:</strong>
+- Business documents and packages
+- Samples to clients or prospects
+- Use FedEx/UPS corporate account when possible</p>
+<p><strong>Not Reimbursable:</strong>
+- Personal packages
+- Excessive shipping costs (overnight when not necessary)</p>
+<h3 id="122-business-gifts">12.2 Business Gifts<a class="headerlink" href="#122-business-gifts" title="Permanent link">&para;</a></h3>
+<p><strong>Client Gifts:</strong>
+- Limit: $100 per person per year
+- Must comply with client gift policies
+- Document recipient and business purpose
+- No cash or cash equivalents</p>
+<p><strong>Employee Gifts:</strong>
+- Use departmental budget, not expenses
+- Work with HR for appropriate gifts</p>
+<h3 id="123-subscriptions">12.3 Subscriptions<a class="headerlink" href="#123-subscriptions" title="Permanent link">&para;</a></h3>
+<p><strong>Reimbursable:</strong>
+- Business publications and research services
+- Industry newsletters
+- Tools and software (with manager approval)</p>
+<p><strong>Submit annually, not monthly</strong></p>
+<h2 id="13-non-reimbursable-expenses">13. Non-Reimbursable Expenses<a class="headerlink" href="#13-non-reimbursable-expenses" title="Permanent link">&para;</a></h2>
+<p>The following are NEVER reimbursable:</p>
+<p><strong>Personal Expenses:</strong>
+- Personal entertainment or activities
+- Personal grooming (haircuts, manicures, etc.)
+- Gym memberships or fitness classes (use wellness benefit instead)
+- Childcare or pet care
+- Commuting to regular office</p>
+<p><strong>Fines and Penalties:</strong>
+- Traffic tickets
+- Parking violations
+- Late fees or penalties
+- TSA PreCheck or Global Entry (use professional development budget)</p>
+<p><strong>Excessive or Luxury:</strong>
+- First class travel (without approval)
+- Luxury car rentals
+- Excessive meal costs
+- Room upgrades
+- Concierge services</p>
+<p><strong>Personal Guests:</strong>
+- Spouse/partner/family travel costs
+- Additional hotel costs for guests
+- Meals for guests (unless business purpose)</p>
+<h2 id="14-approval-and-review-process">14. Approval and Review Process<a class="headerlink" href="#14-approval-and-review-process" title="Permanent link">&para;</a></h2>
+<h3 id="141-approval-workflow">14.1 Approval Workflow<a class="headerlink" href="#141-approval-workflow" title="Permanent link">&para;</a></h3>
+<p><strong>Expense reports route through:</strong>
+1. <strong>Direct Manager:</strong> Reviews business necessity and compliance
+2. <strong>Finance (for amounts over $5,000):</strong> Reviews for policy compliance
+3. <strong>Automatic payment:</strong> Upon final approval</p>
+<p><strong>Approval Timeline:</strong>
+- Managers: Review within 3 business days
+- Finance: Review within 2 business days
+- Payment: 5-7 business days after final approval</p>
+<h3 id="142-manager-responsibilities">14.2 Manager Responsibilities<a class="headerlink" href="#142-manager-responsibilities" title="Permanent link">&para;</a></h3>
+<p>Managers must:
+- Review expenses promptly
+- Verify business purpose
+- Ensure policy compliance
+- Question or reject non-compliant expenses
+- Approve only appropriate business expenses</p>
+<p><strong>Managers are accountable for team's expense compliance</strong></p>
+<h3 id="143-rejection-and-corrections">14.3 Rejection and Corrections<a class="headerlink" href="#143-rejection-and-corrections" title="Permanent link">&para;</a></h3>
+<p>If expense rejected:
+- Employee receives notification with reason
+- Make corrections and resubmit
+- Discuss with manager if unclear
+- Contact Finance for policy questions</p>
+<h2 id="15-expense-auditing">15. Expense Auditing<a class="headerlink" href="#15-expense-auditing" title="Permanent link">&para;</a></h2>
+<h3 id="151-audit-process">15.1 Audit Process<a class="headerlink" href="#151-audit-process" title="Permanent link">&para;</a></h3>
+<p>Contoso reserves the right to audit any expense report:
+- Random audits conducted quarterly
+- Pattern-based audits for unusual activity
+- Post-payment audits</p>
+<h3 id="152-audit-findings">15.2 Audit Findings<a class="headerlink" href="#152-audit-findings" title="Permanent link">&para;</a></h3>
+<p>If audit identifies issues:
+- <strong>Minor:</strong> Coaching and education
+- <strong>Moderate:</strong> Repayment required, formal warning
+- <strong>Severe:</strong> Repayment, disciplinary action, potential termination</p>
+<h3 id="153-fraud">15.3 Fraud<a class="headerlink" href="#153-fraud" title="Permanent link">&para;</a></h3>
+<p>Expense fraud includes:
+- Submitting false receipts
+- Inflating amounts
+- Claiming personal expenses as business
+- Duplicate submissions
+- Falsifying business purpose</p>
+<p><strong>Consequences:</strong> Immediate termination, repayment, possible legal action</p>
+<h2 id="16-tax-considerations">16. Tax Considerations<a class="headerlink" href="#16-tax-considerations" title="Permanent link">&para;</a></h2>
+<h3 id="161-accountable-plan">16.1 Accountable Plan<a class="headerlink" href="#161-accountable-plan" title="Permanent link">&para;</a></h3>
+<p>Contoso's expense reimbursement follows IRS Accountable Plan requirements:
+- Business connection: Expenses must have business purpose
+- Substantiation: Adequate documentation required
+- Return excess: Over-reimbursements must be returned</p>
+<p><strong>Why it matters:</strong> Properly documented expenses are not taxable income</p>
+<h3 id="162-non-compliant-reimbursements">16.2 Non-Compliant Reimbursements<a class="headerlink" href="#162-non-compliant-reimbursements" title="Permanent link">&para;</a></h3>
+<p>Reimbursements without proper documentation may be:
+- Treated as taxable income
+- Reported on W-2
+- Subject to payroll taxes</p>
+<h3 id="163-foreign-travel">16.3 Foreign Travel<a class="headerlink" href="#163-foreign-travel" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Foreign per diem rates vary by country</li>
+<li>VAT recovery: Keep detailed receipts</li>
+<li>Currency conversion: Use date of transaction</li>
+</ul>
+<h2 id="17-special-situations">17. Special Situations<a class="headerlink" href="#17-special-situations" title="Permanent link">&para;</a></h2>
+<h3 id="171-relocated-employees">17.1 Relocated Employees<a class="headerlink" href="#171-relocated-employees" title="Permanent link">&para;</a></h3>
+<p><strong>Temporary Relocation:</strong>
+- Extended per diem for first 30 days
+- Housing assistance (case-by-case)
+- See Relocation Policy for full details</p>
+<h3 id="172-new-employees">17.2 New Employees<a class="headerlink" href="#172-new-employees" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Same expense policy applies</li>
+<li>Extra guidance available from manager</li>
+<li>Contact Finance with questions</li>
+</ul>
+<h3 id="173-interns-and-temporary-workers">17.3 Interns and Temporary Workers<a class="headerlink" href="#173-interns-and-temporary-workers" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Follow same policy</li>
+<li>May have different approval limits</li>
+<li>Manager provides specific guidance</li>
+</ul>
+<h2 id="18-resources-and-support">18. Resources and Support<a class="headerlink" href="#18-resources-and-support" title="Permanent link">&para;</a></h2>
+<h3 id="181-contacts">18.1 Contacts<a class="headerlink" href="#181-contacts" title="Permanent link">&para;</a></h3>
+<p><strong>Expensify Support:</strong>
+- In-app help and chat
+- Email: help@expensify.com
+- Contoso admin: expenseadmin@contoso.com</p>
+<p><strong>Finance Team:</strong>
+- General questions: finance@contoso.com
+- Policy questions: expense-policy@contoso.com
+- Card issues: corp-card@contoso.com
+- Phone: 1-800-CONTOSO-FIN</p>
+<p><strong>Contoso Travel:</strong>
+- Booking: travel.contoso.com
+- 24/7 Support: 1-800-CONTOSO-TRAVEL
+- Emergency travel: emergency@contosotravel.com</p>
+<h3 id="182-additional-resources">18.2 Additional Resources<a class="headerlink" href="#182-additional-resources" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Expense Policy: intranet.contoso.com/finance/expenses</li>
+<li>Expensify Training: intranet.contoso.com/training/expensify</li>
+<li>Travel Guidelines: travel.contoso.com/guidelines</li>
+<li>FAQs: intranet.contoso.com/finance/expense-faq</li>
+</ul>
+<h2 id="19-policy-exceptions">19. Policy Exceptions<a class="headerlink" href="#19-policy-exceptions" title="Permanent link">&para;</a></h2>
+<h3 id="191-requesting-exceptions">19.1 Requesting Exceptions<a class="headerlink" href="#191-requesting-exceptions" title="Permanent link">&para;</a></h3>
+<p>For situations not covered by policy:
+1. Discuss with manager
+2. Email Finance with justification
+3. Obtain written pre-approval
+4. Document approval with expense submission</p>
+<h3 id="192-executive-exceptions">19.2 Executive Exceptions<a class="headerlink" href="#192-executive-exceptions" title="Permanent link">&para;</a></h3>
+<p>Different guidelines may apply to executives:
+- Contact Executive Support for guidance
+- Higher approval thresholds
+- Additional documentation required</p>
+<h2 id="20-policy-updates">20. Policy Updates<a class="headerlink" href="#20-policy-updates" title="Permanent link">&para;</a></h2>
+<p>This policy is reviewed annually and updated as needed. Employees will be notified of material changes via email and all-hands meetings.</p>
+<p><strong>Questions?</strong> Contact finance@contoso.com</p>
+<hr />
+<p><strong>Approved by:</strong><br />
+David Rodriguez, Chief Financial Officer<br />
+Sarah Mitchell, Chief Human Resources Officer<br />
+January 1, 2025</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.expand", "navigation.footer", "navigation.instant", "navigation.path", "navigation.prune", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "content.tabs.link", "toc.follow", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

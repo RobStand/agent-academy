@@ -1,0 +1,1752 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://microsoft.github.io/agent-academy/translations/fi/docs/recruit/09-add-an-agent-flow/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../../images/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Index - Copilot Studio Agent Academy</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tehtava-09-lisaa-agenttivirtaus-aiheeseesi-automaatiota-varten" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="Copilot Studio Agent Academy" class="md-header__button md-logo" aria-label="Copilot Studio Agent Academy" data-md-component="logo">
+      
+  <img src="../../../../../images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot Studio Agent Academy
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Index
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/microsoft/agent-academy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/agent-academy
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../recruit/" class="md-tabs__link">
+          
+  
+  
+  Recruit
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../operative/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Operative (Coming Soon)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../commander/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Commander (Coming Soon)
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="Copilot Studio Agent Academy" class="md-nav__button md-logo" aria-label="Copilot Studio Agent Academy" data-md-component="logo">
+      
+  <img src="../../../../../images/logo.png" alt="logo">
+
+    </a>
+    Copilot Studio Agent Academy
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/microsoft/agent-academy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/agent-academy
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../recruit/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recruit
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../operative/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operative (Coming Soon)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../commander/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Commander (Coming Soon)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#koodinimi-operation-automation-powerhouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🕵️‍♂️ Koodinimi: OPERATION AUTOMATION POWERHOUSE
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tehtavan-kuvaus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Tehtävän kuvaus
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tavoitteet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔎 Tavoitteet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mika-on-agenttivirtaus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🤔 Mikä on agenttivirtaus?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kylla-mutta-miten-ne-eroavat-power-automate-pilvivirtauksista" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🙋🏽 Kyllä, mutta miten ne eroavat Power Automate -pilvivirtauksista?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#miksi-kayttaa-agenttivirtauksia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        👍🏻 Miksi käyttää agenttivirtauksia
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#miten-agenttivirtaukset-parantavat-agenttiasi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏄🏻‍♂️ Miten agenttivirtaukset parantavat agenttiasi?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keskeiset-ominaisuudet-jotka-tekevat-agenttivirtauksista-tehokkaita" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔌 Keskeiset ominaisuudet, jotka tekevät agenttivirtauksista tehokkaita
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#miten-ne-toimivat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚙️ Miten ne toimivat
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#miten-luoda-agenttivirtaus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧶 Miten luoda agenttivirtaus
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mika-on-agenttivirtauksen-suunnittelutyokalu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎨 Mikä on agenttivirtauksen suunnittelutyökalu?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mainitsit-ilmaisut-mita-ilmaisut-ovat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔤 Mainitsit ilmaisut - mitä ilmaisut ovat?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parhaat-kaytannot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⭐ Parhaat käytännöt
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#labra-09-lisaa-agenttivirta-automaatioon-ja-paranna-aiheiden-ominaisuuksia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 Labra 09 - Lisää agenttivirta automaatioon ja paranna aiheiden ominaisuuksia
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tehtava-suoritettu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Tehtävä suoritettu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#taktiset-resurssit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 Taktiset resurssit
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<!--
+CO_OP_TRANSLATOR_METADATA:
+{
+  "original_hash": "cc4afa4a5a11c9d03896decfbcbd4060",
+  "translation_date": "2025-10-17T01:22:47+00:00",
+  "source_file": "docs/recruit/09-add-an-agent-flow/README.md",
+  "language_code": "fi"
+}
+-->
+<h1 id="tehtava-09-lisaa-agenttivirtaus-aiheeseesi-automaatiota-varten">🚨 Tehtävä 09: Lisää agenttivirtaus aiheeseesi automaatiota varten<a class="headerlink" href="#tehtava-09-lisaa-agenttivirtaus-aiheeseesi-automaatiota-varten" title="Permanent link">&para;</a></h1>
+<h2 id="koodinimi-operation-automation-powerhouse">🕵️‍♂️ Koodinimi: <code>OPERATION AUTOMATION POWERHOUSE</code><a class="headerlink" href="#koodinimi-operation-automation-powerhouse" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><strong>⏱️ Operaatioaikaikkuna:</strong> <code>~30 minuuttia</code>  </p>
+</blockquote>
+<p>🎥 <strong>Katso opastus</strong></p>
+<p><a href="https://www.youtube.com/watch?v=vtLZJT3eBXg" title="Katso opastus YouTubessa"><img alt="Agenttivirtausvideon pikkukuva" src="../../../../../translated_images/video-thumbnail.ede12df9aaebcc8996680c8b6555d309b53bdf33d1b0165cae3b5173a6bcdd73.fi.jpg" /></a></p>
+<h2 id="tehtavan-kuvaus">🎯 Tehtävän kuvaus<a class="headerlink" href="#tehtavan-kuvaus" title="Permanent link">&para;</a></h2>
+<p>Agenttisi voi nyt keskustella käyttäjien kanssa ja tarjota tietoa, mutta todellinen operatiivinen huippuosaaminen vaatii, että agenttisi ryhtyy toimiin. Tämä tehtävä muuttaa keskusteluagenttisi automaatiovoimaksi varustamalla sen agenttivirtauksilla.</p>
+<p>Tehtävän lopussa olet luonut kokonaisvaltaisen laitepyyntöautomaatiojärjestelmän, joka kerää käyttäjän syötteitä mukautuvan kortin avulla, hakee tietoja SharePointista, lähettää ilmoituksia esimiehille sähköpostitse ja tarjoaa käyttäjille sujuvaa palautetta - kaikki agenttisi ohjaamana älykkään työnkulkuautomaatiojärjestelmän kautta.</p>
+<h2 id="tavoitteet">🔎 Tavoitteet<a class="headerlink" href="#tavoitteet" title="Permanent link">&para;</a></h2>
+<p>Tässä tehtävässä opit:</p>
+<ol>
+<li>Ymmärtämään, mitä agenttivirtaukset ovat ja miten ne eroavat Power Automate -pilvivirtauksista automaatiota varten</li>
+<li>Oppimaan agenttivirtauksien keskeiset ominaisuudet, jotka tekevät niistä tehokkaita, kuten tekoälytoiminnot ja luonnollisen kielen kirjoittaminen</li>
+<li>Tutustumaan agenttivirtauksen suunnittelutyökaluun ja ilmaisujen käyttöön dynaamisen datan käsittelyssä</li>
+<li>Luomaan täydellisen laitepyyntöautomaatiojärjestelmän, joka integroi SharePoint-tiedot ja sähköposti-ilmoitukset</li>
+</ol>
+<h2 id="mika-on-agenttivirtaus">🤔 Mikä on agenttivirtaus?<a class="headerlink" href="#mika-on-agenttivirtaus" title="Permanent link">&para;</a></h2>
+<p>Agenttivirtaukset ovat tehokas tapa automatisoida toistuvia tehtäviä ja integroida sovelluksesi ja palvelusi. Ajattele niitä rakenteellisina, vaiheittaisina työnkulkuina, joita agenttisi voi suorittaa automatisoidakseen tehtäviä tai yhdistääkseen muihin sovelluksiin ja palveluihin. Voit ajatella niitä pieninä työnkulkuina, jotka auttavat agenttiasi tekemään asioita, kuten lähettämään ilmoituksia, päivittämään tietueita tai reagoimaan tapahtumiin.</p>
+<p>Toisin kuin autonomiset agentit, jotka käyttävät tekoälyä päätösten tekemiseen lennossa, agenttivirtaukset ovat <strong>deterministisiä työnkulkuja</strong> - eli ne seuraavat samaa polkua joka kerta, mikä takaa johdonmukaiset ja luotettavat tulokset.</p>
+<p>Yksinkertaisesti sanottuna:</p>
+<ul>
+<li>Ne auttavat agenttiasi <em>tekemään asioita</em>, eivät vain <em>sanomaan asioita</em> käyttäjille.</li>
+<li>Ne ovat uudelleenkäytettäviä eri aiheiden ja agenttien välillä, ja ne voidaan käynnistää käyttäjän viesteillä, tapahtumilla tai muilla sovelluksilla ja palveluilla.</li>
+</ul>
+<h2 id="kylla-mutta-miten-ne-eroavat-power-automate-pilvivirtauksista">🙋🏽 Kyllä, mutta miten ne eroavat Power Automate -pilvivirtauksista?<a class="headerlink" href="#kylla-mutta-miten-ne-eroavat-power-automate-pilvivirtauksista" title="Permanent link">&para;</a></h2>
+<p>Sekä agenttivirtaukset että Power Automate -pilvivirtaukset auttavat automatisoimaan tehtäviä. Ne on suunniteltu eri tarkoituksiin ja toimivat eri tavoin.</p>
+<h3 id="agenttivirtaukset-copilot-studiossa">🤖 Agenttivirtaukset Copilot Studiossa<a class="headerlink" href="#agenttivirtaukset-copilot-studiossa" title="Permanent link">&para;</a></h3>
+<p><strong>Mihin ne on tarkoitettu:</strong></p>
+<ul>
+<li>Rakennettu keskustelu- ja autonomisille agenteille (agenttiohjeiden kautta) Copilot Studiossa.</li>
+<li>Keskittyvät älykkääseen, tekoälypohjaiseen automaatioon, joka on vuorovaikutuksessa liiketoimintajärjestelmien kanssa.</li>
+</ul>
+<p><strong>Miksi ne ovat hyödyllisiä:</strong></p>
+<ul>
+<li>Helppo rakentaa ja hallita suoraan Copilot Studiossa.</li>
+<li>Erinomainen automatisoimaan tehtäviä, jotka tapahtuvat <em>keskustelun aikana</em> käyttäjien kanssa, kuten lomapyynnön lähettäminen.</li>
+<li>Et tarvitse erillistä Power Automate -lisenssiä, koska laskutus perustuu Copilot Studion sisäiseen käyttöön. Tämä voi säästää aikaa ja kustannuksia yritystiimeille.</li>
+</ul>
+<p><strong>Rajoitukset:</strong></p>
+<ul>
+<li>Et voi jakaa, kopioida tai määrittää yhteisomistajia.</li>
+<li>Agenttivirtaukset ovat näkyvissä ja käytettävissä vain Copilot Studiossa.</li>
+<li>Tällä hetkellä agenttien tapahtumatriggereitä voidaan muokata Power Automate -valmistajaportaalissa.</li>
+</ul>
+<h3 id="power-automate-pilvivirtaukset">☁️ Power Automate -pilvivirtaukset<a class="headerlink" href="#power-automate-pilvivirtaukset" title="Permanent link">&para;</a></h3>
+<p><strong>Mihin ne on tarkoitettu:</strong></p>
+<ul>
+<li>Suunniteltu yleiskäyttöiseen automaatioon monien sovellusten ja palveluiden välillä.</li>
+<li>Voivat toimia itsenäisesti tai yhdessä agenttivirtauksien kanssa.</li>
+</ul>
+<p><strong>Miksi ne ovat hyödyllisiä:</strong></p>
+<ul>
+<li>Tarjoavat laajan valikoiman liittimiä.</li>
+<li>Ihanteellisia automatisoimaan prosesseja agenttien ulkopuolella.</li>
+<li>Voidaan jakaa, käyttää uudelleen ja hallita tiimien välillä.</li>
+</ul>
+<p><strong>Vaatimukset:</strong></p>
+<ul>
+<li>Tarvitset Power Automate -lisenssin käyttääksesi niitä.</li>
+</ul>
+<h3 id="yhteenveto">📗 Yhteenveto<a class="headerlink" href="#yhteenveto" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Käytä tätä</th>
+<th style="text-align: left;">Kun haluat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Agenttivirtaukset</td>
+<td style="text-align: left;">Automatisoida tehtäviä agentin sisällä, käyttää tekoälyä ja pitää kaiken Copilot Studiossa</td>
+</tr>
+<tr>
+<td style="text-align: left;">Power Automate -pilvivirtaukset</td>
+<td style="text-align: left;">Automatisoida sovellusten ja palveluiden välillä tai rakentaa työnkulkuja agenttien ulkopuolella</td>
+</tr>
+</tbody>
+</table>
+<h2 id="miksi-kayttaa-agenttivirtauksia">👍🏻 Miksi käyttää agenttivirtauksia<a class="headerlink" href="#miksi-kayttaa-agenttivirtauksia" title="Permanent link">&para;</a></h2>
+<p>Agenttivirtaukset seuraavat aina kiinteää polkua - ne tekevät saman asian joka kerta, kun niille annetaan sama syöte.</p>
+<p>Tämä tekee niistä:</p>
+<ul>
+<li><strong>Luotettavia</strong> - voit luottaa siihen, että ne toimivat samalla tavalla joka kerta.</li>
+<li><strong>Ennustettavia</strong> - tiedät, mitä tulosta odottaa, kun virtaus suoritetaan.</li>
+<li><strong>Sääntöihin perustuvia</strong> - ne seuraavat määrittelemiäsi vaiheita.</li>
+</ul>
+<p>Muita etuja ovat:</p>
+<ul>
+<li><strong>Automaatio</strong> - mahdollistaa agenttisi käsittelemään toistuvia tehtäviä, kuten lomakkeiden lähettämistä tai ilmoitusten lähettämistä.</li>
+<li><strong>Yhdistettävyys</strong> - yhdistä yli 1400 liittimeen, kuten ServiceNow, SharePoint, Salesforce. Voit myös rakentaa oman mukautetun liittimen.</li>
+<li><strong>Tiivis integrointi</strong> - agenttivirtaukset ovat osa agentin logiikkaa, ne käynnistyvät suoraan käyttäjän viesteistä tai toimista keskustelussa.</li>
+<li><strong>Skaalautuvuus</strong> - käytä virtauksia uudelleen useiden agenttien tai skenaarioiden välillä.</li>
+<li><strong>Ei koodia tai vähän koodia</strong> - voit rakentaa virtauksia luonnollisella kielellä tai visuaalisella suunnittelutyökalulla.</li>
+<li><strong>Kaikki yhdessä alustassa</strong> - voit suunnitella, testata ja ottaa käyttöön agenttivirtauksia yhdessä paikassa - Copilot Studiossa. Ei tarvitse vaihtaa alustojen välillä.</li>
+</ul>
+<h2 id="miten-agenttivirtaukset-parantavat-agenttiasi">🏄🏻‍♂️ Miten agenttivirtaukset parantavat agenttiasi?<a class="headerlink" href="#miten-agenttivirtaukset-parantavat-agenttiasi" title="Permanent link">&para;</a></h2>
+<p>Agenttivirtaukset laajentavat agenttisi kykyjä "keskustelusta" käyttäjien kanssa toimintaan ja järjestelmien kanssa vuorovaikutukseen.</p>
+<p>Oletetaan, että työskentelet talousosastolla ja saat paljon laskuja toimittajilta. Normaalisti jonkun täytyy lukea jokainen lasku, poimia tärkeät tiedot - summa, päivämäärä, lähettäjä - ja tarkistaa, että kaikki täsmäävät tietueidesi kanssa. Sitten lasku lähetetään oikealle henkilölle hyväksyttäväksi. Tämä vie aikaa ja vaivaa.</p>
+<p>Agenttivirtauksien avulla Copilot Studiossa voit automatisoida tämän prosessin. Heti kun lasku saapuu, agentti:</p>
+<ol>
+<li>Lukee asiakirjan älykkään asiakirjakäsittelyn avulla löytääkseen tärkeät tiedot.</li>
+<li>Tarkistaa tiedot yrityksesi tietojen perusteella varmistaakseen, että kaikki näyttää oikealta.</li>
+<li>Lähettää laskun hyväksyttäväksi oikealle henkilölle.</li>
+</ol>
+<p>Tämä säästää aikaa, vähentää virheitä ja tekee koko prosessista sujuvamman.</p>
+<h3 id="ajattele-sita-nain">Ajattele sitä näin<a class="headerlink" href="#ajattele-sita-nain" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Agentit</strong>: älykkäät päätöksentekijät</li>
+<li><strong>Agenttivirtaukset</strong>: luotettavat toteuttajat</li>
+</ul>
+<h3 id="miksi-se-on-tarkeaa">Miksi se on tärkeää<a class="headerlink" href="#miksi-se-on-tarkeaa" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Saat molempien maailmojen parhaat puolet: luotettavan automaation ja joustavan tekoälyn.</li>
+<li>Virtauksia on helppo rakentaa ja päivittää liiketoiminnan tarpeiden muuttuessa.</li>
+<li>Voit laajentaa automaatiota tiimien välillä.</li>
+</ul>
+<h2 id="keskeiset-ominaisuudet-jotka-tekevat-agenttivirtauksista-tehokkaita">🔌 Keskeiset ominaisuudet, jotka tekevät agenttivirtauksista tehokkaita<a class="headerlink" href="#keskeiset-ominaisuudet-jotka-tekevat-agenttivirtauksista-tehokkaita" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p><strong>Luonnollisen kielen kirjoittaminen</strong></p>
+<ul>
+<li>Voit kuvata, mitä haluat virtauksen tekevän, tavallisella kielellä.</li>
+<li>Copilot ymmärtää tarkoituksesi ja rakentaa virtauksen puolestasi.</li>
+<li>Ei tarvitse kirjoittaa koodia - selitä vain ideasi.</li>
+</ul>
+</li>
+<li>
+<p><strong>Tekoälytoiminnot</strong></p>
+<p>Käytä tekoälyä:</p>
+<ul>
+<li>Lukemaan ja ymmärtämään asiakirjoja tai kuvia.</li>
+<li>Tiivistämään pitkää sisältöä lyhyiksi, hyödyllisiksi vastauksiksi.</li>
+<li>Antamaan älykkäitä suosituksia tai päätöksiä.</li>
+</ul>
+</li>
+<li>
+<p><strong>Generatiiviset toiminnot</strong></p>
+<ul>
+<li>Näiden avulla virtaus mukautuu reaaliajassa.</li>
+<li>Agentti voi suunnitella ja säätää vaiheita muuttuvan tiedon perusteella.</li>
+</ul>
+</li>
+<li>
+<p><strong>Integraatiotoiminnot</strong></p>
+<ul>
+<li>Yhdistä virtauksesi muihin työkaluihin, kuten Outlook, Microsoft Teams, ServiceNow, SharePoint ja muihin sovelluksiin ja palveluihin, yli 1400 sisäänrakennetun liittimen kautta tai oman mukautetun liittimen avulla.</li>
+<li>Tämä auttaa agenttiasi työskentelemään tiimisi jo käyttämien sovellusten kanssa.</li>
+</ul>
+</li>
+<li>
+<p><strong>Ihminen mukana</strong></p>
+<ul>
+<li>Lisää hyväksymisvaiheita, joissa henkilön täytyy tarkistaa tai vahvistaa jotain.</li>
+<li><a href="https://learn.microsoft.com/microsoft-copilot-studio/flows-advanced-approvals?WT.mc_id=power-172621-ebenitez">Edistyneet hyväksynnät</a> tukevat muistutuksia, delegointia ja monivaiheisia hyväksyntöjä.</li>
+</ul>
+</li>
+</ol>
+<h2 id="miten-ne-toimivat">⚙️ Miten ne toimivat<a class="headerlink" href="#miten-ne-toimivat" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p><strong>Käynnistys</strong></p>
+<p>Tapahtuma käynnistää virtauksen - kuten käyttäjän kysymys, virtauksen käynnistäminen aiheesta, ajastettu aika tai tapahtuma toisessa järjestelmässä.</p>
+</li>
+<li>
+<p><strong>Toiminnot</strong></p>
+<p>Nämä ovat seuraavia vaiheita, joita agentti noudattaa - lähettää sähköpostin, kutsuu API:n, päivittää tiketin ServiceNow:ssa.</p>
+</li>
+</ol>
+<h2 id="miten-luoda-agenttivirtaus">🧶 Miten luoda agenttivirtaus<a class="headerlink" href="#miten-luoda-agenttivirtaus" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Luonnollinen kieli</strong>: kuvaa, mitä haluat agentin tekevän, ja Copilot rakentaa sen puolestasi.</li>
+<li><strong>Suunnittelutyökalu</strong>: vedä ja pudota toimintoja, ehtoja ja silmukoita agenttivirtauksen suunnittelutyökalussa rakentaaksesi agenttivirtauksen.</li>
+</ol>
+<h2 id="mika-on-agenttivirtauksen-suunnittelutyokalu">🎨 Mikä on agenttivirtauksen suunnittelutyökalu?<a class="headerlink" href="#mika-on-agenttivirtauksen-suunnittelutyokalu" title="Permanent link">&para;</a></h2>
+<p>Se on visuaalinen työkalu Copilot Studiossa, joka auttaa sinua rakentamaan, muokkaamaan ja hallitsemaan agenttivirtauksia, jotka tarjoavat vaiheittaiset ohjeet, joita agenttisi seuraa suorittaakseen tehtäviä. Se on suunniteltu helppokäyttöiseksi, vaikka olisit uusi agenttivirtauksissa.</p>
+<h3 id="agenttivirtauksen-suunnittelutyokalun-keskeiset-ominaisuudet">Agenttivirtauksen suunnittelutyökalun keskeiset ominaisuudet<a class="headerlink" href="#agenttivirtauksen-suunnittelutyokalun-keskeiset-ominaisuudet" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Visuaalinen työtila</strong></p>
+<ul>
+<li>Näet koko virtauksesi kaaviona.</li>
+<li>Voit helposti zoomata sisään/ulos, sovittaa näkymän tai käyttää minimap-toimintoa suurten virtauksien navigointiin.</li>
+</ul>
+</li>
+<li>
+<p><strong>Toimintojen lisääminen ja poistaminen</strong></p>
+<ul>
+<li>Klikkaa <em>plus (+)</em> -painiketta lisätäksesi uuden toiminnon, kuten viestin lähettämisen tai kohteen päivittämisen SharePoint-listassa.</li>
+<li>Voit etsiä toimintoja liittimistä ja määrittää ne asetusten kautta.</li>
+<li>Poista toiminto klikkaamalla <em>kolmea pistettä (⋮)</em> ja valitsemalla <em>Poista</em>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Parametrien tarkistaminen</strong></p>
+<ul>
+<li>Klikkaa mitä tahansa toimintoa nähdäksesi tai muokataksesi sen asetuksia, joita kutsutaan <em>parametreiksi</em>.</li>
+<li>Voit syöttää arvoja manuaalisesti tai käyttää <em>ilmaisuja</em> tehdäksesi niistä dynaamisia.</li>
+</ul>
+</li>
+<li>
+<p><strong>Versiohistoria</strong></p>
+<ul>
+<li>Joka kerta, kun tallennat virtauksesi, versio tallennetaan.</li>
+<li>Voit palata takaisin ja tarkastella tai palauttaa aiemman version tarvittaessa.</li>
+</ul>
+</li>
+<li>
+<p><strong>Virheiden tarkistus</strong></p>
+<ul>
+<li><em>Virhetarkistin</em> korostaa mahdolliset virheet.</li>
+<li>Kaikki virheet täytyy korjata ennen virtauksen julkaisemista.</li>
+</ul>
+</li>
+<li>
+<p><strong>Julkaisu ja testaus</strong></p>
+<ul>
+<li>Kun virtauksesi on virheetön, julkaise se, jotta se tulee käyttöön.</li>
+<li>Käytä <em>Testaa</em>-toimintoa suorittaaksesi virtauksen manuaalisesti tai automaattisesti ja tarkistaaksesi, toimiiko se odotetusti.</li>
+</ul>
+</li>
+</ol>
+<h3 id="miksi-kayttaa-agenttivirtauksen-suunnittelutyokalua">Miksi käyttää agenttivirtauksen suunnittelutyökalua?<a class="headerlink" href="#miksi-kayttaa-agenttivirtauksen-suunnittelutyokalua" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Visuaalinen ja intuitiivinen</strong> - voit rakentaa virtauksia vetämällä ja klikkaamalla.</li>
+<li><strong>Turvallista kokeilla</strong> - versiohistoria antaa mahdollisuuden peruuttaa muutokset.</li>
+<li><strong>Sisäänrakennettu testaus</strong> - auttaa varmistamaan, että kaikki toimii ennen käyttöönottoa.</li>
+</ul>
+<h2 id="mainitsit-ilmaisut-mita-ilmaisut-ovat">🔤 Mainitsit <em>ilmaisut</em> - mitä ilmaisut ovat?<a class="headerlink" href="#mainitsit-ilmaisut-mita-ilmaisut-ovat" title="Permanent link">&para;</a></h2>
+<p>Ilmaisut ovat pieniä kaavoja tai komentoja, jotka auttavat agenttivirtausta käsittelemään dataa. Käytät niitä laskemaan arvoja, muotoilemaan tekstiä, tekemään päätöksiä tai hakemaan tiettyä tietoa syötteistä.</p>
+<h3 id="miksi-kayttaa-ilmaisuja">Miksi käyttää ilmaisuja?<a class="headerlink" href="#miksi-kayttaa-ilmaisuja" title="Permanent link">&para;</a></h3>
+<p>Ilmaisut mahdollistavat:</p>
+<ul>
+<li><strong>Mukautetun datan käsittelyn</strong> - yhdistä nimiä, muotoile päivämääriä.</li>
+<li><strong>Päätöksenteon</strong> - jos arvo on suurempi kuin 10, tee jotain.</li>
+<li><strong>Datan muuntamisen</strong> - muuta teksti pieniksi kirjaimiksi, poimi osa merkkijonosta.</li>
+<li><strong>Automatisoidun logiikan</strong> - ilman täyttä koodia.</li>
+</ul>
+<h3 id="milta-ilmaisut-nayttavat">Miltä ilmaisut näyttävät?<a class="headerlink" href="#milta-ilmaisut-nayttavat" title="Permanent link">&para;</a></h3>
+<p>Ilmaisut käyttävät funktioita. Lainaan entisen Microsoft MVP:n, Jerry Weinstockin, selitystä siitä, mitä funktiot ovat.</p>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
+<p>Funktiot ovat sisäänrakennettua logiikkaa, joka muuntaa dataasi joko yksinkertaisten tai monimutkaisten operaatioiden kautta ilmaisussasi.</p>
+</div>
+<p>Funktiot mahdollistavat ilmaisujen rakentamisen ilman, että sinun tarvitsee kirjoittaa koodia.</p>
+<p>Kuvaan sen näin: funktio agenttivirtauksissa on samanlainen kuin Excel-funktiot. Voit suorittaa operaation datalle muuntaaksesi sen halutuksi tulokseksi. Kun rakennat kaavaa Excelissä, valitset syötearvon taulukon soluista tai alueesta ja sovellat funktioita manipuloidaksesi datan tulosta. Esimerkki on <code>COUNT</code>-funktio, joka laskee solujen määrän, jotka sisältävät numeroita alueelta.</p>
+<p>Agenttivirtauksissa, sen sijaan että viittaisit dataan taulukon soluista, viittaat datan tuloksiin käynnistimestä tai toiminnoista rakentaessasi ilmaisuja. Jatkaen edellistä esimerkkiä, käytä funktiota <code>length</code> saadaksesi kohteiden lukumäärän, jotka <em>Get items</em> SharePoint-liittimen toiminto palauttaa.</p>
+<h3 id="miksi-funktiot-ovat-tarkeita">Miksi funktiot ovat tärkeitä?<a class="headerlink" href="#miksi-funktiot-ovat-tarkeita" title="Permanent link">&para;</a></h3>
+<p>Funktioiden käyttö tekee agenttivirtauksista:</p>
+<ul>
+<li><strong>Älykkäämpiä</strong> - ne voivat reagoida erilaisiin syötteisiin tai olosuhteisiin.</li>
+<li><strong>Joustavia</strong> - voit mukauttaa, miten dataa käsitellään.</li>
+<li><strong>Tehokkaita</strong> - vältät manuaaliset vaiheet automatisoimalla logiikan.</li>
+</ul>
+<h3 id="hyodyllisimmat-funktiot">Hyödyllisimmät funktiot<a class="headerlink" href="#hyodyllisimmat-funktiot" title="Permanent link">&para;</a></h3>
+<p>Seuraavat ovat yleisiä funktioita, joita käytetään agenttivirtauksissa. Täydellinen lista funktioista löytyy <a href="https://learn.microsoft.com/azure/logic-apps/workflow-definition-language-functions-reference?WT.mc_id=power-172621-ebenitez">viiteoppaasta</a>.</p>
+<h4 id="teksti">🔡 Teksti<a class="headerlink" href="#teksti" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p><code>concat()</code> - Yhdistää kaksi tai useampia tekstinpätkiä.</p>
+<ul>
+<li>Esimerkki: <code>concat('Hei ', firstName)</code> → “Hei John”</li>
+</ul>
+</li>
+<li>
+<p><code>toLower()</code> / <code>toUpper()</code> - Muuttaa tekstin pieniksi tai isoiksi kirjaimiksi.</p>
+<ul>
+<li>Hyödyllinen syötteiden standardointiin.</li>
+</ul>
+</li>
+<li>
+<p><code>substring()</code> - Poimii osan merkkijonosta.</p>
+<ul>
+<li>Esimerkki</li>
+</ul>
+</li>
+<li>
+<p>Esimerkki: <code>addDays(utcNow(), 7)</code> tulos on 7 päivää tästä hetkestä.</p>
+</li>
+<li>
+<p><code>formatDateTime()</code> - Muotoilee päivämäärän luettavaan merkkijonoon.</p>
+<ul>
+<li>Esimerkki: Maanantai, 7. heinäkuuta 2025</li>
+</ul>
+</li>
+</ul>
+<h4 id="loogiset">✅ Loogiset<a class="headerlink" href="#loogiset" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p><code>if()</code> - Suorittaa yhden arvon, jos tosi, ja toisen, jos epätosi.</p>
+<ul>
+<li>Esimerkki: <code>if(score &gt; 50, 'Hyväksytty', 'Hylätty')</code></li>
+</ul>
+</li>
+<li>
+<p><code>equals()</code> - Tarkistaa, ovatko kaksi arvoa samat.</p>
+</li>
+<li>
+<p><code>and()</code>, <code>or()</code>, <code>not()</code> - Yhdistää useita ehtoja.</p>
+</li>
+</ul>
+<h4 id="muut-hyodylliset-funktiot">🪣 Muut hyödylliset funktiot<a class="headerlink" href="#muut-hyodylliset-funktiot" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p><code>coalesce()</code> - Palauttaa ensimmäisen ei-tyhjän arvon.</p>
+<ul>
+<li>Kätevä varmuuskopio-/oletusarvoille.</li>
+</ul>
+</li>
+<li>
+<p><code>guid()</code> - Luo yksilöllisen tunnuksen.</p>
+<ul>
+<li>Kätevä seurantaan tai lokitukseen.</li>
+</ul>
+</li>
+<li>
+<p><code>length()</code> - Laskee, kuinka monta merkkiä tai kohdetta on merkkijonossa tai taulukossa.</p>
+</li>
+</ul>
+<h2 id="parhaat-kaytannot">⭐ Parhaat käytännöt<a class="headerlink" href="#parhaat-kaytannot" title="Permanent link">&para;</a></h2>
+<p>Tässä on joitakin parhaita käytäntöjä agenttivirtojen rakentamiseen Copilot Studiossa.</p>
+<ol>
+<li>
+<p><strong>Aloita yksinkertaisesti ja rakenna vähitellen</strong></p>
+<ul>
+<li>Aloita pienellä, selkeällä tehtävällä, kuten viestin lähettämisellä.</li>
+<li>Lisää enemmän vaiheita testattuasi automaation perusasiat.</li>
+</ul>
+</li>
+<li>
+<p><strong>Käytä selkeitä ja kuvaavia toimintojen nimiä</strong></p>
+<ul>
+<li>Nimeä jokainen vaihe selkeästi, jotta sinä ja tiimisi ymmärrätte, mitä se tekee.</li>
+<li>Esimerkki: sen sijaan, että käytät oletusnimeä "Päivitä kohde" SharePoint-liittimen toiminnolle, nimeä se uudelleen sen mukaan, mitä se päivittää, kuten "Päivitä laitteen tila."</li>
+</ul>
+</li>
+<li>
+<p><strong>Tarkista virheet ennen julkaisemista</strong></p>
+<ul>
+<li>Käytä <strong>virta-tarkistinta</strong> löytääksesi ja korjataksesi ongelmat.</li>
+<li>Et voi julkaista virtoja, jos niissä on virheitä, joten yritä ratkaista ne heti, kun ne ilmenevät.</li>
+</ul>
+</li>
+<li>
+<p><strong>Testaa virtaasi perusteellisesti</strong></p>
+<ul>
+<li>Se, että virta tallentuu ja julkaistaan, ei tarkoita, että se toimii odotetusti.</li>
+<li>Käytä <em>Testaa</em>-ominaisuutta suorittaaksesi virran manuaalisesti tai automaattisesti ja tarkista tulokset.</li>
+</ul>
+</li>
+<li>
+<p><strong>Käytä versiohistoriaa</strong></p>
+<ul>
+<li>Tallenna virtaasi usein, jotta voit palata aiempiin versioihin tarvittaessa.</li>
+<li>Voit tarkastella ja palauttaa aiempia versioita <em>Versiohistoria</em>-paneelista.</li>
+</ul>
+</li>
+<li>
+<p><strong>Käytä parametreja ja lausekkeita viisaasti</strong></p>
+<ul>
+<li>Kun määrität toimintoja, käytä parametreja tehdäksesi virrasta dynaamisen.</li>
+<li>Voit syöttää arvoja manuaalisesti tai käyttää lausekkeita niiden laskemiseen tai yhdistää ne aiempien toimintojen arvoihin käyttämällä <em>dynaamisen sisällön</em> valitsinta.</li>
+</ul>
+</li>
+<li>
+<p><strong>Poista käyttämättömät toiminnot</strong></p>
+<ul>
+<li>Jos lisäät toiminnon ja myöhemmin päätät, ettet tarvitse sitä, poista se pitääksesi virtasi siistinä.</li>
+</ul>
+</li>
+</ol>
+<h2 id="labra-09-lisaa-agenttivirta-automaatioon-ja-paranna-aiheiden-ominaisuuksia">🧪 Labra 09 - Lisää agenttivirta automaatioon ja paranna aiheiden ominaisuuksia<a class="headerlink" href="#labra-09-lisaa-agenttivirta-automaatioon-ja-paranna-aiheiden-ominaisuuksia" title="Permanent link">&para;</a></h2>
+<p>Nyt opimme, kuinka parannamme aihettamme mukautuvilla korteilla ja käyttämällä aiheiden ja solmujen edistyneitä toimintoja.</p>
+<ul>
+<li><a href="../../../../../docs/recruit/09-add-an-agent-flow">9.1 Luo agenttivirta</a></li>
+<li><a href="../../../../../docs/recruit/09-add-an-agent-flow">9.2 Lisää agenttivirta aiheeseen</a></li>
+<li><a href="../../../../../docs/recruit/09-add-an-agent-flow">9.3 Päivitä Pyydä laite -aihe useilla solmuilla paremman käyttäjäkokemuksen saavuttamiseksi</a></li>
+<li><a href="../../../../../docs/recruit/09-add-an-agent-flow">9.4 Testaa agenttia useilla skenaarioilla</a></li>
+</ul>
+<h3 id="kayttotapaus">✨ Käyttötapaus<a class="headerlink" href="#kayttotapaus" title="Permanent link">&para;</a></h3>
+<p><strong>Esimiehenä</strong></p>
+<p><strong>Haluan</strong> vastaanottaa laitepyyntöjä</p>
+<p><strong>Jotta</strong> voin tarkistaa työntekijän pyytämän laitteen.</p>
+<p>Aloitetaan!</p>
+<h3 id="esivaatimukset">Esivaatimukset<a class="headerlink" href="#esivaatimukset" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>SharePoint-lista</strong></p>
+<p>Käytämme <strong>Laitteet</strong> SharePoint-listaa kohdasta <a href="../00-course-setup/#step-4-create-new-sharepoint-site">Oppitunti 00 - Kurssin asennus - Vaihe 3: Luo uusi SharePoint-sivusto</a>.</p>
+<p>Jos et ole luonut <strong>Laitteet</strong> SharePoint-listaa, palaa kohtaan <a href="../00-course-setup/#step-4-create-new-sharepoint-site">Oppitunti 00 - Kurssin asennus - Vaihe 3: Luo uusi SharePoint-sivusto</a>.</p>
+</li>
+<li>
+<p><strong>Contoso Helpdesk Agent</strong></p>
+<p>Käytämme aiemmin luotua agenttia kohdasta <a href="../06-create-agent-from-conversation/">Oppitunti 06 - Luo mukautettu agentti luonnollisella kielellä Copilotilla ja yhdistä se tietoihisi</a>.</p>
+</li>
+</ol>
+<h3 id="91-luo-agenttivirta">9.1 Luo agenttivirta<a class="headerlink" href="#91-luo-agenttivirta" title="Permanent link">&para;</a></h3>
+<p>Tässä harjoituksessa luomme agenttivirran, joka hakee valitun laitteen SharePoint-kohteen ja lähettää sähköpostin esimiehelle laitteen tiedoilla.</p>
+<ol>
+<li>
+<p><strong>Pyydä laite</strong> -aiheessa, vieritä alas <strong>Kysy mukautuvalla kortilla</strong> -solmuun ja lisää uusi solmu. Valitse <strong>Lisää työkalu</strong> ja <strong>Perustyökalut</strong>-välilehdeltä valitse <strong>Uusi agenttivirta</strong>.</p>
+<p><img alt="Lisää uusi agenttivirta" src="../../../../../translated_images/9.1_01_AddNewAgentFlow.2b9078604a054d1f022f9c73adaf10fe430e81875ec8717a7f70ef7b05f11c15.fi.png" /></p>
+</li>
+<li>
+<p>Agenttivirtojen <strong>Suunnittelija</strong> latautuu laukaisimella ja toiminnolla.</p>
+<ul>
+<li>
+<p><strong>Laukaisin</strong> - Kun agentti kutsuu virran</p>
+<ul>
+<li>Tämä käynnistää virran Copilot Studio -agentista.</li>
+</ul>
+</li>
+<li>
+<p><strong>Toiminto</strong> - Vastaa agentille</p>
+<ul>
+<li>Tämä lähettää vastauksen, joka voi sisältää lähtöarvoja takaisin Copilot Studio -agentille.</li>
+</ul>
+</li>
+</ul>
+<p>Valitse laukaisin.</p>
+<p><img alt="Valitse laukaisin" src="../../../../../translated_images/9.1_02_SelectTrigger.92dc20442add764c8aa4b7f737f28416a3223e4471562462ed6dcba2dc7c7936.fi.png" /></p>
+</li>
+<li>
+<p>Seuraavaksi lisäämme useita syötteitä agenttivirtaan.</p>
+<ul>
+<li>
+<p><code>DeviceSharePointId</code> - tämä tallentaa arvon, ID:n, SharePoint-kohteesta. Tämä ID-arvo on lähtö <strong>Kysy mukautuvalla kortilla</strong> -solmusta, jossa käyttäjä valitsi laitteen.</p>
+</li>
+<li>
+<p><code>User</code> - tämä on käyttäjän nimi, joka tulee agentin järjestelmämuuttujasta.</p>
+</li>
+<li>
+<p><code>AdditionalComments</code> - tämä on käyttäjän antama kommentti, joka on lähtö <strong>Kysy mukautuvalla kortilla</strong> -solmusta.</p>
+</li>
+</ul>
+<p>Lisäämme ensin <code>DeviceSharePointId</code> laukaisimen syötteeksi. Valitse <strong>+ Lisää syöte</strong>.</p>
+<p><img alt="Lisää syöte" src="../../../../../translated_images/9.1_03_AddInput.fd1e0a99ecb5e20f3a518cb23fc0d22c6db1435c5ffb2e183fce3b8a056287bb.fi.png" /></p>
+</li>
+<li>
+<p>Valitse käyttäjän syötteen tyypiksi <strong>Teksti</strong>.</p>
+<p><img alt="Valitse Teksti" src="../../../../../translated_images/9.1_04_SelectText.47ca776822ec5a6c1339c012d51e0eb6eac6bf8315d4ac6f25498b10ada16df9.fi.png" /></p>
+</li>
+<li>
+<p>Syötteen nimeksi kirjoita seuraava.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>DeviceSharePointId
+</span></code></pre></div>
+<p><img alt="DeviceSharePointId syöte" src="../../../../../translated_images/9.1_05_DeviceSharePointIdInput.caf77f8eb60a1b8649ea8b0abf05dfce9fa4bef9d9c465cd8906395e5b44842e.fi.png" /></p>
+</li>
+<li>
+<p>Lisäämme nyt toisen syötteen, <code>User</code>. Toista samat vaiheet, valitse <strong>+ Lisää syöte</strong> ja valitse <strong>Teksti</strong>.</p>
+<p><img alt="Lisää syöte" src="../../../../../translated_images/9.1_06_AddInput.3ca4bff9991b6e8a331bd909ff58038387696ce7b6ee7a932a88316aff41bc57.fi.png" /></p>
+</li>
+<li>
+<p>Syötteen nimeksi kirjoita seuraava.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>User
+</span></code></pre></div>
+<p><img alt="User syöte" src="../../../../../translated_images/9.1_07_UserInput.16b2405f2d5744ea14a6a67b69539ba24719aaf642ddfc2b281e784d74d8c1ea.fi.png" /></p>
+</li>
+<li>
+<p>Lisäämme nyt kolmannen syötteen, <code>AdditionalComments</code>. Toista samat vaiheet, valitse <strong>+ Lisää syöte</strong> ja valitse <strong>Teksti</strong>.</p>
+<p><img alt="Lisää syöte" src="../../../../../translated_images/9.1_08_AddInput.4685bb77618e6d9cfca7a42a0945d10f59825b1ca42de372dcf07c9170451680.fi.png" /></p>
+</li>
+<li>
+<p>Syötteen nimeksi kirjoita seuraava.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>AdditionalComments
+</span></code></pre></div>
+<p><img alt="AdditionalComments syöte" src="../../../../../translated_images/9.1_09_AdditionalComments.a4587b59b85450ca0566615c9473132dd6447e6c7513e4926942655aa0e80195.fi.png" /></p>
+</li>
+<li>
+<p>Päivitämme <code>AdditionalComments</code>-syötteen valinnaiseksi. Valitse <strong>kolmipiste (...) -kuvake</strong> ja valitse <strong>Tee kentästä valinnainen</strong>.</p>
+<p><img alt="Tee kentästä valinnainen" src="../../../../../translated_images/9.1_10_Optional.753bd03817c2eb37bb44a7bfd7d29314aa7109cde02e3f619c01c42bc9170b71.fi.png" /></p>
+</li>
+<li>
+<p>Hienoa työtä! Laukaisin on nyt määritetty, jatketaan. Valitse <strong>plus + kuvake</strong> laukaisimen alla lisätäksesi uuden toiminnon.</p>
+<p><img alt="Lisää toiminto" src="../../../../../translated_images/9.1_11_AddAction.86c14acd1ce22e99b7244e0001f0039362ff6ac3efafe03956788aaa31e705af.fi.png" /></p>
+</li>
+<li>
+<p><strong>Toimintopaneeli</strong> ilmestyy, jossa voit tarkastella toimintoja yli 1400 sisäänrakennetusta liittimestä Microsoftin ja kolmansien osapuolten palveluihin. Kirjoita <strong>hakukenttään</strong> seuraava,</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Get item
+</span></code></pre></div>
+<p>Hakutuloksissa näkyy lista toimintoja. Valitse <strong>Hae kohde</strong> -toiminto <strong>SharePoint-liittimestä</strong>.</p>
+<p><img alt="Hae kohde -toiminto" src="../../../../../translated_images/9.1_12_AddGetItemAction.434cdcb822e1f72993fc4a0c0ad753e1220456f9dab8fc307d42f5711071d45b.fi.png" /></p>
+</li>
+<li>
+<p>Voimme nyt aloittaa <strong>Hae kohde</strong> -toiminnon määrittämisen.</p>
+<p>Valitse <strong>Kolmipiste (...)</strong> -kuvake <strong>Hae kohde</strong> -toiminnossa.</p>
+<p><img alt="Valitse kolmipiste" src="../../../../../translated_images/9.1_13_SelectEllipsis.88bf304067f3103825f183f8962634af831460541290533e5670f4c014a97c46.fi.png" /></p>
+</li>
+<li>
+<p>Valitse <strong>Nimeä uudelleen</strong>.</p>
+<p><img alt="Valitse Nimeä uudelleen" src="../../../../../translated_images/9.1_14_SelectRename.74d99c883418b7dbf58758304976cac1d0f2afd30e4cd1992830f00775a46b18.fi.png" /></p>
+</li>
+<li>
+<p>Nimeä toiminto seuraavasti,</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Get Device
+</span></code></pre></div>
+<p><img alt="Nimeä toiminto" src="../../../../../translated_images/9.1_15_RenameAction.ff64b79f6e6603ae89f272f91d84ff4432c04ba103c401a2808a767e3ceb5617.fi.png" /></p>
+</li>
+<li>
+<p><strong>Sivuston osoite</strong> -kentässä valitse <strong>Contoso IT SharePoint -sivuston osoite</strong>, joka luotiin kohdassa <a href="../00-course-setup/#step-4-create-new-sharepoint-site">Oppitunti 00 - Kurssin asennus - Vaihe 3: Luo uusi SharePoint-sivusto</a>.</p>
+<p><strong>Listan nimi</strong> -kentässä valitse <strong>Laitteet</strong> SharePoint-lista.</p>
+<p><img alt="Syötä parametrit" src="../../../../../translated_images/9.1_16_SharePointSiteAndListParameters.af6e0b112eb4bfb210f9259da02b459097a06307afa6ca269cb33aa9ecc1c1e4.fi.png" /></p>
+</li>
+<li>
+<p><strong>Id</strong>-kentässä valitse <strong>salaman kuvake</strong> tai <strong>fx kuvake</strong> oikealla.</p>
+<p><img alt="Dynaamisen sisällön valitsin" src="../../../../../translated_images/9.1_17_InsertExpressionIcon.6e250bb84e7b8884de7b2052005f7ff3cd95f2c28671d2da7965001b3f621902.fi.png" /></p>
+</li>
+<li>
+<p><strong>Dynaamisen sisällön</strong> välilehdellä kirjoita seuraava,</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sharepoint
+</span></code></pre></div>
+<p>Hakutuloksissa näkyy syötteen parametrit, jotka vastaavat haettua arvoa. Valitse <strong>DeviceSharePointId</strong>-parametri laukaisimesta.</p>
+<p>Valitse <strong>Lisää</strong> lisätäksesi dynaamisen sisällön syötteen <strong>Id</strong>-parametriin toiminnossa.</p>
+<p><img alt="Valitse DeviceSharePointId syöte" src="../../../../../translated_images/9.1_18_DeviceSharePointId.b9be8e7c3c6b0ab710a8f662e62a0ec0133a530f6877b6cea3c48acc8022fec5.fi.png" /></p>
+</li>
+<li>
+<p>Laukaisimen dynaaminen sisällön syöte on nyt viitattu toiminnon <strong>Id</strong>-parametrissa. Päivitämme seuraavaksi yhden edistyneistä parametreista. Valitse <strong>Näytä kaikki</strong> nähdäksesi edistyneet parametrit.</p>
+<p><img alt="Näytä edistyneet parametrit" src="../../../../../translated_images/9.1_19_AdvancedParameters.4bb8e0c11e7864625ad6c30ab1b9021d367cd77374c56985df7b3d43845a1883.fi.png" /></p>
+</li>
+<li>
+<p><strong>Rajoita sarakkeet näkymän mukaan</strong> -parametri näkyy, ja oletuksena se on asetettu <strong>Käytä kaikkia sarakkeita (Älä rajoita)</strong>. Päivitämme tämän arvon näkymään rajoittaaksemme sarakkeet, jotka palautetaan toiminnon vastauksessa. Valitse <strong>Rajoita sarakkeet näkymän mukaan</strong> -parametri nähdäksesi näkymien listan.</p>
+<p><img alt="Valitse parametri" src="../../../../../translated_images/9.1_20_LimitColumnsByView.4d30f532f1e1033323d39df5c9b8e803788ea785ed58de2efca2faa5df4b26fc.fi.png" /></p>
+</li>
+<li>
+<p>Valitse <strong>Kaikki kohteet</strong> -näkymä.</p>
+<p><img alt="Valitse Kaikki kohteet -näkymä" src="../../../../../translated_images/9.1_21_SelectView.d180e83d5e62f5fb6994a7071d5e6ce8f88143d8cc833cb55b208c6fee41bc02.fi.png" /></p>
+</li>
+<li>
+<p>Valitse <strong>plus + kuvake</strong> <em>Hae laite</em> -toiminnon alla lisätäksesi uuden toiminnon.</p>
+<p><img alt="Lisää uusi toiminto" src="../../../../../translated_images/9.1_22_AddAnAction.904b79142347fe927168036ade55d842fa088deef53710944272c681421e0e84.fi.png" /></p>
+</li>
+<li>
+<p>Hakukenttään kirjoita seuraava,</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>send an email
+</span></code></pre></div>
+<p>Hakutuloksissa näkyy lista toimintoja. Valitse <strong>Lähetä sähköposti (V2)</strong> -toiminto <strong>Office 365 Outlook -liittimestä</strong>.</p>
+<p><img alt="Lähetä sähköposti -toiminto" src="../../../../../translated_images/9.1_23_SendAnEmail.f1019365131658b0e71b5b58b57d7d8b3f3a0c670ddb3cca0838bf0b4f8cd354.fi.png" /></p>
+</li>
+<li>
+<p>Seuraavaksi meidän täytyy luoda yhteys liittimen toiminnolle. Valitse <strong>Kirjaudu sisään</strong>.</p>
+<p><img alt="Luo yhteys" src="../../../../../translated_images/9.1_24_CreateConnection.9e968ad4de9d13d81e95779c4fa60809fd40de5f65dbd014f1dc39663c935806.fi.png" /></p>
+</li>
+<li>
+<p>Valitse kirjautunut käyttäjätilisi.</p>
+<p><img alt="Valitse käyttäjätili" src="../../../../../translated_images/9.1_25_SelectUserAccount.f3c96ac1a377c4b42a6301ba38c21469eb7bd3f48633f04200f1610902f8bdbe.fi.png" /></p>
+</li>
+<li>
+<p>Valitse <strong>Salli pääsy</strong>. Yhteys on nyt luotu.</p>
+<p><img alt="Valitse salli pääsy" src="../../../../../translated_images/9.1_26_AllowAccess.1abcaea31b9846279cafafd7160baea6bec60cdfac8224df7082ceee3ef22a26.fi.png" /></p>
+</li>
+<li>
+<p>Nimeä toiminto seuraavasti,</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Send an email to manager
+</span></code></pre></div>
+<p>Määritellään seuraavaksi toiminnon syötteen parametrit.</p>
+<p><strong>Vastaanottaja</strong>-syötteen parametriksi valitse itsesi. Normaalisti tämä olisi esimiehesi tai käyttäisimme toista toimintoa, joka hakee esimiehesi Entra ID -profiilisi perusteella, mutta tämän oppitunnin tarkoitusta varten valitse itsesi.</p>
+<p><strong>Aihe</strong>-syötteen parametriksi kirjoita seuraava,</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Request type: new device
+</span></code></pre></div>
+<p><strong>Sisältö</strong>-syötteen parametriksi kirjoita seuraava,</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Hi,
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>New device requested from
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>Manufacturer:
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>Model:
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>Link to item in SharePoint
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>Additional comments from:
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>This is an automated email from Contoso Helpdesk Copilot
+</span></code></pre></div>
+<p><img alt="Nimeä toiminto ja määritä syötteet" src="../../../../../translated_images/9.1_27_RenameAndConfigureParameters.c3d29a3481fb5c0240cca85db4119387e6b750546ed12e2af4a9ac62d7454f89.fi.png" /></p>
+</li>
+<li>
+<p>Seuraavaksi päivitämme <strong>Sisältö</strong>-syötteen parametrin viittaamaan dynaamiseen sisällön syötteeseen <strong>laukaisimen</strong> tai <strong>Hae kohde</strong> -toiminnon kautta. Kirjoita välilyönti toisen rivin jälkeen, sillä lisäämme käyttäjän nimen laukaisimen syötteestä, <strong>User</strong>.</p>
+<p>Valitse <strong>salaman kuvake</strong> tai <strong>fx kuvake</strong> oikealla.</p>
+<p><img alt="Lisää User syöte dynaamisena sisältönä" src="../../../../../translated_images/9.1_28_AddUserInput.f38d3df648faef75f1985bdcc23db16e197ccb1ddc015210c43bbb2569fcf654.fi.png" /></p>
+</li>
+<li>
+<p><strong>Dynaamisen sisällön</strong> välilehdellä valitse laukaisimen <strong>User</strong>-syöte.</p>
+<p>Valitse <strong>Lisää</strong> lisätäksesi dynaamisen sisällön <strong>User</strong>-syötteen toiminnon <strong>Sisältö</strong>-parametriin.</p>
+<p><img alt="Valitse User syöte" src="../../../../../translated_images/9.1_29_SelectUserInput.4efc79f52d74fa7ae13132ea13f7d51b3f4aab6413afc41a8354c5e59852b9fc.fi.png" />
+1. Dynaaminen sisältö, joka saadaan liipaisimesta, viitataan nyt toiminnon <strong>Body</strong>-parametrissa. Toistamme saman sähköpostiviestin tekstin jäljellä oleville riveille.</p>
+<p><img alt="Käyttäjän syöte lisätty" src="../../../../../translated_images/9.1_30_UserInputAdded.905ec0489e4f1bbe7cc071826050834aa1e5acf53f8a65ad59532ea13b81c607.fi.png" /></p>
+</li>
+<li>
+<p>Klikkaa kohtaan <code>Valmistaja:</code>. Valitse oikealla oleva <strong>salaman kuva</strong> tai <strong>fx-kuvake</strong>.</p>
+<p><strong>Dynaaminen sisältö</strong> -välilehdellä, kirjoita hakukenttään seuraava,</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>manufacturer
+</span></code></pre></div>
+<p>Valitse liipaisimen <strong>Valmistaja-arvo</strong> ja valitse <strong>Lisää</strong>.</p>
+<p><img alt="Lisää Valmistaja-arvo dynaamisena sisältönä" src="../../../../../translated_images/9.1_31_ManufacturerValueAdded.db2cf35a35a20590d80d7f0191d771a045bf55e40ce98982d0e099588e260712.fi.png" /></p>
+</li>
+<li>
+<p>Klikkaa kohtaan <code>Malli:</code>. Valitse oikealla oleva <strong>salaman kuva</strong> tai <strong>fx-kuvake</strong>.</p>
+<p><strong>Dynaaminen sisältö</strong> -välilehdellä, kirjoita hakukenttään seuraava,</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>model
+</span></code></pre></div>
+<p>Valitse <strong>Malli</strong>-syöte <strong>Get item</strong> -toiminnosta ja valitse <strong>Lisää</strong>.</p>
+<p><img alt="Lisää Malli-syöte dynaamisena sisältönä" src="../../../../../translated_images/9.1_32_ModelAdded.ff9d858648ddb85fe70eaaafa6e23d0560500e7327ccb29ee56ecac0d8d36cab.fi.png" /></p>
+</li>
+<li>
+<p><code>Linkki kohteeseen SharePointissa</code> -tekstin kohdalla päivitämme sen hyperlinkiksi sähköpostiviestin tekstissä. Klikkaa rivin alussa ja valitse oikealla oleva <strong>salaman kuva</strong> tai <strong>fx-kuvake</strong>.</p>
+<p><img alt="Lisää dynaaminen sisältö" src="../../../../../translated_images/9.1_33_AddDynamicContent.c662d682377af82adc52de18e05baf9b6aa5a972882dcf6274f3979f14641627.fi.png" /></p>
+</li>
+<li>
+<p>Klikkaa HTML-ankkuritagin jälkeen ja valitse oikealla oleva <strong>salaman kuva</strong> tai <strong>fx-kuvake</strong>.</p>
+<p><strong>Dynaaminen sisältö</strong> -välilehdellä, kirjoita hakukenttään seuraava,</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>link to item
+</span></code></pre></div>
+<p>Valitse <strong>Linkki kohteeseen</strong> -syöte <strong>Get item</strong> -toiminnosta ja valitse <strong>Lisää</strong>.</p>
+<p><img alt="Lisää Linkki kohteeseen dynaamisena sisältönä" src="../../../../../translated_images/9.1_34_AddLinkToItem.6827bd3bad484f7382d060435bb0ef45e9bb1c3ad4774529559bb4c5f9bbca8c.fi.png" /></p>
+</li>
+<li>
+<p>Vaihda HTML-editoriin valitsemalla <strong>&lt;/&gt;</strong>-kuvake.</p>
+<p><img alt="Lisää käyttäjän syöte" src="../../../../../translated_images/9.1_35_ToggleCodeView.ae3a9caf213f2c6366487e10092ad1fad3494f110936219258d842c23e7f46d9.fi.png" /></p>
+</li>
+<li>
+<p>HTML-editori on nyt käytössä. Klikkaa ennen <code>Linkki kohteeseen SharePointissa</code> -tekstiä ja lisää HTML-ankkuritagia luodaksesi hyperlinkin. Kopioi ja liitä seuraava.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>&lt;a href=&quot;
+</span></code></pre></div>
+<p><img alt="HTML-tagi" src="../../../../../translated_images/9.1_36_AddHTMLTag.146220ae5c33eaf9915c393c37d62b9d4b258413e9f4dc42a1ab005437669443.fi.png" /></p>
+</li>
+<li>
+<p><strong>Linkki kohteeseen</strong> -dynaaminen sisältö viitataan nyt <strong>Body</strong>-parametrissa. Klikkaa <strong>Linkki kohteeseen</strong> -syötteen jälkeen, kopioi ja liitä seuraava.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>&quot;&gt;
+</span></code></pre></div>
+<p><img alt="HTML-tagi" src="../../../../../translated_images/9.1_37_AddHTMLTag.48f73b302f6a84bb6a51e0666fd30baf1f8d9d906947d44dc4095ededed18a2d.fi.png" /></p>
+</li>
+<li>
+<p>Klikkaa <code>Linkki kohteeseen SharePointissa</code> -tekstin jälkeen ja sulje HTML-ankkuritagi. Kopioi ja liitä seuraava.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>&lt;/a&gt;
+</span></code></pre></div>
+<p><img alt="HTML-tagi" src="../../../../../translated_images/9.1_38_AddHTMLTag.47d2f0521e6aba9d609bfe65d86ebae5786e4ad5465fefb7ae0370db6e924c96.fi.png" /></p>
+</li>
+<li>
+<p>Valitse <strong>&lt;/&gt;</strong>-kuvake koodinäkymän vaihtamiseksi.</p>
+<p><img alt="Poista koodinäkymä" src="../../../../../translated_images/9.1_39_ToggleCodeView.88606eb37d702a686904b2dd8943fcf144cec462b37ee781e8ee0415e62bd951.fi.png" /></p>
+</li>
+<li>
+<p>Valitse uudelleen <strong>&lt;/&gt;</strong>-kuvake koodinäkymän vaihtamiseksi.</p>
+<p><img alt="Vaihda takaisin koodinäkymään" src="../../../../../translated_images/9.1_40_ToggleCodeViewAgain.32da9b9804adbbfaf8d85bdaa6fa51d2ae5fc1fbb97f75084813972c66d0c4d9.fi.png" /></p>
+</li>
+<li>
+<p>Huomaa, että siellä on useita ylimääräisiä merkkejä <code>&amp;lt;br&amp;gt;</code>. Poista nämä merkit.</p>
+<p><img alt="Poista merkit" src="../../../../../translated_images/9.1_41_DeleteCharacters.f1ef3830b186c2cd9974ea05e336c83c0706d72ab1010d06283716dc4e982875.fi.png" /></p>
+</li>
+<li>
+<p>Nyt olemme lisänneet hyperlinkin sähköpostiviestin tekstiin 😎 Valitse <strong>&lt;/&gt;</strong>-kuvake koodinäkymän vaihtamiseksi.</p>
+<p><img alt="HTML-tagi siistitty" src="../../../../../translated_images/9.1_42_HTMLTagTidiedUp.1b27fa2c4dc65c3f1a7151abcf6e388f64cb83745b10cd22769c1f9af3421fc6.fi.png" /></p>
+</li>
+<li>
+<p>Klikkaa <code>Lisäkommentit</code>-tekstin jälkeen ennen kaksoispistettä ja valitse oikealla oleva <strong>salaman kuva</strong> tai <strong>fx-kuvake</strong>.</p>
+<p><img alt="Lisää käyttäjän parametri" src="../../../../../translated_images/9.1_43_AddUserInput.6f0d26739c1b9039383aa37cc46fa1149a269bd4268fb54b897d144afc49c515.fi.png" /></p>
+</li>
+<li>
+<p><strong>Dynaaminen sisältö</strong> -välilehdellä, kirjoita hakukenttään seuraava,</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>user
+</span></code></pre></div>
+<p>Valitse liipaisimen <strong>Käyttäjä</strong>-parametri ja valitse <strong>Lisää</strong>.</p>
+<p><img alt="Lisää Käyttäjä-parametri dynaamisena sisältönä" src="../../../../../translated_images/9.1_44_AddUserDynamicContent.bb7c76e92650001207712b3447d3275d584f3ebf739034369869c3facf38eacf.fi.png" /></p>
+</li>
+<li>
+<p>Nyt lisäämme lausekkeen, joka näyttää Lisäkommenttien arvon, jos käyttäjä on antanut sen <strong>Ask an adaptive card</strong> -solmussa, tai näyttää "Ei mitään", jos käyttäjä ei ole antanut kommentteja.</p>
+<p>Klikkaa kaksoispisteen jälkeen ja valitse oikealla oleva <strong>salaman kuva</strong> tai <strong>fx-kuvake</strong>.</p>
+<p><img alt="Lisää lauseke" src="../../../../../translated_images/9.1_45_AddExpression.c4c92dc4a56fab75c78ec2c5087682521e562264c1710c8dfaa24134adc3a112.fi.png" /></p>
+</li>
+<li>
+<p><strong>Funktio</strong>-välilehdellä ja yläpuolella olevassa lausekekentässä, kirjoita seuraava,</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>if(empty())
+</span></code></pre></div>
+<p>Tämä lauseke käyttää <code>if</code>-funktiota if-else-lauseessa.</p>
+<p>Seuraava funktio on <code>empty</code>, joka tarkistaa, onko arvo olemassa vai ei merkkijonoparametrissa. Viitattava merkkijonoparametri on liipaisimen <code>AdditionalComments</code>-syöteparametrin arvo.</p>
+<p><img alt="Jos tyhjä" src="../../../../../translated_images/9.1_46_IfEmptyFunctions.95d21ad01f6f7c290cb8d5a57ccbca9c9532df7ce57f800554dea541d503ddc6.fi.png" /></p>
+</li>
+<li>
+<p>Klikkaa <strong>sulkujen sisälle</strong> <code>empty</code>-funktion jälkeen. Lisäämme liipaisimen <code>AdditionalComments</code>-syöteparametrin.</p>
+<p>Valitse <strong>Dynaaminen sisältö</strong> -välilehti. Kirjoita hakukenttään seuraava,</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>Additional
+</span></code></pre></div>
+<p>Vieritä alas ja valitse liipaisimen <strong>AdditionalComments</strong>-syöte. Parametri lisätään nyt merkkijonoparametriksi lausekkeeseen.</p>
+<p><img alt="Lisää AdditionalComments dynaamisena sisältönä" src="../../../../../translated_images/9.1_47_AdditionalCommentsDynamicContent.f9632f09779888c18a58df8e97ef677ed885b0eaa88c252b13b22c0e4c67495b.fi.png" /></p>
+</li>
+<li>
+<p>Määritämme seuraavaksi <strong><em>true</em></strong>-logiikan, jossa jos <code>AdditionalComments</code>-merkkijonoparametri on tyhjä, haluamme näyttää tekstin <code>Ei mitään</code>.</p>
+<p>Sulkevan sulkumerkin jälkeen, joka sisältää merkkijonoparametrin, kirjoita seuraava,</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>, &#39;None&#39;,
+</span></code></pre></div>
+<p><img alt="True-logiikka" src="../../../../../translated_images/9.1_48_None.31978299f29e07ef3257eedd5dcee09c8675f8b3f61aea8102900118e0b6ca70.fi.png" /></p>
+</li>
+<li>
+<p>Lopuksi määritämme <strong><em>false</em></strong>-logiikan, jossa jos <code>AdditionalComments</code>-merkkijonoparametri ei ole tyhjä, haluamme näyttää liipaisimen <strong>AdditionalComments</strong>-syöteparametrin arvon.</p>
+<blockquote>
+<p>Muistutus: tämä arvo tulee Lisäkommentit-kentästä mukautetussa kortissa <strong>Ask with adaptive card</strong> -solmussa <strong>Request device</strong> -aiheessa.</p>
+</blockquote>
+<p>Pilkun jälkeen <strong><em>true</em></strong>-logiikan jälkeen, valitse <strong>Dynaaminen sisältö</strong> -välilehti. Kirjoita hakukenttään seuraava,</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>Additional
+</span></code></pre></div>
+<p>Vieritä alas ja valitse liipaisimen <strong>AdditionalComments</strong>-syöte. Parametri lisätään nyt merkkijonoparametriksi lausekkeeseen.</p>
+<p>Lisää se <strong>Body</strong>-parametriin valitsemalla <strong>Lisää</strong>.</p>
+<p><img alt="False-logiikka" src="../../../../../translated_images/9.1_49_AdditionalCommentsDynamicContent.d42c7fc29f65d901bb26dcbc13408c387633ea185cdd79c35d6439231b7363d5.fi.png" /></p>
+</li>
+<li>
+<p>Hienoa, lausekkeemme on valmis! Lauseke on nyt lisätty <strong>Body</strong>-parametriin. Lopuksi muotoile viimeinen rivi kursiiviksi.</p>
+<p><img alt="Kursiivi" src="../../../../../translated_images/9.1_50_Italics.a0c01aa33ef4e83167e1fbc21c1d833f95addd60c8f531411cf9c58a96a31b02.fi.png" /></p>
+</li>
+<li>
+<p>Päivitämme nyt <strong>Respond to the agent</strong> -toiminnon lähettämään <strong>Model value</strong> -parametrin arvon <strong>Get item</strong> -toiminnosta takaisin agentille.</p>
+<p>Pidä hiiren vasenta painiketta painettuna ja siirry suunnittelutyökalussa ylöspäin nähdäksesi <strong>Respond to the agent</strong> -toiminnon.</p>
+<p>Valitse <strong>Respond to the agent</strong> -toiminto ja valitse <strong>Teksti</strong>-tulos tyypiksi.</p>
+<p><img alt="Valitse Teksti-tulos" src="../../../../../translated_images/9.1_51_RespondToTheAgentAction.4c682a440e19a0fcd6d6f51ef9cdbfe76f482a39d635b8905d9b0cbbf33d945f.fi.png" /></p>
+</li>
+<li>
+<p>Kirjoita seuraava tuloksen nimeksi.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>ModelValue
+</span></code></pre></div>
+<p><img alt="ModelValue-tulos" src="../../../../../translated_images/9.1_52_ModelValueInput.20609429eb323281051607b090319adc5315c0245c7d61158eb119714fe4318f.fi.png" /></p>
+</li>
+<li>
+<p>Valitse arvokenttä ja valitse oikealla oleva <strong>salaman kuva</strong> tai <strong>fx-kuvake</strong>.</p>
+<p><img alt="Lisää lauseke" src="../../../../../translated_images/9.1_53_InsertDynamicContent.108ba565696f9f52d742323e0f4c46c308f322ac4bd67802e3196430155c7443.fi.png" /></p>
+</li>
+<li>
+<p><strong>Dynaaminen sisältö</strong> -välilehdellä, kirjoita hakukenttään seuraava,</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>model
+</span></code></pre></div>
+<p>Valitse <strong>Malli</strong>-parametri <strong>Get item</strong> -toiminnosta ja valitse <strong>Lisää</strong>.</p>
+<p><img alt="Lisää Malli-parametri dynaamisena sisältönä" src="../../../../../translated_images/9.1_54_ModelParameter.f231fd0ec089ac6b9ac1b7fd2e6a60a35b08484ed10b0098cff6b3ce0c7760cb.fi.png" /></p>
+</li>
+<li>
+<p><strong>Malli</strong>-parametri on nyt tekstituloksen arvo. Valitse <strong>Tallenna luonnos</strong> tallentaaksesi agenttivirran.</p>
+<p>Olemme nyt valmiita agenttivirran kanssa 👏🏻</p>
+<p><img alt="Valitse tallenna luonnos" src="../../../../../translated_images/9.1_55_SaveDraftAgentFlow.5ab97895a901458362881fc9ee576762bdb0883b37a6cbd7a631ddc2750705af.fi.png" /></p>
+</li>
+<li>
+<p>Tehdään vielä yksi päivitys agenttivirtaan ennen julkaisua. Valitse <strong>Yleiskatsaus</strong>-välilehti ja valitse <strong>Muokkaa</strong>.</p>
+<p><img alt="Valitse Muokkaa" src="../../../../../translated_images/9.1_56_EditAgentFlowDetails.023e8149284b9ae79dd3d95f574ff90bbcc1cc4a9fff4be56664ccbe0698f310.fi.png" /></p>
+</li>
+<li>
+<p><strong>Virran nimi</strong>-kenttään, kopioi ja liitä seuraava.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>Send device request email
+</span></code></pre></div>
+<p><strong>Kuvaus</strong>-kentässä valitse <strong>päivityskuvake</strong> käyttääksesi AI:ta automaattisesti luomaan kuvauksen liipaisimen ja toimien perusteella agenttivirrassa.</p>
+<p>Valitse <strong>Tallenna</strong> tallentaaksesi päivitetyn nimen ja kuvauksen agenttivirrasta.</p>
+<p><img alt="Nimeä uudelleen, lisää kuvaus ja tallenna tiedot" src="../../../../../translated_images/9.1_57_RenameAndDescription.57a190396550bf998d62c49ca359b66211ae50042ac5f8739b32f8b9bc292607.fi.png" /></p>
+</li>
+<li>
+<p>Valitse <strong>Suunnittelija</strong>-välilehti ja valitse <strong>Julkaise</strong> julkaistaksesi agenttivirran, jotta se voidaan lisätä solmuksi <strong>Request device</strong> -aiheeseen.</p>
+<p><img alt="Julkaise" src="../../../../../translated_images/9.1_58_Publish.8f43271718c662deee7afea6fb283f64005b277b3a62086e6d91cc0c3ac4f79c.fi.png" /></p>
+</li>
+<li>
+<p>Vahvistusviesti ilmestyy pian vahvistamaan, että agenttivirta on julkaistu.</p>
+<p><img alt="Vahvistusviesti" src="../../../../../translated_images/9.1_59_Confirmation.d406bde76c31b27f794d5742c992b8c84283f46b2e54524f1e500d0688a33716.fi.png" /></p>
+</li>
+</ol>
+<h3 id="92-lisaa-agenttivirta-aiheeseen">9.2 Lisää agenttivirta aiheeseen<a class="headerlink" href="#92-lisaa-agenttivirta-aiheeseen" title="Permanent link">&para;</a></h3>
+<p>Lisätään nyt agenttivirta <strong>Request device</strong> -aiheeseen.</p>
+<ol>
+<li>
+<p>Valitse <strong>Agentit</strong> vasemmanpuoleisesta valikosta ja valitse <strong>Contoso Helpdesk Agent</strong>.</p>
+<p><img alt="Valitse Agentit" src="../../../../../translated_images/9.2_01_SelectAgent.b8a6fd3a8970d6b0c8e78bf0a5411257206612d53acdf9b44f78b2c9c2fe91fc.fi.png" /></p>
+</li>
+<li>
+<p>Valitse <strong>Aiheet</strong>-välilehti.</p>
+<p><img alt="Valitse Aiheet-välilehti" src="../../../../../translated_images/9.2_02_SelectTopics.3e8618aba5f4a1ddf3dee726b6da9a66ed89d04a2e8ca36b52112a6675c2885c.fi.png" /></p>
+</li>
+<li>
+<p>Valitse <strong>Request device</strong> -aihe.</p>
+<p><img alt="Valitse Request device -aihe" src="../../../../../translated_images/9.2_03_SelectRequestDevice.df10472702258708b3d069e718e695b9fcabc61d42901d524dc302a03b3fa4a9.fi.png" /></p>
+</li>
+<li>
+<p>Vieritä alas <strong>Ask with adaptive card</strong> -solmuun ja lisää uusi solmu.</p>
+<p>Valitse <strong>Lisää työkalu</strong> ja <strong>Perustyökalut</strong>-välilehdellä valitse juuri luotu ja julkaistu <strong>Send device request email</strong> -agenttivirta.</p>
+<p><img alt="Valitse agenttivirta" src="../../../../../translated_images/9.2_04_SelectAgentFlow.15deca87db95fff1c9d904855d237d22a72c260adf3343d9e78695f07c42a8e0.fi.png" /></p>
+</li>
+<li>
+<p>Agenttivirran liipaisinsyötteille meidän täytyy valita muuttujatulokset <strong>Ask with adaptive card</strong> -solmusta.</p>
+<p>Valitse <strong>kolmen pisteen (...) kuvake</strong> <strong>DeviceSharePointId</strong>-syötteelle.</p>
+<p><img alt="Valitse muuttuja" src="../../../../../translated_images/9.2_05_SelectVariable.8fe53cbc0f950f732b9e9002b21d8762ddfe74fb601d61c2a5119e32383450a2.fi.png" /></p>
+</li>
+<li>
+<p>Valitse <strong>deviceSelectionId</strong>-muuttuja, joka on yksi <strong>Ask with adaptive card</strong> -solmussa määritellyistä tuloksista.</p>
+<p><img alt="Valitse deviceSelectionId" src="../../../../../translated_images/9.2_06_SelectdeviceSelectionIdVariable.67c0091e0de9442d3cffbfe3b2cace8d76be37ea67815ddfc99af03ae4b37391.fi.png" /></p>
+</li>
+<li>
+<p>Seuraavaksi valitse <strong>kolmen pisteen (...) kuvake</strong> <strong>User</strong>-syötteelle.</p>
+<p><img alt="Valitse muuttuja" src="../../../../../translated_images/9.2_07_SelectVariable.bf851128bec5e0255c6cf361a837ce9701d0afac84ed3d5b89665d111a098386.fi.png" /></p>
+</li>
+<li>
+<p>Valitse <strong>Järjestelmä</strong>-välilehti muuttujapaneelissa ja valitse <strong>User.DisplayName</strong>. Tämä muuttuja tallentaa sisäisen käyttäjän näyttönimen, joka on vuorovaikutuksessa agentin kanssa.</p>
+<p><img alt="Valitse User.DisplayName-järjestelmämuuttuja" src="../../../../../translated_images/9.2_08_SelectUser.DisplayNameVariable.926a2a7560402fbd7b224e2bf0ff11df9e5612803b7ce51e36f58201a09bbfd7.fi.png" /></p>
+</li>
+<li>
+<p>Seuraavaksi valitse <strong>suurempi kuin -kuvake</strong> <strong>Advanced inputs</strong>-kohdassa laajentaaksesi ja nähdäksesi <strong>AdditionalComments</strong>-syötteen.</p>
+<p><img alt="Laajenna lisäsyötteet" src="../../../../../translated_images/9.2_09_ExpandAdvancedInputs.bded22f83fe4eb21237daa254725e12a81ea75be34bcb0e8ab322037a4e6f418.fi.png" /></p>
+</li>
+<li>
+<p>Valitse <strong>kolmen pisteen (...) kuvake</strong> AdditionalComments-syötteelle.</p>
+<p><img alt="Valitse muuttuja" src="../../../../../translated_images/9.2_10_SelectVariable.86286cc06323e65fb3874b9fd0ea62d140b9e9b9a2b5116d667192a6dca3815f.fi.png" /></p>
+</li>
+<li>
+<p>Valitse <strong>Kaava</strong>-välilehti ja laajennuskuvake muuttujapaneelissa, sillä käytämme Power Fx -lauseketta.</p>
+<p><img alt="Kaava-välilehti" src="../../../../../translated_images/9.2_11_SelectFormulaAndExpandIcon.3fcd07bfccc4f0779a5d26313b571e60be792da7fd28e937b3e888f8aaeda7e0.fi.png" /></p>
+</li>
+<li>
+<p>Samankaltainen kuin agenttivirrassa oleva lauseke, joka tekee ehdollisen tarkistuksen <em>if</em>-funktion avulla, mutta tällä kertaa</p>
+<ul>
+<li>käyttämällä Power Fx -funktioita,</li>
+<li>ja lisäämällä joko ei arvoa tai <code>commentsId</code>-tulosmuuttujan arvon <strong>Ask with adaptive card</strong> -solmusta.</li>
+</ul>
+<p>Kirjoita seuraavat funktiot Power Fx -kenttään,</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>If(IsBlank())
+</span></code></pre></div>
+</li>
+</ol>
+<p>Tämä lauseke käyttää <code>If</code>-funktiota if-else-lauseessa.</p>
+<p>Seuraava käytetty funktio on <code>IsBlank</code>, joka tarkistaa, onko arvo olemassa vai puuttuuko se merkkijonoparametrista. Viitattava merkkijonoparametri on <strong>Ask with adaptive card</strong> -solmun <code>commentsId</code>-ulostulomuuttuja.</p>
+<p><img alt="If- ja IsBlank-funktiot" src="../../../../../translated_images/9.2_12_IfIsBlank.07f7516c7e1f7579239a8b3833d64a14eb88dc245cae714b3e07d6298e907d51.fi.png" /></p>
+<ol>
+<li>
+<p>Klikkaa seuraavaksi <strong>sulkeiden sisälle</strong> <code>IsBlank</code>-funktion jälkeen. Aiomme lisätä <strong>Ask with adaptive card</strong> -solmun <code>commentsId</code>-ulostulomuuttujan.</p>
+<p>Syötä seuraava sulkeiden sisälle,</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>Topic.commentsId
+</span></code></pre></div>
+<p>Ja lisää pilkku sulkeiden jälkeen.</p>
+<p><img alt="Viittaa commentsId-ulostuloon" src="../../../../../translated_images/9.2_13_Topic.commentsId.1a04dc190dac334ebf6c4dbc1b6df1aad2e4bbdeeb3ef960871e93614381f079.fi.png" /></p>
+</li>
+<li>
+<p>Määritellään seuraavaksi logiikka</p>
+<ul>
+<li>kun <strong><em>true</em></strong> - jos <code>Topic.commentsId</code>-merkkijonoparametri on tyhjä, emme halua lisätä arvoa.</li>
+<li>kun <strong><em>false</em></strong> - jos <code>Topic.commentsId</code>-merkkijonoparametri ei ole tyhjä, lisää muuttujan commentsId arvo.</li>
+</ul>
+<p>Sulkeiden jälkeen, jotka sisältävät merkkijonoparametrin, syötä seuraava,</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>&quot;&quot;, Topic.commentsId)
+</span></code></pre></div>
+<p>Power Fx -lausekkeen tulisi olla seuraava,</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>If(IsBlank(Topic.commentsId), &quot;&quot;, Topic.commentsId)
+</span></code></pre></div>
+<p>Hienoa työtä, lausekkeemme on valmis! 🙌🏻 Valitse nyt <strong>Insert</strong> asettaaksesi agenttivirran syöttöparametrin Power Fx -lausekkeelle.</p>
+<p><img alt="Power Fx -lauseke" src="../../../../../translated_images/9.2_14_PowerFxExpression.80e76ea59bdb8f131d26edf2657923f4af9000768d44b06c0947115fd218698e.fi.png" /></p>
+</li>
+<li>
+<p><strong>Tallenna</strong> aihe.</p>
+</li>
+</ol>
+<h3 id="93-paivita-request-device-aihe-useilla-solmuilla-paremman-kayttajakokemuksen-saavuttamiseksi">9.3 Päivitä Request device -aihe useilla solmuilla paremman käyttäjäkokemuksen saavuttamiseksi<a class="headerlink" href="#93-paivita-request-device-aihe-useilla-solmuilla-paremman-kayttajakokemuksen-saavuttamiseksi" title="Permanent link">&para;</a></h3>
+<p>Lisätään seuraavaksi kaksi solmua:</p>
+<ul>
+<li><strong>Send a message</strong> - tämä toimii vahvistusviestinä, joka viittaa valittuun laitteeseen ja ilmoittaa, että pyyntö on lähetetty.</li>
+<li><strong>Topic management</strong> - keskustelun lopettamiseksi ohjaamme <strong>End of conversation</strong> -solmuun.</li>
+</ul>
+<p>Aloitetaan!</p>
+<ol>
+<li>
+<p>Valitse <strong>plus + -ikoni</strong> agenttivirran solmun alapuolella ja valitse <strong>Send a message</strong> -solmu.</p>
+<p><img alt="Lisää send a message -solmu" src="../../../../../translated_images/9.3_01_AddSendAMessageNode.ac4111729a2602f8301ecffbcb263d692ecb43478aa9da63cae0dd58160f56c8.fi.png" /></p>
+</li>
+<li>
+<p>Syötä seuraava viestikenttään,</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>Thanks
+</span></code></pre></div>
+<p>Valitse sitten <strong>Insert variable</strong>, koska viittaamme käyttäjän nimeen.</p>
+<p><img alt="Lisää muuttuja" src="../../../../../translated_images/9.3_02_InsertVariable.c5c9ebce61d1f442413d05f4437f74ee1d9c3a8c2ab696244937c56b5171f310.fi.png" /></p>
+</li>
+<li>
+<p>Valitse <strong>System</strong>-välilehti ja etsi <code>User</code> hakukentästä. Valitse <strong>User.DisplayName</strong>-muuttuja.</p>
+<p><img alt="Valitse järjestelmämuuttuja" src="../../../../../translated_images/9.3_03_SelectSystemVariable.47cfac2f3a727dbaf32ae960cbafe43ce9ed00f73edf01ac6d48e5b2b167e5fc.fi.png" /></p>
+</li>
+<li>
+<p>Syötä seuraava viestikenttään,</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>. Your selected device,
+</span></code></pre></div>
+<p>Valitse sitten <strong>Insert variable</strong> ja tällä kertaa <strong>Custom</strong>-välilehdeltä valitse <strong>ModelValue</strong>-muuttuja.</p>
+<p>Syötä sitten seuraava viestikenttään viestin viimeistelyä varten.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>, has been submitted and will be reviewed by your manager.
+</span></code></pre></div>
+<p>Viestin tulisi näyttää seuraavalta.</p>
+<p><img alt="Lähetä viesti" src="../../../../../translated_images/9.3_04_SendAMessage.3f6c4b5e53da9c7f9fcf9d0c453a9b65e44e35ea4c1124947fb638d0b682d96d.fi.png" /></p>
+</li>
+<li>
+<p>Lopuksi valitse <strong>plus + -ikoni</strong> <strong>Send a message</strong> -solmun alapuolella ja valitse <strong>Topic management</strong>, sitten <strong>Go to another topic</strong> ja valitse <strong>End of Conversation</strong>.</p>
+<p><img alt="Aiheen hallinta" src="../../../../../translated_images/9.3_05_EndOfConversation.3c6c96d03b29a4d0904dea09d96c62d6ad450fe60dd8d6b2fe9d31681d6cb147.fi.png" /></p>
+</li>
+<li>
+<p><strong>Tallenna</strong> aihe.</p>
+<p><img alt="Tallenna" src="../../../../../translated_images/9.3_06_SaveTopic.8c9201fabce9f41af03d9f1beb9ce321e4ee9880a94edabe58b592bffebda80a.fi.png" /></p>
+</li>
+</ol>
+<h3 id="94-testaa-agenttia-eri-skenaarioilla">9.4 Testaa agenttia eri skenaarioilla<a class="headerlink" href="#94-testaa-agenttia-eri-skenaarioilla" title="Permanent link">&para;</a></h3>
+<p>Hienoa työtä!!! 😁 Voimme nyt testata agenttiamme.</p>
+<h4 id="941-pyyda-laitetta-ja-lisaa-kommentti-mukautettuun-korttiin">9.4.1 Pyydä laitetta ja lisää kommentti mukautettuun korttiin<a class="headerlink" href="#941-pyyda-laitetta-ja-lisaa-kommentti-mukautettuun-korttiin" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p><strong>Päivitä</strong> testipaneeli, valitse <strong>activity map</strong> -ikoni ja syötä seuraava viesti agentille.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>I need a laptop
+</span></code></pre></div>
+<p><img alt="Testaa agenttia" src="../../../../../translated_images/9.4_01_TestAgent_RequestDevice_Yes.e73a5076dcd7179901dc0536624a039e372e405a6aac7ab89a632ce81bacdc2e.fi.png" /></p>
+</li>
+<li>
+<p>Agentti käynnistää <strong>Available devices</strong> ja vastaa luettelolla saatavilla olevista laitteista. Syötämme seuraavan vastauksen kysymykseen, haluammeko pyytää laitetta.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>Yes
+</span></code></pre></div>
+<p><img alt="Kyllä" src="../../../../../translated_images/9.4_02_RequestDevice_Yes.25c34743bc168fde33f91743316e7bad87ee0e47150c93e9b82c4662404dcaba.fi.png" /></p>
+</li>
+<li>
+<p>Huomaa, kuinka agentti käynnisti <strong>Request device</strong> agentin ohjeiden mukaisesti ja mukautettu kortti näkyy nyt agentin viestissä.</p>
+<p>Valitse <strong>Surface Laptop 15</strong> -laite ja lisää seuraava kommentti.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>I need 16GB of RAM please
+</span></code></pre></div>
+<p><img alt="Valitse laite ja lisää kommentti" src="../../../../../translated_images/9.4_03_SelectDeviceAndEnterComment.570ea590309bf97edc40c6f7b53dbdc1174365860d8e8a4c32cfb7f1837621c2.fi.png" /></p>
+</li>
+<li>
+<p>Vieritä alas, kunnes näet <strong>Submit Request</strong> -painikkeen ja valitse se lähettääksesi mukautetun kortin agentille.</p>
+<p><img alt="Lähetä pyyntö" src="../../../../../translated_images/9.4_04_SubmitRequest.ce3f4f44b90243a18dbfb401548b9b3cefd3ea17d8293a1bc3377323e3449da9.fi.png" /></p>
+</li>
+<li>
+<p>Valitse <strong>Allow</strong>, jotta agentti voi käyttää tunnistetietojasi kahden liittimen todennukseen.</p>
+<p><img alt="Salli" src="../../../../../translated_images/9.4_05_SelectAllow.f7b5bda068fbaee83dcb1cff03a52c946fb4d879137c55f4e5f9eb3953985e0e.fi.png" /></p>
+</li>
+<li>
+<p>Agentti näyttää sitten vahvistusviestin, joka sisältää valitun mallin, ja ohjaa sen jälkeen <strong>End of Conversation</strong> -aiheeseen. Hienoa!</p>
+<p><img alt="Pyyntö lähetetty" src="../../../../../translated_images/9.4_06_RequestSubmitted.1d4d2e9afbc222a5ba79a4c254e7b2364d6eafc1a200ad6ac0aa142f9f10642d.fi.png" /></p>
+</li>
+<li>
+<p>Valitse <strong>Kyllä</strong> vahvistaaksesi loput <strong>End of Conversation</strong> -aiheesta.</p>
+<p><img alt="Valitse Kyllä" src="../../../../../translated_images/9.4_07_RedirectNode.e7b1390e4eafe8c2c815fc8ce7fdda56617d9fbeccb0d59423ad2899a8e5f897.fi.png" /></p>
+</li>
+<li>
+<p>Arvioi kokemus valitsemalla mikä tahansa tähti arviointikortista.</p>
+<p>Agentti siirtyy sitten viimeiseen <strong>Question</strong>-solmuun <strong>End of Conversation</strong> -aiheessa. Valitse <strong>Ei</strong>.</p>
+<p><img alt="End of conversation -aihe" src="../../../../../translated_images/9.4_08_EndOfConversation.b35507f7f561633c0cb3b6c15dc007ae4197a72d58afd8ae616bea439bd6e148.fi.png" /></p>
+</li>
+<li>
+<p>Aihe päättyy, kun lopullinen viesti näytetään testipaneelissa.</p>
+<p><img alt="End of conversation -aihe" src="../../../../../translated_images/9.4_09_EndOfConversation.438891b82e322b8a2648533200fbcd01c660ab049223b0920cdd0fbfcdeeb888.fi.png" /></p>
+</li>
+<li>
+<p>Tarkista sähköpostitilisi Saapuneet-kansio nähdäksesi agenttivirran lähettämän sähköpostin. Näet valitun laitteen tiedot ja mukautettuun korttiin syötetyn kommentin.</p>
+<p><img alt="Sähköposti vastaanotettu" src="../../../../../translated_images/9.4_10_ReviewEmailMessageWithComment.b0138b0bb9d08aacbd8bbb02fdb633a6796b4131cf8d83212adeabaa1ce04a18.fi.png" /></p>
+</li>
+<li>
+<p>Klikkaa hyperlinkkiä, ja selain lataa laitteen SharePoint-kohteen. Mahtavaa!</p>
+<p><img alt="Klikkaa hyperlinkkiä sähköpostissa" src="../../../../../translated_images/9.4_11_SelectLinkInEmail.2179f17165b61ba1e8aee68e8de4c752d64b0780ad86e0fe9054580d9c24e208.fi.png" /></p>
+</li>
+</ol>
+<h4 id="942-pyyda-laitetta-mutta-ala-lisaa-kommenttia-mukautettuun-korttiin">9.4.2 Pyydä laitetta, mutta älä lisää kommenttia mukautettuun korttiin<a class="headerlink" href="#942-pyyda-laitetta-mutta-ala-lisaa-kommenttia-mukautettuun-korttiin" title="Permanent link">&para;</a></h4>
+<p>Testataan nyt skenaario, jossa kommenttia ei lisätä.</p>
+<ol>
+<li>
+<p>Toista samat vaiheet:</p>
+<ul>
+<li><strong>Päivitä</strong> testipaneeli ja valitse <strong>activity map</strong> -ikoni</li>
+<li>Syötä viesti, <code>I need a laptop</code></li>
+<li>Vastaa <code>Yes</code> kysymykseen laitteen pyytämisestä</li>
+</ul>
+<p><img alt="Pyydä laitetta" src="../../../../../translated_images/9.4_12_RequestDevice_Yes.1e369b8a52547fade4b84a4e36b399ee0692c6edbaa778ba90fe9c15cae75c5c.fi.png" /></p>
+</li>
+<li>
+<p>Valitse tällä kertaa <strong>Surface Laptop 13</strong> laitteeksi, mutta älä lisää kommenttia.</p>
+<p><img alt="Valitse laite" src="../../../../../translated_images/9.4_13_SelectDevice.d9ad15d17de3f06fd948bd529f116f7c05bedf79c016180d8a1dd7e378322b0e.fi.png" /></p>
+</li>
+<li>
+<p><strong>Lähetä</strong> pyyntö valitsemalla <strong>Submit Request</strong> -painike.</p>
+<p><img alt="Lähetä pyyntö" src="../../../../../translated_images/9.4_14_SubmitRequest.a783ad8460bfb4485cfd2e97db2c065d9d6bf803279e3bd1569fe3e93548a578.fi.png" /></p>
+</li>
+<li>
+<p>Tällä kertaa sähköpostissa, jonka saat Saapuneet-kansioon, kommenttina näkyy <strong>None</strong>.</p>
+<p><img alt="Sähköposti vastaanotettu" src="../../../../../translated_images/9.4_15_ReviewEmailMessage.137f35152c9da4b4a02bebec5f0cc9e55cfa25679770ace003aa19482ed0f3eb.fi.png" /></p>
+</li>
+</ol>
+<h4 id="943-ala-pyyda-laitetta">9.4.3 Älä pyydä laitetta<a class="headerlink" href="#943-ala-pyyda-laitetta" title="Permanent link">&para;</a></h4>
+<p>Testataan viimeinen skenaario, jossa laitetta ei pyydetä, ja <strong>Goodbye</strong>-aiheen tulisi käynnistyä agentin ohjeiden mukaisesti.</p>
+<ol>
+<li>
+<p>Toista samat vaiheet:</p>
+<ul>
+<li><strong>Päivitä</strong> testipaneeli ja valitse <strong>activity map</strong> -ikoni</li>
+<li>Syötä viesti, <code>I need a laptop</code></li>
+<li>Vastaa tällä kertaa <code>No</code> kysymykseen laitteen pyytämisestä</li>
+</ul>
+<p><img alt="Testaa agenttia" src="../../../../../translated_images/9.4_16_TestAgent_RequestDevice_No.85f205968f1d4083f20cc890a707748f8e06c01a19536cd299a13bdde2350de7.fi.png" /></p>
+</li>
+<li>
+<p>Agentti käynnisti <strong>Goodbye</strong>-aiheen, ja kysymys, joka on määritelty aiheessa, esitetään.</p>
+<p><img alt="Goodbye-aihe käynnistetty" src="../../../../../translated_images/9.4_17_Goodbye.05ee598a987237e02866647a9699b0efa7ac58d1f448497f956af2ee815cb961.fi.png" /></p>
+</li>
+</ol>
+<h2 id="tehtava-suoritettu">✅ Tehtävä suoritettu<a class="headerlink" href="#tehtava-suoritettu" title="Permanent link">&para;</a></h2>
+<p>Onnittelut! 👏🏻 Olet oppinut, kuinka rakentaa agenttivirta ja lisätä sen olemassa olevaan <strong>Request device</strong> -aiheeseen sekä ohjata agentti toiseen aiheeseen.</p>
+<p>Tämä on <strong>Lab 09 - Lisää agenttivirta automaatiota varten ja paranna aiheen ominaisuuksia</strong> loppu. Valitse alla oleva linkki siirtyäksesi seuraavaan oppituntiin. Laajennamme tämän laboratorion käyttötapausta seuraavan oppitunnin laboratoriossa.</p>
+<p>⏭️ <a href="../10-add-event-triggers/">Siirry <strong>Add Event Triggers - Enable autonomous agent capabilities</strong> -oppituntiin</a></p>
+<h2 id="taktiset-resurssit">📚 Taktiset resurssit<a class="headerlink" href="#taktiset-resurssit" title="Permanent link">&para;</a></h2>
+<p>🔗 <a href="https://www.microsoft.com/microsoft-copilot/blog/copilot-studio/introducing-agent-flows-transforming-automation-with-ai-first-workflows/">Introducing agent flows: Transforming automation with AI-first workflows</a></p>
+<p>🔗 <a href="https://learn.microsoft.com/microsoft-copilot-studio/flows-overview?WT.mc_id=power-172621-ebenitez">Agent flows overview</a></p>
+<p>🔗 <a href="https://learn.microsoft.com/microsoft-copilot-studio/advanced-flow?WT.mc_id=power-172621-ebenitez">Use agent flows with your agent</a></p>
+<p>🔗 <a href="https://learn.microsoft.com/azure/logic-apps/workflow-definition-language-functions-reference?WT.mc_id=power-172621-ebenitez">List of functions in the reference guide</a></p>
+<p>📺 <a href="https://www.youtube.com/watch?v=VJTKyk3Pr7s">Agent Flows in Copilot Studio</a></p>
+<!-- markdownlint-disable-next-line MD033 -->
+<p><img src="https://m365-visitor-stats.azurewebsites.net/agent-academy/recruit/09-add-an-agent-flow" alt="Analytiikka" /></p>
+<hr />
+<p><strong>Vastuuvapauslauseke</strong>:<br />
+Tämä asiakirja on käännetty käyttämällä tekoälypohjaista käännöspalvelua <a href="https://github.com/Azure/co-op-translator">Co-op Translator</a>. Vaikka pyrimme tarkkuuteen, huomioithan, että automaattiset käännökset voivat sisältää virheitä tai epätarkkuuksia. Alkuperäinen asiakirja sen alkuperäisellä kielellä tulisi pitää ensisijaisena lähteenä. Kriittisen tiedon osalta suositellaan ammattimaista ihmiskäännöstä. Emme ole vastuussa väärinkäsityksistä tai virhetulkinnoista, jotka johtuvat tämän käännöksen käytöstä.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.expand", "navigation.footer", "navigation.instant", "navigation.path", "navigation.prune", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "content.tabs.link", "toc.follow", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

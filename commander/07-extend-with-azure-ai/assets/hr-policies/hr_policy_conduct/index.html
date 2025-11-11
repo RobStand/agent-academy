@@ -1,0 +1,1132 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://microsoft.github.io/agent-academy/commander/07-extend-with-azure-ai/assets/hr-policies/hr_policy_conduct/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../../images/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Contoso Corporation - Copilot Studio Agent Academy</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#contoso-corporation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="Copilot Studio Agent Academy" class="md-header__button md-logo" aria-label="Copilot Studio Agent Academy" data-md-component="logo">
+      
+  <img src="../../../../../images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot Studio Agent Academy
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Contoso Corporation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/microsoft/agent-academy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/agent-academy
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../recruit/" class="md-tabs__link">
+          
+  
+  
+  Recruit
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../operative/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Operative (Coming Soon)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Commander (Coming Soon)
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="Copilot Studio Agent Academy" class="md-nav__button md-logo" aria-label="Copilot Studio Agent Academy" data-md-component="logo">
+      
+  <img src="../../../../../images/logo.png" alt="logo">
+
+    </a>
+    Copilot Studio Agent Academy
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/microsoft/agent-academy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/agent-academy
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../recruit/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recruit
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../operative/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operative (Coming Soon)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Commander (Coming Soon)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#code-of-conduct-and-ethics-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code of Conduct and Ethics Policy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-message-from-our-ceo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Message from Our CEO
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-purpose-and-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Purpose and Scope
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-core-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Core Values
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-respect-and-inclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Respect and Inclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-health-safety-and-wellbeing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Health, Safety, and Wellbeing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-protecting-company-assets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Protecting Company Assets
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-conflicts-of-interest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Conflicts of Interest
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-fair-dealing-and-competition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Fair Dealing and Competition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-government-relations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Government Relations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-financial-integrity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Financial Integrity
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-privacy-and-data-protection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Privacy and Data Protection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-environmental-responsibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Environmental Responsibility
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-community-and-social-responsibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Community and Social Responsibility
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-reporting-concerns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Reporting Concerns
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-consequences-of-violations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Consequences of Violations
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="contoso-corporation">Contoso Corporation<a class="headerlink" href="#contoso-corporation" title="Permanent link">&para;</a></h1>
+<h2 id="code-of-conduct-and-ethics-policy">Code of Conduct and Ethics Policy<a class="headerlink" href="#code-of-conduct-and-ethics-policy" title="Permanent link">&para;</a></h2>
+<p><strong>Policy Number:</strong> HR-2025-005<br />
+<strong>Effective Date:</strong> January 1, 2025<br />
+<strong>Last Revised:</strong> January 1, 2025<br />
+<strong>Policy Owner:</strong> Legal and Compliance Department</p>
+<hr />
+<h2 id="1-message-from-our-ceo">1. Message from Our CEO<a class="headerlink" href="#1-message-from-our-ceo" title="Permanent link">&para;</a></h2>
+<p>At Contoso, we are committed to conducting business with the highest standards of integrity, honesty, and ethical behavior. This Code of Conduct reflects our values and establishes expectations for how we treat each other, our customers, our partners, and our communities.</p>
+<p>Every employee—from our newest team member to our most senior leader—is responsible for upholding these standards. When you see something that doesn't align with our values, speak up. We are all stewards of Contoso's reputation and culture.</p>
+<p>— Jennifer Adams, Chief Executive Officer</p>
+<h2 id="2-purpose-and-scope">2. Purpose and Scope<a class="headerlink" href="#2-purpose-and-scope" title="Permanent link">&para;</a></h2>
+<h3 id="21-purpose">2.1 Purpose<a class="headerlink" href="#21-purpose" title="Permanent link">&para;</a></h3>
+<p>This Code of Conduct:
+- Defines expected behaviors and ethical standards
+- Provides guidance for decision-making
+- Establishes reporting mechanisms for concerns
+- Protects employees, customers, and the company</p>
+<h3 id="22-scope">2.2 Scope<a class="headerlink" href="#22-scope" title="Permanent link">&para;</a></h3>
+<p>This Code applies to:
+- All Contoso employees (full-time, part-time, temporary)
+- Board members and executives
+- Contractors and consultants when representing Contoso
+- All business activities and locations worldwide</p>
+<h3 id="23-compliance">2.3 Compliance<a class="headerlink" href="#23-compliance" title="Permanent link">&para;</a></h3>
+<ul>
+<li>All employees must read and acknowledge this Code annually</li>
+<li>Violations may result in disciplinary action up to and including termination</li>
+<li>Managers have additional responsibility to model and enforce the Code</li>
+<li>Board members and executives are held to the highest standards</li>
+</ul>
+<h2 id="3-core-values">3. Core Values<a class="headerlink" href="#3-core-values" title="Permanent link">&para;</a></h2>
+<p>Contoso's Code of Conduct is built on five core values:</p>
+<p><strong>INTEGRITY</strong>
+We do the right thing, even when no one is watching. We are honest, transparent, and keep our commitments.</p>
+<p><strong>RESPECT</strong>
+We treat everyone with dignity and respect. We value diverse perspectives and create an inclusive environment.</p>
+<p><strong>EXCELLENCE</strong>
+We strive for quality in everything we do. We take ownership and deliver on our promises.</p>
+<p><strong>INNOVATION</strong>
+We embrace change and challenge the status quo. We learn from failures and continuously improve.</p>
+<p><strong>COLLABORATION</strong>
+We work together to achieve shared goals. We support each other and build strong partnerships.</p>
+<h2 id="4-respect-and-inclusion">4. Respect and Inclusion<a class="headerlink" href="#4-respect-and-inclusion" title="Permanent link">&para;</a></h2>
+<h3 id="41-equal-opportunity">4.1 Equal Opportunity<a class="headerlink" href="#41-equal-opportunity" title="Permanent link">&para;</a></h3>
+<p>Contoso is an equal opportunity employer. We prohibit discrimination based on:
+- Race, color, ethnicity, national origin
+- Religion or creed
+- Sex, gender, gender identity, gender expression
+- Sexual orientation
+- Age
+- Disability (physical or mental)
+- Veteran or military status
+- Genetic information
+- Pregnancy or parental status
+- Any other protected characteristic</p>
+<h3 id="42-harassment-free-workplace">4.2 Harassment-Free Workplace<a class="headerlink" href="#42-harassment-free-workplace" title="Permanent link">&para;</a></h3>
+<p>We do not tolerate harassment of any kind, including:
+- Sexual harassment (unwelcome advances, requests for favors, inappropriate comments)
+- Hostile work environment (offensive jokes, slurs, intimidation)
+- Bullying or abusive behavior
+- Retaliation against those who report concerns</p>
+<p><strong>Examples of unacceptable behavior:</strong>
+- Inappropriate comments about appearance
+- Unwelcome touching or invasion of personal space
+- Offensive jokes or stereotypes
+- Displaying or sharing inappropriate images
+- Persistent unwanted attention
+- Exclusion or isolation of colleagues</p>
+<h3 id="43-diversity-and-inclusion">4.3 Diversity and Inclusion<a class="headerlink" href="#43-diversity-and-inclusion" title="Permanent link">&para;</a></h3>
+<p>We are committed to building a diverse workforce and inclusive culture:
+- Actively recruit from diverse talent pools
+- Ensure equitable access to opportunities
+- Support Employee Resource Groups (ERGs)
+- Provide unconscious bias training
+- Hold leaders accountable for D&amp;I progress</p>
+<h3 id="44-reporting-harassment-or-discrimination">4.4 Reporting Harassment or Discrimination<a class="headerlink" href="#44-reporting-harassment-or-discrimination" title="Permanent link">&para;</a></h3>
+<p>If you experience or witness harassment or discrimination:
+1. <strong>Tell the person to stop</strong> (if you feel safe doing so)
+2. <strong>Report immediately</strong> to your manager, HR, or Ethics Hotline
+3. <strong>Document</strong> dates, times, witnesses, specific behaviors
+4. <strong>Don't retaliate</strong> against the person being reported</p>
+<p><strong>We will:</strong>
+- Investigate promptly and thoroughly
+- Maintain confidentiality to the extent possible
+- Take appropriate corrective action
+- Protect against retaliation</p>
+<h2 id="5-health-safety-and-wellbeing">5. Health, Safety, and Wellbeing<a class="headerlink" href="#5-health-safety-and-wellbeing" title="Permanent link">&para;</a></h2>
+<h3 id="51-safe-workplace">5.1 Safe Workplace<a class="headerlink" href="#51-safe-workplace" title="Permanent link">&para;</a></h3>
+<p>We are committed to providing a safe, healthy work environment:
+- Comply with all safety regulations and procedures
+- Report unsafe conditions immediately
+- Use required safety equipment
+- Complete required safety training
+- Never come to work impaired</p>
+<h3 id="52-substance-abuse">5.2 Substance Abuse<a class="headerlink" href="#52-substance-abuse" title="Permanent link">&para;</a></h3>
+<p>Contoso prohibits:
+- Being under the influence of alcohol or illegal drugs at work
+- Possession, use, or distribution of illegal drugs on company premises
+- Misuse of prescription medications that impairs performance</p>
+<p><strong>Limited exceptions:</strong>
+- Moderate alcohol consumption at company-sponsored events
+- Medical marijuana where legal (with accommodation process)</p>
+<p>Violation of this policy may result in immediate termination.</p>
+<h3 id="53-workplace-violence">5.3 Workplace Violence<a class="headerlink" href="#53-workplace-violence" title="Permanent link">&para;</a></h3>
+<p>We have zero tolerance for violence or threats of violence:
+- Physical assault or threatening behavior
+- Weapons on company property (except authorized security)
+- Intimidation or coercion
+- Stalking or menacing behavior</p>
+<p><strong>If you feel unsafe, call 911 immediately, then notify Security and HR.</strong></p>
+<h3 id="54-mental-health-support">5.4 Mental Health Support<a class="headerlink" href="#54-mental-health-support" title="Permanent link">&para;</a></h3>
+<p>We support employee mental health and wellbeing:
+- EAP counseling available 24/7
+- Mental health days (use sick leave)
+- Accommodations for mental health conditions
+- Manager training on supporting mental health
+- Stigma-free environment for seeking help</p>
+<h2 id="6-protecting-company-assets">6. Protecting Company Assets<a class="headerlink" href="#6-protecting-company-assets" title="Permanent link">&para;</a></h2>
+<h3 id="61-company-property">6.1 Company Property<a class="headerlink" href="#61-company-property" title="Permanent link">&para;</a></h3>
+<p>Use company assets responsibly:
+- Computers, phones, equipment for business purposes
+- Limited personal use permitted if it doesn't interfere with work
+- Return all company property upon termination
+- Report lost or stolen items immediately</p>
+<h3 id="62-information-security">6.2 Information Security<a class="headerlink" href="#62-information-security" title="Permanent link">&para;</a></h3>
+<p>Protect company information and systems:
+- Use strong passwords and enable MFA
+- Never share login credentials
+- Lock computer when away from desk
+- Don't access confidential information unless needed for your job
+- Report security incidents or suspicious activity
+- Use VPN when working remotely
+- Don't use personal devices for confidential work</p>
+<h3 id="63-confidential-information">6.3 Confidential Information<a class="headerlink" href="#63-confidential-information" title="Permanent link">&para;</a></h3>
+<p>Protect confidential and proprietary information:
+- <strong>Company confidential:</strong> Financial data, strategic plans, employee information
+- <strong>Customer confidential:</strong> Customer data, contracts, business information
+- <strong>Trade secrets:</strong> Product designs, source code, algorithms</p>
+<p><strong>Do not:</strong>
+- Disclose confidential information to anyone outside Contoso
+- Discuss confidential matters in public places
+- Share information with colleagues who don't need to know
+- Take confidential information when you leave Contoso</p>
+<h3 id="64-social-media">6.4 Social Media<a class="headerlink" href="#64-social-media" title="Permanent link">&para;</a></h3>
+<p>When using social media:
+- Don't disclose confidential company information
+- Make clear you're speaking personally, not for Contoso
+- Be respectful and professional
+- Don't speak on behalf of Contoso unless authorized
+- Follow social media policy for business accounts</p>
+<p><strong>Remember:</strong> Posts are public and permanent. Consider whether you'd want your post on the front page of a newspaper.</p>
+<h3 id="65-intellectual-property">6.5 Intellectual Property<a class="headerlink" href="#65-intellectual-property" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Inventions and creations related to your work belong to Contoso</li>
+<li>Don't use others' intellectual property without proper licensing</li>
+<li>Respect copyrights, trademarks, and patents</li>
+<li>Properly attribute open-source software</li>
+</ul>
+<h2 id="7-conflicts-of-interest">7. Conflicts of Interest<a class="headerlink" href="#7-conflicts-of-interest" title="Permanent link">&para;</a></h2>
+<h3 id="71-definition">7.1 Definition<a class="headerlink" href="#71-definition" title="Permanent link">&para;</a></h3>
+<p>A conflict of interest occurs when personal interests could influence (or appear to influence) business decisions.</p>
+<p><strong>Common conflicts:</strong>
+- Financial interest in competitor, supplier, or customer
+- Hiring or supervising family members
+- Outside employment with related business
+- Personal relationships with vendors or partners
+- Using company resources for personal gain</p>
+<h3 id="72-disclosure-requirements">7.2 Disclosure Requirements<a class="headerlink" href="#72-disclosure-requirements" title="Permanent link">&para;</a></h3>
+<p>You must disclose:
+- Financial interests in companies we do business with
+- Outside employment or board positions
+- Family members who work at Contoso or partner companies
+- Personal relationships with vendors, customers, or colleagues you work closely with</p>
+<p><strong>How to disclose:</strong>
+Submit Conflict of Interest disclosure in Workday annually and when situations arise.</p>
+<h3 id="73-corporate-opportunities">7.3 Corporate Opportunities<a class="headerlink" href="#73-corporate-opportunities" title="Permanent link">&para;</a></h3>
+<p>Don't take business opportunities that belong to Contoso:
+- Don't compete with Contoso
+- Don't use company resources for personal business
+- Don't take opportunities discovered through your position</p>
+<h3 id="74-gifts-and-entertainment">7.4 Gifts and Entertainment<a class="headerlink" href="#74-gifts-and-entertainment" title="Permanent link">&para;</a></h3>
+<p><strong>Receiving gifts:</strong>
+- <strong>Allowed:</strong> Modest gifts under $100 (promotional items, meals)
+- <strong>Not allowed:</strong> Cash or cash equivalents, gifts over $100, lavish entertainment
+- <strong>Disclose:</strong> All gifts over $50 in Workday</p>
+<p><strong>Giving gifts:</strong>
+- Must be reasonable, legal, and comply with recipient's policies
+- Never give gifts to government officials without Legal approval
+- Don't give gifts to influence business decisions</p>
+<p><strong>Entertainment:</strong>
+- Business meals and events are okay if reasonable
+- You or Contoso representative should be present
+- Don't create obligation or appearance of impropriety</p>
+<h2 id="8-fair-dealing-and-competition">8. Fair Dealing and Competition<a class="headerlink" href="#8-fair-dealing-and-competition" title="Permanent link">&para;</a></h2>
+<h3 id="81-competitive-practices">8.1 Competitive Practices<a class="headerlink" href="#81-competitive-practices" title="Permanent link">&para;</a></h3>
+<p>We compete fairly and ethically:
+- Win business on merit, not through improper means
+- Don't disparage competitors falsely
+- Don't collude with competitors on pricing, customers, or markets
+- Respect competitors' confidential information</p>
+<h3 id="82-antitrust-compliance">8.2 Antitrust Compliance<a class="headerlink" href="#82-antitrust-compliance" title="Permanent link">&para;</a></h3>
+<p>Violations of antitrust laws have serious consequences. Never:
+- Discuss pricing with competitors
+- Agree to divide markets or customers
+- Participate in bid-rigging
+- Engage in exclusive dealing arrangements without Legal review</p>
+<p><strong>If a competitor tries to discuss these topics, stop the conversation and contact Legal immediately.</strong></p>
+<h3 id="83-working-with-suppliers">8.3 Working with Suppliers<a class="headerlink" href="#83-working-with-suppliers" title="Permanent link">&para;</a></h3>
+<p>Treat suppliers fairly and ethically:
+- Select suppliers based on merit
+- Honor contracts and commitments
+- Don't accept kickbacks or improper incentives
+- Report supplier misconduct</p>
+<h3 id="84-accurate-records">8.4 Accurate Records<a class="headerlink" href="#84-accurate-records" title="Permanent link">&para;</a></h3>
+<p>Maintain accurate business records:
+- Record all transactions honestly and accurately
+- Never falsify documents or records
+- Retain records according to retention schedule
+- Cooperate with audits and investigations</p>
+<p><strong>This includes:</strong>
+- Financial records and expense reports
+- Time sheets and attendance records
+- Quality and safety data
+- Customer and supplier contracts</p>
+<h2 id="9-government-relations">9. Government Relations<a class="headerlink" href="#9-government-relations" title="Permanent link">&para;</a></h2>
+<h3 id="91-political-activities">9.1 Political Activities<a class="headerlink" href="#91-political-activities" title="Permanent link">&para;</a></h3>
+<p><strong>Permitted:</strong>
+- Personal political activities on your own time
+- Personal political contributions
+- Voting and civic participation</p>
+<p><strong>Not permitted:</strong>
+- Using company resources for political campaigns
+- Representing Contoso in political activities without authorization
+- Making political contributions with company funds (except PAC)
+- Coercing employees regarding political activities</p>
+<h3 id="92-government-contracting">9.2 Government Contracting<a class="headerlink" href="#92-government-contracting" title="Permanent link">&para;</a></h3>
+<p>Special rules apply when working with government:
+- Strict compliance with procurement regulations
+- Accurate pricing and cost reporting
+- No gifts or entertainment to government employees
+- All lobbying activities must be coordinated through Government Relations</p>
+<h3 id="93-anti-bribery-and-corruption">9.3 Anti-Bribery and Corruption<a class="headerlink" href="#93-anti-bribery-and-corruption" title="Permanent link">&para;</a></h3>
+<p>Contoso complies with anti-bribery laws worldwide (FCPA, UK Bribery Act, etc.):</p>
+<p><strong>Strictly prohibited:</strong>
+- Bribes, kickbacks, or improper payments
+- "Facilitating payments" to expedite government actions
+- Providing anything of value to government officials to influence decisions
+- Money laundering</p>
+<p><strong>This applies:</strong>
+- Everywhere we do business
+- To all employees and third parties acting on our behalf
+- Even in countries where such practices may be common</p>
+<p><strong>Penalties:</strong> Criminal prosecution, fines, imprisonment, and termination</p>
+<p>Contact Legal before any dealings with government officials.</p>
+<h2 id="10-financial-integrity">10. Financial Integrity<a class="headerlink" href="#10-financial-integrity" title="Permanent link">&para;</a></h2>
+<h3 id="101-financial-reporting">10.1 Financial Reporting<a class="headerlink" href="#101-financial-reporting" title="Permanent link">&para;</a></h3>
+<p>We maintain accurate financial records:
+- All financial information must be complete and accurate
+- Follow accounting standards and internal controls
+- Never manipulate records to misrepresent performance
+- Report suspected fraud or accounting irregularities</p>
+<h3 id="102-insider-trading">10.2 Insider Trading<a class="headerlink" href="#102-insider-trading" title="Permanent link">&para;</a></h3>
+<p>Insider trading is illegal and strictly prohibited:
+- Don't trade Contoso stock when you have material non-public information
+- Don't tip others to trade based on inside information
+- Don't trade securities of customers, partners, or competitors based on information learned at Contoso</p>
+<p><strong>Material information:</strong> Information that could affect stock price (earnings, acquisitions, major contracts, leadership changes)</p>
+<p><strong>Trading blackout periods:</strong>
+- Quarterly: 2 weeks before earnings release
+- Special: During major events (M&amp;A, etc.)
+- Executives and certain employees: Additional restrictions</p>
+<p>Violations can result in criminal prosecution, fines, and termination.</p>
+<h2 id="11-privacy-and-data-protection">11. Privacy and Data Protection<a class="headerlink" href="#11-privacy-and-data-protection" title="Permanent link">&para;</a></h2>
+<h3 id="111-personal-data">11.1 Personal Data<a class="headerlink" href="#111-personal-data" title="Permanent link">&para;</a></h3>
+<p>We protect personal information of:
+- Employees
+- Customers
+- Partners and suppliers</p>
+<p><strong>Requirements:</strong>
+- Collect only necessary information
+- Use information only for stated purposes
+- Secure information with appropriate controls
+- Comply with privacy laws (GDPR, CCPA, etc.)
+- Respond promptly to data subject requests</p>
+<h3 id="112-data-breaches">11.2 Data Breaches<a class="headerlink" href="#112-data-breaches" title="Permanent link">&para;</a></h3>
+<p>If you suspect a data breach:
+1. <strong>Report immediately</strong> to Security: security@contoso.com
+2. <strong>Don't</strong> attempt to investigate yourself
+3. <strong>Preserve</strong> evidence
+4. <strong>Don't</strong> notify affected parties (Legal/Security will coordinate)</p>
+<p>Time is critical - report within 1 hour of discovery.</p>
+<h3 id="113-customer-data">11.3 Customer Data<a class="headerlink" href="#113-customer-data" title="Permanent link">&para;</a></h3>
+<p>Treat customer data with highest care:
+- Access only when needed for your job
+- Never share customer data externally without authorization
+- Delete customer data when no longer needed
+- Honor customer privacy preferences</p>
+<h2 id="12-environmental-responsibility">12. Environmental Responsibility<a class="headerlink" href="#12-environmental-responsibility" title="Permanent link">&para;</a></h2>
+<h3 id="121-environmental-compliance">12.1 Environmental Compliance<a class="headerlink" href="#121-environmental-compliance" title="Permanent link">&para;</a></h3>
+<p>We comply with all environmental laws and regulations:
+- Proper disposal of hazardous materials
+- Minimizing waste and emissions
+- Conserving energy and resources
+- Reporting environmental incidents</p>
+<h3 id="122-sustainability-commitment">12.2 Sustainability Commitment<a class="headerlink" href="#122-sustainability-commitment" title="Permanent link">&para;</a></h3>
+<p>We strive to minimize environmental impact:
+- Reduce carbon footprint
+- Use sustainable materials
+- Promote recycling and waste reduction
+- Consider environmental impact in decisions</p>
+<h2 id="13-community-and-social-responsibility">13. Community and Social Responsibility<a class="headerlink" href="#13-community-and-social-responsibility" title="Permanent link">&para;</a></h2>
+<h3 id="131-human-rights">13.1 Human Rights<a class="headerlink" href="#131-human-rights" title="Permanent link">&para;</a></h3>
+<p>We respect human rights in all operations:
+- No forced or child labor in our supply chain
+- Fair wages and working conditions
+- Freedom of association
+- Safe working conditions</p>
+<h3 id="132-charitable-activities">13.2 Charitable Activities<a class="headerlink" href="#132-charitable-activities" title="Permanent link">&para;</a></h3>
+<p>We support communities where we operate:
+- Volunteer time off (2 days per year)
+- Company matching gifts program
+- Pro bono work for nonprofits
+- Corporate giving priorities</p>
+<p><strong>Guidelines:</strong>
+- Charitable activities must be legal and ethical
+- No political contributions disguised as charitable giving
+- Ensure legitimate charitable organizations</p>
+<h2 id="14-reporting-concerns">14. Reporting Concerns<a class="headerlink" href="#14-reporting-concerns" title="Permanent link">&para;</a></h2>
+<h3 id="141-speak-up-culture">14.1 Speak Up Culture<a class="headerlink" href="#141-speak-up-culture" title="Permanent link">&para;</a></h3>
+<p>We encourage you to report concerns:
+- It's your responsibility to report violations
+- Reports are taken seriously and investigated
+- Good faith reporting is protected
+- We don't tolerate retaliation</p>
+<p><strong>When to report:</strong>
+- Violations of this Code
+- Illegal or unethical behavior
+- Safety hazards
+- Discrimination or harassment
+- Financial irregularities
+- Anything that doesn't feel right</p>
+<h3 id="142-reporting-options">14.2 Reporting Options<a class="headerlink" href="#142-reporting-options" title="Permanent link">&para;</a></h3>
+<p><strong>Multiple ways to report:</strong></p>
+<ol>
+<li>
+<p><strong>Your Manager</strong> - Often the best first step</p>
+</li>
+<li>
+<p><strong>HR Business Partner</strong> - Find in Workday</p>
+</li>
+<li>
+<p><strong>Ethics Hotline</strong> (24/7, anonymous option available)</p>
+</li>
+<li>Phone: 1-800-ETHICS-1 (1-800-384-4271)</li>
+<li>Web: ethics.contoso.com</li>
+<li>Available in multiple languages</li>
+<li>
+<p>Operated by independent third party</p>
+</li>
+<li>
+<p><strong>Email:</strong></p>
+</li>
+<li>HR: ethics@contoso.com</li>
+<li>Legal: legal@contoso.com</li>
+<li>Audit Committee: audit@contoso.com (for financial concerns)</li>
+</ol>
+<p><strong>What to include:</strong>
+- Who, what, when, where
+- Witnesses
+- Documents or evidence
+- Your contact information (if not anonymous)</p>
+<h3 id="143-investigation-process">14.3 Investigation Process<a class="headerlink" href="#143-investigation-process" title="Permanent link">&para;</a></h3>
+<p>When you report a concern:
+1. <strong>Acknowledgment:</strong> You'll receive confirmation within 2 business days
+2. <strong>Investigation:</strong> Thorough, confidential investigation conducted
+3. <strong>Updates:</strong> Periodic updates on investigation status
+4. <strong>Resolution:</strong> Appropriate action taken based on findings
+5. <strong>Follow-up:</strong> Check-in to ensure no retaliation</p>
+<h3 id="144-non-retaliation">14.4 Non-Retaliation<a class="headerlink" href="#144-non-retaliation" title="Permanent link">&para;</a></h3>
+<p>Contoso strictly prohibits retaliation against anyone who:
+- Reports concerns in good faith
+- Participates in investigations
+- Refuses to participate in wrongdoing</p>
+<p><strong>Retaliation includes:</strong>
+- Termination or demotion
+- Harassment or hostility
+- Reduced hours or pay
+- Exclusion from opportunities
+- Any adverse employment action</p>
+<p><strong>Reporting retaliation:</strong> Contact HR or Ethics Hotline immediately. Retaliation is grounds for immediate termination.</p>
+<h2 id="15-consequences-of-violations">15. Consequences of Violations<a class="headerlink" href="#15-consequences-of-violations" title="Permanent link">&para;</a></h2>
+<h3 id="151-disciplinary-actions">15.1 Disciplinary Actions<a class="headerlink" href="#151-disciplinary-actions" title="Permanent link">&para;</a></h3>
+<p>Violations</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.expand", "navigation.footer", "navigation.instant", "navigation.path", "navigation.prune", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "content.tabs.link", "toc.follow", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

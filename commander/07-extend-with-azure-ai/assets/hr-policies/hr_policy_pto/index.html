@@ -1,0 +1,952 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://microsoft.github.io/agent-academy/commander/07-extend-with-azure-ai/assets/hr-policies/hr_policy_pto/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../../images/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Contoso Corporation - Copilot Studio Agent Academy</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#contoso-corporation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="Copilot Studio Agent Academy" class="md-header__button md-logo" aria-label="Copilot Studio Agent Academy" data-md-component="logo">
+      
+  <img src="../../../../../images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot Studio Agent Academy
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Contoso Corporation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/microsoft/agent-academy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/agent-academy
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../recruit/" class="md-tabs__link">
+          
+  
+  
+  Recruit
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../operative/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Operative (Coming Soon)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Commander (Coming Soon)
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="Copilot Studio Agent Academy" class="md-nav__button md-logo" aria-label="Copilot Studio Agent Academy" data-md-component="logo">
+      
+  <img src="../../../../../images/logo.png" alt="logo">
+
+    </a>
+    Copilot Studio Agent Academy
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/microsoft/agent-academy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/agent-academy
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../recruit/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recruit
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../operative/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operative (Coming Soon)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Commander (Coming Soon)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#paid-time-off-and-leave-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paid Time Off and Leave Policy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Purpose
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Scope
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-paid-time-off-pto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Paid Time Off (PTO)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-sick-leave" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Sick Leave
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-company-holidays" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Company Holidays
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-parental-leave" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Parental Leave
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-bereavement-leave" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Bereavement Leave
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-jury-duty-and-civic-leave" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Jury Duty and Civic Leave
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-military-leave" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Military Leave
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-leave-of-absence-unpaid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Leave of Absence (Unpaid)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-family-and-medical-leave-act-fmla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Family and Medical Leave Act (FMLA)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-short-term-and-long-term-disability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Short-Term and Long-Term Disability
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-policy-administration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Policy Administration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-questions-and-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Questions and Support
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-policy-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Policy Updates
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="contoso-corporation">Contoso Corporation<a class="headerlink" href="#contoso-corporation" title="Permanent link">&para;</a></h1>
+<h2 id="paid-time-off-and-leave-policy">Paid Time Off and Leave Policy<a class="headerlink" href="#paid-time-off-and-leave-policy" title="Permanent link">&para;</a></h2>
+<p><strong>Policy Number:</strong> HR-2025-001<br />
+<strong>Effective Date:</strong> January 1, 2025<br />
+<strong>Last Revised:</strong> January 1, 2025<br />
+<strong>Policy Owner:</strong> Human Resources Department</p>
+<hr />
+<h2 id="1-purpose">1. Purpose<a class="headerlink" href="#1-purpose" title="Permanent link">&para;</a></h2>
+<p>This policy outlines Contoso Corporation's Paid Time Off (PTO) and leave benefits for all eligible employees. Our goal is to provide competitive time-off benefits that support work-life balance, employee wellbeing, and business continuity.</p>
+<h2 id="2-scope">2. Scope<a class="headerlink" href="#2-scope" title="Permanent link">&para;</a></h2>
+<p>This policy applies to all regular full-time and part-time employees of Contoso Corporation in the United States. Contractors, temporary workers, and interns are not eligible for these benefits.</p>
+<h2 id="3-paid-time-off-pto">3. Paid Time Off (PTO)<a class="headerlink" href="#3-paid-time-off-pto" title="Permanent link">&para;</a></h2>
+<h3 id="31-pto-accrual">3.1 PTO Accrual<a class="headerlink" href="#31-pto-accrual" title="Permanent link">&para;</a></h3>
+<p>PTO accrues based on length of service with Contoso:</p>
+<ul>
+<li><strong>Years 0-2:</strong> 15 days per year (1.25 days per month, 10 hours per pay period for bi-weekly payroll)</li>
+<li><strong>Years 3-5:</strong> 20 days per year (1.67 days per month, 13.33 hours per pay period)</li>
+<li><strong>Years 6+:</strong> 25 days per year (2.08 days per month, 16.67 hours per pay period)</li>
+</ul>
+<h3 id="32-pto-usage">3.2 PTO Usage<a class="headerlink" href="#32-pto-usage" title="Permanent link">&para;</a></h3>
+<ul>
+<li>PTO can be used for vacation, personal appointments, religious observances, or any personal needs</li>
+<li>PTO begins accruing on the first day of employment and can be used as soon as it is accrued</li>
+<li>PTO must be requested through Workday and approved by your manager at least 2 weeks in advance for planned absences</li>
+<li>Emergency or same-day PTO should be communicated to your manager as soon as possible</li>
+<li>Employees are encouraged to use their PTO throughout the year to maintain work-life balance</li>
+</ul>
+<h3 id="33-pto-carryover-and-payout">3.3 PTO Carryover and Payout<a class="headerlink" href="#33-pto-carryover-and-payout" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Employees may carry over up to 40 hours (5 days) of unused PTO into the next calendar year</li>
+<li>PTO in excess of 40 hours will be paid out in the first paycheck of January at the employee's current base rate</li>
+<li>Upon termination of employment, all accrued and unused PTO will be paid out in the final paycheck, subject to applicable state laws</li>
+</ul>
+<h3 id="34-part-time-employees">3.4 Part-Time Employees<a class="headerlink" href="#34-part-time-employees" title="Permanent link">&para;</a></h3>
+<p>Part-time employees (working at least 20 hours per week) accrue PTO on a prorated basis according to their scheduled hours.</p>
+<h2 id="4-sick-leave">4. Sick Leave<a class="headerlink" href="#4-sick-leave" title="Permanent link">&para;</a></h2>
+<h3 id="41-sick-leave-policy">4.1 Sick Leave Policy<a class="headerlink" href="#41-sick-leave-policy" title="Permanent link">&para;</a></h3>
+<p>Contoso provides <strong>unlimited sick leave</strong> separate from PTO to ensure employees can take the time needed to recover from illness without fear of losing income or job security.</p>
+<h3 id="42-appropriate-use-of-sick-leave">4.2 Appropriate Use of Sick Leave<a class="headerlink" href="#42-appropriate-use-of-sick-leave" title="Permanent link">&para;</a></h3>
+<p>Sick leave may be used for:
+- Personal illness or injury
+- Medical, dental, or mental health appointments
+- Caring for an immediate family member (spouse, child, parent, or domestic partner) who is ill
+- Preventive medical care
+- Recovery time after medical procedures</p>
+<h3 id="43-notification-requirements">4.3 Notification Requirements<a class="headerlink" href="#43-notification-requirements" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Notify your manager as soon as possible when you need to use sick leave</li>
+<li>Log sick time in Workday as "Sick Leave" (no approval required)</li>
+<li>For absences of 3 or more consecutive days, a doctor's note may be required</li>
+<li>Patterns of sick leave usage may be reviewed by HR to ensure appropriate use</li>
+</ul>
+<h3 id="44-extended-illness">4.4 Extended Illness<a class="headerlink" href="#44-extended-illness" title="Permanent link">&para;</a></h3>
+<p>For illnesses lasting more than 7 consecutive days, employees should contact HR to discuss Short-Term Disability benefits and FMLA eligibility.</p>
+<h2 id="5-company-holidays">5. Company Holidays<a class="headerlink" href="#5-company-holidays" title="Permanent link">&para;</a></h2>
+<h3 id="51-observed-holidays">5.1 Observed Holidays<a class="headerlink" href="#51-observed-holidays" title="Permanent link">&para;</a></h3>
+<p>Contoso observes the following paid holidays (11 total):</p>
+<ol>
+<li>New Year's Day (January 1)</li>
+<li>Martin Luther King Jr. Day (third Monday in January)</li>
+<li>Memorial Day (last Monday in May)</li>
+<li>Independence Day (July 4)</li>
+<li>Labor Day (first Monday in September)</li>
+<li>Thanksgiving Day (fourth Thursday in November)</li>
+<li>Day After Thanksgiving</li>
+<li>Christmas Eve (December 24)</li>
+<li>Christmas Day (December 25)</li>
+<li><strong>Winter Break:</strong> December 26-31 (offices closed, no PTO required)</li>
+</ol>
+<h3 id="52-floating-holidays">5.2 Floating Holidays<a class="headerlink" href="#52-floating-holidays" title="Permanent link">&para;</a></h3>
+<p>In addition to fixed holidays, employees receive <strong>3 floating holidays</strong> per year to use at their discretion. Floating holidays:
+- Must be scheduled in Workday as "Floating Holiday"
+- Require manager approval
+- Do not roll over to the next calendar year
+- Are commonly used for religious observances, birthdays, or personal celebrations</p>
+<h3 id="53-holiday-pay">5.3 Holiday Pay<a class="headerlink" href="#53-holiday-pay" title="Permanent link">&para;</a></h3>
+<ul>
+<li>If a holiday falls on a Saturday, it will be observed on the preceding Friday</li>
+<li>If a holiday falls on a Sunday, it will be observed on the following Monday</li>
+<li>Non-exempt employees required to work on a holiday will receive holiday pay plus regular pay for hours worked</li>
+</ul>
+<h2 id="6-parental-leave">6. Parental Leave<a class="headerlink" href="#6-parental-leave" title="Permanent link">&para;</a></h2>
+<h3 id="61-birth-parent-leave">6.1 Birth Parent Leave<a class="headerlink" href="#61-birth-parent-leave" title="Permanent link">&para;</a></h3>
+<p>Birth parents are eligible for <strong>16 weeks of fully paid parental leave</strong>:
+- Can be taken consecutively or split within 12 months of birth
+- Includes any state-mandated disability leave
+- Employee must notify manager and HR as early as possible, ideally 30+ days before due date</p>
+<h3 id="62-non-birth-parent-leave">6.2 Non-Birth Parent Leave<a class="headerlink" href="#62-non-birth-parent-leave" title="Permanent link">&para;</a></h3>
+<p>Non-birth parents (including adoptive parents, foster parents, and partners) are eligible for <strong>12 weeks of fully paid parental leave</strong>:
+- Must be taken within 12 months of birth, adoption, or foster placement
+- Can be taken consecutively or in multiple blocks</p>
+<h3 id="63-adoption-and-foster-care-leave">6.3 Adoption and Foster Care Leave<a class="headerlink" href="#63-adoption-and-foster-care-leave" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Primary caregiver: 12 weeks fully paid</li>
+<li>Secondary caregiver: 8 weeks fully paid</li>
+<li>Leave must be taken within 12 months of placement</li>
+</ul>
+<h3 id="64-gradual-return-program">6.4 Gradual Return Program<a class="headerlink" href="#64-gradual-return-program" title="Permanent link">&para;</a></h3>
+<p>New parents may opt for a gradual return to work:
+- Work 50% schedule (4 hours per day or 2-3 days per week) for up to 4 weeks
+- Receive 100% of regular pay during this period
+- Must be coordinated with manager and HR</p>
+<h3 id="65-additional-benefits">6.5 Additional Benefits<a class="headerlink" href="#65-additional-benefits" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Backup childcare: 10 subsidized days per year through Bright Horizons</li>
+<li>Lactation rooms available in all Contoso offices</li>
+<li>Flexible work arrangements available during first year after return</li>
+</ul>
+<h2 id="7-bereavement-leave">7. Bereavement Leave<a class="headerlink" href="#7-bereavement-leave" title="Permanent link">&para;</a></h2>
+<h3 id="71-immediate-family">7.1 Immediate Family<a class="headerlink" href="#71-immediate-family" title="Permanent link">&para;</a></h3>
+<p>Employees receive <strong>5 days of paid bereavement leave</strong> for the death of an immediate family member:
+- Spouse or domestic partner
+- Child (including stepchild, foster child)
+- Parent (including step-parent, parent-in-law)
+- Sibling (including step-sibling)</p>
+<h3 id="72-extended-family">7.2 Extended Family<a class="headerlink" href="#72-extended-family" title="Permanent link">&para;</a></h3>
+<p>Employees receive <strong>3 days of paid bereavement leave</strong> for the death of:
+- Grandparent
+- Grandchild
+- Aunt or uncle
+- Niece or nephew</p>
+<h3 id="73-additional-considerations">7.3 Additional Considerations<a class="headerlink" href="#73-additional-considerations" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Travel time for funeral attendance is included in bereavement days</li>
+<li>Additional unpaid time or PTO may be requested if needed</li>
+<li>No documentation is required</li>
+<li>Employees experiencing grief may request flexible work arrangements</li>
+<li>EAP counseling services are available at no cost</li>
+</ul>
+<h2 id="8-jury-duty-and-civic-leave">8. Jury Duty and Civic Leave<a class="headerlink" href="#8-jury-duty-and-civic-leave" title="Permanent link">&para;</a></h2>
+<h3 id="81-jury-duty">8.1 Jury Duty<a class="headerlink" href="#81-jury-duty" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Employees summoned for jury duty will receive full pay for up to 10 days</li>
+<li>Employees must provide a copy of the jury summons to their manager and HR</li>
+<li>If jury duty extends beyond 10 days, additional unpaid leave will be granted</li>
+<li>Employees are expected to return to work when not required in court</li>
+</ul>
+<h3 id="82-voting-leave">8.2 Voting Leave<a class="headerlink" href="#82-voting-leave" title="Permanent link">&para;</a></h3>
+<p>Contoso encourages all employees to exercise their right to vote. Employees may take up to 2 hours of paid time off to vote in federal, state, or local elections if their work schedule prevents them from voting outside of work hours.</p>
+<h2 id="9-military-leave">9. Military Leave<a class="headerlink" href="#9-military-leave" title="Permanent link">&para;</a></h2>
+<p>Employees who serve in the U.S. Armed Forces, National Guard, or Reserve will be granted leave in accordance with the Uniformed Services Employment and Reemployment Rights Act (USERRA). Employees should provide advance notice of military obligations when possible.</p>
+<h2 id="10-leave-of-absence-unpaid">10. Leave of Absence (Unpaid)<a class="headerlink" href="#10-leave-of-absence-unpaid" title="Permanent link">&para;</a></h2>
+<h3 id="101-eligibility">10.1 Eligibility<a class="headerlink" href="#101-eligibility" title="Permanent link">&para;</a></h3>
+<p>Employees who have been with Contoso for at least 12 months may request an unpaid Leave of Absence for:
+- Personal reasons (sabbatical, extended travel)
+- Educational pursuits
+- Family care responsibilities
+- Medical reasons (after exhausting other paid leave)</p>
+<h3 id="102-duration-and-approval">10.2 Duration and Approval<a class="headerlink" href="#102-duration-and-approval" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Maximum duration: 12 weeks (extensions may be granted in exceptional circumstances)</li>
+<li>Requires manager and HR approval</li>
+<li>Must be requested at least 30 days in advance when possible</li>
+</ul>
+<h3 id="103-benefits-during-leave">10.3 Benefits During Leave<a class="headerlink" href="#103-benefits-during-leave" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Health insurance continues (employee pays both employee and employer portions)</li>
+<li>PTO and seniority do not accrue during unpaid leave</li>
+<li>Position will be held or a similar position will be offered upon return</li>
+<li>401(k) contributions are suspended during unpaid leave</li>
+</ul>
+<h2 id="11-family-and-medical-leave-act-fmla">11. Family and Medical Leave Act (FMLA)<a class="headerlink" href="#11-family-and-medical-leave-act-fmla" title="Permanent link">&para;</a></h2>
+<p>Eligible employees may take up to 12 weeks of unpaid, job-protected leave under FMLA for:
+- Birth and care of a newborn
+- Placement of a child for adoption or foster care
+- Care for a spouse, child, or parent with a serious health condition
+- The employee's own serious health condition
+- Qualifying military family leave</p>
+<p>Employees must have worked for Contoso for at least 12 months and 1,250 hours in the past year to be eligible. Contact HR for more information about FMLA eligibility and procedures.</p>
+<h2 id="12-short-term-and-long-term-disability">12. Short-Term and Long-Term Disability<a class="headerlink" href="#12-short-term-and-long-term-disability" title="Permanent link">&para;</a></h2>
+<h3 id="121-short-term-disability-std">12.1 Short-Term Disability (STD)<a class="headerlink" href="#121-short-term-disability-std" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Available after 7 consecutive days of illness or injury</li>
+<li>Provides 60% of base salary for up to 90 days</li>
+<li>Employer-paid benefit (no cost to employee)</li>
+<li>Must apply through HR and provide medical documentation</li>
+</ul>
+<h3 id="122-long-term-disability-ltd">12.2 Long-Term Disability (LTD)<a class="headerlink" href="#122-long-term-disability-ltd" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Begins after 90 days of continuous disability</li>
+<li>Provides 60% of base salary</li>
+<li>Coverage continues as long as disability persists, subject to policy terms</li>
+<li>Employer-paid benefit (no cost to employee)</li>
+</ul>
+<h2 id="13-policy-administration">13. Policy Administration<a class="headerlink" href="#13-policy-administration" title="Permanent link">&para;</a></h2>
+<h3 id="131-requesting-time-off">13.1 Requesting Time Off<a class="headerlink" href="#131-requesting-time-off" title="Permanent link">&para;</a></h3>
+<p>All time off must be requested through Workday with the following exceptions:
+- Sick leave: notification to manager only (log in Workday after return)
+- Emergency PTO: notify manager ASAP, log in Workday as soon as possible</p>
+<h3 id="132-manager-responsibilities">13.2 Manager Responsibilities<a class="headerlink" href="#132-manager-responsibilities" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Review and respond to PTO requests within 2 business days</li>
+<li>Ensure adequate coverage during team member absences</li>
+<li>Track team PTO usage to ensure employees are taking time off</li>
+<li>Escalate concerning patterns of sick leave usage to HR</li>
+</ul>
+<h3 id="133-policy-violations">13.3 Policy Violations<a class="headerlink" href="#133-policy-violations" title="Permanent link">&para;</a></h3>
+<p>Misuse of sick leave or other leave benefits may result in disciplinary action up to and including termination. Examples include:
+- Using sick leave for non-illness purposes
+- Falsifying leave documentation
+- Failing to follow notification procedures repeatedly</p>
+<h2 id="14-questions-and-support">14. Questions and Support<a class="headerlink" href="#14-questions-and-support" title="Permanent link">&para;</a></h2>
+<p>For questions about this policy or your specific leave situation, contact:</p>
+<ul>
+<li><strong>Your HR Business Partner</strong> (find in Workday directory)</li>
+<li><strong>Leave Management Team:</strong> leave@contoso.com</li>
+<li><strong>HR Service Center:</strong> 1-800-CONTOSO-HR</li>
+</ul>
+<h2 id="15-policy-updates">15. Policy Updates<a class="headerlink" href="#15-policy-updates" title="Permanent link">&para;</a></h2>
+<p>This policy is subject to change. Employees will be notified of material changes via email and updated documentation will be available on the HR intranet at intranet.contoso.com/hr/policies.</p>
+<hr />
+<p><strong>Approved by:</strong><br />
+Sarah Mitchell, Chief Human Resources Officer<br />
+January 1, 2025</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.expand", "navigation.footer", "navigation.instant", "navigation.path", "navigation.prune", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "content.tabs.link", "toc.follow", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1060 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://microsoft.github.io/agent-academy/commander/07-extend-with-azure-ai/assets/hr-policies/hr_policy_remote/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../../images/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Contoso Corporation - Copilot Studio Agent Academy</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#contoso-corporation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="Copilot Studio Agent Academy" class="md-header__button md-logo" aria-label="Copilot Studio Agent Academy" data-md-component="logo">
+      
+  <img src="../../../../../images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot Studio Agent Academy
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Contoso Corporation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/microsoft/agent-academy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/agent-academy
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../recruit/" class="md-tabs__link">
+          
+  
+  
+  Recruit
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../operative/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Operative (Coming Soon)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Commander (Coming Soon)
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="Copilot Studio Agent Academy" class="md-nav__button md-logo" aria-label="Copilot Studio Agent Academy" data-md-component="logo">
+      
+  <img src="../../../../../images/logo.png" alt="logo">
+
+    </a>
+    Copilot Studio Agent Academy
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/microsoft/agent-academy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/agent-academy
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../recruit/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recruit
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../operative/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operative (Coming Soon)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Commander (Coming Soon)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#remote-work-and-hybrid-work-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remote Work and Hybrid Work Policy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Purpose
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Scope
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-work-arrangement-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Work Arrangement Options
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-eligibility-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Eligibility Requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-remote-work-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Remote Work Requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-home-office-stipend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Home Office Stipend
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-international-remote-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. International Remote Work
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-requesting-remote-work-arrangements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Requesting Remote Work Arrangements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-office-space-and-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Office Space and Resources
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-travel-and-collaboration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Travel and Collaboration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-security-and-confidentiality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Security and Confidentiality
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-expenses-and-reimbursement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Expenses and Reimbursement
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-ergonomics-and-wellbeing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Ergonomics and Wellbeing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-manager-responsibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Manager Responsibilities
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-policy-violations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Policy Violations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-equipment-return" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Equipment Return
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-questions-and-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Questions and Support
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-policy-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. Policy Review
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="contoso-corporation">Contoso Corporation<a class="headerlink" href="#contoso-corporation" title="Permanent link">&para;</a></h1>
+<h2 id="remote-work-and-hybrid-work-policy">Remote Work and Hybrid Work Policy<a class="headerlink" href="#remote-work-and-hybrid-work-policy" title="Permanent link">&para;</a></h2>
+<p><strong>Policy Number:</strong> HR-2025-002<br />
+<strong>Effective Date:</strong> January 1, 2025<br />
+<strong>Last Revised:</strong> January 1, 2025<br />
+<strong>Policy Owner:</strong> Human Resources Department</p>
+<hr />
+<h2 id="1-purpose">1. Purpose<a class="headerlink" href="#1-purpose" title="Permanent link">&para;</a></h2>
+<p>This policy establishes guidelines for remote and hybrid work arrangements at Contoso Corporation. We believe that flexible work arrangements enhance employee satisfaction, productivity, and work-life balance while maintaining collaboration, innovation, and company culture.</p>
+<h2 id="2-scope">2. Scope<a class="headerlink" href="#2-scope" title="Permanent link">&para;</a></h2>
+<p>This policy applies to all regular full-time and part-time employees whose roles can be performed remotely. Certain positions require on-site presence due to the nature of the work (e.g., facilities, security, lab technicians) and are not eligible for remote work.</p>
+<h2 id="3-work-arrangement-options">3. Work Arrangement Options<a class="headerlink" href="#3-work-arrangement-options" title="Permanent link">&para;</a></h2>
+<h3 id="31-hybrid-work-model-standard">3.1 Hybrid Work Model (Standard)<a class="headerlink" href="#31-hybrid-work-model-standard" title="Permanent link">&para;</a></h3>
+<p>Most Contoso employees operate under a hybrid model:</p>
+<ul>
+<li><strong>In-Office Days:</strong> Tuesday, Wednesday, Thursday (encouraged but not mandated)</li>
+<li><strong>Remote Days:</strong> Monday and Friday</li>
+<li><strong>Flexibility:</strong> Managers may adjust schedules based on team needs and collaboration requirements</li>
+</ul>
+<h3 id="32-fully-remote-work">3.2 Fully Remote Work<a class="headerlink" href="#32-fully-remote-work" title="Permanent link">&para;</a></h3>
+<p>Employees may request fully remote arrangements if:
+- Role can be performed entirely remotely
+- Employee has demonstrated strong performance
+- Manager approves based on business needs
+- Position does not require regular physical presence</p>
+<p>Fully remote employees must:
+- Attend quarterly in-person team meetings (travel expenses covered)
+- Be available during core business hours in their time zone
+- Maintain strong communication and collaboration</p>
+<h3 id="33-office-based-work">3.3 Office-Based Work<a class="headerlink" href="#33-office-based-work" title="Permanent link">&para;</a></h3>
+<p>Some employees may prefer or be required to work primarily from the office. This is appropriate when:
+- Role requires on-site presence (labs, facilities, etc.)
+- Employee prefers office environment
+- Business needs require consistent on-site presence</p>
+<h2 id="4-eligibility-requirements">4. Eligibility Requirements<a class="headerlink" href="#4-eligibility-requirements" title="Permanent link">&para;</a></h2>
+<h3 id="41-general-requirements">4.1 General Requirements<a class="headerlink" href="#41-general-requirements" title="Permanent link">&para;</a></h3>
+<p>To be eligible for remote work, employees must:
+- Have been employed for at least 90 days (new hires may negotiate remote start)
+- Meet or exceed performance expectations
+- Have a role that can be performed remotely
+- Demonstrate ability to work independently
+- Have reliable technology and internet access</p>
+<h3 id="42-performance-expectations">4.2 Performance Expectations<a class="headerlink" href="#42-performance-expectations" title="Permanent link">&para;</a></h3>
+<p>Remote work is a privilege that may be revoked if:
+- Performance declines
+- Communication or responsiveness issues arise
+- Business needs change
+- Team collaboration suffers</p>
+<h2 id="5-remote-work-requirements">5. Remote Work Requirements<a class="headerlink" href="#5-remote-work-requirements" title="Permanent link">&para;</a></h2>
+<h3 id="51-workspace-requirements">5.1 Workspace Requirements<a class="headerlink" href="#51-workspace-requirements" title="Permanent link">&para;</a></h3>
+<p>Employees must maintain a dedicated workspace that is:
+- Safe and ergonomically sound
+- Free from distractions during work hours
+- Equipped with reliable internet (minimum 25 Mbps download, 5 Mbps upload)
+- Secure and private for confidential work and calls</p>
+<h3 id="52-technology-requirements">5.2 Technology Requirements<a class="headerlink" href="#52-technology-requirements" title="Permanent link">&para;</a></h3>
+<p>Remote employees must have:
+- <strong>Company-provided laptop</strong> with required security software
+- <strong>Reliable internet connection</strong> (minimum 25 Mbps)
+- <strong>Webcam and microphone</strong> for video meetings (built-in or external)
+- <strong>VPN access</strong> for secure connection to company resources
+- <strong>Multi-factor authentication</strong> enabled on all accounts</p>
+<h3 id="53-core-hours-and-availability">5.3 Core Hours and Availability<a class="headerlink" href="#53-core-hours-and-availability" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Employees must be available during <strong>core business hours: 9:00 AM - 5:00 PM</strong> in their local time zone</li>
+<li>Must respond to messages and emails within 2 hours during core hours</li>
+<li>Calendar must be kept up-to-date with availability</li>
+<li>Must attend required meetings and be camera-on for video calls</li>
+<li>Time zone differences must be coordinated with manager and team</li>
+</ul>
+<h3 id="54-communication-expectations">5.4 Communication Expectations<a class="headerlink" href="#54-communication-expectations" title="Permanent link">&para;</a></h3>
+<p>Remote employees are expected to:
+- Participate actively in video meetings with camera on
+- Respond promptly to Slack messages during work hours
+- Keep status updated (available, in a meeting, away)
+- Overcommunicate rather than under-communicate
+- Proactively reach out to team members for collaboration</p>
+<h2 id="6-home-office-stipend">6. Home Office Stipend<a class="headerlink" href="#6-home-office-stipend" title="Permanent link">&para;</a></h2>
+<h3 id="61-annual-stipend">6.1 Annual Stipend<a class="headerlink" href="#61-annual-stipend" title="Permanent link">&para;</a></h3>
+<p>All remote and hybrid employees receive <strong>$500 annually</strong> for home office equipment and improvements.</p>
+<p><strong>Eligible expenses:</strong>
+- Desk and ergonomic chair
+- Monitor, keyboard, mouse
+- Desk lamp and lighting
+- Headphones or headset
+- Standing desk converter
+- Office supplies
+- Internet upgrade (if needed for work)</p>
+<p><strong>Not eligible:</strong>
+- Rent or mortgage
+- Utilities (except internet upgrade)
+- Decorative items unrelated to productivity
+- Furniture for non-work areas</p>
+<h3 id="62-reimbursement-process">6.2 Reimbursement Process<a class="headerlink" href="#62-reimbursement-process" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Purchase eligible items</li>
+<li>Submit receipt through Expensify within 30 days</li>
+<li>Mark as "Home Office Stipend"</li>
+<li>Reimbursement processed in next paycheck</li>
+</ol>
+<p>Note: Stipend resets January 1 each year and does not roll over.</p>
+<h3 id="63-equipment-ownership">6.3 Equipment Ownership<a class="headerlink" href="#63-equipment-ownership" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Equipment purchased with stipend belongs to the employee</li>
+<li>Company-provided equipment (laptop, monitor, etc.) remains company property and must be returned upon termination</li>
+</ul>
+<h2 id="7-international-remote-work">7. International Remote Work<a class="headerlink" href="#7-international-remote-work" title="Permanent link">&para;</a></h2>
+<h3 id="71-domestic-remote-work">7.1 Domestic Remote Work<a class="headerlink" href="#71-domestic-remote-work" title="Permanent link">&para;</a></h3>
+<p>Employees may work remotely from anywhere in the United States where Contoso is registered to do business. Employees must:
+- Notify HR of permanent address changes
+- Understand that state tax implications may change
+- Be aware that salary may be adjusted based on location (for new remote arrangements only)</p>
+<h3 id="72-short-term-international-work-1-4-weeks">7.2 Short-Term International Work (1-4 weeks)<a class="headerlink" href="#72-short-term-international-work-1-4-weeks" title="Permanent link">&para;</a></h3>
+<p>Employees may request to work internationally for short periods:</p>
+<p><strong>Requirements:</strong>
+- Submit <strong>International Work Request</strong> in Workday at least 30 days in advance
+- Manager approval required
+- Legal and Compliance review required
+- Must maintain normal working hours (your team's time zone)
+- VPN required for all work activities
+- Travel insurance recommended</p>
+<p><strong>Generally Approved Countries:</strong>
+- Canada
+- United Kingdom
+- European Union countries (most)
+- Australia and New Zealand</p>
+<p><strong>Requires Additional Review:</strong>
+- China
+- Russia
+- Countries with strict data localization laws
+- Countries with limited internet infrastructure</p>
+<p><strong>Not Permitted:</strong>
+- OFAC-sanctioned countries (Iran, North Korea, Syria, Cuba, etc.)
+- Countries with State Department travel warnings (Level 4)
+- Locations without reliable, secure internet</p>
+<h3 id="73-extended-international-work-90-days">7.3 Extended International Work (90+ days)<a class="headerlink" href="#73-extended-international-work-90-days" title="Permanent link">&para;</a></h3>
+<p>Extended international work requires:
+- Immigration and employment law review
+- Tax implications assessment
+- Potential change in employment status
+- 60+ days advance notice
+- Senior leadership approval</p>
+<p>Contact <strong>global-mobility@contoso.com</strong> for extended international work requests.</p>
+<h2 id="8-requesting-remote-work-arrangements">8. Requesting Remote Work Arrangements<a class="headerlink" href="#8-requesting-remote-work-arrangements" title="Permanent link">&para;</a></h2>
+<h3 id="81-standard-hybrid-model">8.1 Standard Hybrid Model<a class="headerlink" href="#81-standard-hybrid-model" title="Permanent link">&para;</a></h3>
+<p>The hybrid model is automatic for eligible employees. No formal request needed.</p>
+<h3 id="82-fully-remote-arrangement">8.2 Fully Remote Arrangement<a class="headerlink" href="#82-fully-remote-arrangement" title="Permanent link">&para;</a></h3>
+<p>To request fully remote work:</p>
+<ol>
+<li><strong>Discuss with manager</strong> - Explain rationale and how you'll maintain productivity and collaboration</li>
+<li><strong>Submit request in Workday</strong> - Remote Work Request form</li>
+<li><strong>Manager review</strong> - Manager evaluates based on role requirements and team needs</li>
+<li><strong>HR approval</strong> - HR confirms eligibility and processes request</li>
+<li><strong>Trial period</strong> - Initial 90-day trial period to ensure arrangement works</li>
+<li><strong>Regular review</strong> - Arrangements reviewed annually or when performance/business needs change</li>
+</ol>
+<h3 id="83-temporary-remote-work">8.3 Temporary Remote Work<a class="headerlink" href="#83-temporary-remote-work" title="Permanent link">&para;</a></h3>
+<p>For temporary remote work (medical reasons, relocation, family needs):
+- Discuss with manager
+- Submit Remote Work Request with dates
+- Arrangements typically approved for up to 3 months
+- Can be extended with additional approval</p>
+<h2 id="9-office-space-and-resources">9. Office Space and Resources<a class="headerlink" href="#9-office-space-and-resources" title="Permanent link">&para;</a></h2>
+<h3 id="91-hot-desking">9.1 Hot Desking<a class="headerlink" href="#91-hot-desking" title="Permanent link">&para;</a></h3>
+<p>Hybrid and remote employees do not have assigned desks. Contoso offices use hot desking:
+- Reserve desks through the SpaceIQ app
+- First-come, first-served on non-reserved desks
+- Clean your workspace at end of day
+- Phone booths and conference rooms available for calls</p>
+<h3 id="92-office-amenities">9.2 Office Amenities<a class="headerlink" href="#92-office-amenities" title="Permanent link">&para;</a></h3>
+<p>All Contoso offices provide:
+- High-speed WiFi
+- Monitors, keyboards, mice available at desks
+- Phone booths for private calls
+- Collaboration spaces and conference rooms
+- Coffee, tea, and snacks
+- Lockers for personal storage</p>
+<h3 id="93-parking-and-access">9.3 Parking and Access<a class="headerlink" href="#93-parking-and-access" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Badge access 24/7 for hybrid/remote employees</li>
+<li>Visitor parking available (register vehicle in SpaceIQ)</li>
+<li>Bike racks and shower facilities available</li>
+</ul>
+<h2 id="10-travel-and-collaboration">10. Travel and Collaboration<a class="headerlink" href="#10-travel-and-collaboration" title="Permanent link">&para;</a></h2>
+<h3 id="101-team-meetings">10.1 Team Meetings<a class="headerlink" href="#101-team-meetings" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Teams should meet in-person at least quarterly</li>
+<li>Fully remote employees: travel expenses covered for quarterly meetings</li>
+<li>Hybrid teams: coordinate in-office days for collaboration</li>
+<li>All-hands meetings: typically held in-person or hybrid format</li>
+</ul>
+<h3 id="102-business-travel">10.2 Business Travel<a class="headerlink" href="#102-business-travel" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Remote work location does not count as business travel</li>
+<li>Travel to company offices for meetings is considered business travel (expenses covered)</li>
+<li>Travel to client sites or conferences follows standard travel policy</li>
+</ul>
+<h2 id="11-security-and-confidentiality">11. Security and Confidentiality<a class="headerlink" href="#11-security-and-confidentiality" title="Permanent link">&para;</a></h2>
+<h3 id="111-data-security">11.1 Data Security<a class="headerlink" href="#111-data-security" title="Permanent link">&para;</a></h3>
+<p>Remote employees must:
+- Use company VPN for all work activities
+- Never access company systems on public WiFi without VPN
+- Lock screen when away from workspace
+- Keep company equipment secure and password-protected
+- Report lost or stolen equipment immediately to IT Security</p>
+<h3 id="112-confidential-information">11.2 Confidential Information<a class="headerlink" href="#112-confidential-information" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Do not discuss confidential matters in public spaces</li>
+<li>Use headphones for confidential calls</li>
+<li>Ensure family members/roommates cannot access company equipment</li>
+<li>Shred or securely dispose of printed confidential materials</li>
+</ul>
+<h3 id="113-compliance-training">11.3 Compliance Training<a class="headerlink" href="#113-compliance-training" title="Permanent link">&para;</a></h3>
+<p>All remote employees must complete:
+- Information Security training (annually)
+- Remote Work Best Practices training (upon starting remote work)
+- Data Privacy training (annually)</p>
+<h2 id="12-expenses-and-reimbursement">12. Expenses and Reimbursement<a class="headerlink" href="#12-expenses-and-reimbursement" title="Permanent link">&para;</a></h2>
+<h3 id="121-reimbursable-expenses">12.1 Reimbursable Expenses<a class="headerlink" href="#121-reimbursable-expenses" title="Permanent link">&para;</a></h3>
+<p>When working remotely, the following are reimbursable:
+- Home office equipment (up to $500/year stipend)
+- Internet upgrade if needed for work (up to $50/month with manager approval)
+- Business-related phone calls and shipping</p>
+<h3 id="122-non-reimbursable-expenses">12.2 Non-Reimbursable Expenses<a class="headerlink" href="#122-non-reimbursable-expenses" title="Permanent link">&para;</a></h3>
+<p>The following are NOT reimbursable:
+- Rent, mortgage, or utilities (except internet as noted)
+- Commuting costs to office
+- Coffee, food, or meals while working from home
+- Personal phone line or cell phone (unless approved for role)
+- Co-working space membership (unless pre-approved by manager)</p>
+<h3 id="123-co-working-spaces">12.3 Co-Working Spaces<a class="headerlink" href="#123-co-working-spaces" title="Permanent link">&para;</a></h3>
+<p>In special circumstances (inadequate home workspace, need for professional meeting space), manager may approve co-working space membership. Contact your manager and HR to discuss.</p>
+<h2 id="13-ergonomics-and-wellbeing">13. Ergonomics and Wellbeing<a class="headerlink" href="#13-ergonomics-and-wellbeing" title="Permanent link">&para;</a></h2>
+<h3 id="131-ergonomic-assessments">13.1 Ergonomic Assessments<a class="headerlink" href="#131-ergonomic-assessments" title="Permanent link">&para;</a></h3>
+<p>Remote employees can request a virtual ergonomic assessment:
+- Contact wellness@contoso.com
+- 30-minute video consultation with ergonomics specialist
+- Receive personalized recommendations
+- Use home office stipend for recommended equipment</p>
+<h3 id="132-wellness-resources">13.2 Wellness Resources<a class="headerlink" href="#132-wellness-resources" title="Permanent link">&para;</a></h3>
+<p>Contoso provides resources for remote employee wellbeing:
+- Virtual fitness classes (schedule at wellness.contoso.com)
+- Mental health support through EAP
+- Online meditation and mindfulness programs (Headspace)
+- Virtual social events and coffee chats</p>
+<h3 id="133-taking-breaks">13.3 Taking Breaks<a class="headerlink" href="#133-taking-breaks" title="Permanent link">&para;</a></h3>
+<p>Remote employees are encouraged to:
+- Take regular breaks away from screen
+- Step outside for fresh air
+- Maintain boundaries between work and personal life
+- Use PTO and disconnect fully during time off</p>
+<h2 id="14-manager-responsibilities">14. Manager Responsibilities<a class="headerlink" href="#14-manager-responsibilities" title="Permanent link">&para;</a></h2>
+<p>Managers of remote teams must:
+- Set clear expectations for availability and deliverables
+- Have regular 1:1 check-ins (weekly recommended)
+- Foster team connection through virtual and in-person activities
+- Evaluate employees on outcomes, not hours worked
+- Be flexible and understanding of home circumstances
+- Address performance issues promptly and fairly
+- Ensure remote employees feel included in team culture</p>
+<h2 id="15-policy-violations">15. Policy Violations<a class="headerlink" href="#15-policy-violations" title="Permanent link">&para;</a></h2>
+<p>Remote work privileges may be revoked for:
+- Consistent performance issues
+- Failure to be available during core hours
+- Not responding to communications in timely manner
+- Security policy violations
+- Misrepresentation of work location
+- Using remote work to avoid responsibilities</p>
+<h2 id="16-equipment-return">16. Equipment Return<a class="headerlink" href="#16-equipment-return" title="Permanent link">&para;</a></h2>
+<p>Upon termination or end of remote work arrangement:
+- All company equipment must be returned within 5 business days
+- Prepaid shipping labels provided by IT
+- Failure to return equipment may result in deduction from final paycheck (where legally permitted)</p>
+<h2 id="17-questions-and-support">17. Questions and Support<a class="headerlink" href="#17-questions-and-support" title="Permanent link">&para;</a></h2>
+<p>For questions about remote work:</p>
+<ul>
+<li><strong>Your Manager</strong> - First point of contact for arrangement questions</li>
+<li><strong>HR Business Partner</strong> - Find in Workday directory</li>
+<li><strong>IT Support</strong> - Technical issues: itsupport@contoso.com or 1-800-HELP</li>
+<li><strong>Global Mobility</strong> - International work: global-mobility@contoso.com</li>
+<li><strong>HR Policies</strong> - Policy questions: hrpolicies@contoso.com</li>
+</ul>
+<h2 id="18-policy-review">18. Policy Review<a class="headerlink" href="#18-policy-review" title="Permanent link">&para;</a></h2>
+<p>This policy will be reviewed annually and may be updated based on business needs, employee feedback, and evolving best practices. Material changes will be communicated to all employees.</p>
+<hr />
+<p><strong>Approved by:</strong><br />
+Sarah Mitchell, Chief Human Resources Officer<br />
+Michael Chen, Chief Information Officer<br />
+January 1, 2025</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.expand", "navigation.footer", "navigation.instant", "navigation.path", "navigation.prune", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "content.tabs.link", "toc.follow", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

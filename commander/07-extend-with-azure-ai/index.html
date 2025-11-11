@@ -1,0 +1,1383 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://microsoft.github.io/agent-academy/commander/07-extend-with-azure-ai/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../images/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>🚨 Mission 07: Extend agents with Azure AI - Copilot Studio Agent Academy</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mission-07-extend-agents-with-azure-ai" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Copilot Studio Agent Academy" class="md-header__button md-logo" aria-label="Copilot Studio Agent Academy" data-md-component="logo">
+      
+  <img src="../../images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot Studio Agent Academy
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              🚨 Mission 07: Extend agents with Azure AI
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/microsoft/agent-academy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/agent-academy
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../recruit/" class="md-tabs__link">
+          
+  
+  
+  Recruit
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../operative/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Operative (Coming Soon)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Commander (Coming Soon)
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Copilot Studio Agent Academy" class="md-nav__button md-logo" aria-label="Copilot Studio Agent Academy" data-md-component="logo">
+      
+  <img src="../../images/logo.png" alt="logo">
+
+    </a>
+    Copilot Studio Agent Academy
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/microsoft/agent-academy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/agent-academy
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../recruit/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recruit
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operative/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operative (Coming Soon)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Commander (Coming Soon)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#codename-operation-azure-intelligence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🕵️‍♂️ CODENAME: OPERATION AZURE INTELLIGENCE
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mission-brief" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Mission Brief
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔎 Objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-does-bring-your-own-model-mean" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🤖 What does Bring Your Own Model mean?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-does-bring-your-own-data-mean" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 What does Bring Your Own Data mean?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-use-byom-and-byod-in-microsoft-copilot-studio-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Why use BYOM and BYOD in Microsoft Copilot Studio agents?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-byom-and-byod-work-in-microsoft-copilot-studio-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚙️ How BYOM and BYOD work in Microsoft Copilot Studio agents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-capabilities-and-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔌 Key capabilities and considerations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎨 Best practices
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-71-bring-your-own-data-from-azure-to-your-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪Lab 7.1: Bring your own data from Azure to your agent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-72-byom-from-azure-ai-foundry-to-your-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 Lab 7.2: BYOM from Azure AI Foundry to your agent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mission-complete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Mission Complete
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tactical-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 Tactical Resources
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="mission-07-extend-agents-with-azure-ai">🚨 Mission 07: Extend agents with Azure AI<a class="headerlink" href="#mission-07-extend-agents-with-azure-ai" title="Permanent link">&para;</a></h1>
+<h2 id="codename-operation-azure-intelligence">🕵️‍♂️ CODENAME: <code>OPERATION AZURE INTELLIGENCE</code><a class="headerlink" href="#codename-operation-azure-intelligence" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><strong>⏱️ Operation Time Window:</strong> <code>~60 minutes</code>  </p>
+</blockquote>
+<h2 id="mission-brief">🎯 Mission Brief<a class="headerlink" href="#mission-brief" title="Permanent link">&para;</a></h2>
+<p>Your agent is powerful on its own, but connecting it to Azure AI unlocks enterprise-grade capabilities. This mission will teach you how to use Azure AI Foundry and Azure AI Search to create intelligent, custom experiences that go beyond out-of-the-box functionality.</p>
+<p>By mission's end, you'll have deployed a custom AI model in Azure AI Foundry, integrated it into your agent through custom prompt actions, created a searchable knowledge base in Azure AI Search, and connected it all to your agent for expanded knowledge and capabilities.</p>
+<h2 id="objectives">🔎 Objectives<a class="headerlink" href="#objectives" title="Permanent link">&para;</a></h2>
+<p>In this mission, you'll learn:</p>
+<ol>
+<li>Understanding what Bring Your Own Model (BYOM) and Bring Your Own Data (BYOD) mean in the context of Microsoft Copilot Studio</li>
+<li>Learning why and when to use BYOM and BYOD capabilities with your agents</li>
+<li>Exploring how BYOM and BYOD integrate with Copilot Studio agents</li>
+<li>Deploying AI models in Azure AI Foundry and connecting them via custom prompt actions</li>
+<li>Creating searchable indexes in Azure AI Search and using them as knowledge sources</li>
+</ol>
+<h2 id="what-does-bring-your-own-model-mean">🤖 What does Bring Your Own Model mean?<a class="headerlink" href="#what-does-bring-your-own-model-mean" title="Permanent link">&para;</a></h2>
+<p>Bring Your Own Model (BYOM) allows you to use custom or third-party AI models with your Copilot Studio agents instead of relying solely on the models built into Copilot Studio. This gives you flexibility to choose specialized models that best fit your specific use case. With BYOM, you can choose a model for your agent that meets your specific needs.</p>
+<h3 id="what-does-byom-enable">What does BYOM enable?<a class="headerlink" href="#what-does-byom-enable" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Custom AI capabilities</strong> - use specialized models trained for specific domains like legal, medical, or financial services.</li>
+<li><strong>Model flexibility</strong> - select from various model providers including Azure OpenAI, open-source models, or your own fine-tuned models.</li>
+<li><strong>Control and compliance</strong> - maintain control over model selection, deployment location, and data handling to meet regulatory requirements.</li>
+<li><strong>Cost optimization</strong> - choose models that balance performance with cost based on your workload requirements.</li>
+</ul>
+<h3 id="types-of-models-you-can-bring">Types of models you can bring<a class="headerlink" href="#types-of-models-you-can-bring" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Azure OpenAI models</strong> - GPT-4, GPT-3.5, and other models deployed in your Azure subscription.</li>
+<li><strong>Azure AI model catalog</strong> - access 1900+ models from the extensive Azure AI Foundry model catalog.</li>
+<li><strong>Custom fine-tuned models</strong> - models you've trained or fine-tuned on your specific data.</li>
+<li><strong>Open-source models</strong> - popular models like Llama, Mistral, or Phi deployed in Azure.</li>
+</ul>
+<h2 id="what-does-bring-your-own-data-mean">📊 What does Bring Your Own Data mean?<a class="headerlink" href="#what-does-bring-your-own-data-mean" title="Permanent link">&para;</a></h2>
+<p>Bring Your Own Data (BYOD) enables you to connect your own enterprise data sources to your Copilot Studio agents, allowing them to provide grounded, accurate responses based on your organization's information.</p>
+<h3 id="what-does-byod-enable">What does BYOD enable?<a class="headerlink" href="#what-does-byod-enable" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Enterprise knowledge</strong> - ground your agent's responses in your organization's documents, databases, and systems.</li>
+<li><strong>Accurate information</strong> - reduce hallucinations by connecting to authoritative data sources.</li>
+<li><strong>Real-time data</strong> - access current information from your systems rather than relying on pre-trained knowledge.</li>
+<li><strong>Contextual responses</strong> - provide answers that are relevant to your organization's specific context and terminology.</li>
+</ul>
+<h3 id="types-of-data-sources-you-can-bring">Types of data sources you can bring<a class="headerlink" href="#types-of-data-sources-you-can-bring" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Azure AI Search</strong> - searchable indexes of documents, websites, and structured data.</li>
+<li><strong>SharePoint</strong> - documents and files stored in SharePoint sites.</li>
+<li><strong>OneDrive</strong> - files stored in OneDrive for Business.</li>
+<li><strong>Dataverse</strong> - structured data from your Power Platform environment.</li>
+<li><strong>Custom connectors</strong> - any data source accessible via API.</li>
+</ul>
+<h2 id="why-use-byom-and-byod-in-microsoft-copilot-studio-agents">🎯 Why use BYOM and BYOD in Microsoft Copilot Studio agents?<a class="headerlink" href="#why-use-byom-and-byod-in-microsoft-copilot-studio-agents" title="Permanent link">&para;</a></h2>
+<p>While Copilot Studio provides powerful out-of-the-box capabilities, BYOM and BYOD unlock advanced scenarios that make your agents truly enterprise-ready.</p>
+<h3 id="reasons-to-use-byom">Reasons to use BYOM<a class="headerlink" href="#reasons-to-use-byom" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Specialized expertise</strong></p>
+<ul>
+<li>Use domain-specific models that understand industry terminology and context better than general-purpose models.</li>
+<li>Example: a medical terminology model for healthcare agents.</li>
+</ul>
+</li>
+<li>
+<p><strong>Performance optimization</strong></p>
+<ul>
+<li>Select smaller, faster models for simple tasks and larger models for complex reasoning.</li>
+<li>Balance response time with capability requirements.</li>
+</ul>
+</li>
+<li>
+<p><strong>Compliance and governance</strong></p>
+<ul>
+<li>Deploy models in specific Azure regions to meet data residency requirements.</li>
+<li>Maintain full control over model versions and updates.</li>
+</ul>
+</li>
+<li>
+<p><strong>Cost management</strong></p>
+<ul>
+<li>Use cost-effective models for high-volume, low-complexity interactions.</li>
+<li>Reserve premium models for complex scenarios.</li>
+</ul>
+</li>
+<li>
+<p><strong>Custom capabilities</strong></p>
+<ul>
+<li>Leverage models fine-tuned on your organization's data and use cases.</li>
+<li>Implement specialized capabilities not available in standard models.</li>
+</ul>
+</li>
+</ol>
+<h3 id="reasons-to-use-byod">Reasons to use BYOD<a class="headerlink" href="#reasons-to-use-byod" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Accuracy and reliability</strong></p>
+<ul>
+<li>Ground responses in authoritative enterprise data rather than general knowledge.</li>
+<li>Reduce the risk of hallucinations and incorrect information.</li>
+</ul>
+</li>
+<li>
+<p><strong>Current information</strong></p>
+<ul>
+<li>Access real-time data from your systems.</li>
+<li>Ensure users receive up-to-date information.</li>
+</ul>
+</li>
+<li>
+<p><strong>Enterprise context</strong></p>
+<ul>
+<li>Provide responses that understand your organization's terminology, processes, and policies.</li>
+<li>Reference internal documents, guidelines, and knowledge bases.</li>
+</ul>
+</li>
+<li>
+<p><strong>Compliance</strong></p>
+<ul>
+<li>Keep sensitive data within your environment rather than sending it to external services.</li>
+<li>Maintain audit trails of data access.</li>
+</ul>
+</li>
+<li>
+<p><strong>Personalization</strong></p>
+<ul>
+<li>Tailor responses based on user roles, departments, or permissions.</li>
+<li>Surface relevant information from the right data sources.</li>
+</ul>
+</li>
+</ol>
+<h2 id="how-byom-and-byod-work-in-microsoft-copilot-studio-agents">⚙️ How BYOM and BYOD work in Microsoft Copilot Studio agents<a class="headerlink" href="#how-byom-and-byod-work-in-microsoft-copilot-studio-agents" title="Permanent link">&para;</a></h2>
+<p>Understanding how these capabilities integrate with your agent helps you design effective solutions.</p>
+<h3 id="byom-integration-architecture">BYOM integration architecture<a class="headerlink" href="#byom-integration-architecture" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Model deployment</strong></p>
+<ul>
+<li>Deploy your chosen model in Azure AI Foundry.</li>
+<li>Configure the model endpoint and authentication.</li>
+</ul>
+</li>
+<li>
+<p><strong>Connection in Copilot Studio</strong></p>
+<ul>
+<li>Create a custom prompt action or generative action.</li>
+<li>Connect to your Azure AI Foundry model endpoint.</li>
+<li>Configure input parameters and output handling.</li>
+</ul>
+</li>
+<li>
+<p><strong>Agent invocation</strong></p>
+<ul>
+<li>Your agent calls the custom action during conversation.</li>
+<li>Passes user input and context to the model.</li>
+<li>Receives and processes the model's response.</li>
+</ul>
+</li>
+<li>
+<p><strong>Response handling</strong></p>
+<ul>
+<li>Parse the model output.</li>
+<li>Format and present results to the user.</li>
+<li>Handle errors and fallback scenarios.</li>
+</ul>
+</li>
+</ol>
+<h3 id="byod-integration-architecture">BYOD integration architecture<a class="headerlink" href="#byod-integration-architecture" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Data preparation</strong></p>
+<ul>
+<li>Index your data in Azure AI Search.</li>
+<li>Configure field mappings and search capabilities.</li>
+<li>Set up semantic ranking for improved relevance.</li>
+</ul>
+</li>
+<li>
+<p><strong>Knowledge source configuration</strong></p>
+<ul>
+<li>Add Azure AI Search as a knowledge source in Copilot Studio.</li>
+<li>Configure authentication and index selection.</li>
+<li>Define how results should be presented.</li>
+</ul>
+</li>
+<li>
+<p><strong>Query processing</strong></p>
+<ul>
+<li>Agent receives user query.</li>
+<li>Searches your indexed data for relevant information.</li>
+<li>Ranks and retrieves top results.</li>
+</ul>
+</li>
+<li>
+<p><strong>Response generation</strong></p>
+<ul>
+<li>Agent uses retrieved data to generate grounded responses.</li>
+<li>Provides citations and sources to users.</li>
+<li>Handles cases where no relevant data is found.</li>
+</ul>
+</li>
+</ol>
+<h3 id="integration-patterns">Integration patterns<a class="headerlink" href="#integration-patterns" title="Permanent link">&para;</a></h3>
+<p><strong>Pattern 1: Custom prompt actions with BYOM</strong></p>
+<ul>
+<li>Use custom prompt actions to call your deployed model.</li>
+<li>Pass specific instructions and user input to the model.</li>
+<li>Receive structured or unstructured responses.</li>
+<li>Best for: specialized processing, custom analysis, domain-specific tasks.</li>
+</ul>
+<p><strong>Pattern 2: Generative actions with BYOM</strong></p>
+<ul>
+<li>Create actions that combine your model with dynamic inputs.</li>
+<li>Enable the agent to adapt behavior based on conversation context.</li>
+<li>Support multi-step reasoning and complex workflows.</li>
+<li>Best for: multi-turn conversations, complex decision-making, adaptive responses.</li>
+</ul>
+<p><strong>Pattern 3: Knowledge sources with BYOD</strong></p>
+<ul>
+<li>Configure Azure AI Search as a knowledge source.</li>
+<li>Enable automatic searching during conversations.</li>
+<li>Provide cited, grounded responses to user queries.</li>
+<li>Best for: FAQ handling, document search, information retrieval.</li>
+</ul>
+<p><strong>Pattern 4: Combined BYOM + BYOD</strong></p>
+<ul>
+<li>Use your custom model to process results from your data sources.</li>
+<li>Enhance retrieval with custom ranking or filtering logic.</li>
+<li>Generate personalized responses based on retrieved data.</li>
+<li>Best for: complex enterprise scenarios, personalized experiences, advanced analytics.</li>
+</ul>
+<h2 id="key-capabilities-and-considerations">🔌 Key capabilities and considerations<a class="headerlink" href="#key-capabilities-and-considerations" title="Permanent link">&para;</a></h2>
+<h3 id="model-capabilities">Model capabilities<a class="headerlink" href="#model-capabilities" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Prompt engineering</strong> - craft effective prompts that guide model behavior.</li>
+<li><strong>Context management</strong> - pass relevant conversation history and context to the model.</li>
+<li><strong>Token optimization</strong> - manage input and output token usage for cost efficiency.</li>
+<li><strong>Error handling</strong> - implement robust error handling for model failures.</li>
+</ul>
+<h3 id="data-capabilities">Data capabilities<a class="headerlink" href="#data-capabilities" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Semantic search</strong> - leverage AI-powered search for better relevance.</li>
+<li><strong>Hybrid search</strong> - combine keyword and semantic search for comprehensive results.</li>
+<li><strong>Filtering</strong> - apply filters based on user permissions, departments, or categories.</li>
+<li><strong>Ranking</strong> - use custom ranking profiles to surface the most relevant results.</li>
+</ul>
+<h3 id="security-and-governance">Security and governance<a class="headerlink" href="#security-and-governance" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Authentication</strong> - secure connections to Azure AI services using managed identities or API keys.</li>
+<li><strong>Data privacy</strong> - ensure sensitive data remains within your environment.</li>
+<li><strong>Access control</strong> - implement role-based access to models and data sources.</li>
+<li><strong>Monitoring</strong> - track usage, performance, and costs across all integrations.</li>
+</ul>
+<h2 id="best-practices">🎨 Best practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p><strong>Start with use cases</strong></p>
+<ul>
+<li>Identify specific scenarios where BYOM or BYOD adds value.</li>
+<li>Don't over-engineer - use built-in capabilities when they're sufficient.</li>
+</ul>
+</li>
+<li>
+<p><strong>Choose the right model</strong></p>
+<ul>
+<li>Match model capabilities to your use case requirements.</li>
+<li>Consider cost, latency, and performance trade-offs.</li>
+</ul>
+</li>
+<li>
+<p><strong>Prepare your data</strong></p>
+<ul>
+<li>Ensure data is well-structured and properly indexed.</li>
+<li>Use semantic ranking for better search relevance.</li>
+<li>Keep indexes updated with fresh content.</li>
+</ul>
+</li>
+<li>
+<p><strong>Optimize prompts</strong></p>
+<ul>
+<li>Test and refine prompts for your custom models.</li>
+<li>Include clear instructions and examples.</li>
+<li>Manage token usage efficiently.</li>
+</ul>
+</li>
+<li>
+<p><strong>Handle failures gracefully</strong></p>
+<ul>
+<li>Implement fallback logic when models or data sources are unavailable.</li>
+<li>Provide helpful error messages to users.</li>
+<li>Log issues for monitoring and troubleshooting.</li>
+</ul>
+</li>
+<li>
+<p><strong>Monitor and optimize</strong></p>
+<ul>
+<li>Track usage patterns and costs.</li>
+<li>Optimize model selection and data retrieval strategies.</li>
+<li>Continuously improve based on user feedback.</li>
+</ul>
+</li>
+</ol>
+<h2 id="lab-71-bring-your-own-data-from-azure-to-your-agent">🧪Lab 7.1: Bring your own data from Azure to your agent<a class="headerlink" href="#lab-71-bring-your-own-data-from-azure-to-your-agent" title="Permanent link">&para;</a></h2>
+<p>In this lab, you will create a Policy Advisor agent and use Azure AI Foundry and Azure AI Search to bring your own data from Azure to enhance the agent's knowledge and capabilities.</p>
+<h3 id="prerequisites-to-complete-this-mission">Prerequisites to complete this mission<a class="headerlink" href="#prerequisites-to-complete-this-mission" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>An active Azure subscription with permissions to create resources</p>
+</li>
+<li>
+<p>Access to <a href="https://ai.azure.com">Azure AI Foundry</a> through your Azure account</p>
+</li>
+<li>
+<p>Sample documents from <a href="https://download-directory.github.io/?url=https://github.com/RobStand/agent-academy/tree/main/docs/commander/07-extend-with-azure-ai/assets/it-documentation&amp;filename=commander_sampledata">IT policies</a></p>
+</li>
+</ol>
+<h3 id="711-create-the-policy-advisor-agent">7.1.1 Create the Policy Advisor agent<a class="headerlink" href="#711-create-the-policy-advisor-agent" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Navigate to <a href="https://copilotstudio.preview.microsoft.com">Copilot Studio</a></li>
+<li>
+<p>Enter this prompt in <strong>What would you like to build?</strong>:</p>
+<p><code>You are a virtual help desk agent named HelpIT. You help employees with questions about IT policies and guides. You are only able to answer questions from your own knowledge sources.</code>
+<img alt="Create agent from prompt" src="assets/7-create-copilot-studio-agent.png" /></p>
+</li>
+<li>
+<p>Select the arrow</p>
+</li>
+<li>Select <strong>Create</strong></li>
+<li>Wait for Copilot Studio to finish setting up the agent</li>
+<li>Select <strong>Settings</strong></li>
+<li>
+<p>Turn off <code>Use general knowledge</code> and <code>Use information from the web</code>
+    <img alt="Disable other knowledge sources" src="assets/7-copilot-studio-disable-internal-knowledge.png" /></p>
+</li>
+<li>
+<p>Select <strong>Save</strong></p>
+</li>
+</ol>
+<h3 id="712-create-an-azure-ai-foundry-resource">7.1.2 Create an Azure AI Foundry resource<a class="headerlink" href="#712-create-an-azure-ai-foundry-resource" title="Permanent link">&para;</a></h3>
+<ol>
+<li>On the Azure portal home page, select <code>Azure AI Foundry</code> under <strong>Azure services</strong> or search for it in the <strong>Search</strong> box</li>
+<li>Select <strong>Create a resource</strong>
+    <img alt="Create AI Foundry resource" src="assets/7-create-ai-foundry-resource.png" /></li>
+<li>
+<p>Configure the AI Foundry resource:</p>
+<ul>
+<li><strong>Subscription</strong>: Choose the Azure subscription you want to use</li>
+<li><strong>Resource group</strong>: Select <strong>Create new</strong> and name it <code>rg-commander-workshop</code></li>
+<li><strong>Name</strong>: Enter a unique name for the AI Foundry resource</li>
+<li><strong>Region</strong>: Choose the region closest to you</li>
+<li><strong>Default project name</strong>: Enter <code>commander-workshop-7</code></li>
+</ul>
+<p><img alt="Configure AI Foundry resource" src="assets/7-foundry-configure-resource.png" /></p>
+</li>
+<li>
+<p>Select <strong>Next</strong> to proceed through the options</p>
+</li>
+<li>Select <strong>Create</strong></li>
+</ol>
+<h3 id="713-deploy-an-embedding-model">7.1.3 Deploy an embedding model<a class="headerlink" href="#713-deploy-an-embedding-model" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Navigate to <a href="https://ai.foundry.com">Azure AI Foundry</a></li>
+<li>Under <strong>My assets</strong> in the left-hand navigation, select <strong>Models + endpoints</strong></li>
+<li>Select <strong>Deploy model</strong>, then select <strong>Deploy base model</strong>
+    <img alt="Deploy base model" src="assets/7-foundry-deploy-base-model.png" /></li>
+<li>Enter <code>text embedding</code> in the <strong>Search</strong> box</li>
+<li>Select <code>text-embedding-ada-002</code></li>
+<li>Select <strong>Confirm</strong>
+    <img alt="Select embedding model" src="assets/7-foundry-search-embedding-model.png" /></li>
+<li>Select <strong>Deploy</strong>
+    <img alt="Deploy embedding model" src="assets/7-foundry-deploy-embedding-model.png" /></li>
+</ol>
+<h3 id="713-set-up-azure-blob-storage">7.1.3 Set up Azure Blob Storage<a class="headerlink" href="#713-set-up-azure-blob-storage" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Navigate to the <a href="https://portal.azure.com">Azure portal</a></li>
+<li>Search for <strong>Storage accounts</strong> and select it in the search results</li>
+<li>Select <strong>Create</strong></li>
+<li>
+<p>Configure the Storage Account resource:</p>
+<ul>
+<li><strong>Subscription</strong>: Choose the Azure subscription you want to use</li>
+<li><strong>Resource group</strong>: Select <code>rg-commander-workshop</code></li>
+<li><strong>Storage account name</strong>: Enter a unique name for the storage account resource</li>
+<li><strong>Region</strong>: Choose the region you selected for your AI Foundry resource</li>
+<li><strong>Preferred storage type</strong>: Choose <code>Azure Blob Storage or Azure Data Lake Storage Gen 2</code></li>
+<li><strong>Primary workload</strong>: Choose <code>Backup and archive</code></li>
+<li><strong>Performance</strong>: Choose <code>Standard</code></li>
+</ul>
+<p><img alt="Create storage account" src="assets/7-create-storage-account.png" /></p>
+</li>
+<li>
+<p>Select <strong>Review + create</strong>, then <strong>Create</strong>.</p>
+</li>
+<li>When Azure finishes deploying the storage account, select <strong>Go to resource</strong></li>
+<li>In the left navigation, expand <strong>Containers</strong> and select <strong>Add container</strong></li>
+<li>
+<p>Enter <code>policies</code> in the <strong>Name</strong> field and select <strong>Create</strong></p>
+<p><img alt="Create blob container" src="assets/7-create-blob-container.png" /></p>
+</li>
+<li>
+<p>In the new <code>policies</code> container, on the toolbar, select <strong>Upload</strong></p>
+</li>
+<li>Select the IT policy documents you downloaded from GitHub</li>
+<li>Select <strong>Upload</strong></li>
+<li>
+<p>The policy documents will appear in the container</p>
+<p><img alt="Upload files to blob" src="assets/7-upload-files-to-blob.png" /></p>
+</li>
+</ol>
+<h3 id="714-create-an-ai-search-service">7.1.4 Create an AI Search service<a class="headerlink" href="#714-create-an-ai-search-service" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>On the Azure portal home page, select <code>AI Search</code> under <strong>Azure services</strong> or search for it</p>
+</li>
+<li>
+<p>Select <strong>Create</strong></p>
+</li>
+<li>
+<p>Configure the AI Search service:</p>
+<ul>
+<li><strong>Subscription</strong>: Choose the Azure subscription you want to use</li>
+<li><strong>Resource group</strong>: Select <code>rg-commander-workshop</code></li>
+<li><strong>Service name</strong>: Enter a unique name for the service</li>
+<li><strong>Region</strong>: Choose the region you selected for your AI Foundry resource</li>
+<li><strong>Pricing tier</strong>: Select <code>Basic</code></li>
+</ul>
+<p><img alt="Create AI Search service" src="assets/7-create-ai-search-service.png" /></p>
+</li>
+<li>
+<p>Select <strong>Review + create</strong>, then <strong>Create</strong></p>
+</li>
+<li>When Azure finishes creating the service, select <strong>Go to resource</strong></li>
+</ol>
+<h3 id="715-import-data-into-ai-search">7.1.5 Import data into AI Search<a class="headerlink" href="#715-import-data-into-ai-search" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>In your AI Search service, select <strong>Import data (new)</strong> on the tool bar</p>
+<p><img alt="Import data in AI Search" src="assets/7-ai-search-import-data.png" /></p>
+</li>
+<li>
+<p>Select <strong>Azure Blob Storage</strong>
+    <img alt="Choose data source" src="assets/7-ai-search-choose-data-source.png" /></p>
+</li>
+<li>Select <strong>RAG</strong>
+    <img alt="Select target scenario" src="assets/7-ai-search-select-target-scenario.png" /></li>
+<li>
+<p>Configure the connection to Azure Blob Storage:</p>
+<ul>
+<li><strong>Subscription</strong>: The Azure subscription you want to use</li>
+<li><strong>Storage account</strong>: Select the storage account you created in Lab 7.1</li>
+<li><strong>Blob container</strong>: Select <code>policies</code></li>
+<li><strong>Parsing mode</strong>: Select <code>Text</code></li>
+</ul>
+<p><img alt="Configure Azure Blob Storage" src="assets/7-ai-search-configure-blob-storage-connection.png" /></p>
+</li>
+<li>
+<p>Select <strong>Next</strong></p>
+</li>
+<li>
+<p>Configure the text vectorization:</p>
+<ul>
+<li><strong>Kind</strong>: Select <code>Azure AI Foundry</code></li>
+<li><strong>Subscription</strong>: Select the Azure subscription you want to use</li>
+<li><strong>Azure AI Foundry/Hub project</strong>: Select <code>commander-workshop-7</code></li>
+<li><strong>Model deployment</strong>: Select <code>text-embedding-ada-002</code></li>
+</ul>
+</li>
+<li>
+<p>Tick the box to acknowledge that connecting to an AI Foundry project will incur additional costs to your account.</p>
+</li>
+<li>Select <strong>Next</strong></li>
+<li>Ensure <strong>Enable semantic ranker</strong> is ticked</li>
+<li>Select <strong>Next</strong></li>
+<li>
+<p>Select <strong>Create</strong></p>
+<p><img alt="Verify AI Search configuration" src="assets/7-ai-search-index-verification.png" /></p>
+</li>
+</ol>
+<h3 id="716-add-azure-ai-search-as-knowledge-source">7.1.6 Add Azure AI Search as knowledge source<a class="headerlink" href="#716-add-azure-ai-search-as-knowledge-source" title="Permanent link">&para;</a></h3>
+<p>Now you'll connect your AI Search index as a knowledge source for your agent.</p>
+<ol>
+<li>Navigate to <a href="https://copilotstudio.microsoft.com">Copilot Studio</a></li>
+<li>Open the <code>Policy Advisor</code> agent</li>
+<li>Select the <strong>Knowledge</strong> tab in the navigation bar</li>
+<li>Select <strong>+ Add knowledge</strong></li>
+<li>Select <strong>Azure AI Search</strong></li>
+<li>
+<p>Select the dropdown under <strong>Your connections</strong> and select <strong>Create new connection</strong></p>
+</li>
+<li>
+<p>Configure the connection:</p>
+<ul>
+<li><strong>Authentication type</strong>: Access key</li>
+<li><strong>Azure AI Search Endpoint URL</strong>: Select the AI Search service endpoint URL from Azure portal</li>
+<li><strong>Azure AI Search Admin Key</strong>: Select the AI Search service admin key from Azure portal</li>
+</ul>
+<p><img alt="Configure AI Search connection" src="assets/7-copilot-studio-configure-ai-search-connection.png" /></p>
+</li>
+<li>
+<p>Select <strong>Create</strong>. You'll see the index you create in AI Foundry automatically selected.</p>
+<p>Select <strong>Add to agent</strong></p>
+<p><img alt="Select AI Search index" src="assets/7-copilot-studio-available-indexes.png" /></p>
+</li>
+<li>
+<p>Verify the AI Search knowledge source appears in the list of knowledge sources
+    <img alt="Verify knowledge source" src="assets/7-copilot-studio-verify-knowledge-source.png" /></p>
+</li>
+</ol>
+<h3 id="717-test-the-byod-scenario">7.1.7 Test the BYOD scenario<a class="headerlink" href="#717-test-the-byod-scenario" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Test the agent with these queries:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>What do I do if I am locked out of my account?
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>How do I reset my password?
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Who must enroll in MFA?
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>What are my options for Mac hardware?
+</span></code></pre></div>
+</li>
+</ol>
+<p>The agent will call the AI Search knowledge source, which will use semantic search to answer your questions.
+    <img alt="Test the agent" src="assets/7-copilot-studio-test-the-agent.png" /></p>
+<h2 id="lab-72-byom-from-azure-ai-foundry-to-your-agent">🧪 Lab 7.2: BYOM from Azure AI Foundry to your agent<a class="headerlink" href="#lab-72-byom-from-azure-ai-foundry-to-your-agent" title="Permanent link">&para;</a></h2>
+<p>In this lab, you'll put BYOM into practice by deploying a model from AI Foundry and using it in your agent to summarize information from documents.</p>
+<h3 id="721-deploy-a-summarization-model">7.2.1 Deploy a summarization model<a class="headerlink" href="#721-deploy-a-summarization-model" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Navigate to <a href="https://ai.foundry.com">Azure AI Foundry</a></li>
+<li>Under <strong>My assets</strong> in the left-hand navigation, select <strong>Models + endpoints</strong></li>
+<li>Select <strong>Deploy model</strong>, then select <strong>Deploy base model</strong>
+    <img alt="Deploy base model" src="assets/7-foundry-deploy-base-model.png" /></li>
+<li>Enter <code>Llama-3.3</code> in the <strong>Search</strong> box</li>
+<li>Select <code>Llama-3.3-70B-Instruct</code></li>
+<li>Select <strong>Confirm</strong>
+    <img alt="Select summarization model" src="assets/7-foundry-search-summarization-model.png" /></li>
+<li>Select <strong>Deploy</strong>
+    <img alt="Deploy summarization model" src="assets/7-foundry-deploy-summarization-model.png" /></li>
+</ol>
+<h3 id="722-use-the-model-in-a-prompt">7.2.2 Use the model in a prompt<a class="headerlink" href="#722-use-the-model-in-a-prompt" title="Permanent link">&para;</a></h3>
+<ol>
+<li>In the navigation bar, select <strong>Tools</strong>.</li>
+<li>Select <strong>+ Add a tool</strong></li>
+<li>
+<p>Select <strong>+ New tool</strong></p>
+<p><img alt="Create new tool" src="assets/7-copilot-studio-new-tool.png" /></p>
+</li>
+<li>
+<p>Select <strong>Prompt</strong></p>
+</li>
+<li>
+<p>Enter <code>IT policy prompt</code> for the name</p>
+</li>
+<li>
+<p>In the <strong>Model</strong> dropdown, select <strong>+</strong> next to <strong>Azure AI Foundry Models</strong></p>
+<p><img alt="Add custom model" src="assets/7-copilot-studio-add-custom-model.png" /></p>
+</li>
+<li>
+<p>Select <strong>Connect a new model</strong> and enter the details:</p>
+<ul>
+<li><strong>Model deployment name</strong>: Enter <code>Llama-3.3-70B-Instruct</code></li>
+<li><strong>Base model name</strong>: Enter <code>Llama-3.3-70B-Instruct</code></li>
+<li><strong>Azure model endpoint URL</strong>: Enter the value of <code>Target URI</code> from your model details in Azure AI Foundry</li>
+<li><strong>API Key</strong>: Enter the value of <code>Key</code> from your model details in AI Foundry</li>
+<li><strong>Model description</strong>: Enter <code>Summarization model</code></li>
+</ul>
+<p><img alt="Summarization model connection details" src="assets/7-copilot-studio-connect-summarization-model.png" /></p>
+</li>
+<li>
+<p>Select <strong>Connect</strong></p>
+</li>
+<li>
+<p>In the <strong>Instructions</strong> for the prompt, enter this prompt:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>You summarize long documents into concise, easy to understand paragraphs.
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>Task: 
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>- Summarize Search Results 
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>- Use plain English.
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>- Answer the user’s question using ONLY the retrieved content. 
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>- Aggregate and deduplicate information. 
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>- Preserve factual accuracy. 
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>- If information is missing, say so.
+</span></code></pre></div>
+</li>
+<li>
+<p>Highlight the text <code>Search Results</code></p>
+</li>
+<li>Select <strong>+ Add content</strong></li>
+<li>Select <strong>Text</strong></li>
+<li>Enter <code>SearchResults</code></li>
+<li>Select <strong>Close</strong></li>
+<li>Select <strong>Save</strong></li>
+<li>Select <strong>Add and configure</strong></li>
+<li>In the <strong>Inputs</strong> section, change the <strong>Fill using</strong> dropdown to <strong>Custom value</strong></li>
+<li>Enter <code>SearchResults</code> in <strong>Value</strong></li>
+<li>
+<p>Select <strong>Save</strong></p>
+<p><img alt="Custom prompt configuration" src="assets/7-copilot-studio-custom-prompt.png" /></p>
+</li>
+</ol>
+<h3 id="723-create-the-summarization-topic">7.2.3 Create the summarization topic<a class="headerlink" href="#723-create-the-summarization-topic" title="Permanent link">&para;</a></h3>
+<ol>
+<li>In the navigation bar, select <strong>Topics</strong></li>
+<li>Select <strong>+ Add a topic</strong> and choose <strong>From blank</strong></li>
+<li>Name the topic <code>Summarization</code></li>
+<li>In the <strong>Trigger</strong> node, enter this value for <strong>Describe what the topic does</strong>:
+   <code>This topic provides summaries of IT policies and guides. It responds to requests like "Summarize the WFH policy" and "Explain the password policy"</code></li>
+</ol>
+<h3 id="724-use-generative-answers-to-get-the-knowledge">7.2.4 Use generative answers to get the knowledge<a class="headerlink" href="#724-use-generative-answers-to-get-the-knowledge" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Select <strong>+</strong> to add a node</li>
+<li>Select <strong>Advanced</strong>, then <strong>Generative answers</strong></li>
+<li>Select <strong>...</strong> next to the <strong>Enter or select a value</strong> box</li>
+<li>Select <code>Activity.Text</code> under <strong>System</strong></li>
+<li>Under <strong>Data sources</strong>, select <strong>Edit</strong></li>
+<li>In the properties box, select <strong>Search only selected sources</strong></li>
+<li>
+<p>Select the Azure AI Search knowledge source you added in Lab 7.1</p>
+<p><img alt="Create generative answers node" src="assets/7-copilot-studio-create-generative-answers-node.png" /></p>
+</li>
+<li>
+<p>Scroll down and expand <strong>Advanced</strong></p>
+</li>
+<li>Select <strong>Select a variable</strong></li>
+<li>Select <strong>Create new</strong></li>
+<li>
+<p>Select the variable and name it <code>KnowledgeResults</code></p>
+<p><img alt="Create KnowledgeResults variable" src="assets/7-copilot-studio-create-knowledgeresults-variable.png" /></p>
+</li>
+</ol>
+<h3 id="725-pass-the-knowledge-to-the-custom-prompt">7.2.5 Pass the knowledge to the custom prompt<a class="headerlink" href="#725-pass-the-knowledge-to-the-custom-prompt" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Select <strong>+</strong> to add a node</li>
+<li>Select <strong>Add a tool</strong></li>
+<li>Select <strong>IT Policy prompt</strong></li>
+<li>In the <strong>Inputs</strong> section, set the value of <code>SearchResults</code> to <code>KnowledgeResults</code></li>
+<li>
+<p>In the <strong>Outputs</strong> section, create a new variable named <code>Summary</code> and set it to the value of <code>predictionOutput</code></p>
+<p><img alt="Configure prompt node" src="assets/7-copilot-studio-configure-prompt-node.png" /></p>
+</li>
+</ol>
+<h3 id="726-output-the-summary">7.2.6 Output the summary<a class="headerlink" href="#726-output-the-summary" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Select <strong>+</strong> to add a node</li>
+<li>Select <strong>Send a message</strong></li>
+<li>Select <strong>{x}</strong></li>
+<li>
+<p>Select <code>Summary.text</code></p>
+<p><img alt="Select Summary variable for message" src="assets/7-copilot-studio-select-message-variable.png" /></p>
+</li>
+<li>
+<p>Select <strong>Save</strong></p>
+</li>
+</ol>
+<h3 id="727-test-the-byom-scenario">7.2.7 Test the BYOM scenario<a class="headerlink" href="#727-test-the-byom-scenario" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Test the agent with these prompts to see how the summarization works:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Explain the data backup and recovery policy
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Summarize good passwords
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Describe the home office technology setup
+</span></code></pre></div>
+</li>
+</ol>
+<p>The agent will output the results from the document knowledge source first, then output a summary of the document.
+    <img alt="Summarization output example" src="assets/7-copilot-studio-summarization-example.png" /></p>
+<h2 id="mission-complete">✅ Mission Complete<a class="headerlink" href="#mission-complete" title="Permanent link">&para;</a></h2>
+<p>Congratulations! 👏🏻 You've successfully extended your Copilot Studio agent with Azure AI capabilities using both BYOM and BYOD approaches.</p>
+<p>You've learned how to:</p>
+<ul>
+<li>Deploy custom AI models in Azure AI Foundry</li>
+<li>Create custom prompt actions that leverage your deployed models</li>
+<li>Build searchable knowledge bases with Azure AI Search</li>
+<li>Connect enterprise data sources to your agent for grounded responses</li>
+</ul>
+<p>These capabilities unlock powerful enterprise scenarios and allow you to create truly intelligent, context-aware agents that leverage your organization's data and specialized AI models.</p>
+<h2 id="tactical-resources">📚 Tactical Resources<a class="headerlink" href="#tactical-resources" title="Permanent link">&para;</a></h2>
+<p>🔗 <a href="https://learn.microsoft.com/azure/ai-studio/?WT.mc_id=aiml-0000-cxa">Azure AI Foundry documentation</a></p>
+<p>🔗 <a href="https://learn.microsoft.com/microsoft-copilot-studio/advanced-generative-actions?WT.mc_id=power-0000-cxa">Custom prompt actions in Copilot Studio</a></p>
+<p>🔗 <a href="https://learn.microsoft.com/azure/search/?WT.mc_id=aiml-0000-cxa">Azure AI Search documentation</a></p>
+<p>🔗 <a href="https://learn.microsoft.com/microsoft-copilot-studio/knowledge-source-azure-ai-search?WT.mc_id=power-0000-cxa">Knowledge sources in Copilot Studio</a></p>
+<p>🔗 <a href="https://learn.microsoft.com/azure/ai-services/openai/concepts/prompt-engineering?WT.mc_id=aiml-0000-cxa">Best practices for prompt engineering</a></p>
+<p>📺 <a href="https://www.youtube.com/watch?v=example">Bring Your Own AI Models to Copilot Studio</a></p>
+<p>📺 <a href="https://www.youtube.com/watch?v=example">Grounding Copilot with Azure AI Search</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.expand", "navigation.footer", "navigation.instant", "navigation.path", "navigation.prune", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "content.tabs.link", "toc.follow", "content.code.copy"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>
