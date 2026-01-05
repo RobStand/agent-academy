@@ -95,6 +95,20 @@ While this worked, dedicated prompts with Dataverse grounding offer significant 
 | **Specialization** | General-purpose reasoning may miss business nuances | Purpose-built with optimized business logic |
 | **Automation** | Requires human interaction and interpretation | Triggers automatically with structured JSON output |
 
+## ⚙️ Understanding record retrieval settings
+
+When configuring Dataverse grounding for your prompts, it's critical to understand the **Record Retrieval** setting, which controls how much data is made available to your AI model.
+
+### What is record retrieval?
+
+Record retrieval determines the maximum number of records that the prompt can retrieve from your Dataverse knowledge sources (tables) and include in the prompt context sent to the AI model.
+
+### Configuring record retrieval: Finding the right balance
+
+While you can retrieve up to 1,000 records from Dataverse, understanding when and how to adjust this setting is critical for optimal prompt performance. The default limit is 30 records and the maximum is 1000, which is suitable for most scenarios with proper filtering. Each record you retrieve consumes tokens from your model's context window, directly impacting cost, processing time, and response quality.
+
+Dataverse grounding is not designed to process large datasets directly in the prompt. Even increasing the limit to 1,000 may not be the right answer if you're working with thousands of records. The key is to use **filtering strategically** to narrow your dataset before it reaches the AI model. Always filter by status, date ranges, categories, or other relevant criteria to ensure only the most pertinent records are included.
+
 ## 🧪 Lab 8: Add Dataverse grounding to prompts
 
 Time to upgrade your resume analysis capabilities! You'll enhance the existing Summarize Resume flow with dynamic job role matching.
@@ -235,7 +249,7 @@ First, let's examine the Dataverse tables you'll be grounding with:
     !!! tip
         It is important to select the related Evaluation Criteria by first selecting the Job Role, and then navigating in the menu to Job Role (Evaluation Criteria). This will ensure that only the related records for the Job Role will be loaded.
 
-1. Select **Settings**, and adjust the **Record retrieval** to 1000 - this will allow the maximum Job Roles and Evaluation criteria to be included in your prompt.  
+1. Select the three dots (...) in the Instructions pane and select **Settings**. Adjust the **Record retrieval** to 1000 - this will allow the maximum Job Roles and Evaluation criteria to be included in your prompt.  
     ![Prompt Settings](./assets/8-prompt-settings.png)
 
 ### 8.3 Test the enhanced prompt
