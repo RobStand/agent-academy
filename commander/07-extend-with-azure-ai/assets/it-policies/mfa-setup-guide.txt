@@ -1,0 +1,486 @@
+CONTOSO IT SERVICES
+Multi-Factor Authentication (MFA) Setup Guide
+
+Document Version: 2.5
+Last Updated: December 2024
+Document Owner: IT Security Team
+
+INTRODUCTION
+Multi-Factor Authentication (MFA) adds an extra layer of security to your Contoso accounts. Instead of just a password, you'll need to provide a second form of verification. This guide will help you set up and use MFA.
+
+WHY MFA IS REQUIRED
+Passwords alone are no longer sufficient protection:
+- 81% of data breaches involve stolen passwords
+- MFA blocks 99.9% of automated attacks
+- Required for compliance (SOX, GDPR, ISO 27001)
+- Protects company and personal data
+- Industry best practice
+
+Required for:
+- All Contoso employees
+- Contractors and vendors
+- Access to any company system
+- VPN connections
+- Email access from external networks
+
+WHAT IS MULTI-FACTOR AUTHENTICATION?
+
+MFA requires two things to sign in:
+1. **Something you know**: Your password
+2. **Something you have**: Your phone or security key
+
+Common verification methods:
+- Mobile app notification (Microsoft Authenticator)
+- Text message with code
+- Phone call with code
+- Hardware security key
+- Biometric (fingerprint, face recognition on mobile)
+
+MFA ENROLLMENT
+
+Who Must Enroll:
+- All employees on first login
+- Within 7 days of starting employment
+- Before accessing any company systems
+- After password reset (in some cases)
+
+Enrollment Deadline:
+- New employees: Day 1
+- Existing employees: Already completed
+- Contractors: Before system access granted
+
+SETTING UP MICROSOFT AUTHENTICATOR
+
+Recommended Primary Method
+
+Prerequisites:
+- Smartphone (iOS or Android)
+- App store access
+- Camera for QR code scanning
+
+Step-by-Step Setup:
+
+1. Download Microsoft Authenticator:
+   - iOS: App Store
+   - Android: Google Play Store
+   - Search "Microsoft Authenticator"
+   - Free download
+
+2. Initial Enrollment:
+   - Visit https://aka.ms/mfasetup
+   - Sign in with Contoso credentials
+   - Click "Next" to begin setup
+
+3. Select Verification Method:
+   - Choose "Mobile app"
+   - Select "Receive notifications for verification"
+   - Click "Set up"
+
+4. Configure Authenticator App:
+   - Open Microsoft Authenticator on phone
+   - Tap "+" button
+   - Select "Work or school account"
+   - Tap "Scan QR code"
+   - Point camera at QR code on computer screen
+   - Account automatically added
+
+5. Verify Setup:
+   - Click "Next" on computer
+   - Approve notification on phone
+   - Setup complete!
+
+USING MICROSOFT AUTHENTICATOR
+
+Daily Sign-In Process:
+1. Enter username: firstname.lastname@contoso.com
+2. Enter password
+3. Wait for notification on phone
+4. Open notification
+5. Tap "Approve"
+6. Access granted
+
+Push Notification Features:
+- Shows location of sign-in attempt
+- Displays application requesting access
+- Shows IP address
+- Deny if you didn't initiate
+
+Number Matching (New Security Feature):
+- Computer displays 2-digit number
+- Enter same number in phone app
+- Prevents sophisticated phishing attacks
+- Required for all Contoso accounts
+
+BACKUP AUTHENTICATION METHODS
+
+Setup Additional Methods:
+It's critical to have backup methods in case:
+- Phone is lost, stolen, or dead
+- App malfunction
+- No cell signal
+- Traveling internationally
+
+Recommended Backups:
+
+Method 1: Phone Number (SMS/Call)
+1. Visit https://aka.ms/mfasetup
+2. Click "Add method"
+3. Choose "Phone"
+4. Enter mobile number
+5. Select "Text me a code" or "Call me"
+6. Enter verification code received
+7. Click "Next"
+
+Method 2: Alternative Phone
+- Office phone number
+- Home phone
+- Trusted family member's phone
+- Follow same steps as Method 1
+
+Method 3: Hardware Security Key (Optional)
+- For high-security roles
+- FIDO2 compatible key
+- Request via IT portal
+- USB or NFC connection
+
+DO NOT USE:
+- Email (not secure for MFA)
+- Security questions (being phased out)
+
+MANAGING YOUR MFA SETTINGS
+
+Access Your Settings:
+1. Visit https://myaccount.microsoft.com
+2. Sign in with Contoso credentials
+3. Click "Security info"
+4. View all authentication methods
+
+Update Default Method:
+1. Go to Security info
+2. Click "Change" next to "Default sign-in method"
+3. Select preferred method
+4. Save changes
+
+Add New Method:
+1. Go to Security info
+2. Click "Add sign-in method"
+3. Choose method type
+4. Follow prompts
+5. Verify new method
+
+Delete Old Method:
+1. Go to Security info
+2. Find method to remove
+3. Click "Delete"
+4. Confirm deletion
+5. Must keep at least one method
+
+TROUBLESHOOTING MFA ISSUES
+
+Cannot Receive Push Notifications:
+
+Check:
+- Phone has internet connection (WiFi or cellular)
+- Microsoft Authenticator app is updated
+- Notifications enabled for Authenticator
+- Phone not in Do Not Disturb mode
+
+Fix:
+1. Force close Authenticator app
+2. Reopen app
+3. Try sign-in again
+4. If still failing, use backup method
+
+Not Receiving SMS Codes:
+
+Check:
+- Phone number is correct in settings
+- Phone has cellular signal
+- No carrier issues
+- Not blocking unknown senders
+
+Fix:
+1. Wait 5 minutes, try again
+2. Request code via phone call instead
+3. Verify phone number in settings
+4. Contact carrier to check SMS blocks
+
+Authenticator App Not Working:
+
+Try:
+1. Update app to latest version
+2. Remove and re-add Contoso account
+3. Restart phone
+4. Check phone date/time settings (must be automatic)
+5. Reinstall app if necessary
+
+Lost or Stolen Phone:
+
+Immediate Actions:
+1. Contact IT Helpdesk: 1-800-CONTOSO
+2. Request temporary MFA bypass (8 hours)
+3. Update MFA methods once you have access
+4. Remove old device from account
+5. Set up MFA on new device
+
+Process:
+- IT will verify your identity (security questions, manager confirmation)
+- Temporary bypass granted for emergency access
+- Must setup new MFA method immediately
+- Old device remotely removed from account
+
+Phone Dead or No Battery:
+
+Use Backup Method:
+1. Click "Sign in another way"
+2. Select backup phone or call option
+3. Receive code via backup method
+4. Enter code to access account
+
+Changed Phone Number:
+
+Update Before Access Lost:
+1. Sign in to https://myaccount.microsoft.com
+2. Update phone number in Security info
+3. Verify new number
+4. Remove old number
+
+If Already Lost Access:
+1. Contact IT Helpdesk
+2. Verify identity with security questions
+3. IT will update your number
+4. Test new number immediately
+
+TRAVELING INTERNATIONALLY
+
+Before Travel:
+1. Ensure backup methods configured
+2. Download offline codes (see below)
+3. Test authenticator app works with international data
+4. Note IT helpdesk number for emergencies
+
+During Travel:
+- Authenticator push notifications work with WiFi
+- SMS may incur roaming charges
+- Use WiFi for push notifications when possible
+- Phone call verification may have international rates
+
+OFFLINE AUTHENTICATION CODES
+
+Generate One-Time Backup Codes:
+1. Visit https://aka.ms/mfasetup
+2. Click "Add sign-in method"
+3. Select "Authenticator app"
+4. Choose "I want to use a different authenticator app"
+5. Generate and print codes
+6. Store securely (wallet, password manager)
+
+Using Offline Codes:
+1. Click "Sign in another way"
+2. Select "Use a verification code"
+3. Enter one offline code
+4. Code is single-use only
+
+Generate new codes periodically or after using several.
+
+PASSWORD-LESS AUTHENTICATION
+
+Available Options:
+
+Microsoft Authenticator (Recommended):
+- No password needed
+- Approve with fingerprint/face ID
+- Most secure option
+- Setup via https://aka.ms/mysecurityinfo
+
+Windows Hello for Business:
+- Biometric sign-in on Windows devices
+- Face recognition or fingerprint
+- Automatically configured on new devices
+- PIN as backup
+
+FIDO2 Security Keys:
+- Hardware token
+- USB or NFC connection
+- For high-security roles
+- Request via IT portal
+
+MFA FOR SPECIFIC APPLICATIONS
+
+Microsoft 365 (Outlook, Teams, OneDrive):
+- MFA prompted on first sign-in per device
+- "Stay signed in" option available
+- Re-authentication every 30 days
+- Trusted devices remembered
+
+VPN:
+- MFA required every connection
+- Cannot bypass or remember device
+- Critical security requirement
+- Both password and MFA needed
+
+Azure Portal:
+- MFA at every sign-in
+- No device memory
+- High-sensitivity requirement
+
+Salesforce:
+- MFA at every sign-in
+- Separate from Microsoft MFA
+- Uses same Authenticator app
+- Different account entry
+
+Third-Party Apps:
+- May require app passwords
+- Generated at https://account.microsoft.com
+- Use app password instead of regular password
+- One password per app
+
+TRUSTED DEVICES AND LOCATIONS
+
+"Stay Signed In" Option:
+- Reduces MFA prompts on trusted devices
+- Device must be encrypted
+- Corporate-managed devices only
+- Still prompts every 30 days
+
+What Gets Remembered:
+- Your specific device
+- Browser on that device
+- Company network location
+
+What Doesn't Get Remembered:
+- VPN connections (always MFA)
+- Sensitive applications
+- After password change
+- After 30 days
+
+Clearing Trusted Devices:
+1. Visit https://myaccount.microsoft.com
+2. Click "Security info"
+3. Click "Manage devices"
+4. Review trusted devices
+5. Remove unknown devices
+
+SECURITY BEST PRACTICES
+
+DO:
+- Approve only sign-ins you initiated
+- Check location shown in notification
+- Set up multiple backup methods
+- Keep phone OS and apps updated
+- Use biometric lock on Authenticator app
+- Report suspicious sign-in attempts
+
+DON'T:
+- Approve notifications you didn't initiate
+- Share MFA codes with anyone
+- Use SMS as only method (less secure)
+- Install Authenticator on jailbroken devices
+- Screenshot or email MFA codes
+- Ignore unusual location notifications
+
+RECOGNIZING MFA FATIGUE ATTACKS
+
+Warning Signs:
+- Multiple rapid MFA requests
+- Notifications at odd hours
+- Sign-ins from unfamiliar locations
+- Notifications you didn't initiate
+
+If This Happens:
+1. Do NOT approve any requests
+2. Change password immediately
+3. Contact IT Security: security@contoso.com
+4. Report via security hotline: 1-800-555-SECURE
+5. Review recent account activity
+
+This may indicate someone has your password!
+
+MFA COMPLIANCE
+
+Monitoring:
+- IT tracks MFA enrollment status
+- Monthly compliance reports to managers
+- Non-compliance flagged for security review
+
+Consequences of Non-Enrollment:
+- Account access suspended
+- Cannot access email or systems
+- Manager notified
+- Potential disciplinary action
+- Security risk to organization
+
+EXCEPTIONS AND EXEMPTIONS
+
+Service Accounts:
+- Exempt from MFA requirement
+- Tightly controlled access
+- Regular audits
+- Manager approval required
+
+Legacy Applications:
+- Some old applications don't support MFA
+- Being phased out
+- App passwords used temporarily
+- Migration plan in progress
+
+Temporary Exemptions:
+- Rare and require VP approval
+- Maximum 30 days
+- Business justification required
+- Alternative security measures in place
+
+GETTING HELP
+
+MFA Setup Assistance:
+- Email: mfasupport@contoso.com
+- Phone: 1-800-CONTOSO
+- Walk-in: IT Service Desk
+- Virtual: Book 15-min setup session at https://itportal.contoso.com
+
+MFA Issues:
+- Helpdesk: 1-800-CONTOSO (24/7)
+- Self-service: https://aka.ms/mfasetup
+- Emergency access: Contact IT Security
+
+Lost Device:
+- Immediate: 1-800-CONTOSO
+- After hours: Emergency line 1-800-555-0199
+
+FREQUENTLY ASKED QUESTIONS
+
+Q: Why do I need MFA? My password is strong.
+A: Even strong passwords can be stolen, guessed, or phished. MFA blocks 99.9% of attacks.
+
+Q: Will I need MFA every time I sign in?
+A: First sign-in on a device, then typically every 30 days for trusted devices. VPN always requires MFA.
+
+Q: What if I don't have a smartphone?
+A: Use office phone for calls, or request a hardware security key from IT.
+
+Q: Can I use Google Authenticator instead?
+A: Microsoft Authenticator is required for best integration and security features like location display.
+
+Q: What if I'm in an area with no cell signal?
+A: Authenticator works on WiFi. Alternatively, use office phone as backup method.
+
+Q: Can family members use my authentication methods?
+A: No, MFA methods are personal and must never be shared.
+
+Q: Will MFA work internationally?
+A: Yes, Authenticator works anywhere with WiFi. Generate offline codes before traveling.
+
+Q: How do I remove an old device?
+A: Visit https://myaccount.microsoft.com > Security info > Manage devices > Remove device
+
+RELATED DOCUMENTATION
+- Password Reset Policy (Doc ID: SEC-001)
+- Account Security Guidelines (Doc ID: SEC-004)
+- Mobile Device Management (Doc ID: IT-MDM-001)
+- Acceptable Use Policy (Doc ID: IT-001)
+
+---
+
+Questions? Contact mfasupport@contoso.com
+MFA Hotline: 1-800-CONTOSO

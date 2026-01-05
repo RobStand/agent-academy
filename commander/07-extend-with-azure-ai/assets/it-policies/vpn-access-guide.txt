@@ -1,0 +1,207 @@
+CONTOSO IT SERVICES
+VPN Access Guide for Remote Workers
+
+Document Version: 3.0
+Last Updated: December 2024
+Document Owner: Network Infrastructure Team
+
+INTRODUCTION
+This guide provides instructions for connecting to the Contoso corporate network via Virtual Private Network (VPN). VPN access is required for remote workers to access internal systems, file shares, and applications.
+
+WHO NEEDS VPN ACCESS
+VPN access is provided to:
+- Remote employees working from home
+- Traveling employees needing secure access
+- Contractors with approved remote access
+- Partners requiring system integration access
+
+SYSTEM REQUIREMENTS
+Before installing the VPN client, ensure your device meets these requirements:
+
+Windows:
+- Windows 10 or Windows 11
+- 4 GB RAM minimum (8 GB recommended)
+- 500 MB free disk space
+- Administrator rights for installation
+
+Mac:
+- macOS 11 (Big Sur) or newer
+- 4 GB RAM minimum
+- 500 MB free disk space
+- Administrator rights for installation
+
+Mobile:
+- iOS 15 or newer / Android 11 or newer
+- Cisco AnyConnect app from official app stores
+
+REQUESTING VPN ACCESS
+1. Submit a VPN access request through the IT Portal: https://itportal.contoso.com
+2. Request must include business justification
+3. Manager approval is required
+4. Requests are processed within 2 business days
+5. You will receive setup instructions via email
+
+INSTALLING THE VPN CLIENT
+
+Windows Installation:
+1. Download Cisco AnyConnect from https://vpn.contoso.com/install
+2. Run the installer (ContosoVPN-Setup.exe)
+3. Accept the license agreement
+4. Choose "Complete" installation
+5. Restart your computer when prompted
+
+Mac Installation:
+1. Download Cisco AnyConnect from https://vpn.contoso.com/install
+2. Open the .dmg file
+3. Run the installer package
+4. Enter your Mac admin password when prompted
+5. Allow the system extension in Security & Privacy settings
+6. Restart your computer
+
+CONNECTING TO VPN
+
+First-Time Connection:
+1. Launch Cisco AnyConnect
+2. Enter VPN address: vpn.contoso.com
+3. Click Connect
+4. Enter your credentials:
+   - Username: firstname.lastname@contoso.com
+   - Password: Your network password
+5. Approve the MFA push notification on your phone
+6. Connection established - you'll see "Connected" status
+
+Subsequent Connections:
+1. Launch Cisco AnyConnect
+2. Click Connect (address is saved)
+3. Enter password and approve MFA
+4. Connected
+
+AUTO-CONNECT FEATURE
+You can enable auto-connect for trusted networks:
+1. Open AnyConnect Preferences
+2. Check "Connect on startup"
+3. Select "Connect when trusted network detected"
+4. Add your home network to trusted list
+
+VPN CONNECTION PROFILES
+Contoso provides multiple VPN profiles:
+
+Full Access Profile (Default):
+- Access to all internal resources
+- Use for general remote work
+- Best for employees
+
+Split Tunnel Profile:
+- Access to specific internal resources only
+- Internet traffic goes direct (faster)
+- Use for basic email/file access
+
+Contractor Profile:
+- Limited access to approved systems only
+- Restricted by project requirements
+- Expires with contract end date
+
+TROUBLESHOOTING COMMON ISSUES
+
+Cannot Connect:
+- Verify internet connection is working
+- Check username format (firstname.lastname@contoso.com)
+- Ensure password is correct
+- Confirm MFA device is available
+- Try disconnecting and reconnecting
+
+Slow Performance:
+- Use Split Tunnel profile if available
+- Close bandwidth-heavy applications
+- Check your internet speed
+- Connect during off-peak hours
+
+Connection Drops:
+- Update to latest VPN client version
+- Check for Windows/Mac updates
+- Verify firewall isn't blocking VPN
+- Contact helpdesk if issue persists
+
+Error Messages:
+- "Session Timeout" - Reconnect and try again
+- "Certificate Error" - Update VPN client
+- "Authentication Failed" - Verify credentials or reset password
+- "Unable to Contact Server" - Check internet connection
+
+SECURITY REQUIREMENTS WHILE ON VPN
+- Keep your device updated with latest patches
+- Use approved antivirus software
+- Enable device encryption (BitLocker/FileVault)
+- Lock your screen when away
+- Do not share VPN credentials
+- Disconnect when not actively using internal resources
+
+PERFORMANCE OPTIMIZATION
+For best VPN performance:
+- Close unnecessary applications
+- Use wired ethernet instead of WiFi when possible
+- Disable automatic cloud sync during large file transfers
+- Schedule large downloads during off-peak hours
+- Clear browser cache regularly
+
+VPN ACCESS MONITORING
+All VPN connections are monitored and logged for security:
+- Connection times and duration
+- Resources accessed
+- Data transfer volumes
+- Authentication attempts
+- Compliance with security policies
+
+Suspicious activity will result in:
+- Immediate disconnection
+- Account lockout
+- Security team investigation
+- Possible termination of access
+
+INTERNATIONAL VPN USE
+When traveling internationally:
+- Inform IT Security before travel
+- Some countries may restrict VPN use
+- Use only from secure, trusted networks
+- Be aware of slower performance due to distance
+- Report any unusual activity immediately
+
+MOBILE VPN ACCESS
+Mobile devices can connect via Cisco AnyConnect mobile app:
+
+iOS Setup:
+1. Install Cisco AnyConnect from App Store
+2. Open app and enter vpn.contoso.com
+3. Authenticate with credentials and MFA
+4. Allow VPN configuration when prompted
+
+Android Setup:
+1. Install Cisco AnyConnect from Google Play
+2. Open app and enter vpn.contoso.com
+3. Authenticate with credentials and MFA
+4. Accept VPN connection request
+
+DECOMMISSIONING VPN ACCESS
+When VPN access is no longer needed:
+- Employee termination: Access automatically revoked on end date
+- Contract completion: Contractor access expires with contract
+- Role change: Submit access modification request
+- Lost/stolen device: Report immediately to security@contoso.com
+
+GETTING HELP
+IT Helpdesk:
+- Phone: 1-800-CONTOSO
+- Email: helpdesk@contoso.com
+- Hours: 24/7 for VPN issues
+
+Network Team:
+- Email: networkteam@contoso.com
+- For persistent connection issues
+
+VPN Status Page:
+- Check current VPN system status: https://status.contoso.com
+
+RELATED DOCUMENTATION
+- Remote Work Security Policy (Doc ID: SEC-015)
+- Mobile Device Management Guide (Doc ID: NET-008)
+- Network Access Policy (Doc ID: NET-001)

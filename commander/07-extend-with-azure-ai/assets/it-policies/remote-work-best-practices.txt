@@ -1,0 +1,636 @@
+CONTOSO IT SERVICES
+Remote Work IT Best Practices
+
+Document Version: 1.9
+Last Updated: January 2025
+Document Owner: IT Operations & HR
+
+INTRODUCTION
+This guide provides IT-related best practices for Contoso remote workers. Following these guidelines ensures security, productivity, and seamless collaboration with your team.
+
+WHO THIS APPLIES TO
+- Full-time remote employees
+- Hybrid workers
+- Temporary remote work situations
+- Employees traveling for business
+
+HOME OFFICE TECHNOLOGY SETUP
+
+Essential Equipment:
+- Company-issued laptop (required)
+- External monitor (optional, request via IT portal)
+- Keyboard and mouse (included with monitor request)
+- Headset with microphone (included)
+- Webcam (if laptop camera insufficient)
+- Reliable internet connection (25+ Mbps)
+
+Ergonomic Setup:
+- Monitor at arm's length, top at/below eye level
+- Keyboard and mouse at elbow height
+- Chair with lumbar support
+- Feet flat on floor or footrest
+- Take breaks every hour
+
+Lighting for Video Calls:
+- Face a window for natural light, or
+- Use desk lamp positioned in front/side
+- Avoid backlighting (window behind you)
+- Ring lights available via IT portal
+
+INTERNET CONNECTIVITY
+
+Minimum Requirements:
+- Download: 25 Mbps
+- Upload: 5 Mbps
+- Latency: <50ms
+- Test at: https://speedtest.net
+
+Recommended:
+- Download: 100+ Mbps
+- Upload: 10+ Mbps
+- Fiber or cable preferred over DSL
+
+Improving Home Internet:
+1. Place router in central location
+2. Elevate router (off floor)
+3. Use 5GHz WiFi band when possible
+4. Connect laptop via ethernet for important calls
+5. Limit other devices during work hours
+6. Restart router weekly
+
+Internet Reimbursement:
+- $50/month stipend for internet costs
+- Submit expense report monthly
+- Must maintain minimum speed requirements
+- Proof of service required annually
+
+VPN BEST PRACTICES
+
+When to Connect:
+- Before accessing any internal systems
+- Email, file shares, intranet
+- Company applications (SAP, Salesforce)
+- SharePoint sites
+
+When VPN Not Needed:
+- Web browsing
+- Personal email
+- Streaming services
+- Microsoft Teams/Outlook (Office 365)
+
+VPN Tips:
+- Use Split Tunnel profile for better performance
+- Disconnect when not needed (faster speeds)
+- Keep VPN client updated
+- Auto-connect feature not recommended (drains battery)
+- Contact IT if frequent disconnections
+
+SECURING YOUR HOME NETWORK
+
+Router Security:
+1. Change default admin password
+2. Enable WPA3 encryption (or WPA2 minimum)
+3. Disable WPS (WiFi Protected Setup)
+4. Update router firmware regularly
+5. Hide SSID broadcast (optional)
+6. Create guest network for visitors/IoT devices
+
+Network Name and Password:
+- Use strong, unique password (16+ characters)
+- Don't use personal information
+- Change if ever shared with visitors
+- Separate network for work devices (optional but recommended)
+
+Devices on Your Network:
+- Limit smart home devices
+- Update all device firmware
+- Disable unused devices
+- Monitor connected devices regularly
+- Secure IoT devices on separate network
+
+DEVICE SECURITY
+
+Physical Security:
+- Lock laptop when stepping away (Windows+L / Control+Command+Q)
+- Use cable lock if working in shared spaces
+- Privacy screen for public locations
+- Never leave laptop in vehicle
+- Secure storage when not in use
+
+Screen Lock Settings:
+- Auto-lock after 5 minutes idle
+- Require password on wake
+- Do not use "stay logged in" on shared devices
+- Close laptop lid to activate lock
+
+Encryption:
+- All company devices encrypted by default (BitLocker/FileVault)
+- Never disable encryption
+- Do not share encryption keys
+- Contact IT if encryption status unknown
+
+SOFTWARE AND UPDATES
+
+Keep Everything Updated:
+- Windows/macOS updates: Install within 7 days
+- Microsoft 365 apps: Auto-update enabled
+- VPN client: Update when notified
+- Security software: Always current
+- Browser: Auto-update enabled
+
+Approved Software Only:
+- Use company software catalog
+- Do not install unauthorized applications
+- No pirated software
+- Clear personal software (games, etc.) if using device for work
+
+Antivirus and Security:
+- Microsoft Defender (included and managed)
+- Real-time protection always on
+- Weekly scans automatic
+- Quarantine notifications: Report to IT
+- Never disable security software
+
+DATA PROTECTION
+
+Save Files Correctly:
+- OneDrive for Business: Personal work files
+- SharePoint: Team/project files
+- Network drives: Department files (via VPN)
+- Never save only to C: drive
+
+File Sharing:
+- Use OneDrive/SharePoint links (don't email files)
+- Set expiration dates on shared links
+- Require sign-in for sensitive data
+- Never use personal cloud storage (Dropbox, Google Drive)
+- Check recipient before sharing
+
+Email Security:
+- Think before you click links
+- Verify sender address carefully
+- Hover over links to see true destination
+- Report phishing to phishing@contoso.com
+- Don't download unexpected attachments
+- Use encrypted email for sensitive data
+
+Printing at Home:
+- Minimize printing company documents
+- Use secure/locked printer if available
+- Shred documents after use
+- Do not leave documents visible
+- Return to office for high-sensitivity printing
+
+COMMUNICATION AND COLLABORATION
+
+Video Conferencing Etiquette:
+- Test audio/video before meetings
+- Use headset to reduce echo
+- Mute when not speaking
+- Position camera at eye level
+- Use virtual backgrounds if home environment is distracting
+- Ensure adequate lighting
+- Look at camera when speaking
+- Close unnecessary applications
+
+Microsoft Teams Best Practices:
+- Set status accurately (Available, Busy, Do Not Disturb)
+- Use "Out of Office" when away
+- Respond to chats within 2 hours during work hours
+- Use @mentions for urgent items
+- Keep channels organized
+- Pin important conversations
+
+Email Response Times:
+- Standard: Within 24 hours
+- Urgent (marked): Within 4 hours
+- Out of office: Set auto-reply
+- After hours: Not expected to respond
+
+Collaboration Tools:
+- Teams: Real-time chat and calls
+- SharePoint: Document collaboration
+- OneDrive: Personal file storage
+- OneNote: Meeting notes and collaboration
+- Planner: Task management
+- Whiteboard: Virtual brainstorming
+
+WORKING HOURS AND AVAILABILITY
+
+Setting Boundaries:
+- Define clear work hours
+- Communicate schedule to team
+- Block focus time on calendar
+- Set Teams status appropriately
+- Log off at end of day
+
+Time Zone Considerations:
+- Update Outlook time zone when traveling
+- Schedule meetings considering all participants
+- Use world clock feature
+- Record meetings for those in other zones
+- Be flexible for critical calls
+
+Breaks and Wellness:
+- Take regular breaks (every hour)
+- Step away from screen for lunch
+- Use PTO/vacation time
+- Don't skip breaks to "prove" productivity
+- Communicate when taking breaks
+
+PRODUCTIVITY TIPS
+
+Create Routine:
+- Start/end work at consistent times
+- Designate workspace (separate from living space)
+- Get dressed for work
+- Take lunch break away from desk
+- "Commute" (walk before/after work)
+
+Minimize Distractions:
+- Close unnecessary browser tabs
+- Silence phone during focus time
+- Use Do Not Disturb mode
+- Communicate boundaries with household
+- Consider noise-canceling headphones
+
+Stay Organized:
+- Use Outlook calendar for all commitments
+- Set reminders for meetings
+- Block time for focused work
+- Use To Do app for task management
+- Review calendar each morning
+
+TROUBLESHOOTING COMMON REMOTE WORK ISSUES
+
+Slow Internet:
+1. Test speed at speedtest.net
+2. Restart router
+3. Connect via ethernet cable
+4. Limit other devices/users
+5. Contact ISP if consistently slow
+6. Consider internet upgrade (reimbursed)
+
+Video Call Quality Issues:
+1. Close other applications
+2. Disable video in large meetings
+3. Use ethernet instead of WiFi
+4. Reduce video quality in settings
+5. Ask others to disable video
+6. Use audio-only when necessary
+
+Cannot Access Files:
+1. Verify VPN connected (for network drives)
+2. Check internet connection
+3. Verify OneDrive sync status
+4. Try accessing via web browser
+5. Restart laptop
+6. Contact IT if persists
+
+Teams/Outlook Not Working:
+1. Check internet connection
+2. Restart application
+3. Check if others experiencing issues (https://status.contoso.com)
+4. Clear Teams/Outlook cache
+5. Restart computer
+6. Reinstall if necessary
+
+SECURITY INCIDENTS AT HOME
+
+If You Suspect Compromise:
+1. Disconnect from internet immediately
+2. Do not shut down (preserves evidence)
+3. Call Security Hotline: 1-800-555-SECURE
+4. Document what happened
+5. Do not attempt to fix yourself
+6. Wait for IT instructions
+
+Common Signs of Compromise:
+- Unexpected pop-ups or warnings
+- Computer running very slowly
+- Unknown programs installed
+- Files encrypted/inaccessible
+- Unusual network activity
+- Accounts locked out
+- Suspicious emails sent from your account
+
+Phishing Attempts:
+- Report to phishing@contoso.com
+- Do not click links
+- Do not provide credentials
+- Forward the email, then delete
+- Change password if you clicked/entered info
+
+EQUIPMENT ISSUES
+
+Laptop Problems:
+- Restart first
+- Check for Windows/Mac updates
+- Run diagnostics
+- Contact helpdesk: 1-800-CONTOSO
+- Request loaner if needed for > 24 hour repair
+
+Peripheral Issues:
+- Check cables and connections
+- Try different USB port
+- Test on another device
+- Update drivers
+- Request replacement via IT portal
+
+Damaged Equipment:
+- Report immediately to IT
+- Do not attempt to repair
+- May require insurance claim
+- Loaner provided during repair
+- Return damaged equipment when requested
+
+FAMILY AND HOUSEHOLD CONSIDERATIONS
+
+Sharing Workspace:
+- Never share company laptop
+- Lock screen when away
+- Use separate user accounts for personal use (if allowed)
+- Keep work files private
+- Supervise children around work equipment
+
+Internet Bandwidth:
+- Schedule large downloads for off-hours
+- Limit streaming during work calls
+- Prioritize work traffic on router (QoS settings)
+- Consider separate business internet line
+- Communicate with family about work calls
+
+Privacy During Calls:
+- Use private room when possible
+- Use headphones for confidential calls
+- Close door during sensitive discussions
+- Be mindful of what's visible on camera
+- Use virtual backgrounds if needed
+
+EXPENSE REIMBURSEMENT
+
+Eligible Expenses:
+- Internet service ($50/month)
+- Mobile phone (if using personal device for work)
+- Office supplies (within limits)
+- Ergonomic equipment (with manager approval)
+- Additional monitor (one-time, via IT)
+
+Not Reimbursed:
+- Furniture (desk, chair)
+- Decorations
+- Coffee/snacks
+- Utilities (electric, etc.)
+- Home office space
+
+Submission Process:
+1. Save receipts
+2. Submit via expense system
+3. Include business justification
+4. Manager approval required
+5. Processed within 2 pay periods
+
+RETURNING TO OFFICE
+
+Hybrid Schedule:
+- Update calendar with office days
+- Book desk/space if hot-desking
+- Bring necessary equipment
+- Sync files before leaving home
+- Update Teams location status
+
+Transition Tips:
+- Test equipment in office first
+- Bring chargers and accessories
+- Dock laptop at office desk
+- Reconnect to office WiFi (not VPN needed)
+- Notify team of location change
+
+PERFORMANCE AND ACCOUNTABILITY
+
+How Performance is Measured:
+- Output and results (not hours worked)
+- Meeting attendance and participation
+- Responsiveness to communications
+- Quality of work delivered
+- Team collaboration
+
+Best Practices:
+- Over-communicate progress
+- Document work in shared systems
+- Attend all scheduled meetings
+- Meet deadlines
+- Be proactive about blockers
+
+Red Flags to Avoid:
+- Missing meetings without notice
+- Long periods unresponsive
+- Poor quality deliverables
+- Missed deadlines without communication
+- Not updating status or location
+
+MENTAL HEALTH AND WELLBEING
+
+Work-Life Balance:
+- Log off at end of day
+- Don't check email after hours (unless on-call)
+- Use vacation time
+- Take sick days when needed
+- Set boundaries with team
+
+Avoiding Burnout:
+- Take breaks throughout day
+- Step away from screen
+- Go outside daily
+- Maintain social connections
+- Separate work and personal space
+- Exercise regularly
+
+Resources:
+- Employee Assistance Program (EAP): 1-800-HELP-NOW
+- Mental health benefits through insurance
+- Flexible work hours (manager approval)
+- Virtual wellness programs
+- Peer support groups
+
+STAYING CONNECTED
+
+Team Building:
+- Attend virtual team events
+- Participate in coffee chats
+- Join employee resource groups
+- Use video when possible
+- Engage in team channels
+
+Networking:
+- Join company-wide meetings
+- Attend virtual town halls
+- Participate in learning sessions
+- Connect with colleagues on Teams
+- Schedule informal check-ins
+
+Onboarding New Remote Employees:
+- Extra patience and communication
+- Schedule regular check-ins
+- Provide clear documentation
+- Assign buddy/mentor
+- Over-explain processes initially
+
+TRAVELING WHILE REMOTE
+
+Domestic Travel:
+- Update calendar with location
+- Test internet at destination
+- Maintain normal work hours (unless approved)
+- Ensure private workspace
+- VPN still required
+
+International Travel:
+- Notify IT Security 5 days in advance
+- Email: international-travel@contoso.com
+- Some countries restrict VPN use
+- Different data laws apply
+- May need export approval for equipment
+- Time zone approval from manager
+
+Working from Non-Home Locations:
+- Coffee shops: Use VPN, privacy screen
+- Coworking: Verify secure WiFi, lock laptop
+- Hotels: Use VPN, never save passwords on hotel WiFi
+- Airport: Avoid sensitive work in public
+- Family/Friends: Treat like coffee shop
+
+TROUBLESHOOTING RESOURCES
+
+Self-Service:
+- IT Knowledge Base: https://kb.contoso.com
+- Status page: https://status.contoso.com
+- Training videos: https://training.contoso.com
+- Quick reference guides: Available in IT Portal
+
+Support Channels:
+- Helpdesk: 1-800-CONTOSO (24/7)
+- Email: helpdesk@contoso.com
+- Chat: https://chat.contoso.com
+- Portal: https://itportal.contoso.com
+
+Common Issue Quick Links:
+- Reset password: https://passwordreset.contoso.com
+- Setup MFA: https://aka.ms/mfasetup
+- VPN download: https://vpn.contoso.com/install
+- Software catalog: https://software.contoso.com
+
+MANAGER RESPONSIBILITIES
+
+Supporting Remote Team:
+- Regular 1:1 check-ins
+- Clear expectations and goals
+- Trust and autonomy
+- Flexibility when possible
+- Recognition and feedback
+
+Red Flags to Monitor:
+- Decreased participation
+- Missing deadlines
+- Communication gaps
+- Quality issues
+- Isolation from team
+
+HR POLICIES FOR REMOTE WORK
+
+Eligibility:
+- Role must be suitable for remote work
+- Proven performance track record
+- Manager approval required
+- May require formal agreement
+- Subject to periodic review
+
+Work Hours:
+- Core hours: 10 AM - 3 PM (your time zone)
+- Flexibility outside core hours (manager approval)
+- Must be available for meetings
+- Track time accurately
+- Overtime approval required
+
+Equipment Return:
+- All equipment remains company property
+- Must return when leaving company
+- Must return if transitioning to office
+- Shipping labels provided
+- Clean data before return
+
+COMPLIANCE AND AUDITS
+
+Remote Work Compliance:
+- Security policies apply everywhere
+- Random security audits possible
+- Must maintain security standards
+- Cooperate with IT checks
+- Certify compliance annually
+
+What May Be Audited:
+- Device security settings
+- Software installations
+- VPN usage logs
+- Access to sensitive data
+- Compliance with policies
+
+FREQUENTLY ASKED QUESTIONS
+
+Q: Can I work from anywhere?
+A: Must be within approved country/state. International requires advance approval.
+
+Q: Do I need to be available 24/7?
+A: No, only during agreed work hours. Set clear boundaries.
+
+Q: Can family use my work laptop?
+A: No, company devices are for business use only.
+
+Q: What if my internet goes out?
+A: Use mobile hotspot, go to coworking space, or use PTO if extended outage.
+
+Q: Can I expense my home internet?
+A: Yes, $50/month reimbursement available.
+
+Q: What if I need better equipment?
+A: Request via IT portal with business justification.
+
+Q: Am I expected to answer emails after hours?
+A: No, unless you're on-call or in an emergency.
+
+Q: Can I travel and work at the same time?
+A: Domestic travel: Yes, maintain work hours. International: Requires approval.
+
+Q: What if I don't have a private workspace?
+A: Discuss with manager - may need to work from office or coworking space for confidential work.
+
+Q: Who pays for my office furniture?
+A: Company provides IT equipment. Furniture is employee responsibility.
+
+CONTINUOUS IMPROVEMENT
+
+Providing Feedback:
+- Annual remote work survey
+- IT feedback form
+- Suggestion box
+- Manager conversations
+- HR feedback sessions
+
+Staying Current:
+- Policy updates via email
+- Quarterly IT training
+- New tool announcements
+- Best practice sharing
+- Lessons learned sessions
+
+RELATED POLICIES
+- Remote Work Policy (Doc ID: HR-008)
+- Acceptable Use Policy (Doc ID: IT-001)
+- Data Security Policy (Doc ID: SEC-003)
+- Expense Reimbursement Policy (Doc ID: FIN-012)
+- VPN Access Guide (Doc ID: NET-002)
+
+---
+
+Questions? Contact remotework@contoso.com
+IT Helpdesk: 1-800-CONTOSO

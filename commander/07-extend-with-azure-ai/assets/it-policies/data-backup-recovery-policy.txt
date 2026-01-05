@@ -1,0 +1,468 @@
+CONTOSO IT SERVICES
+Data Backup and Recovery Policy
+
+Document Version: 3.1
+Last Updated: January 2025
+Document Owner: Data Protection Team
+
+OVERVIEW
+This policy outlines Contoso's approach to protecting company data through regular backups and ensuring rapid recovery in case of data loss. All employees are responsible for understanding and following these procedures.
+
+WHAT DATA IS BACKED UP
+
+Automatically Backed Up:
+- Email and mailbox data (Microsoft 365)
+- OneDrive for Business files
+- SharePoint sites and documents
+- Microsoft Teams data (chats, files, channels)
+- Dataverse databases
+- Corporate file shares
+- Enterprise applications data (SAP, Salesforce)
+- Azure hosted databases
+
+NOT Backed Up:
+- Local computer hard drives (C: drive)
+- External hard drives
+- Personal USB drives
+- Personal cloud storage (Dropbox, Google Drive)
+- Non-approved applications
+- Temporary internet files
+
+BACKUP SCHEDULES
+
+Microsoft 365 Data:
+- Continuous backup (real-time)
+- Retention: 93 days for deleted items
+- Legal hold available for compliance
+
+OneDrive for Business:
+- Automatic sync and backup
+- Version history: 500 versions or 60 days
+- Deleted file recovery: 93 days
+
+SharePoint Online:
+- Automatic backup every 12 hours
+- Retention: 93 days in recycle bin
+- Second-stage recycle bin: Additional 93 days
+- Point-in-time restore available
+
+File Servers:
+- Full backup: Weekly (Sunday 2 AM)
+- Incremental backup: Daily (2 AM)
+- Retention: 90 days
+- Long-term archive: 7 years for financial data
+
+Databases:
+- Full backup: Daily
+- Transaction log backup: Every 15 minutes
+- Retention: 30 days
+- Disaster recovery copies: Geo-redundant
+
+HOW TO PROTECT YOUR DATA
+
+Best Practices:
+1. **Save to approved locations**:
+   - OneDrive for Business (personal work files)
+   - SharePoint (team collaboration)
+   - Network file shares (department files)
+   - Do NOT save only to local C: drive
+
+2. **Enable OneDrive sync**:
+   - Ensures files automatically backed up
+   - Access files from any device
+   - Automatic version control
+
+3. **Use version history**:
+   - Revert to previous versions if needed
+   - Protected against accidental changes
+   - Available in OneDrive and SharePoint
+
+4. **Don't disable sync**:
+   - Keeps cloud and local copies in sync
+   - Provides redundancy
+   - Enables disaster recovery
+
+5. **Avoid USB drives for primary storage**:
+   - Use for temporary transfer only
+   - Not backed up by IT
+   - Easily lost or damaged
+
+RECOVERING DELETED FILES
+
+OneDrive Recovery:
+1. Go to https://onedrive.contoso.com
+2. Click "Recycle bin" in left navigation
+3. Select file(s) to recover
+4. Click "Restore"
+5. Files return to original location
+
+If not in recycle bin (deleted >93 days ago):
+- Contact helpdesk@contoso.com
+- Provide file name and approximate deletion date
+- Recovery possible from backups (if within retention)
+
+SharePoint Recovery:
+1. Navigate to SharePoint site
+2. Click "Recycle bin" in left navigation
+3. Find and select file
+4. Click "Restore"
+
+Site Collection Recycle Bin (Site Owners):
+1. Site Settings > Recycle Bin
+2. Click "Second-stage recycle bin"
+3. Select files
+4. Click "Restore"
+
+Email Recovery:
+Outlook Desktop:
+1. Open "Deleted Items" folder
+2. If not there, click "Folder" tab
+3. Click "Recover Deleted Items"
+4. Select emails
+5. Click "Recover Selected Items"
+
+Outlook Web:
+1. Click "Deleted Items"
+2. Click "Recover items deleted from this folder"
+3. Select emails
+4. Click "Restore"
+
+Retention: 93 days
+
+Teams Chat Recovery:
+Unfortunately, deleted Teams messages cannot be recovered by users. Contact IT if critical business data was deleted.
+
+RESTORING PREVIOUS FILE VERSIONS
+
+OneDrive/SharePoint:
+1. Right-click file
+2. Select "Version history"
+3. View list of previous versions
+4. Click "Restore" on desired version
+5. Or click "..." for more options
+
+Microsoft Office Files:
+1. Open file in Word/Excel/PowerPoint
+2. Click "File" > "Info"
+3. Click "Version History"
+4. Select version to view or restore
+
+Network File Shares:
+1. Right-click file
+2. Select "Properties"
+3. Click "Previous Versions" tab
+4. Select version
+5. Click "Restore"
+
+DISASTER RECOVERY SCENARIOS
+
+Ransomware or Malware:
+1. Immediately disconnect device from network
+2. Call security hotline: 1-800-555-SECURE
+3. Do not pay ransom
+4. Do not attempt to clean yourself
+5. IT will restore from clean backups
+6. May lose data since last backup
+
+Hard Drive Failure:
+1. Report immediately to helpdesk
+2. Do not attempt to repair yourself
+3. IT will provide replacement device
+4. OneDrive and network files accessible immediately
+5. Local-only files may be lost
+
+Accidental Deletion of Department Share:
+1. Contact IT immediately
+2. Provide share name and location
+3. IT will restore from backup
+4. Restoration time: 2-24 hours depending on size
+5. May lose changes since last backup
+
+Device Lost or Stolen:
+1. Report to security immediately
+2. Device will be remotely wiped
+3. OneDrive and cloud files remain safe
+4. Receive replacement device
+5. Sign in and files sync automatically
+
+Natural Disaster/Office Destruction:
+1. Contoso maintains geo-redundant backups
+2. Data protected in multiple Azure regions
+3. Business continuity plan activated
+4. Access data from any location
+5. Temporary devices provided if needed
+
+DATA RECOVERY REQUESTS
+
+Standard Recovery (Free):
+- Self-service recovery via recycle bins
+- Files within retention period
+- OneDrive, SharePoint, Email
+
+Assisted Recovery (Free):
+- Contact helpdesk for assistance
+- Files within backup retention period
+- Typical turnaround: 4-24 hours
+- Submit ticket with details
+
+Advanced Recovery (May Incur Costs):
+- Files beyond retention period (archive search)
+- Large-scale restorations
+- Forensic recovery
+- Manager approval may be required
+- Turnaround: 3-10 business days
+
+Emergency Recovery (VP Approval):
+- Business-critical data
+- Expedited processing
+- After-hours support
+- 24-48 hour turnaround
+
+How to Request:
+1. Submit ticket at https://itportal.contoso.com
+2. Select "Data Recovery Request"
+3. Provide:
+   - File/folder name
+   - Original location
+   - Approximate deletion date
+   - Business justification
+   - Urgency level
+4. Attach any relevant information
+
+BACKUP VERIFICATION
+
+IT performs regular backup testing:
+- Monthly restore tests on sample data
+- Quarterly full recovery drills
+- Annual disaster recovery exercise
+- Backup integrity checks
+
+You can verify your backups:
+1. Check OneDrive sync status (green checkmark)
+2. Verify files appear on onedrive.contoso.com
+3. Test version history periodically
+4. Confirm SharePoint files are syncing
+
+RETENTION POLICIES
+
+Standard Retention:
+- Active employee data: Unlimited
+- Departed employee data: 90 days, then archived
+- Financial records: 7 years
+- HR records: 7 years
+- Legal hold: Indefinite (per case)
+- Email: 7 years
+- General documents: 7 years
+
+Legal Hold:
+- Preserves data for litigation or investigation
+- Overrides deletion policies
+- Users cannot permanently delete
+- Managed by Legal department
+
+DATA ARCHIVAL
+
+Long-Term Archive:
+- Data moved to lower-cost storage
+- Less frequently accessed
+- Slower retrieval time (4-48 hours)
+- Maintained for compliance
+
+Archive Locations:
+- Azure Archive Storage
+- Offline tape backup (financial data)
+- Encrypted and secure
+
+Requesting Archived Data:
+1. Submit ticket to helpdesk
+2. Provide detailed description
+3. Justify business need
+4. Manager approval for bulk requests
+5. Retrieval time: 1-3 business days
+
+EMPLOYEE RESPONSIBILITIES
+
+You must:
+- Save work files to approved locations (OneDrive, SharePoint)
+- Not rely on local C: drive for important data
+- Enable and maintain OneDrive sync
+- Report data loss incidents immediately
+- Not attempt unauthorized recovery methods
+- Follow retention policies
+- Delete unnecessary data to optimize storage
+
+You must not:
+- Store sensitive data on personal devices
+- Use unauthorized cloud storage
+- Disable backup systems
+- Circumvent data protection measures
+- Share recovery credentials
+
+DEPARTING EMPLOYEES
+
+Data Handling:
+- Manager notified 2 weeks before departure
+- Important files transferred to manager/team
+- OneDrive access provided to manager for 90 days
+- Email forwarded to manager (if approved)
+- After 90 days, data archived for 7 years
+- Personal files deleted per policy
+
+Manager Responsibilities:
+1. Identify critical files before departure
+2. Request transfer of needed data
+3. Document file locations
+4. Submit data retention request if needed
+5. Remove access to sensitive data
+
+COMPLIANCE AND AUDITING
+
+Backup Compliance:
+- SOX requirements for financial data
+- GDPR for EU personal data
+- HIPAA for healthcare data (if applicable)
+- ISO 27001 for information security
+
+Audit Trail:
+- All recovery requests logged
+- Access to backups monitored
+- Regular compliance audits
+- Annual third-party assessment
+
+DATA SOVEREIGNTY
+
+Geographic Data Storage:
+- US data: Azure US East, US West regions
+- EU data: Azure EU North, EU West regions
+- APAC data: Azure Southeast Asia region
+- Complies with local data residency laws
+
+ENCRYPTION
+
+Data Protection:
+- Backup data encrypted at rest (AES-256)
+- Encrypted in transit (TLS 1.3)
+- Encryption keys managed by IT Security
+- Regular key rotation
+
+STORAGE QUOTAS
+
+OneDrive for Business:
+- Standard: 1 TB per user
+- Additional storage upon request
+- Manager approval required for >2TB
+- Monthly usage reports to managers
+
+SharePoint:
+- 1 TB base + 10 GB per licensed user
+- Additional storage available
+- Site owners monitor usage
+- Cleanup old files regularly
+
+Mailbox:
+- Standard: 100 GB
+- Archive mailbox: 1.5 TB
+- Auto-expanding archive available
+- Manage mailbox size proactively
+
+Network Shares:
+- Department quotas set by management
+- Monitor via file server reports
+- Request increases via IT portal
+
+COST OPTIMIZATION
+
+Reducing Backup Costs:
+- Delete unnecessary files regularly
+- Don't duplicate files across locations
+- Use links instead of file copies
+- Archive old projects
+- Clean up personal OneDrive annually
+- Use SharePoint for collaboration (vs individual copies)
+
+Storage Reviews:
+- Quarterly storage usage reports
+- Department managers review and optimize
+- Identify and delete redundant data
+- Archive inactive projects
+
+MOBILE DEVICE BACKUPS
+
+Company Devices:
+- iOS: Backed up via Intune
+- Android: Backed up via Intune
+- Company data separated from personal
+- Company data can be remotely wiped
+
+BYOD (Personal Devices):
+- Company data in protected containers
+- Company data backed up separately
+- Personal data remains private
+- Company can wipe only company data
+
+TESTING YOUR BACKUP
+
+Recommended Monthly:
+1. Pick a random file in OneDrive
+2. Check version history exists
+3. Restore a previous version
+4. Delete a file and recover it
+5. Verify sync status is green
+
+This ensures your backup is working before you need it!
+
+DISASTER RECOVERY TIME OBJECTIVES
+
+Recovery Time Objective (RTO):
+- Email: 4 hours
+- OneDrive/SharePoint: 1 hour
+- Critical applications: 8 hours
+- File servers: 24 hours
+- Databases: 4 hours
+
+Recovery Point Objective (RPO):
+- Email: 15 minutes
+- OneDrive/SharePoint: Real-time
+- Databases: 15 minutes
+- File servers: 24 hours
+
+These are maximum acceptable data loss/downtime targets.
+
+FREQUENTLY ASKED QUESTIONS
+
+Q: Will IT recover files from my laptop's C: drive?
+A: No, local drives are not backed up. Save to OneDrive or SharePoint.
+
+Q: How long are my deleted emails saved?
+A: 93 days in Deleted Items recovery, then permanently deleted.
+
+Q: Can I get files from an employee who left 6 months ago?
+A: Yes, if archived. Submit request with business justification.
+
+Q: What happens to my files when I leave Contoso?
+A: Transferred to your manager, then archived for 7 years.
+
+Q: Are my personal files in OneDrive backed up?
+A: Work-related files yes, but OneDrive should be used for business only.
+
+Q: Can I increase my OneDrive storage?
+A: Yes, request via IT portal with manager approval.
+
+GETTING HELP
+
+Data Recovery:
+- Email: datarecovery@contoso.com
+- Phone: 1-800-CONTOSO
+- Portal: https://itportal.contoso.com
+
+Backup Questions:
+- Email: backup@contoso.com
+
+Emergency Data Loss:
+- Security Hotline: 1-800-555-SECURE
+
+RELATED POLICIES
+- Data Classification Policy (Doc ID: SEC-006)
+- Information Security Policy (Doc ID: SEC-001)
+- Records Retention Policy (Doc ID: LEGAL-003)
+- Acceptable Use Policy (Doc ID: IT-001)

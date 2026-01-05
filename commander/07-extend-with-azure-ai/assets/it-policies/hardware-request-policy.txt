@@ -1,0 +1,476 @@
+CONTOSO IT SERVICES
+Hardware Request Policy
+
+Document Version: 1.8
+Last Updated: December 2024
+Document Owner: IT Asset Management Team
+
+OVERVIEW
+This policy governs the procurement, distribution, and management of IT hardware at Contoso. All hardware requests must follow these procedures to ensure proper budgeting, security, and asset tracking.
+
+STANDARD HARDWARE PACKAGES
+Contoso provides role-based hardware packages:
+
+BASIC PACKAGE (Administrative, Entry-Level):
+- Dell Latitude 5440 Laptop
+- 14" display, Intel i5, 16GB RAM, 256GB SSD
+- USB-C docking station
+- Wired keyboard and mouse
+- Headset with microphone
+- Laptop bag
+
+STANDARD PACKAGE (Most Employees):
+- Dell Latitude 5540 Laptop
+- 15" display, Intel i7, 32GB RAM, 512GB SSD
+- USB-C docking station
+- Wireless keyboard and mouse
+- Noise-canceling headset
+- Laptop bag
+- External 24" monitor (optional)
+
+POWER USER PACKAGE (Engineers, Developers):
+- Dell Precision 5570 Mobile Workstation
+- 15" display, Intel i9, 64GB RAM, 1TB SSD
+- Thunderbolt docking station
+- Mechanical keyboard
+- Precision mouse
+- Premium noise-canceling headset
+- Laptop bag
+- Dual 27" monitors
+
+CREATIVE PACKAGE (Designers, Video Editors):
+- MacBook Pro 16" M3 Max
+- 16" display, 36GB RAM, 1TB SSD
+- Thunderbolt dock
+- Magic Keyboard and Mouse
+- Studio headphones
+- Laptop bag
+- 32" 4K monitor or dual 27" monitors
+- Graphics tablet (upon request)
+
+EXECUTIVE PACKAGE:
+- MacBook Pro 14" or Surface Laptop Studio
+- Premium accessories
+- Additional monitor upon request
+- Mobile hotspot
+- iPad Pro with keyboard
+
+REQUESTING NEW HARDWARE
+New employees receive hardware automatically:
+
+Pre-Onboarding (HR Initiated):
+- HR submits new hire form
+- IT determines package based on role
+- Hardware ordered 2 weeks before start date
+- Configured and ready for day one
+
+Day One Setup:
+- Pick up device from IT (or shipped to home)
+- Sign asset acknowledgment form
+- Receive setup instructions
+- IT performs initial configuration session
+
+REPLACEMENT HARDWARE
+Hardware is replaced on a scheduled refresh cycle:
+
+Standard Refresh Cycle:
+- Laptops: Every 3 years
+- Desktops: Every 4 years
+- Monitors: Every 5 years
+- Accessories: As needed
+
+Automatic Replacement Process:
+1. IT tracks device age in asset management system
+2. Notification sent 60 days before replacement due
+3. Schedule replacement appointment
+4. Data backed up and migrated to new device
+5. Old device securely wiped and recycled
+
+EARLY REPLACEMENT REQUESTS
+Devices can be replaced before scheduled cycle if:
+
+Performance Issues:
+- Device cannot run required applications
+- Frequent crashes or errors
+- Excessively slow performance
+- Cannot be resolved through troubleshooting
+
+Physical Damage:
+- Screen damage beyond repair
+- Keyboard/trackpad failure
+- Structural damage affecting use
+- Not covered by warranty
+
+Business Need:
+- Role change requiring different specs
+- New software requirements
+- Project-specific needs
+- Manager approval required
+
+Request Process:
+1. Submit ticket via IT Service Portal
+2. Provide detailed justification
+3. IT evaluates current device
+4. Manager approval if not at refresh cycle
+5. Approval timeline: 3-5 business days
+6. Replacement within 10 business days if approved
+
+UPGRADE REQUESTS
+Upgrading to higher-tier package requires justification:
+
+Valid Reasons:
+- Role change (promoted to engineering role)
+- New job responsibilities
+- Performance requirements for projects
+- Running resource-intensive applications
+
+Request Process:
+1. Discuss with manager
+2. Manager submits upgrade request
+3. Department budget approval
+4. IT evaluates technical requirements
+5. VP approval if cost exceeds $1,000 difference
+6. Processed during next refresh cycle (unless urgent)
+
+ACCESSORIES AND PERIPHERALS
+
+Standard Accessories (Free):
+- Replacement keyboard/mouse (if defective)
+- Replacement headset (if defective)
+- USB-C adapters
+- Cable replacements
+- Webcam covers
+- Laptop stand
+
+Available Upon Request (Free):
+- External monitors (up to 2 per user)
+- Ergonomic keyboard
+- Ergonomic mouse
+- Document camera
+- Ring light for video calls
+- Laptop privacy screen
+
+Special Request Items (Budget Approval):
+- Ultra-wide monitors (34"+)
+- Mechanical keyboards ($150+)
+- Premium mice ($80+)
+- Drawing tablets
+- Specialty input devices
+- Ergonomic assessment equipment
+
+MOBILE DEVICES
+
+Smartphones:
+Company-Provided (Eligible Roles):
+- Sales team members
+- Executives
+- On-call staff
+- Field technicians
+
+Standard Phone Options:
+- iPhone 15 Pro
+- Samsung Galaxy S24
+- Google Pixel 8 Pro
+
+Request Process:
+1. Manager confirms business need
+2. Submit mobile device request
+3. VP approval required
+4. Device provisioned within 5 business days
+5. Monthly plan costs charged to department
+
+BYOD (Bring Your Own Device):
+- Alternative to company phone
+- $50/month stipend
+- Must enroll in MDM
+- Company data containerized
+- Personal privacy maintained
+
+Tablets:
+iPad (Eligible Roles):
+- Sales presentations
+- Field service
+- Executive use
+- Creative work
+
+Request Process:
+- Manager justification required
+- VP approval for cost
+- Provisioned with MDM
+- Keyboard/accessories included as needed
+
+ERGONOMIC EQUIPMENT
+Contoso supports employee wellness:
+
+Standard Ergonomic Options (Free):
+- Adjustable monitor arms
+- Laptop stands
+- Ergonomic keyboards and mice
+- Footrests
+- Wrist rests
+- Cable management
+
+Premium Ergonomic Equipment (Assessment Required):
+- Sit-stand desks
+- Ergonomic chairs
+- Specialty keyboards
+- Vertical mice
+- Monitor light bars
+
+Request Process:
+1. Discuss comfort issues with manager
+2. Optional: Request ergonomic assessment
+3. Submit request via IT Portal
+4. Assessment performed (if needed)
+5. Approved equipment ordered
+6. Installation scheduled
+
+HOME OFFICE EQUIPMENT
+Remote employees can request home office setup:
+
+Standard Home Office Package (Free):
+- External monitor
+- Keyboard and mouse
+- Headset
+- Webcam (if laptop camera insufficient)
+- Docking station
+
+Premium Home Office (Manager Approval):
+- Second monitor
+- Desk lamp
+- Cable management kit
+- Monitor arm
+
+NOT PROVIDED:
+- Desks and chairs (furniture)
+- Internet service
+- Office supplies (paper, pens)
+- Printers (digital workflow preferred)
+
+DAMAGED OR LOST EQUIPMENT
+Accidents happen - here's the process:
+
+Accidental Damage:
+- Report immediately to helpdesk@contoso.com
+- File incident report
+- First incident: No charge, repaired or replaced
+- Second incident: May require cost sharing
+- Multiple incidents: Pattern review by management
+
+Lost or Stolen Equipment:
+- Report immediately (within 4 hours)
+- Contact security@contoso.com
+- File police report (for theft)
+- Device remotely wiped for data protection
+- Replacement provided
+- Cost sharing may apply based on circumstances
+
+Gross Negligence:
+If damage results from:
+- Intentional misuse
+- Ignoring safety guidelines
+- Unauthorized modifications
+
+Employee may be responsible for:
+- Full replacement cost
+- Disciplinary action
+- Potential termination
+
+EQUIPMENT RETURN
+Return equipment when:
+
+Leaving Contoso:
+- All equipment must be returned on last day
+- HR will not process final paycheck until returned
+- Return at exit interview or ship to IT
+- Shipping label provided
+
+Extended Leave:
+- Equipment returned for leaves > 30 days
+- Reissued upon return
+- May receive temporary loaner if needed
+
+No Longer Needed:
+- Role change
+- Project completion
+- Unused equipment
+- Contact IT for return instructions
+
+Return Process:
+1. Back up personal files
+2. Remove personal data
+3. Factory reset mobile devices (IT can assist)
+4. Return to IT department or ship
+5. Receive return confirmation
+6. Asset record updated
+
+EQUIPMENT CARE AND MAINTENANCE
+Proper care extends device life:
+
+DO:
+- Keep devices clean and dust-free
+- Use protective cases when traveling
+- Store in secure location when not in use
+- Plug into surge protectors
+- Keep food and drinks away from equipment
+- Report issues promptly
+
+DON'T:
+- Leave devices in hot cars
+- Expose to extreme temperatures
+- Stack heavy items on laptops
+- Pull cables aggressively
+- Attempt self-repairs (voids warranty)
+- Share devices with unauthorized users
+
+SECURITY REQUIREMENTS
+All Contoso hardware must:
+
+- Be encrypted (BitLocker/FileVault)
+- Run approved antivirus software
+- Have screen lock enabled (5 min timeout)
+- Have Find My Device enabled
+- Stay within approved countries (export control)
+- Never be sold or transferred without IT approval
+
+EQUIPMENT TRACKING
+All hardware is tracked via:
+
+Asset Tags:
+- Barcode label affixed to device
+- Do not remove asset tags
+- Used for inventory management
+- Required for warranty service
+
+Asset Management System:
+- Tracks device assignment
+- Records maintenance history
+- Monitors warranty status
+- Triggers refresh notifications
+
+Annual Inventory:
+- Physical verification of assets
+- Update location information
+- Report missing equipment
+- Verify condition
+
+BUDGET AND COST MANAGEMENT
+Hardware costs managed at department level:
+
+Standard Packages:
+- Funded centrally by IT
+- No department charge
+- Refresh cycle managed by IT
+
+Upgrades and Special Requests:
+- Charged to department budget
+- Approval based on budget availability
+- Can be denied if budget exceeded
+
+Lost/Damaged Equipment:
+- First incident: IT budget
+- Repeat incidents: Department budget
+- Gross negligence: Employee cost share
+
+SUSTAINABILITY AND RECYCLING
+Contoso is committed to environmental responsibility:
+
+Equipment Disposal:
+- Secure data wiping (NIST standards)
+- Certificate of destruction provided
+- Devices refurbished when possible
+- Recycling through certified e-waste partners
+
+Donation Program:
+- Working equipment donated to nonprofits
+- Educational institutions
+- Community programs
+- Tax benefits to Contoso
+
+Trade-In Program:
+- High-value equipment traded to vendors
+- Credit applied to new purchases
+- Environmental impact reduced
+
+SUPPORT AND WARRANTY
+
+Standard Warranty:
+- All devices include manufacturer warranty
+- 3 years for laptops and desktops
+- 1 year for accessories
+- Extended warranty available for critical roles
+
+Support Channels:
+- Hardware issues: helpdesk@contoso.com
+- Phone: 1-800-CONTOSO
+- Walk-in: IT Service Desk (Building A, 2nd Floor)
+- Hours: Monday-Friday, 8 AM - 6 PM EST
+
+Warranty Repairs:
+- IT coordinates with vendor
+- Loaner device provided if repair > 2 days
+- All data backed up before service
+- Turnaround: 3-7 business days
+
+Out-of-Warranty:
+- Evaluated case-by-case
+- May require manager approval for repair cost
+- Replacement recommended if repair cost > 50% of new
+
+INTERNATIONAL TRAVEL
+Traveling internationally with equipment requires:
+
+Pre-Travel Checklist:
+- Notify IT Security 5 days in advance
+- Email international-travel@contoso.com
+- Specify countries and duration
+- Some countries have import restrictions
+
+Export Control:
+- High-performance equipment may require export license
+- Encryption software restricted in some countries
+- IT Security will advise on compliance
+
+Travel Tips:
+- Use privacy screen in public
+- Never leave devices unattended
+- Use VPN for all connections
+- Avoid public WiFi without VPN
+- Report any device inspections by customs
+
+FREQUENTLY ASKED QUESTIONS
+
+Q: Can I purchase my own equipment for work?
+A: No, all work equipment must be company-provided and tracked for security and compliance reasons.
+
+Q: Can I keep my device when I leave Contoso?
+A: No, all equipment must be returned. However, we offer an employee purchase program for devices > 4 years old at fair market value.
+
+Q: Can I use my work laptop for personal use?
+A: Limited personal use is acceptable (browsing, email) but company data security policies apply to all activity. No illegal content or activity.
+
+Q: What if I need equipment urgently?
+A: Contact IT Helpdesk. We maintain loaner devices for emergencies and can expedite orders for critical business needs.
+
+Q: Can I request specific brands/models?
+A: Standard packages are predetermined for consistency and support efficiency. Special requests require strong business justification and may incur delays.
+
+CONTACT INFORMATION
+
+IT Asset Management:
+- Email: assets@contoso.com
+- Phone: x5555
+
+Hardware Requests:
+- Portal: https://itportal.contoso.com
+- Email: helpdesk@contoso.com
+
+Hardware Support:
+- Helpdesk: 1-800-CONTOSO
+- Service Desk: Building A, 2nd Floor
+
+RELATED POLICIES
+- Acceptable Use Policy (Doc ID: IT-001)
+- Data Security Policy (Doc ID: SEC-003)
+- Remote Work Policy (Doc ID: HR-008)
+- Asset Management Policy (Doc ID: IT-018)

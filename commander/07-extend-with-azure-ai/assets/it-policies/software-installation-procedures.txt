@@ -1,0 +1,378 @@
+CONTOSO IT SERVICES
+Software Installation Procedures
+
+Document Version: 2.3
+Last Updated: January 2025
+Document Owner: IT Operations Team
+
+PURPOSE
+This document outlines the procedures for requesting, approving, and installing software on Contoso devices. All software installations must follow these procedures to ensure security, compliance, and license management.
+
+APPROVED SOFTWARE CATALOG
+Contoso maintains a catalog of pre-approved software available for self-service installation:
+
+Productivity:
+- Microsoft 365 Suite (Word, Excel, PowerPoint, Outlook)
+- Adobe Acrobat Reader DC
+- Zoom Desktop Client
+- Microsoft Teams
+- Slack Desktop App
+
+Development:
+- Visual Studio Code
+- Git for Windows/Mac
+- Python 3.11
+- Node.js LTS
+- Docker Desktop (approved users only)
+
+Design:
+- Adobe Creative Cloud (licensed users only)
+- Figma Desktop
+- Canva Desktop App
+
+Security:
+- LastPass Enterprise
+- Cisco AnyConnect VPN
+- Microsoft Defender
+- Malwarebytes
+
+SELF-SERVICE INSTALLATION
+Approved software can be installed via the Contoso Software Portal:
+
+1. Visit https://software.contoso.com
+2. Sign in with your Contoso credentials
+3. Browse or search the software catalog
+4. Click "Install" on desired software
+5. Follow on-screen installation prompts
+6. Software installs automatically via Intune/SCCM
+
+Installation typically completes within 15-30 minutes. You will receive a notification when complete.
+
+REQUESTING NON-CATALOG SOFTWARE
+If you need software not in the approved catalog:
+
+Step 1 - Submit Request:
+1. Open IT Service Portal: https://itportal.contoso.com
+2. Select "Software Request"
+3. Provide the following information:
+   - Software name and version
+   - Vendor/publisher
+   - Business justification
+   - Number of licenses needed
+   - Cost information (if known)
+   - Urgency (standard/expedited)
+
+Step 2 - Manager Approval:
+- Request is routed to your manager
+- Manager reviews business need
+- Approval/denial within 2 business days
+
+Step 3 - IT Security Review:
+- Security team evaluates software
+- Checks for vulnerabilities, malware
+- Reviews vendor security practices
+- Approval process: 3-5 business days
+
+Step 4 - License Procurement:
+- If approved, procurement processes license purchase
+- Negotiates with vendor if needed
+- Typical timeline: 5-10 business days
+- You receive notification when ready
+
+Step 5 - Installation:
+- IT schedules installation with you
+- May require device restart
+- Post-installation verification
+- Added to approved catalog if applicable
+
+STANDARD VS EXPEDITED REQUESTS
+
+Standard Requests (Free):
+- Total timeline: 10-15 business days
+- Suitable for most software needs
+- No additional approvals required
+
+Expedited Requests (VP Approval Required):
+- Total timeline: 2-3 business days
+- For critical business needs only
+- Requires VP-level justification
+- May incur rush fees
+
+OPEN SOURCE SOFTWARE POLICY
+Open source software requires additional review:
+
+Permitted:
+- Software from established projects (Apache, Linux Foundation)
+- Well-maintained with active communities
+- Clear licensing (MIT, Apache 2.0, BSD)
+- No known security vulnerabilities
+
+Requires Special Approval:
+- GPL-licensed software (legal review needed)
+- Software with limited community support
+- Alpha/beta versions
+- Self-hosted solutions
+
+Prohibited:
+- Software from unknown sources
+- Unmaintained projects
+- Unclear licensing
+- Known security issues
+
+BROWSER EXTENSIONS AND PLUGINS
+Browser extensions must be approved:
+
+Auto-Approved Extensions:
+- LastPass
+- Grammarly Business
+- Microsoft Editor
+- Adobe Acrobat
+- Zoom
+
+Request Required:
+1. Submit via Software Request form
+2. Specify which browsers (Chrome, Edge, Firefox)
+3. Security review completed
+4. Deployed via browser management policy
+
+Prohibited Extensions:
+- Ad blockers (interfere with business applications)
+- Download managers
+- VPN extensions (use approved Cisco VPN)
+- Screen recorders (data loss prevention)
+- Cryptocurrency miners
+
+MOBILE APP INSTALLATIONS
+Company-owned mobile devices use approved app stores:
+
+iOS (Managed App Store):
+- Access via Company Portal app
+- Pre-approved business apps
+- Automatic updates
+- Usage monitored for compliance
+
+Android (Managed Google Play):
+- Access via Company Portal app
+- Curated business apps
+- Security policies enforced
+- Personal apps on separate profile
+
+Personal Device Apps (BYOD):
+- Company data restricted to approved apps
+- Intune app protection policies applied
+- Personal apps remain private
+
+SPECIALIZED SOFTWARE CATEGORIES
+
+Engineering/Technical Software:
+- CAD applications (AutoCAD, SolidWorks)
+- Statistical analysis (SPSS, SAS)
+- Database tools (SQL Server Management Studio)
+- Network analysis (Wireshark - requires approval)
+
+Contact engineering-software@contoso.com for access
+
+Financial Software:
+- QuickBooks Enterprise
+- SAP Access
+- Oracle Financials
+- Bloomberg Terminal
+
+Contact finance-it@contoso.com for access
+
+Sales Software:
+- Salesforce Desktop
+- HubSpot
+- LinkedIn Sales Navigator
+- Gong
+
+Contact sales-it@contoso.com for access
+
+LICENSE MANAGEMENT
+All software licenses are tracked and managed:
+
+Named Licenses:
+- Assigned to specific users
+- Reclaimed when user leaves
+- Cannot be shared
+
+Concurrent Licenses:
+- Shared pool of licenses
+- Check-in/check-out system
+- Limited availability
+
+Subscription Licenses:
+- Annual renewal
+- Auto-assigned based on role
+- Reviewed quarterly for optimization
+
+LICENSE COMPLIANCE
+Contoso maintains strict license compliance:
+
+Annual Audits:
+- All installed software inventoried
+- Usage tracked and reported
+- Unused licenses reclaimed
+- Cost optimization opportunities identified
+
+Prohibited Actions:
+- Installing unlicensed software
+- Sharing license keys
+- Using personal licenses for business work
+- Exceeding license counts
+- Installing on non-approved devices
+
+Violations Result In:
+- Immediate license revocation
+- Security incident investigation
+- Disciplinary action
+- Potential legal consequences
+
+SOFTWARE UPDATES AND PATCHES
+Keeping software updated is critical for security:
+
+Automatic Updates (Enforced):
+- Operating system updates
+- Microsoft 365 applications
+- Security software
+- Browser updates
+- VPN client
+
+Manual Updates (User-Initiated):
+- Specialized applications
+- Development tools
+- Design software
+- Notification provided when available
+
+Critical Security Patches:
+- Deployed immediately
+- May require restart
+- Cannot be postponed
+- Enforced via device management
+
+UPDATE NOTIFICATIONS
+You will be notified of required updates via:
+- Email notification
+- Desktop notification
+- Company Portal alert
+- Teams message (critical updates)
+
+Grace Period:
+- Standard updates: 7 days to install
+- Security updates: 48 hours to install
+- Critical patches: Automatic installation
+
+UNSUPPORTED SOFTWARE
+IT does not support:
+
+Personal Software:
+- Personal email clients
+- Personal cloud storage
+- Games and entertainment
+- Personal productivity tools
+
+Unapproved Software:
+- Any software not in approved catalog
+- Software installed without IT approval
+- Cracked or pirated software
+- Software from untrusted sources
+
+If found, unsupported software will be:
+- Automatically removed
+- Reported to security team
+- Subject to disciplinary action
+
+SOFTWARE REMOVAL
+To remove approved software:
+
+1. Via Software Portal:
+   - Log in to https://software.contoso.com
+   - Go to "My Installed Software"
+   - Click "Uninstall" next to software
+   - Confirm removal
+
+2. Via IT Support:
+   - Contact helpdesk@contoso.com
+   - Provide software name and reason
+   - IT will remove remotely
+
+3. During Offboarding:
+   - All software automatically removed
+   - Licenses returned to pool
+   - Device wiped and reimaged
+
+TROUBLESHOOTING INSTALLATION ISSUES
+
+Installation Failed:
+- Check you have admin rights
+- Verify sufficient disk space (10 GB minimum)
+- Temporarily disable antivirus
+- Restart device and retry
+- Contact helpdesk if issue persists
+
+Software Won't Launch:
+- Verify installation completed
+- Check Windows Event Viewer for errors
+- Run as administrator
+- Repair installation via Control Panel
+- Reinstall if necessary
+
+License Activation Issues:
+- Confirm you're assigned a license
+- Check network connectivity
+- Sign out and sign in again
+- Contact helpdesk with error code
+
+COST AND BUDGET
+Software costs are charged to department budgets:
+
+Department-Funded:
+- Specialized software for specific teams
+- High-cost applications
+- Low-usage tools
+- Manager approval required
+
+Centrally-Funded:
+- Standard productivity tools
+- Security software
+- Communication platforms
+- Universal business applications
+
+Cost Optimization:
+- Annual usage reviews
+- License right-sizing
+- Negotiating volume discounts
+- Eliminating redundant tools
+
+TRAINING AND SUPPORT
+Training resources for approved software:
+
+Microsoft 365:
+- LinkedIn Learning courses
+- Internal training portal
+- Monthly lunch-and-learn sessions
+
+Specialized Software:
+- Vendor training (when provided)
+- Internal expert user program
+- Team-specific training sessions
+- Documentation in IT knowledge base
+
+CONTACT INFORMATION
+Software Catalog Questions:
+- Email: software@contoso.com
+- Phone: 1-800-CONTOSO
+
+License Issues:
+- Email: licensing@contoso.com
+
+Installation Support:
+- Email: helpdesk@contoso.com
+- Phone: 1-800-CONTOSO
+- Chat: https://chat.contoso.com
+
+RELATED POLICIES
+- Acceptable Use Policy (Doc ID: IT-001)
+- Data Security Policy (Doc ID: SEC-003)
+- BYOD Policy (Doc ID: IT-012)
+- Software Asset Management (Doc ID: IT-020)

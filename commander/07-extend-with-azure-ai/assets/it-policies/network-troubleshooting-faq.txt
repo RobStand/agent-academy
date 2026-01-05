@@ -1,0 +1,724 @@
+CONTOSO IT SERVICES
+Network Troubleshooting FAQ
+
+Document Version: 3.2
+Last Updated: January 2025
+Document Owner: Network Operations Team
+
+INTRODUCTION
+This FAQ addresses common network connectivity issues at Contoso. Follow these troubleshooting steps before contacting IT support to resolve issues quickly.
+
+QUICK DIAGNOSTIC CHECKLIST
+Before diving into specific issues, run through this quick checklist:
+
+□ Is your device connected to power?
+□ Is WiFi/Ethernet enabled on your device?
+□ Can you see the network name in available networks?
+□ Have you restarted your device recently?
+□ Are other devices on the same network working?
+□ Is your VPN connected (if working remotely)?
+
+COMMON ISSUE #1: NO INTERNET CONNECTION
+
+Symptoms:
+- Cannot load websites
+- Email won't sync
+- Applications show "offline"
+- Network icon shows "No Internet"
+
+OFFICE WORKERS - Wired Connection:
+
+Step 1: Check Physical Connection
+- Verify Ethernet cable is fully plugged into laptop/dock
+- Check cable is connected to wall port
+- Look for green/amber lights on network port
+- Try different cable if available
+- Try different wall port if available
+
+Step 2: Check Network Settings
+Windows:
+1. Right-click network icon in system tray
+2. Select "Open Network & Internet settings"
+3. Click "Ethernet"
+4. Verify status shows "Connected"
+5. If shows "Identifying" or "No Internet", proceed to Step 3
+
+Mac:
+1. Click Apple menu > System Settings
+2. Select "Network"
+3. Click "Ethernet" in left sidebar
+4. Verify status shows "Connected"
+5. Check IP address is assigned (should start with 10.x.x.x)
+
+Step 3: Release and Renew IP Address
+Windows:
+1. Open Command Prompt (search cmd)
+2. Type: ipconfig /release
+3. Press Enter, wait 5 seconds
+4. Type: ipconfig /renew
+5. Press Enter
+6. Test internet connection
+
+Mac:
+1. System Settings > Network > Ethernet
+2. Click "Details"
+3. Click "TCP/IP" tab
+4. Click "Renew DHCP Lease"
+5. Test internet connection
+
+Step 4: Restart Network Hardware
+1. Unplug power from desk phone (if using PoE)
+2. Wait 30 seconds
+3. Plug back in
+4. Wait 2 minutes for full startup
+5. Test connection
+
+OFFICE WORKERS - WiFi Connection:
+
+Step 1: Check WiFi is Enabled
+- Look for WiFi icon in system tray/menu bar
+- Ensure airplane mode is OFF
+- Verify WiFi toggle is ON
+
+Step 2: Connect to Correct Network
+Contoso Corporate Networks:
+- **Contoso-Secure** (Primary): For all employees with company devices
+- **Contoso-Guest**: For visitors and personal devices
+- **Contoso-IoT**: For smart devices (printers, displays)
+
+DO NOT connect to:
+- Public networks (CoffeeShop WiFi, etc.)
+- Unknown networks
+- Unsecured networks
+
+Step 3: Reconnect to Network
+Windows:
+1. Click WiFi icon in system tray
+2. Click "Contoso-Secure"
+3. Click "Disconnect"
+4. Wait 10 seconds
+5. Click "Contoso-Secure"
+6. Click "Connect"
+7. Enter credentials if prompted
+
+Mac:
+1. Click WiFi icon in menu bar
+2. Select current network
+3. Click "Disconnect"
+4. Wait 10 seconds
+5. Select "Contoso-Secure"
+6. Click "Join"
+7. Enter credentials if prompted
+
+Step 4: Forget and Rejoin Network
+Windows:
+1. Settings > Network & Internet > WiFi
+2. Click "Manage known networks"
+3. Click "Contoso-Secure"
+4. Click "Forget"
+5. Reconnect to network
+6. Enter username: firstname.lastname@contoso.com
+7. Enter password: Your network password
+
+Mac:
+1. System Settings > Network > WiFi
+2. Click "Details" next to network name
+3. Click "Forget This Network"
+4. Confirm
+5. Select "Contoso-Secure" from WiFi menu
+6. Enter credentials
+
+REMOTE WORKERS:
+
+Step 1: Check Home Internet
+1. Verify modem lights are on/green
+2. Restart modem (unplug 30 seconds, plug back in)
+3. Wait 5 minutes for full restart
+4. Restart router (if separate from modem)
+5. Test internet on another device
+
+Step 2: Check VPN Connection
+1. Open Cisco AnyConnect
+2. Verify status shows "Connected to vpn.contoso.com"
+3. If disconnected:
+   - Click "Connect"
+   - Enter credentials
+   - Approve MFA notification
+4. If connection fails, see VPN Troubleshooting section
+
+Step 3: Speed Test
+1. Disconnect VPN
+2. Visit https://speedtest.net
+3. Run speed test
+4. Minimum requirements:
+   - Download: 25 Mbps
+   - Upload: 5 Mbps
+   - Ping: <50ms
+5. If below minimum, contact your ISP
+
+COMMON ISSUE #2: SLOW NETWORK PERFORMANCE
+
+Symptoms:
+- Websites load slowly
+- Large file downloads take excessive time
+- Video calls are choppy
+- Remote desktop is laggy
+
+Office Workers:
+
+Diagnose the Issue:
+1. Visit https://speedtest.contoso.com (internal speed test)
+2. Expected speeds:
+   - Wired: 900+ Mbps download/upload
+   - WiFi: 200-400 Mbps download/upload
+3. If significantly slower, proceed with troubleshooting
+
+Quick Fixes:
+- Close bandwidth-heavy applications (streaming, downloads)
+- Restart your device
+- Move closer to WiFi access point (if wireless)
+- Switch to wired connection if possible
+- Check if VPN is unnecessarily connected while in office
+
+WiFi Optimization:
+1. Check WiFi signal strength:
+   - Windows: Click WiFi icon, look at bars
+   - Mac: Option+Click WiFi icon, view RSSI
+   - Good signal: -30 to -67 dBm
+   - Fair signal: -68 to -80 dBm
+   - Poor signal: -81 dBm or lower
+
+2. Improve signal:
+   - Move to different location
+   - Remove physical obstructions
+   - Switch to 5GHz network (Contoso-Secure-5G)
+   - Avoid interference from microwaves, other devices
+
+Remote Workers:
+
+VPN Performance:
+- Use Split Tunnel profile if available (faster internet)
+- Disconnect VPN when not accessing internal resources
+- Upgrade to Full Access only when needed
+
+Home Network Optimization:
+- Use wired connection instead of WiFi when possible
+- Close other devices using bandwidth
+- Schedule large downloads during off-hours
+- Upgrade internet plan if consistently slow
+
+COMMON ISSUE #3: CANNOT ACCESS SPECIFIC WEBSITES/APPLICATIONS
+
+Symptoms:
+- Some websites work, others don't
+- Specific application won't connect
+- Error messages: "Site can't be reached", "Connection timeout"
+
+Internal Contoso Resources:
+
+If you cannot access internal sites (intranet, SharePoint, etc.):
+
+Step 1: Verify VPN (Remote Workers Only)
+- Must be connected to VPN
+- Check VPN connection status
+- Reconnect if necessary
+
+Step 2: Check URL
+- Verify you're using correct URL
+- Internal sites end in .contoso.com
+- Check for typos
+- Try from bookmarks if available
+
+Step 3: Clear DNS Cache
+Windows:
+1. Open Command Prompt as Administrator
+2. Type: ipconfig /flushdns
+3. Press Enter
+4. Restart browser
+
+Mac:
+1. Open Terminal
+2. Type: sudo dscacheutil -flushcache
+3. Press Enter
+4. Enter password
+5. Restart browser
+
+Step 4: Try Different Browser
+- If issue persists in Chrome, try Edge
+- If issue persists in Safari, try Firefox
+- Browser-specific issues indicate cached data problem
+
+External Websites:
+
+If you cannot access external websites:
+
+Step 1: Check if Site is Blocked
+- Contoso blocks certain categories:
+  - Malicious/phishing sites
+  - Illegal content
+  - Streaming entertainment (during work hours)
+  - File sharing sites (security risk)
+  - Social media (exceptions for marketing team)
+
+- If you need access for business purposes:
+  - Submit exception request at https://itportal.contoso.com
+  - Provide business justification
+  - Manager approval required
+  - Security review: 2-3 business days
+
+Step 2: Check Site Status
+1. Visit https://downdetector.com
+2. Search for website
+3. Check if others reporting issues
+4. If site is down globally, wait for recovery
+
+Step 3: Try Different DNS
+1. Settings > Network > Change adapter settings
+2. Right-click your connection > Properties
+3. Select "Internet Protocol Version 4"
+4. Click "Properties"
+5. Try Google DNS: 8.8.8.8 and 8.8.4.4
+6. Click OK and test
+
+COMMON ISSUE #4: VPN CONNECTION PROBLEMS
+
+Symptoms:
+- Cannot connect to VPN
+- VPN connects then disconnects
+- "Unable to contact server" error
+- Authentication failures
+
+Cannot Connect to VPN:
+
+Step 1: Check Basics
+- Verify internet connection (disconnect VPN, test browsing)
+- Ensure VPN client is up to date
+- Restart VPN client
+- Restart computer
+
+Step 2: Verify Credentials
+- Username format: firstname.lastname@contoso.com (not just firstname.lastname)
+- Use current network password (not old password)
+- Ensure caps lock is OFF
+- Check for leading/trailing spaces
+
+Step 3: Check MFA
+- Verify phone/MFA device is available
+- Check for pending MFA push notification
+- Try generating code if push fails
+- Ensure MFA app is up to date
+
+Step 4: Test Different VPN Profile
+1. Open Cisco AnyConnect
+2. Click dropdown next to Connect
+3. Try alternative profiles:
+   - Full Access (default)
+   - Split Tunnel
+   - Contractor (if applicable)
+
+VPN Keeps Disconnecting:
+
+Common Causes:
+- Unstable internet connection
+- Power saving settings
+- Firewall interference
+- VPN timeout settings
+
+Solutions:
+
+Windows Power Settings:
+1. Control Panel > Power Options
+2. Click "Change plan settings"
+3. Click "Change advanced power settings"
+4. Expand "Wireless Adapter Settings"
+5. Set Power Saving Mode to "Maximum Performance"
+
+Mac Power Settings:
+1. System Settings > Battery
+2. Uncheck "Put hard disks to sleep when possible"
+3. Turn off "Enable Power Nap"
+
+Adjust VPN Timeout:
+1. Open AnyConnect Preferences
+2. Increase "Idle Timeout" to 30 minutes
+3. Enable "Auto Reconnect"
+
+VPN Authentication Issues:
+
+"Authentication Failed" Error:
+
+Solution 1: Reset Password
+- Your password may have expired
+- Go to https://passwordreset.contoso.com
+- Reset password
+- Wait 15 minutes for sync
+- Retry VPN connection
+
+Solution 2: Account Locked
+- Too many failed attempts lock account for 30 minutes
+- Wait 30 minutes or contact helpdesk for unlock
+- Ensure you're using correct credentials
+
+Solution 3: MFA Issues
+- Re-enroll MFA device at https://mfa.contoso.com
+- Ensure phone has connectivity
+- Check phone time is accurate (affects OTP codes)
+- Try backup authentication method
+
+"Certificate Error":
+- VPN client needs update
+- Download latest version from https://vpn.contoso.com/install
+- Uninstall old version first
+- Restart after installation
+
+COMMON ISSUE #5: EMAIL PROBLEMS
+
+Symptoms:
+- Outlook won't send/receive
+- "Cannot connect to server"
+- Email sync issues
+- Missing emails
+
+Desktop Outlook Issues:
+
+Step 1: Check Connection Status
+1. Look at bottom right of Outlook window
+2. Should show "Connected to Microsoft Exchange"
+3. If shows "Disconnected" or "Trying to connect":
+   - Check internet connection
+   - Restart Outlook
+   - Check VPN (if remote)
+
+Step 2: Send/Receive Manually
+1. Click "Send/Receive" tab
+2. Click "Send/Receive All Folders"
+3. Watch status bar for errors
+4. If errors, note error code for support
+
+Step 3: Repair Outlook Profile
+1. Close Outlook
+2. Control Panel > Mail
+3. Click "Show Profiles"
+4. Click "Properties"
+5. Click "Email Accounts"
+6. Click "Repair"
+7. Follow prompts
+8. Restart Outlook
+
+Step 4: Create New Outlook Profile
+1. Control Panel > Mail
+2. Click "Show Profiles"
+3. Click "Add"
+4. Name: "Contoso New"
+5. Enter email: firstname.lastname@contoso.com
+6. Outlook will auto-configure
+7. Set as default profile
+8. Restart Outlook
+
+Outlook Web Access (OWA) Issues:
+
+Step 1: Clear Browser Cache
+1. Browser settings > Privacy
+2. Clear browsing data
+3. Select: Cookies and cached files
+4. Time range: All time
+5. Clear data
+6. Restart browser
+
+Step 2: Try Incognito/Private Mode
+1. Open private browsing window
+2. Navigate to https://outlook.office.com
+3. If works in private mode, browser extension causing issue
+4. Disable extensions one by one to identify culprit
+
+Mobile Email Issues:
+
+Step 1: Check Sync Settings
+iOS:
+1. Settings > Mail > Accounts
+2. Tap your Contoso account
+3. Ensure "Mail" toggle is ON
+4. Check "Mail Days to Sync" (recommend 1 month)
+
+Android:
+1. Settings > Accounts
+2. Tap your Contoso account
+3. Ensure "Sync Email" is checked
+4. Force sync: Pull down in Outlook app
+
+Step 2: Remove and Re-add Account
+1. Remove Contoso email account from device
+2. Restart device
+3. Re-add account using Outlook app (not native mail)
+4. Email: firstname.lastname@contoso.com
+5. Password: Your network password
+6. Approve MFA
+7. Wait for initial sync (may take 10-15 minutes)
+
+COMMON ISSUE #6: PRINTER CONNECTION PROBLEMS
+
+Symptoms:
+- Printer not found
+- Print jobs stuck in queue
+- "Printer offline" message
+
+Office Printers:
+
+Step 1: Verify Printer Status
+1. Walk to printer
+2. Check display panel
+3. Look for error messages
+4. Check paper and toner levels
+5. Try test print from printer panel
+
+Step 2: Check Printer Connection
+Windows:
+1. Settings > Devices > Printers & Scanners
+2. Find your printer
+3. Click printer name
+4. Click "Manage"
+5. Click "Print test page"
+
+Mac:
+1. System Settings > Printers & Scanners
+2. Select printer
+3. Click "Print Test Page"
+
+Step 3: Restart Print Spooler (Windows)
+1. Press Windows + R
+2. Type: services.msc
+3. Press Enter
+4. Find "Print Spooler"
+5. Right-click > Restart
+6. Try printing again
+
+Step 4: Remove and Re-add Printer
+Windows:
+1. Settings > Devices > Printers & Scanners
+2. Click printer
+3. Click "Remove device"
+4. Click "Add a printer"
+5. Select your printer from list
+6. Follow prompts
+
+Mac:
+1. System Settings > Printers & Scanners
+2. Select printer
+3. Click minus (-) button
+4. Click plus (+) button
+5. Select printer from list
+6. Click "Add"
+
+Finding Printers:
+- Office printers named by location
+- Format: BUILDING-FLOOR-ROOM-PRINTER#
+- Example: HQ-02-215-PR1 (Headquarters, Floor 2, Room 215, Printer 1)
+- Check printer location map: https://printers.contoso.com
+
+Common Printer Error Codes:
+
+Error 49: Printer firmware issue
+- Turn printer off
+- Wait 30 seconds
+- Turn printer on
+- Contact IT if persists
+
+Error 79: Printer memory issue
+- Clear print queue
+- Send smaller print jobs
+- Contact IT for firmware update
+
+Offline Status:
+- Check printer is on and connected to network
+- Check printer IP address matches configured address
+- Try pinging printer IP
+- Contact IT if printer unreachable
+
+COMMON ISSUE #7: VIDEO CONFERENCING PROBLEMS
+
+Symptoms:
+- Camera not working
+- Microphone not working
+- Cannot hear others
+- Poor video quality
+
+Microsoft Teams Issues:
+
+Step 1: Check Permissions
+1. Click your profile picture in Teams
+2. Settings > Permissions
+3. Verify Camera and Microphone are allowed
+4. If blocked, allow and restart Teams
+
+Windows Camera/Mic Permissions:
+1. Settings > Privacy > Camera
+2. Toggle "Allow apps to access camera" ON
+3. Scroll down, ensure Teams is ON
+4. Repeat for Microphone
+
+Mac Camera/Mic Permissions:
+1. System Settings > Privacy & Security
+2. Click Camera
+3. Ensure Teams is checked
+4. Repeat for Microphone
+
+Step 2: Select Correct Devices
+1. In Teams meeting, click "..." (More actions)
+2. Click "Device settings"
+3. Select correct:
+   - Camera
+   - Microphone
+   - Speaker
+4. Test each device
+5. Adjust volume levels
+
+Step 3: Check Device Connections
+- USB headset: Try different USB port
+- Bluetooth headset: Check paired and connected
+- Built-in devices: Update drivers
+
+Step 4: Test Outside Teams
+1. Use Camera app (Windows) or Photo Booth (Mac)
+2. Verify camera works
+3. Use Voice Recorder to test microphone
+4. If devices don't work system-wide, hardware issue
+
+Video Quality Issues:
+
+Poor Video Quality:
+- Check internet speed (need 2+ Mbps upload)
+- Close bandwidth-heavy applications
+- Turn off your video and use audio only
+- Ask others to turn off video
+- Use wired connection instead of WiFi
+
+Audio Echo:
+- Use headset instead of speakers
+- Ask others to mute when not speaking
+- Check no other audio apps running simultaneously
+
+Zoom Issues:
+
+Similar troubleshooting to Teams:
+1. Check permissions
+2. Select correct devices
+3. Test connection
+4. Update Zoom to latest version
+
+Zoom-Specific Settings:
+1. Settings > Video
+2. Enable "HD" only with good bandwidth
+3. Check "Touch up my appearance" for better video
+4. Settings > Audio
+5. Test speaker and microphone
+6. Enable "Automatically adjust microphone"
+
+NETWORK TOOLS AND UTILITIES
+
+Useful Commands:
+
+Ping (Test Connectivity):
+- Windows/Mac: ping google.com
+- Tests if you can reach destination
+- Ctrl+C to stop
+
+Traceroute (Find Network Path):
+- Windows: tracert google.com
+- Mac: traceroute google.com
+- Shows path your connection takes
+- Identifies where delays occur
+
+IP Config (View Network Settings):
+- Windows: ipconfig /all
+- Mac: ifconfig
+- Shows your IP address, gateway, DNS
+
+Flush DNS (Clear DNS Cache):
+- Windows: ipconfig /flushdns
+- Mac: sudo dscacheutil -flushcache
+
+Network Reset (Last Resort):
+- Windows: Settings > Network > Network reset
+- Mac: Delete network preferences and restart
+- WARNING: Removes all network settings
+
+WHEN TO CONTACT IT SUPPORT
+
+Contact helpdesk if:
+- Issue persists after troubleshooting
+- Multiple people experiencing same issue
+- Hardware appears damaged
+- Error messages you don't understand
+- Security concerns (suspicious activity)
+- Issues affecting business-critical work
+
+Provide This Information:
+- Detailed description of issue
+- Error messages (screenshots helpful)
+- Troubleshooting steps already tried
+- When issue started
+- Whether others are affected
+- Your location (office/remote)
+- Device type and operating system
+
+CONTACTING IT SUPPORT
+
+Helpdesk:
+- Phone: 1-800-CONTOSO (1-800-266-8676)
+- Email: helpdesk@contoso.com
+- Portal: https://itportal.contoso.com
+- Chat: https://chat.contoso.com
+- Hours: 24/7
+
+Network Team:
+- Email: networkteam@contoso.com
+- For persistent connectivity issues
+- Response time: Within 4 hours
+
+Service Desk (Walk-In):
+- Location: Building A, 2nd Floor
+- Hours: Monday-Friday, 8 AM - 6 PM EST
+- Best for immediate hardware issues
+
+Emergency After-Hours:
+- Call: 1-800-555-0199
+- For critical issues only
+- Available 24/7/365
+
+PREVENTIVE MAINTENANCE
+
+To avoid network issues:
+- Keep devices updated with latest patches
+- Restart devices weekly
+- Clear browser cache monthly
+- Update VPN client when notified
+- Report intermittent issues (don't wait for crisis)
+- Use recommended browsers (Edge, Chrome, Firefox)
+- Maintain adequate WiFi signal strength
+- Use wired connections when possible
+- Don't ignore warning messages
+
+NETWORK STATUS AND MAINTENANCE
+
+Check Network Status:
+- Status page: https://status.contoso.com
+- Shows current incidents and outages
+- Planned maintenance schedules
+- Subscribe for email/SMS alerts
+
+Planned Maintenance:
+- Scheduled during off-peak hours
+- Notifications sent 48 hours in advance
+- Usually: Saturdays 2 AM - 6 AM EST
+- VPN may be unavailable during maintenance
+
+RELATED DOCUMENTATION
+- VPN Access Guide (Doc ID: NET-002)
+- Remote Work Security Policy (Doc ID: SEC-015)
+- Microsoft Teams User Guide (Doc ID: APP-007)
+- Acceptable Use Policy (Doc ID: IT-001)
+
+---
+
+Last Updated: January 2025
+Questions? Contact helpdesk@contoso.com
